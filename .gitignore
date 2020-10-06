@@ -1,0 +1,26 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+*__pycache__*
+# C extensions
+*.so
+
+
+# specific directory
+freezed_models/
+save_model_ssda/
+record/
+data/
+entropy_weight_files/
+attributes/
+expts/
+word_embedding_models/
+record/
+previous_models/
+target_rw_expts/
+tsne/ckpts/
+# Some specific patterns
+*word2vec*
+.DS_Store
