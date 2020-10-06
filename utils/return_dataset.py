@@ -100,7 +100,7 @@ def return_dataset(args):
         torch.utils.data.DataLoader(target_dataset_test,
                                     batch_size=bs * 2, num_workers=3,
                                     shuffle=True, drop_last=True)
-    return source_loader, target_loader, target_loader_unl, \
+    return source_loader, target_loader, target_loader_unl, \   
         target_loader_val, target_loader_test, class_list
 
 
@@ -137,3 +137,16 @@ def return_dataset_test(args):
                                     batch_size=bs * 2, num_workers=3,
                                     shuffle=False, drop_last=False)
     return target_loader_unl, class_list
+
+
+def rotate_img(img, rot):
+    if rot == 0: # 0 degrees rotation
+        return img
+    elif rot == 90: # 90 degrees rotation
+        return np.flipud(np.transpose(img, (1,0,2)))
+    elif rot == 180: # 90 degrees rotation
+        return np.fliplr(np.flipud(img))
+    elif rot == 270: # 270 degrees rotation / or -90
+        return np.transpose(np.flipud(img), (1,0,2))
+    else:
+        raise ValueError('rotation should be 0, 90, 180, or 270 degrees')
