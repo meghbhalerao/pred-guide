@@ -100,8 +100,7 @@ def return_dataset(args):
         torch.utils.data.DataLoader(target_dataset_test,
                                     batch_size=bs * 2, num_workers=3,
                                     shuffle=True, drop_last=True)
-    return source_loader, target_loader, target_loader_unl, \   
-        target_loader_val, target_loader_test, class_list
+    return source_loader, target_loader, target_loader_unl, target_loader_val, target_loader_test, class_list
 
 
 def return_dataset_test(args):
@@ -150,3 +149,37 @@ def rotate_img(img, rot):
         return np.transpose(np.flipud(img), (1,0,2))
     else:
         raise ValueError('rotation should be 0, 90, 180, or 270 degrees')
+
+
+
+def return_dataset_rot(args):
+    base_path = './data/txt/%s' % args.dataset
+    root = './data/%s/' % args.dataset
+
+    image_set_file_t = os.path.join(base_path, args.target + '_all.txt')
+
+    if args.net == 'alexnet':
+        crop_size = 227
+    else:
+        crop_size = 224
+
+    data_transforms = {
+        'train': transforms.Compose([
+            ResizeImage(256),
+            transforms.RandomHorizontalFlip(),
+            transforms.RandomCrop(crop_size),
+            transforms.ToTensor(),
+            transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
+        ])
+    }
+
+    target_dataset = Imagelists_VISDA(image_set_file_t, root=root, transform=data_transforms['train'])
+
+    if args.net == 'alexnet':
+        bs = 32
+    else:
+        bs = 24
+
+    target_loader = torch.utils.data.DataLoader(target_dataset, batch_size=min(bs, len(target_dataset)), num_workers=3, shuffle=True, drop_last=True)
+
+    return target_loader

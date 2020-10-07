@@ -10,7 +10,7 @@ from model.resnet import resnet34
 from model.basenet import AlexNetBase, VGGBase, Predictor, Predictor_deep
 from utils.utils import weights_init
 from utils.lr_schedule import inv_lr_scheduler
-from utils.return_dataset import return_dataset
+from utils.return_dataset import return_dataset_rot, return_dataset
 from utils.loss import entropy, adentropy
 # Training settings
 parser = argparse.ArgumentParser(description='SSDA Classification')
@@ -50,13 +50,13 @@ parser.add_argument('--early', action='store_false', default=True,
                     help='early stopping on validation or not')
 
 args = parser.parse_args()
-print('Dataset %s Domain %s Network %s' % (args.dataset, args.domain, args.net))
-target_loader = return_dataset(args)
+print('Dataset %s Target %s Network %s' % (args.dataset, args.target, args.net))
+target_loader = return_dataset_rot(args)
 use_gpu = torch.cuda.is_available()
-record_dir = 'record/%s/%s' % (args.dataset, args.method)
+record_dir = 'record/%s/' % (args.dataset)
 if not os.path.exists(record_dir):
     os.makedirs(record_dir)
-record_file = os.path.join(record_dir, 'net_%s_%s_to_%s_num' %(args.net, args.domain))
+record_file = os.path.join(record_dir, 'net_%s_%s' %(args.net, args.target))
 
 torch.cuda.manual_seed(args.seed)
 if args.net == 'resnet34':
@@ -81,15 +81,13 @@ for key, value in dict(G.named_parameters()).items():
             params += [{'params': [value], 'lr': args.multi * 10,
                         'weight_decay': 0.0005}]
 
+
 if "resnet" in args.net:
-    F1 = Predictor_deep(num_class=len(class_list),
-                        inc=inc)
+    F1 = nn.Linear(inc,4)
 else:
-    F1 = Predictor(num_class=len(class_list), inc=inc,
-                   temp=args.T)
+    F1 = nn.Linear(inc,4)
 
 
-weights_init(F1)
 lr = args.lr
 G.cuda()
 F1.cuda()
@@ -178,7 +176,7 @@ def train():
             if args.early:
                 if counter > args.patience:
                     break
-            print('best acc  %f % (best_acc_test))
+            print('best acc  %f' % (best_acc))
             print('record %s' % record_file)
             with open(record_file, 'a') as f:
                 f.write('step %d best %f  \n' % (step, best_acc))

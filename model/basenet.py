@@ -105,6 +105,7 @@ class Predictor_deep(nn.Module):
         return x_out
 
 
+
 class Discriminator(nn.Module):
     def __init__(self, inc=4096):
         super(Discriminator, self).__init__()
