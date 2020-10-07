@@ -2,7 +2,7 @@ import os
 import torch
 from torchvision import transforms
 from loaders.data_list import Imagelists_VISDA, return_classlist
-
+import numpy as np
 
 class ResizeImage():
     def __init__(self, size):
@@ -159,15 +159,13 @@ def return_dataset_rot(args):
     image_set_file_t = os.path.join(base_path, args.target + '_all.txt')
 
     if args.net == 'alexnet':
-        crop_size = 227
+        resize_size = 227
     else:
-        crop_size = 224
+        resize_size = 224
 
     data_transforms = {
         'train': transforms.Compose([
-            ResizeImage(256),
-            transforms.RandomHorizontalFlip(),
-            transforms.RandomCrop(crop_size),
+            ResizeImage(resize_size),
             transforms.ToTensor(),
             transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
         ])

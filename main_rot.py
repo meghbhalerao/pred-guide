@@ -87,7 +87,6 @@ if "resnet" in args.net:
 else:
     F1 = nn.Linear(inc,4)
 
-
 lr = args.lr
 G.cuda()
 F1.cuda()
@@ -149,7 +148,9 @@ def train():
         target =  gt_labels_t
         output = G(data)
         out1 = F1(output)
+
         loss = criterion(out1, target)
+        prit
         loss.backward(retain_graph=True)
         optimizer_g.step()
         optimizer_f.step()
