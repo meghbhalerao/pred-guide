@@ -2,7 +2,10 @@ import numpy as np
 import os
 import os.path
 from PIL import Image
+import random
 
+random.seed(1)
+np.random.seed(1)
 
 def pil_loader(path):
     with open(path, 'rb') as f:
@@ -24,6 +27,7 @@ def make_dataset_fromlist(image_list):
         label_list = np.array(label_list)
     image_index = image_index[selected_list]
     return image_index, label_list
+
 
 
 def return_classlist(image_list):
@@ -71,39 +75,36 @@ class Imagelists_VISDA(object):
     def __len__(self):
         return len(self.imgs)
 
-
+# Rotation function for PIL images
+def rotate_img(img_path, rot):
+    image = Image.open(img_path)
+    rotated_image = image.rotate(rot)
+    return rotated_image
 
 class Imagelists_VISDA_rot(object):
     def __init__(self, image_list, root="./data/multi/",
-                 transform=None, target_transform=None, test=False):
+                 transform=None):
         imgs, labels = make_dataset_fromlist(image_list)
         self.imgs = imgs
         self.labels = labels
         self.transform = transform
-        self.target_transform = target_transform
         self.loader = pil_loader
+        self.rotate  = rotate_img
         self.root = root
-        self.test = test
-
-    def __getitem__(self, index):
-        """
-        Args:
-            index (int): Index
-        Returns:
-            tuple: (image, target) where target is
-            class_index of the target class.
-        """
-        path = os.path.join(self.root, self.imgs[index])
-        target = self.labels[index]
-        img = self.loader(path)
-        if self.transform is not None:
-            img = self.transform(img)
-        if self.target_transform is not None:
-            target = self.target_transform(target)
-        if not self.test:
-            return img, target
-        else:
-            return img, target, self.imgs[index]
 
     def __len__(self):
         return len(self.imgs)
+
+    def __getitem__(self, index):
+
+        path = os.path.join(self.root, self.imgs[index])
+        img = self.loader(path)
+        # Randomly select rotation angle
+        angles = [0,90,180,270]
+        rot_angle = random.choice(angles)
+        print(rot_angle)
+        img = self.rotate
+        img = self.transform(img)
+        print(img)
+        return img, target, self.imgs[index]
+
