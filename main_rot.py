@@ -196,7 +196,7 @@ def test(loader):
     test_loss = 0
     correct = 0
     size = 0
-    num_class = len(class_list)
+    num_class = 4
     output_all = np.zeros((0, num_class))
     criterion = nn.CrossEntropyLoss().cuda()
     confusion_matrix = torch.zeros(num_class, num_class)
@@ -213,7 +213,7 @@ def test(loader):
                 confusion_matrix[t.long(), p.long()] += 1
             correct += pred1.eq(gt_labels_t.data).cpu().sum()
             test_loss += criterion(output1, gt_labels_t) / len(loader)
-    print('\nTest set: Average loss: {:.4f}, '
+    print('\Test set: Average loss: {:.4f}, '
           'Accuracy: {}/{} F1 ({:.0f}%)\n'.
           format(test_loss, correct, size,
                  100. * correct / size))
