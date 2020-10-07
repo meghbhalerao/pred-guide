@@ -3,6 +3,7 @@ import os
 import os.path
 from PIL import Image
 import random
+import torch
 
 random.seed(1)
 np.random.seed(1)
@@ -76,8 +77,7 @@ class Imagelists_VISDA(object):
         return len(self.imgs)
 
 # Rotation function for PIL images
-def rotate_img(img_path, rot):
-    image = Image.open(img_path)
+def rotate_img(image, rot):
     rotated_image = image.rotate(rot)
     return rotated_image
 
@@ -99,12 +99,11 @@ class Imagelists_VISDA_rot(object):
 
         path = os.path.join(self.root, self.imgs[index])
         img = self.loader(path)
-        # Randomly select rotation angle
+        # Randomly select rotation angle and rotating the image
         angles = [0,90,180,270]
         rot_angle = random.choice(angles)
-        print(rot_angle)
-        img = self.rotate
+        img = self.rotate(img,rot_angle)
         img = self.transform(img)
-        print(img)
+        target = torch.tensor(int(rot_angle/90))
         return img, target, self.imgs[index]
 
