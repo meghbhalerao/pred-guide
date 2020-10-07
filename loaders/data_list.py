@@ -70,3 +70,40 @@ class Imagelists_VISDA(object):
 
     def __len__(self):
         return len(self.imgs)
+
+
+
+class Imagelists_VISDA_rot(object):
+    def __init__(self, image_list, root="./data/multi/",
+                 transform=None, target_transform=None, test=False):
+        imgs, labels = make_dataset_fromlist(image_list)
+        self.imgs = imgs
+        self.labels = labels
+        self.transform = transform
+        self.target_transform = target_transform
+        self.loader = pil_loader
+        self.root = root
+        self.test = test
+
+    def __getitem__(self, index):
+        """
+        Args:
+            index (int): Index
+        Returns:
+            tuple: (image, target) where target is
+            class_index of the target class.
+        """
+        path = os.path.join(self.root, self.imgs[index])
+        target = self.labels[index]
+        img = self.loader(path)
+        if self.transform is not None:
+            img = self.transform(img)
+        if self.target_transform is not None:
+            target = self.target_transform(target)
+        if not self.test:
+            return img, target
+        else:
+            return img, target, self.imgs[index]
+
+    def __len__(self):
+        return len(self.imgs)

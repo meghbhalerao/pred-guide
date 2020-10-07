@@ -1,7 +1,7 @@
 import os
 import torch
 from torchvision import transforms
-from loaders.data_list import Imagelists_VISDA, return_classlist
+from loaders.data_list import Imagelists_VISDA, Imagelists_VISDA_rot, return_classlist
 import numpy as np
 
 class ResizeImage():
@@ -171,7 +171,7 @@ def return_dataset_rot(args):
         ])
     }
 
-    target_dataset = Imagelists_VISDA(image_set_file_t, root=root, transform=data_transforms['train'])
+    target_dataset = Imagelists_VISDA_rot(image_set_file_t, root=root, transform=data_transforms['train'])
 
     if args.net == 'alexnet':
         bs = 32

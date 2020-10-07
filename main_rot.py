@@ -150,7 +150,6 @@ def train():
         out1 = F1(output)
 
         loss = criterion(out1, target)
-        prit
         loss.backward(retain_graph=True)
         optimizer_g.step()
         optimizer_f.step()
