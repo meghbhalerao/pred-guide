@@ -82,10 +82,7 @@ for key, value in dict(G.named_parameters()).items():
                         'weight_decay': 0.0005}]
 
 
-if "resnet" in args.net:
-    F1 = nn.Linear(inc,4)
-else:
-    F1 = nn.Linear(inc,4)
+F1 = nn.Linear(inc,4)
 
 lr = args.lr
 G.cuda()

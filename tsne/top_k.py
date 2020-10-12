@@ -2,8 +2,8 @@
 import torch
 import numpy as np
 import sys
-sys.path.append('/cbica/home/bhaleram/comp_space/random/personal/iisc_project/MME/')
-from loaders.data_list import Imagelists_VISDA, return_classlist, return_number_of_label_per_class
+sys.path.append('/cbica/home/bhaleram/comp_space/random/personal/others/SSAL/')
+from loaders.data_list import Imagelists_VISDA, return_classlist
 from model.basenet import *
 from model.resnet import *
 from torchvision import transforms
@@ -21,7 +21,7 @@ root = '../data/multi/'
 source = "real"
 target = "clipart"
 n_class = 126
-n_class_plot = 40
+n_class_plot = 30
 k = 10
 image_list_easy = "./mme_easy_samples_unlabeled_target_images_%s_1.txt"%(target)
 image_list_hard = "./mme_hard_samples_unlabeled_target_images_%s_1.txt"%(target)
@@ -129,10 +129,8 @@ if ours:
         print("Using: Predictor_attributes")
 
 else:
-    if "resnet" in net:
-        F1 = nn.Linear(inc,4)
-    else:
-        F1 = nn.Linear(inc,4)
+    F1 = nn.Linear(inc,4)
+
 
 G.cuda()
 F1.cuda()
@@ -142,8 +140,8 @@ F1.cuda()
 
 
 # Loading the weights from the checkpoint
-G.load_state_dict(torch.load("../save_model_ssda/G_iter_model_clipart_step_10000.pth.tar"))
-F1.load_state_dict(torch.load("../save_model_ssda/F1_iter_model_clipart_step_10000.pth.tar"))
+G.load_state_dict(torch.load("../save_model_ssda/G_iter_model_clipart_step_2000.pth.tar"))
+F1.load_state_dict(torch.load("../save_model_ssda/F1_iter_model_clipart_step_2000.pth.tar"))
 
 features = []   
 labels = []
@@ -157,6 +155,7 @@ weights = []
 
 
 # Get classwise accuracies
+
 """
 cf = test(target_loader_unl)
 per_cls_acc = []
@@ -171,79 +170,29 @@ print(to_plot)
 """
 start = time.time()
 # Features for easy examples
+print(G)
+L1 = torch.nn.Sequential(G.features[0], G.features[1],G.features[2], G.features[3],G.features[4], G.features[5],G.features[6], G.features[7], G.features[8])
 
-"""
+print(L1)
 with torch.no_grad():
-    for idx, image_obj in enumerate(target_loader_unl_easy):
-        image = image_obj[0].cuda()
-        label = image_obj[1].cpu().data.item()
-        img_path = image_obj[2][0]
-        if label in to_plot:
-            output = G(image)
-            output = output.cpu().numpy()
-            output = output[0]
-            features.append(output)
-            labels.append(label)
-            weights.append(0)
-            print(label)
-        #if label==n_class_plot:
-        #    break
-
-
-print("Easy done")
-
-# Features for hard examples
-with torch.no_grad():
-    for idx, image_obj in enumerate(target_loader_unl_hard):
-        image = image_obj[0].cuda()
-        label = image_obj[1].cpu().data.item()
-        img_path = image_obj[2][0]
-        if label in to_plot:
-            output = G(image)
-            output = output.cpu().numpy()
-            output = output[0]
-            features.append(output)
-            labels.append(label)
-            weights.append(1)
-            print(label)
-        #if label == n_class_plot:
-        #   break
-
-
-print("Starting source")
-with torch.no_grad():
-    for idx, image_obj in enumerate(source_loader):
-        image = image_obj[0].cuda()
-        label = image_obj[1].cpu().data.item()
-        img_path = image_obj[2][0]
-        output = G(image)
-        output = output.cpu().numpy()
-        output = output[0]
-        features.append(output)
-        labels.append(label)
-        weights.append(10)
-        print(label)
-        if label == n_class_plot:
-            break
-"""
-
-with torch.no_grad():
-    for idx, image_obj in enumerate(target_loader_unl_hard):
+    for idx, image_obj in enumerate(target_loader_unl):
         image = image_obj[0].cuda()
         label = image_obj[1].cpu().data.item()
         img_path = image_obj[2][0]
         #if label in to_plot:
-        output = G(image)
+        output = L1(image)
+        output = torch.flatten(output)
+        #print(output)
+        #output = output.view(output.size(0), 256 * 6 * 6)
+        #output = L2(output)
         output = output.cpu().numpy()
-        output = output[0]
+        #output = output[0]
         features.append(output)
         labels.append(label)
         weights.append(1)
         print(label)
         if label == n_class_plot:   
            break
-
-
 
 
 end = time.time()
@@ -323,4 +272,62 @@ f.close()
 
 target_loader_unl_minority,class_list = get_dataset(net,root,"./unlabeled_target_images_%s_3_minority.txt"%(target))
 target_loader_unl_majority,class_list = get_dataset(net,root,"./unlabeled_target_images_%s_3_majority.txt"%(target))
+"""
+
+
+
+
+"""
+with torch.no_grad():
+    for idx, image_obj in enumerate(target_loader_unl_easy):
+        image = image_obj[0].cuda()
+        label = image_obj[1].cpu().data.item()
+        img_path = image_obj[2][0]
+        if label in to_plot:
+            output = G(image)
+            output = output.cpu().numpy()
+            output = output[0]
+            features.append(output)
+            labels.append(label)
+            weights.append(0)
+            print(label)
+        #if label==n_class_plot:
+        #    break
+
+
+print("Easy done")
+
+# Features for hard examples
+with torch.no_grad():
+    for idx, image_obj in enumerate(target_loader_unl_hard):
+        image = image_obj[0].cuda()
+        label = image_obj[1].cpu().data.item()
+        img_path = image_obj[2][0]
+        if label in to_plot:
+            output = G(image)
+            output = output.cpu().numpy()
+            output = output[0]
+            features.append(output)
+            labels.append(label)
+            weights.append(1)
+            print(label)
+        #if label == n_class_plot:
+        #   break
+
+
+print("Starting source")
+with torch.no_grad():
+    for idx, image_obj in enumerate(source_loader):
+        image = image_obj[0].cuda()
+        label = image_obj[1].cpu().data.item()
+        img_path = image_obj[2][0]
+        output = G(image)
+        output = output.cpu().numpy()
+        output = output[0]
+        features.append(output)
+        labels.append(label)
+        weights.append(10)
+        print(label)
+        if label == n_class_plot:
+            break
 """

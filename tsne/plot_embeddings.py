@@ -7,6 +7,7 @@ n_classes  = 10
 tsne_embeddings = np.load("tsne_embeddings.npy")
 labels = np.load('labels.npy')
 labels = list(labels)
+"""
 for i in range(n_classes):
     labels.append(-50)
 weights = np.load('weights.npy')
@@ -14,30 +15,46 @@ n_examples, _ =  tsne_embeddings.shape
 x = list(tsne_embeddings[0:n_examples - n_classes,0])
 y = list(tsne_embeddings[0:n_examples - n_classes,1])
 labels_xy = list(weights[0:n_examples - n_classes])
+"""
+
+x = list(tsne_embeddings[:,0])
+y = list(tsne_embeddings[:,1])
+labels_xy = labels
+
+"""
 print(labels)
 class_labels = [4,5,9,12,78,83,92,97,105,124]
 prototype_x = list(tsne_embeddings[n_examples - n_classes:n_examples,0])
 prototype_y = list(tsne_embeddings[n_examples - n_classes:n_examples,1])
 labels_prototype = list(weights[n_examples - n_classes: n_examples])
 values = [0,1,-50]
+"""
 
 print(len(x))
 print(len(y))
+print(len(labels_xy))
+
+"""
 print(len(labels_xy))
 print(len(prototype_x))
 print(len(prototype_y))
 print(len(labels_prototype))
 print(labels_prototype)
-
+"""
 colors = ['blue','red','green','yellow','purple','lawngreen','violet','indigo','lime','orange']
+
+plt.scatter(x, y, c=labels_xy, cmap=mpl.colors.ListedColormap(colors), marker='+')
+
+"""
 for idx, label in enumerate(labels):
     for i in range(len(class_labels)):
         if label == class_labels[i]:
             plt.scatter(x[idx],y[idx],marker = '+',color=colors[i])
 
+
+
 plt.scatter(prototype_x,prototype_y,marker = 'o', color='black')
 
-"""
 plt.tick_params(
     axis='x',          # changes apply to the x-axis
     which='both',      # both major and minor ticks are affected
