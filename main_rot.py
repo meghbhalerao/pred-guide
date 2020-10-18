@@ -15,7 +15,7 @@ from utils.loss import entropy, adentropy
 
 # Training settings
 parser = argparse.ArgumentParser(description='SSDA Classification')
-parser.add_argument('--epochs', type=int, default=50, metavar='N',
+parser.add_argument('--step', type=int, default=50000, metavar='N',
                     help='maximum number of iterations '
                          'to train (default: 50000)')
 parser.add_argument('--lr', type=float, default=0.01, metavar='LR',
@@ -49,8 +49,13 @@ parser.add_argument('--num', type=int, default=1,
                     help='number of labeled samples per class')
 
 args = parser.parse_args()
+all_step = args.step
 print('Dataset %s Target %s Network %s Num per class %s' % (args.dataset, args.target, args.net, str(args.num)))
 target_loader, target_loader_unl, class_list = return_dataset_rot(args)
+
+len_target = len(target_loader.dataset)
+len_target_unl = len(target_loader_unl.dataset)
+
 print("%s classes in this dataset"%(len(class_list)))
 use_gpu = torch.cuda.is_available()
 record_dir = 'record/%s/' % (args.dataset)
@@ -85,20 +90,6 @@ weights_init(F1)
 G.cuda()
 F_rot.cuda()
 F1.cuda()
-
-
-im_data_t = torch.FloatTensor(1)
-gt_labels_t = torch.LongTensor(1)
-im_data_tu = torch.FloatTensor(1)
-
-im_data_t = im_data_t.cuda()
-gt_labels_t = gt_labels_t.cuda()
-im_data_tu = im_data_tu.cuda()
-
-im_data_t = Variable(im_data_t)
-gt_labels_t = Variable(gt_labels_t)
-im_data_tu = Variable(im_data_tu)
-
 
 params = []
 for key, value in dict(G.named_parameters()).items():
@@ -142,10 +133,135 @@ def train():
         param_lr_f_rot.append(param_group["lr"])
 
     criterion = nn.CrossEntropyLoss().cuda()
-    best_acc = 0
+    best_acc_class = 0
+    best_acc_rot = 0
     counter = 0 
 
+    for step in range(all_step):
+        optimizer_g = inv_lr_scheduler(param_lr_g, optimizer_g, step,
+                                       init_lr=args.lr)
+        optimizer_f = inv_lr_scheduler(param_lr_f, optimizer_f, step,
+                                       init_lr=args.lr)
+        optimizer_f_rot = inv_lr_scheduler(param_lr_f_rot, optimizer_f_rot, step,
+                                       init_lr=args.lr)
+        
+        lr = optimizer_f.param_groups[0]['lr']
+        if step % len_target == 0:
+            data_iter_t = iter(target_loader)
+        if step % len_target_unl == 0:
+            data_iter_t_unl = iter(target_loader_unl)
 
+        data_t = next(data_iter_t)
+        data_t_unl = next(data_iter_t_unl)
+
+        # Extracting data from the dataloader
+        im_data_t = data_t[0].cuda()
+        gt_labels_rot_t = data_t[1].cuda()
+        gt_labels_class_t = data_t[2].cuda()
+        
+        im_data_t_unl = data_t[0].cuda()
+        gt_labels_rot_t_unl = data_t[1].cuda()
+        
+        zero_grad_all()
+        
+        # Loss labeled classification
+        output = G(im_data_t)
+        out_class = F1(output)
+        loss_class = criterion(out_class, gt_labels_class_t)
+        loss_class.backward(retain_graph=True)
+        # Loss labeled rotation
+        out_rot = F_rot(output)
+        loss_rot = criterion(out_rot, gt_labels_rot_t)
+        loss_rot.backward(retain_graph=True)
+        # Loss unlabeled adentropy
+        output = G(im_data_t_unl)
+        out_ent = F1(output)
+        loss_ent = adentropy(F1, out_ent, args.lamda)
+        loss_ent.backward(retain_graph=True)
+        # Loss unlabeled rot
+        out_rot = F_rot(output)
+        loss_rot_unl = criteron(out_rot, gt_labels_rot_t_unl)
+        loss_rot_unl.backward()
+
+
+        optimizer_g.step()
+        optimizer_f.step()
+        optimizer_f_rot.step()
+        zero_grad_all()
+
+        log_train = 'T {} Ep: {} lr{} \t Loss Class: {:.6f} RotLab: {} Ent: {} RotUnl: {} \n'.format(args.target, step, lr, loss_class.data, loss_rot.data, loss_ent.data, loss_rot_unl.data)
+
+        G.zero_grad()
+        F1.zero_grad()
+        F_rot.zero_grad()
+        zero_grad_all()
+        
+        if step % args.log_interval == 0:
+            print(log_train)
+        if step % args.save_interval == 0 and step > 0:
+            loss_train_class, acc_train_class = test(target_loader_unl, rot=False)
+            loss_train_rot, acc_train_rot  = test(target_loader_unl, rot=True)
+
+            G.train()
+            F1.train()
+            F_rot.train()
+
+            if acc_train_class >= best_acc_class:
+                best_acc_class = acc_train_class
+                counter = 0
+            else:
+                counter += 1
+            if args.early:
+                if counter > args.patience:
+                    break
+            print('best acc class %f' % (best_acc_class))
+            print('record %s' % record_file)
+            with open(record_file, 'a') as f:
+                f.write('step %d best %f  \n' % (step, best_acc))
+
+            G.train()
+            F1.train()
+            F_rot.train()
+            if args.save_check:
+                print('saving model')
+                torch.save({"G": G.state_dict(), "F1": F1.state_dict(), "F_rot": F_rot.state_dict()}, os.path.join(args.checkpath, "model_{}_step_{}.pth.tar".format(args.target, step)))
+
+
+
+def test(loader, rot = False):
+    G.eval()
+    F1.eval()
+    test_loss = 0
+    correct = 0
+    size = 0
+    if rot:
+        num_class = 4
+    else:
+        num_class = len(class_list)
+    output_all = np.zeros((0, num_class))
+    criterion = nn.CrossEntropyLoss().cuda()
+    confusion_matrix = torch.zeros(num_class, num_class)
+    with torch.no_grad():
+        for batch_idx, data_t in enumerate(loader):
+            im_data_t.data.resize_(data_t[0].size()).copy_(data_t[0])
+            gt_labels_t.data.resize_(data_t[1].size()).copy_(data_t[1])
+            feat = G(im_data_t)
+            output1 = F1(feat)
+            output_all = np.r_[output_all, output1.data.cpu().numpy()]
+            size += im_data_t.size(0)
+            pred1 = output1.data.max(1)[1]
+            for t, p in zip(gt_labels_t.view(-1), pred1.view(-1)):
+                confusion_matrix[t.long(), p.long()] += 1
+            correct += pred1.eq(gt_labels_t.data).cpu().sum()
+            test_loss += criterion(output1, gt_labels_t) / len(loader)
+    print('\Test set: Average loss: {:.4f}, '
+          'Accuracy: {}/{} F1 ({:.0f}%)\n'.
+          format(test_loss, correct, size,
+                 100. * correct / size))
+    return test_loss.data, 100. * float(correct) / size
+
+
+train()
 
 
 
@@ -200,37 +316,4 @@ def train_epoch(epoch, args, G, F1, F_rot, target_loader, target_loader_unl, opt
         optimizer_g.step()
         optimizer_f.step()
         print('Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}'.format(epoch, batch_idx * len(im_data_t), len(data_loader.dataset),100. * batch_idx / len(data_loader), loss.item()))
-
 """
-
-
-def test(loader, num_class):
-    G.eval()
-    F1.eval()
-    test_loss = 0
-    correct = 0
-    size = 0
-    output_all = np.zeros((0, num_class))
-    criterion = nn.CrossEntropyLoss().cuda()
-    confusion_matrix = torch.zeros(num_class, num_class)
-    with torch.no_grad():
-        for batch_idx, data_t in enumerate(loader):
-            im_data_t.data.resize_(data_t[0].size()).copy_(data_t[0])
-            gt_labels_t.data.resize_(data_t[1].size()).copy_(data_t[1])
-            feat = G(im_data_t)
-            output1 = F1(feat)
-            output_all = np.r_[output_all, output1.data.cpu().numpy()]
-            size += im_data_t.size(0)
-            pred1 = output1.data.max(1)[1]
-            for t, p in zip(gt_labels_t.view(-1), pred1.view(-1)):
-                confusion_matrix[t.long(), p.long()] += 1
-            correct += pred1.eq(gt_labels_t.data).cpu().sum()
-            test_loss += criterion(output1, gt_labels_t) / len(loader)
-    print('\Test set: Average loss: {:.4f}, '
-          'Accuracy: {}/{} F1 ({:.0f}%)\n'.
-          format(test_loss, correct, size,
-                 100. * correct / size))
-    return test_loss.data, 100. * float(correct) / size
-
-
-train()
