@@ -43,10 +43,13 @@ parser.add_argument('--patience', type=int, default=5, metavar='S',
                          'before terminating. (default: 5 (5000 iterations))')
 parser.add_argument('--early', action='store_false', default=True,
                     help='early stopping on validation or not')
+parser.add_argument('--num', type=int, default=1,
+                    help='number of labeled samples per class')
 
 args = parser.parse_args()
-print('Dataset %s Target %s Network %s' % (args.dataset, args.target, args.net))
-target_loader = return_dataset_rot(args)
+print('Dataset %s Target %s Network %s Num %s' % (args.dataset, args.target, args.net, str(args.num)))
+target_loader, target_loader_unl = return_dataset_rot(args)
+
 use_gpu = torch.cuda.is_available()
 record_dir = 'record/%s/' % (args.dataset)
 if not os.path.exists(record_dir):
@@ -66,11 +69,21 @@ elif args.net == "vgg":
 else:
     raise ValueError('Model cannot be recognized.')
 
-F1 = nn.Linear(inc,4)
-weights_init(F1)
+# Defining the rotation classification matrix
+F_rot = nn.Linear(inc,4)
 
-G.cuda()
-F1.cuda()
+# Defining the class classification network
+if "resnet" in args.net:
+    F1 = Predictor_deep(num_class=len(class_list),inc=inc)
+else:
+    F1 = Predictor(num_class=len(class_list), inc=inc, temp=args.T)
+
+weights_init(F1)
+if use_gpu:
+    G.cuda()
+    F_rot.cuda()
+    F1.cuda()
+
 
 im_data_t = torch.FloatTensor(1)
 gt_labels_t = torch.LongTensor(1)
