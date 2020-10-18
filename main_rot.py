@@ -79,20 +79,24 @@ else:
     F1 = Predictor(num_class=len(class_list), inc=inc, temp=args.T)
 
 weights_init(F1)
-if use_gpu:
-    G.cuda()
-    F_rot.cuda()
-    F1.cuda()
+
+G.cuda()
+F_rot.cuda()
+F1.cuda()
 
 
 im_data_t = torch.FloatTensor(1)
 gt_labels_t = torch.LongTensor(1)
+im_data_tu = torch.FloatTensor(1)
 
 im_data_t = im_data_t.cuda()
 gt_labels_t = gt_labels_t.cuda()
+im_data_tu = im_data_tu.cuda()
 
 im_data_t = Variable(im_data_t)
 gt_labels_t = Variable(gt_labels_t)
+im_data_tu = Variable(im_data_tu)
+
 
 params = []
 for key, value in dict(G.named_parameters()).items():
@@ -111,14 +115,19 @@ if os.path.exists(args.checkpath) == False:
 def train():
     G.train()
     F1.train()
+    F_rot.train()
+
     optimizer_g = optim.SGD(params, momentum=0.9,
                             weight_decay=0.0005, nesterov=True)
     optimizer_f = optim.SGD(list(F1.parameters()), lr=0.01, momentum=0.9,
+                            weight_decay=0.0005, nesterov=True)
+    optimizer_f_rot = optim.SGD(list(F_rot.parameters()), lr=0.01, momentum=0.9,
                             weight_decay=0.0005, nesterov=True)
 
     def zero_grad_all():
         optimizer_g.zero_grad()
         optimizer_f.zero_grad()
+        optimizer_f_rot.zero_grad()
 
     param_lr_g = []
     for param_group in optimizer_g.param_groups:
@@ -126,12 +135,17 @@ def train():
     param_lr_f = []
     for param_group in optimizer_f.param_groups:
         param_lr_f.append(param_group["lr"])
+    param_lr_f_rot= = []
+    for param_group in optimizer_f_rot.param_groups:
+        param_lr_f_rot.append(param_group["lr"])
 
     criterion = nn.CrossEntropyLoss().cuda()
     best_acc = 0
     counter = 0 
+
+
     for epoch in range(1, args.epochs + 1):
-        train_epoch(epoch, args, G, F1, target_loader, optimizer_g, optimizer_f, criterion, zero_grad_all, param_lr_g, param_lr_f)
+        train_epoch(epoch, args, G, F1, F_rot, target_loader, target_loader_unl, optimizer_g, optimizer_f, optimizer_f_rot criterion, zero_grad_all, param_lr_g, param_lr_f, param_lr_f_rot)
         loss_train, acc_train = test(target_loader)
         G.train()
         F1.train()
@@ -149,20 +163,26 @@ def train():
             f.write('epoch %d best %f  \n' % (epoch, best_acc))
         if args.save_check:
             print('saving model')
-            torch.save(G.state_dict(), os.path.join(args.checkpath, "G_iter_model_{}_epoch_{}.pth.tar".format(args.target, epoch)))
-            torch.save(F1.state_dict(), os.path.join(args.checkpath, "F1_iter_model_{}_epoch_{}.pth.tar".format(args.target, epoch)))
+            torch.save({"G": G.state_dict(), "F1": F1.state_dict(), "F_rot": F_rot.state_dict()}, os.path.join(args.checkpath, "model_{}_epoch_{}.pth.tar".format(args.target, epoch)))
 
-def train_epoch(epoch, args, G, F1, data_loader, optimizer_g, optimizer_f, criterion, zero_grad_all, param_lr_g, param_lr_f):
+
+
+# Trainin gfunction            
+def train_epoch(epoch, args, G, F1, F_rot, data_loader, optimizer_g, optimizer_f, optimizer_f_rot, criterion, zero_grad_all, param_lr_g, param_lr_f):
+
     for batch_idx, data_t in enumerate(data_loader):
-        optimizer_g = inv_lr_scheduler(param_lr_g, optimizer_g, batch_idx+epoch*len(data_loader),
-                                       init_lr=args.lr)
-        optimizer_f = inv_lr_scheduler(param_lr_f, optimizer_f, batch_idx+epoch*len(data_loader),
-                                       init_lr=args.lr)
+        optimizer_g = inv_lr_scheduler(param_lr_g, optimizer_g, batch_idx+epoch*len(data_loader), init_lr=args.lr)
+        optimizer_f = inv_lr_scheduler(param_lr_f, optimizer_f, batch_idx+epoch*len(data_loader),init_lr=args.lr)
+        optimizer_f_rot = inv_lr_scheduler(param_lr_f_rot, optimizer_f_rot, batch_idx+epoch*len(data_loader), init_lr=args.lr)
+       
         zero_grad_all()
-        im_data_t.data.resize_(data_t[0].size()).copy_(data_t[0])
-        gt_labels_t.data.resize_(data_t[1].size()).copy_(data_t[1])
-        output = G(im_data_t)
-        out1 = F1(output)
+        
+#        im_data_t.data.resize_(data_t[0].size()).copy_(data_t[0])
+#        gt_labels_t.data.resize_(data_t[1].size()).copy_(data_t[1])
+
+        print(data_t.keys())
+
+        out1 = F1(G(im_data_t))
         loss = criterion(out1, gt_labels_t)
         loss.backward(retain_graph=True)
         optimizer_g.step()
