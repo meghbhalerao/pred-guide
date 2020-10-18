@@ -162,9 +162,9 @@ def return_dataset_rot(args):
     target_dataset = Imagelists_VISDA_rot(image_set_file_t, root=root, transform=data_transforms['train'])
 
     if args.net == 'alexnet':
-        bs = 64
+        bs = 32
     else:
-        bs = 64
+        bs = 24
 
     target_loader = torch.utils.data.DataLoader(target_dataset, batch_size=min(bs, len(target_dataset)), num_workers=3, shuffle=True, drop_last=True)
 
