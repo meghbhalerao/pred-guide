@@ -11,6 +11,8 @@ from model.basenet import AlexNetBase, VGGBase, Predictor, Predictor_deep
 from utils.lr_schedule import inv_lr_scheduler
 from utils.utils import weights_init
 from utils.return_dataset import return_dataset_rot, return_dataset
+from utils.loss import entropy, adentropy
+
 # Training settings
 parser = argparse.ArgumentParser(description='SSDA Classification')
 parser.add_argument('--epochs', type=int, default=50, metavar='N',
@@ -47,9 +49,9 @@ parser.add_argument('--num', type=int, default=1,
                     help='number of labeled samples per class')
 
 args = parser.parse_args()
-print('Dataset %s Target %s Network %s Num %s' % (args.dataset, args.target, args.net, str(args.num)))
-target_loader, target_loader_unl = return_dataset_rot(args)
-
+print('Dataset %s Target %s Network %s Num per class %s' % (args.dataset, args.target, args.net, str(args.num)))
+target_loader, target_loader_unl, class_list = return_dataset_rot(args)
+print("%s classes in this dataset"%(len(class_list)))
 use_gpu = torch.cuda.is_available()
 record_dir = 'record/%s/' % (args.dataset)
 if not os.path.exists(record_dir):
@@ -135,7 +137,7 @@ def train():
     param_lr_f = []
     for param_group in optimizer_f.param_groups:
         param_lr_f.append(param_group["lr"])
-    param_lr_f_rot= = []
+    param_lr_f_rot =  []
     for param_group in optimizer_f_rot.param_groups:
         param_lr_f_rot.append(param_group["lr"])
 
@@ -145,7 +147,7 @@ def train():
 
 
     for epoch in range(1, args.epochs + 1):
-        train_epoch(epoch, args, G, F1, F_rot, target_loader, target_loader_unl, optimizer_g, optimizer_f, optimizer_f_rot criterion, zero_grad_all, param_lr_g, param_lr_f, param_lr_f_rot)
+        train_epoch(epoch, args, G, F1, F_rot, target_loader, target_loader_unl, optimizer_g, optimizer_f, optimizer_f_rot, criterion, zero_grad_all, param_lr_g, param_lr_f, param_lr_f_rot)
         loss_train, acc_train = test(target_loader)
         G.train()
         F1.train()
@@ -167,8 +169,8 @@ def train():
 
 
 
-# Trainin gfunction            
-def train_epoch(epoch, args, G, F1, F_rot, data_loader, optimizer_g, optimizer_f, optimizer_f_rot, criterion, zero_grad_all, param_lr_g, param_lr_f):
+# Training function            
+def train_epoch(epoch, args, G, F1, F_rot, target_loader, target_loader_unl, optimizer_g, optimizer_f, optimizer_f_rot, criterion, zero_grad_all, param_lr_g, param_lr_f, param_lr_f_rot):
 
     for batch_idx, data_t in enumerate(data_loader):
         optimizer_g = inv_lr_scheduler(param_lr_g, optimizer_g, batch_idx+epoch*len(data_loader), init_lr=args.lr)

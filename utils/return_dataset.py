@@ -155,7 +155,7 @@ def return_dataset_rot(args):
     data_transforms = {
         'train': transforms.Compose([
             ResizeImage(256),
-            transforms.RandomCrop(crop_size)
+            transforms.RandomCrop(crop_size),
             transforms.ToTensor(),
             transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
         ])
@@ -170,5 +170,7 @@ def return_dataset_rot(args):
         bs = 24
 
     target_loader = torch.utils.data.DataLoader(target_dataset, batch_size=min(bs, len(target_dataset)), num_workers=3, shuffle=True, drop_last=True)
-    target_loader_unl = torch.utils.data.DataLoader(target_dataset, batch_size=min(bs, len(target_dataset_unl)), num_workers=3, shuffle=True, drop_last=True)
-    return target_loader, target_loader_unl
+    target_loader_unl = torch.utils.data.DataLoader(target_dataset_unl, batch_size=min(bs, len(target_dataset_unl)), num_workers=3, shuffle=True, drop_last=True)
+
+    class_list = return_classlist(image_set_file_t_unl)
+    return target_loader, target_loader_unl, class_list
