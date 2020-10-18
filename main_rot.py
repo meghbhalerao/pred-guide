@@ -191,13 +191,12 @@ def train_epoch(epoch, args, G, F1, F_rot, target_loader, target_loader_unl, opt
         optimizer_f.step()
         print('Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}'.format(epoch, batch_idx * len(im_data_t), len(data_loader.dataset),100. * batch_idx / len(data_loader), loss.item()))
 
-def test(loader):
+def test(loader, num_class):
     G.eval()
     F1.eval()
     test_loss = 0
     correct = 0
     size = 0
-    num_class = 4
     output_all = np.zeros((0, num_class))
     criterion = nn.CrossEntropyLoss().cuda()
     confusion_matrix = torch.zeros(num_class, num_class)
