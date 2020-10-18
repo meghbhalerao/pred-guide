@@ -172,7 +172,7 @@ def train():
 # Training function            
 def train_epoch(epoch, args, G, F1, F_rot, target_loader, target_loader_unl, optimizer_g, optimizer_f, optimizer_f_rot, criterion, zero_grad_all, param_lr_g, param_lr_f, param_lr_f_rot):
 
-    for batch_idx, data_t in enumerate(data_loader):
+    for batch_idx, data_t in enumerate(target_loader):
         optimizer_g = inv_lr_scheduler(param_lr_g, optimizer_g, batch_idx+epoch*len(data_loader), init_lr=args.lr)
         optimizer_f = inv_lr_scheduler(param_lr_f, optimizer_f, batch_idx+epoch*len(data_loader),init_lr=args.lr)
         optimizer_f_rot = inv_lr_scheduler(param_lr_f_rot, optimizer_f_rot, batch_idx+epoch*len(data_loader), init_lr=args.lr)
