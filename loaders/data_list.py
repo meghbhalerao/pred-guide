@@ -105,5 +105,4 @@ class Imagelists_VISDA_rot(object):
         img = self.rotate(img,rot_angle)
         img = self.transform(img)
         target = torch.tensor(int(rot_angle/90))
-        return img, target, self.imgs[index]
-
+        return img, target, self.labels[index]
