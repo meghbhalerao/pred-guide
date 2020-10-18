@@ -146,6 +146,16 @@ def train():
     counter = 0 
 
 
+
+
+
+
+
+
+
+
+
+"""
     for epoch in range(1, args.epochs + 1):
         train_epoch(epoch, args, G, F1, F_rot, target_loader, target_loader_unl, optimizer_g, optimizer_f, optimizer_f_rot, criterion, zero_grad_all, param_lr_g, param_lr_f, param_lr_f_rot)
         loss_train, acc_train = test(target_loader)
@@ -190,6 +200,9 @@ def train_epoch(epoch, args, G, F1, F_rot, target_loader, target_loader_unl, opt
         optimizer_g.step()
         optimizer_f.step()
         print('Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}'.format(epoch, batch_idx * len(im_data_t), len(data_loader.dataset),100. * batch_idx / len(data_loader), loss.item()))
+
+"""
+
 
 def test(loader, num_class):
     G.eval()
