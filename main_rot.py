@@ -20,7 +20,7 @@ parser.add_argument('--step', type=int, default=50000, metavar='N',
                          'to train (default: 50000)')
 parser.add_argument('--lr', type=float, default=0.01, metavar='LR',
                     help='learning rate (default: 0.1)')
-parser.add_argument('--multi', type=float, default=0.01, metavar='MLT',
+parser.add_argument('--multi', type=float, default=0.1, metavar='MLT',
                     help='learning rate multiplication')
 parser.add_argument('--lamda', type=float, default=0.1, metavar='LAM',
                     help='value of lamda')
@@ -56,8 +56,8 @@ all_step = args.step
 print('Dataset %s Target %s Network %s Num per class %s' % (args.dataset, args.target, args.net, str(args.num)))
 target_loader, target_loader_unl, class_list = return_dataset_rot(args)
 
-len_target = len(target_loader.dataset)
-len_target_unl = len(target_loader_unl.dataset)
+len_target = len(target_loader)
+len_target_unl = len(target_loader_unl)
 
 print("%s classes in this dataset"%(len(class_list)))
 use_gpu = torch.cuda.is_available()
@@ -144,6 +144,7 @@ def train():
     data_iter_t_unl = iter(target_loader_unl)
 
     for step in range(all_step):
+        lr = optimizer_f.param_groups[0]['lr']
         optimizer_g = inv_lr_scheduler(param_lr_g, optimizer_g, step,
                                        init_lr=args.lr)
         optimizer_f = inv_lr_scheduler(param_lr_f, optimizer_f, step,
@@ -152,12 +153,11 @@ def train():
                                        init_lr=args.lr)
         
         lr = optimizer_f.param_groups[0]['lr']
+
         if step % len_target == 0:
-            print("it")
             data_iter_t = iter(target_loader)
         if step % len_target_unl == 0:
             data_iter_t_unl = iter(target_loader_unl)
-        print(len_target, len_target_unl)
         data_t = next(data_iter_t)
         data_t_unl = next(data_iter_t_unl)
 
@@ -223,7 +223,7 @@ def train():
             print('best acc class %f' % (best_acc_class))
             print('record %s' % record_file)
             with open(record_file, 'a') as f:
-                f.write('step %d best %f  \n' % (step, best_acc))
+                f.write('step %d best %f  \n' % (step, best_acc_class))
 
             G.train()
             F1.train()
@@ -237,6 +237,7 @@ def train():
 def test(loader, rot = False):
     G.eval()
     F1.eval()
+    F_rot.eval()
     test_loss = 0
     correct = 0
     size = 0
@@ -249,10 +250,19 @@ def test(loader, rot = False):
     confusion_matrix = torch.zeros(num_class, num_class)
     with torch.no_grad():
         for batch_idx, data_t in enumerate(loader):
-            im_data_t.data.resize_(data_t[0].size()).copy_(data_t[0])
-            gt_labels_t.data.resize_(data_t[1].size()).copy_(data_t[1])
+            #im_data_t.data.resize_(data_t[0].size()).copy_(data_t[0])
+            #gt_labels_t.data.resize_(data_t[1].size()).copy_(data_t[1])
+            
+            im_data_t = data_t[0].cuda()
+            if rot:
+                gt_labels_t = data_t[1].cuda()
+            else:
+                gt_labels_t = data_t[2].cuda()
             feat = G(im_data_t)
-            output1 = F1(feat)
+            if rot:
+                output1 = F_rot(feat)
+            else:
+                output1 = F1(feat)
             output_all = np.r_[output_all, output1.data.cpu().numpy()]
             size += im_data_t.size(0)
             pred1 = output1.data.max(1)[1]
@@ -260,10 +270,16 @@ def test(loader, rot = False):
                 confusion_matrix[t.long(), p.long()] += 1
             correct += pred1.eq(gt_labels_t.data).cpu().sum()
             test_loss += criterion(output1, gt_labels_t) / len(loader)
-    print('\Test set: Average loss: {:.4f}, '
-          'Accuracy: {}/{} F1 ({:.0f}%)\n'.
-          format(test_loss, correct, size,
-                 100. * correct / size))
+    if rot:
+        print('\Rotation: Average loss: {:.4f}, '
+              'Accuracy: {}/{} F1 ({:.0f}%)\n'.
+            format(test_loss, correct, size,
+                     100. * correct / size))
+    else:
+        print('\Target: Average loss: {:.4f}, '
+              'Accuracy: {}/{} F1 ({:.0f}%)\n'.
+            format(test_loss, correct, size,
+                     100. * correct / size))
     return test_loss.data, 100. * float(correct) / size
 
 
