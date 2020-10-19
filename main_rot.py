@@ -115,7 +115,7 @@ def train():
 
     optimizer_g = optim.SGD(params, momentum=0.9,
                             weight_decay=0.0005, nesterov=True)
-    optimizer_f = optim.SGD(list(F1.parameters()), lr=0.01, momentum=0.9,
+    optimizer_f = optim.SGD(list(F1.parameters()), lr=1.0, momentum=0.9,
                             weight_decay=0.0005, nesterov=True)
     optimizer_f_rot = optim.SGD(list(F_rot.parameters()), lr=0.01, momentum=0.9,
                             weight_decay=0.0005, nesterov=True)
@@ -144,7 +144,7 @@ def train():
     data_iter_t_unl = iter(target_loader_unl)
 
     for step in range(all_step):
-        lr = optimizer_f.param_groups[0]['lr']
+        #lr = optimizer_f.param_groups[0]['lr']
         optimizer_g = inv_lr_scheduler(param_lr_g, optimizer_g, step,
                                        init_lr=args.lr)
         optimizer_f = inv_lr_scheduler(param_lr_f, optimizer_f, step,
