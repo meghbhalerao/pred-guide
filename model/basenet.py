@@ -4,16 +4,30 @@ import torch
 import torch.nn as nn
 from torch.autograd import Function
 
+"""
+class GradReverse(Function):
+    def __init__(self, lambd):
+        self.lambd = lambd
+    @staticmethod
+    def forward(ctx, x):
+        result = x.view_as(x)
+        ctx.save_for_backward(result)
+        return result
+    @staticmethod
+    def backward(ctx, grad_output):
+        return (grad_output * -self.lambd)
+"""
 
 class GradReverse(Function):
     def __init__(self, lambd):
         self.lambd = lambd
-
+    #@staticmethod
     def forward(self, x):
         return x.view_as(x)
-
+    #@staticmethod
     def backward(self, grad_output):
         return (grad_output * -self.lambd)
+
 
 
 def grad_reverse(x, lambd=1.0):

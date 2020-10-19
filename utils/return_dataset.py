@@ -138,8 +138,6 @@ def return_dataset_test(args):
     return target_loader_unl, class_list
 
 
-
-
 def return_dataset_rot(args):
     base_path = './data/txt/%s' % args.dataset
     root = './data/%s/' % args.dataset
@@ -169,8 +167,11 @@ def return_dataset_rot(args):
     else:
         bs = 24
 
-    target_loader = torch.utils.data.DataLoader(target_dataset, batch_size=min(bs, len(target_dataset)), num_workers=3, shuffle=True, drop_last=True)
-    target_loader_unl = torch.utils.data.DataLoader(target_dataset_unl, batch_size=min(bs, len(target_dataset_unl)), num_workers=3, shuffle=True, drop_last=True)
+    target_loader = torch.utils.data.DataLoader(target_dataset, batch_size=min(bs, len(target_dataset)), num_workers=0, shuffle=True, drop_last=True)
+    target_loader_unl = torch.utils.data.DataLoader(target_dataset_unl, batch_size=min(bs, len(target_dataset_unl)), num_workers=0, shuffle=True, drop_last=True)
 
     class_list = return_classlist(image_set_file_t_unl)
     return target_loader, target_loader_unl, class_list
+
+
+

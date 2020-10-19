@@ -47,6 +47,9 @@ parser.add_argument('--early', action='store_false', default=True,
                     help='early stopping on validation or not')
 parser.add_argument('--num', type=int, default=1,
                     help='number of labeled samples per class')
+parser.add_argument('--save_interval', type=int, default=500, metavar='N',
+                    help='how many batches to wait before saving a model')
+
 
 args = parser.parse_args()
 all_step = args.step
@@ -137,6 +140,9 @@ def train():
     best_acc_rot = 0
     counter = 0 
 
+    data_iter_t = iter(target_loader)
+    data_iter_t_unl = iter(target_loader_unl)
+
     for step in range(all_step):
         optimizer_g = inv_lr_scheduler(param_lr_g, optimizer_g, step,
                                        init_lr=args.lr)
@@ -147,10 +153,11 @@ def train():
         
         lr = optimizer_f.param_groups[0]['lr']
         if step % len_target == 0:
+            print("it")
             data_iter_t = iter(target_loader)
         if step % len_target_unl == 0:
             data_iter_t_unl = iter(target_loader_unl)
-
+        print(len_target, len_target_unl)
         data_t = next(data_iter_t)
         data_t_unl = next(data_iter_t_unl)
 
@@ -175,12 +182,11 @@ def train():
         loss_rot.backward(retain_graph=True)
         # Loss unlabeled adentropy
         output = G(im_data_t_unl)
-        out_ent = F1(output)
-        loss_ent = adentropy(F1, out_ent, args.lamda)
+        loss_ent = adentropy(F1, output, args.lamda)
         loss_ent.backward(retain_graph=True)
         # Loss unlabeled rot
         out_rot = F_rot(output)
-        loss_rot_unl = criteron(out_rot, gt_labels_rot_t_unl)
+        loss_rot_unl = criterion(out_rot, gt_labels_rot_t_unl)
         loss_rot_unl.backward()
 
 
@@ -189,7 +195,7 @@ def train():
         optimizer_f_rot.step()
         zero_grad_all()
 
-        log_train = 'T {} Ep: {} lr{} \t Loss Class: {:.6f} RotLab: {} Ent: {} RotUnl: {} \n'.format(args.target, step, lr, loss_class.data, loss_rot.data, loss_ent.data, loss_rot_unl.data)
+        log_train = 'T {} Ep: {} lr{} \t Loss Class: {:.6f} RotLab: {} Ent: {} RotUnl: {} \n'.format(args.target, step, lr, loss_class.data, loss_rot.data, -loss_ent.data, loss_rot_unl.data)
 
         G.zero_grad()
         F1.zero_grad()
