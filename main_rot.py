@@ -117,7 +117,7 @@ def train():
                             weight_decay=0.0005, nesterov=True)
     optimizer_f = optim.SGD(list(F1.parameters()), lr=1.0, momentum=0.9,
                             weight_decay=0.0005, nesterov=True)
-    optimizer_f_rot = optim.SGD(list(F_rot.parameters()), lr=0.01, momentum=0.9,
+    optimizer_f_rot = optim.SGD(list(F_rot.parameters()), lr=1, momentum=0.9,
                             weight_decay=0.0005, nesterov=True)
 
     def zero_grad_all():

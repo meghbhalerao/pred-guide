@@ -153,7 +153,7 @@ def return_dataset_rot(args):
     data_transforms = {
         'train': transforms.Compose([
             ResizeImage(256),
-            transforms.RandomHorizontalFlip(),
+            #transforms.RandomHorizontalFlip(),
             transforms.RandomCrop(crop_size),
             transforms.ToTensor(),
             transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
