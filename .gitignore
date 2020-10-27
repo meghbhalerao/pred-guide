@@ -12,7 +12,7 @@ __pycache__/
 freezed_models/
 save_model_ssda/
 record/
-data/
+data/multi/
 entropy_weight_files/
 attributes/
 expts/
