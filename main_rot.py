@@ -166,8 +166,8 @@ def train():
         gt_labels_rot_t = data_t[1].cuda()
         gt_labels_class_t = data_t[2].cuda()
         
-        im_data_t_unl = data_t[0].cuda()
-        gt_labels_rot_t_unl = data_t[1].cuda()
+        im_data_t_unl = data_t_unl[0].cuda()
+        gt_labels_rot_t_unl = data_t_unl[1].cuda()
         
         zero_grad_all()
         
