@@ -180,9 +180,6 @@ def train():
         
 
 
-
-
-
         output = G(data)
         out1 = F1(output)
         loss = criterion(out1, target)
