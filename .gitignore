@@ -24,3 +24,5 @@ tsne/ckpts/
 # Some specific patterns
 *word2vec*
 .DS_Store
+.vscode
+*.py*

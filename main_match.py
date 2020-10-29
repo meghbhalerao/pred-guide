@@ -12,6 +12,8 @@ from utils.utils import weights_init
 from utils.lr_schedule import inv_lr_scheduler
 from utils.return_dataset import return_dataset
 from utils.loss import entropy, adentropy
+from utils.augmentation import *
+
 # Training settings
 parser = argparse.ArgumentParser(description='SSDA Classification')
 parser.add_argument('--steps', type=int, default=50000, metavar='N',
@@ -167,13 +169,20 @@ def train():
         im_data_t = data_t[0].cuda()
         gt_labels_t = data_t[1].cuda()
         im_data_tu = data_t_unl[0].cuda()
+        zero_grad_all()
+        data = torch.cat((im_data_s, im_data_t), 0) #concatenating the labelled images
+        target = torch.cat((gt_labels_s, gt_labels_t), 0)
+        
+        # Augmentations happenning here - apply strong augmentation to labelled examples and confident unlabelled and (weak + strong) to unlablled examples
+        # Process the batch and return augmentations
+        im_data_s, im_data_t,  = process_batch(im_data_s,label=True), process_batch(im_data_t, label=True)
+        im_data_tu_weak, im_data_tu_strong = process_batch(im_data_tu,label=False)
         
 
 
 
-        zero_grad_all()
-        data = torch.cat((im_data_s, im_data_t), 0)
-        target = torch.cat((gt_labels_s, gt_labels_t), 0)
+
+
         output = G(data)
         out1 = F1(output)
         loss = criterion(out1, target)
@@ -235,19 +244,16 @@ def train():
             G.train()
             F1.train()
             if args.save_check:
-                print('saving model')
-                torch.save(G.state_dict(),
-                           os.path.join(args.checkpath,
-                                        "G_iter_model_{}_{}_"
-                                        "to_{}_step_{}.pth.tar".
-                                        format(args.method, args.source,
-                                               args.target, step)))
-                torch.save(F1.state_dict(),
-                           os.path.join(args.checkpath,
-                                        "F1_iter_model_{}_{}_"
-                                        "to_{}_step_{}.pth.tar".
-                                        format(args.method, args.source,
-                                               args.target, step)))
+                print('saving model...')
+                torch.save({
+                    'step': step,
+                    'arch': args.net,
+                    'G_state_dict': G.state_dict(),
+                    'F1_state_dict': F1.state_dict(),
+                    'best_acc_test': best_acc_test,
+                    'optimizer_g' : optimizer_g.state_dict(),
+                    'optimizer_f' : optimizer_f.state_dict(),
+                    },os.path.join(args.save_check,"%s_%s_%s_%d"%(args.net,args.source,args.target,step)))	
 
 
 def test(loader):
