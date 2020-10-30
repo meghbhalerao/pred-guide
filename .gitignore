@@ -25,4 +25,4 @@ tsne/ckpts/
 *word2vec*
 .DS_Store
 .vscode
-*.py*
+*.py.*
