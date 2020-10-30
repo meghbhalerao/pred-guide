@@ -181,7 +181,7 @@ def train():
         # Augmentations happenning here - apply strong augmentation to labelled examples and confident unlabelled and (weak + strong) to unlablled examples
         # Process the batch and return augmentations
         im_data_s, im_data_t,  = process_batch(im_data_s, augmentation, label=True), process_batch(im_data_t, augmentation, label=True)
-        im_data_tu_weak, im_data_tu_strong = process_batch(im_data_tu, augmentation, label=False)
+        im_data_tu_strong, im_data_tu_weak = process_batch(im_data_tu, augmentation, label=False)
         
 
 

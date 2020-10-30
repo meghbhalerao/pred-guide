@@ -22,13 +22,17 @@ class Augmentation:
         self.range_posterize = [1,8]
         self.range_rescale = [0.5,1]
         self.range_shear_translate = [-0.3,0.3]
+        # Defining dictionaries for strong and weak augmentations
         self.global_augs_dict_strong = {'translate_x': self.translate_x, 'translate_y': self.translate_y, 'solarize': self.solarize, 'smooth': self.smooth, 'shear_x': self.shear_x, 'shear_y': self.shear_y,
                             'sharpness': self.sharpness, 'rotate': self.rotate, 'autocontrast': self.autocontrast, 'blur': self.blur, 'brightness': self.brightness, 'color': self.color,
                             'contrast': self.contrast, 'equalize': self.equalize, 'invert': self.invert, 'identity': self.identity, 'posterize': self.posterize}
 
-        self.global_augs_dict_weak = {}
+        self.global_augs_dict_weak = {'flip_ud': self.flip_ud, 'translate_x': self.translate_x, 'translate_y': self.translate_y}
     
-        self.augs = list(self.global_augs_dict_strong.keys())
+        self.strong_augs = list(self.global_augs_dict_strong.keys())
+        self.weak_augs = list(self.global_augs_dict_weak.keys())
+
+
 
     def _enhance(self, x, op, level):
         return op(x).enhance(0.1 + 1.9 * level)
@@ -41,6 +45,8 @@ class Augmentation:
     def _filter(self, x, op, level):
         return Image.blend(x, x.filter(op), level)
 
+    def flip_ud(self,x):
+        return ImageOps.flip(x)
 
     def autocontrast(self,x):
         return self._imageop(x, ImageOps.autocontrast, self.level)
@@ -124,18 +130,37 @@ class Augmentation:
         return x.transform(x.size, Image.AFFINE, (1, 0, 0, 0, 1, delta))
 
 
-
-
 def process_batch( batch, augment, label = True):
     if label:
-        for image in batch:
-            aug = random.choice(augment.augs)
+        batch_strong = torch.zeros(batch.size())
+        for i, image in enumerate(batch):
+            aug = random.choice(augment.strong_augs)
             # Need to convert tensor to PIL image and back
-            image = transforms.ToPILImage()(image.cpu()).convert("RGB")
+            image_strong = transforms.ToPILImage()(image.cpu()).convert("RGB")
             aug_fn = augment.global_augs_dict_strong[aug]
-            image = aug_fn(image)
-            image = transforms.ToTensor()(image).cuda()
-            return image
+            image_strong = aug_fn(image_strong)
+            image_strong = transforms.ToTensor()(image_strong).cuda()
+            batch_strong[i] = image_strong
+        return batch_strong
     else:
-        print("no label")
-        return batch, batch
+        batch_strong = torch.zeros(batch.size())
+        batch_weak = torch.zeros(batch.size())
+        for i, image in enumerate(batch):
+            aug = random.choice(augment.strong_augs)
+            # Need to convert tensor to PIL image and back
+            image_strong = transforms.ToPILImage()(image.cpu()).convert("RGB")
+            aug_fn = augment.global_augs_dict_strong[aug]
+            image_strong = aug_fn(image_strong)
+            image_strong = transforms.ToTensor()(image_strong).cuda()
+            batch_strong[i] = image_strong
+        
+        for i, image in enumerate(batch):
+            aug = random.choice(augment.weak_augs)
+            # Need to convert tensor to PIL image and back
+            image_weak = transforms.ToPILImage()(image.cpu()).convert("RGB")
+            aug_fn = augment.global_augs_dict_weak[aug]
+            image_weak = aug_fn(image_weak)
+            image_weak = transforms.ToTensor()(image_weak).cuda()
+            batch_weak[i] = image_weak
+        
+        return batch_strong, batch_weak
