@@ -13,6 +13,7 @@ from utils.lr_schedule import inv_lr_scheduler
 from utils.return_dataset import return_dataset
 from utils.loss import entropy, adentropy
 from utils.augmentation import *
+from utils.augmentation_class import Augmentation, process_batch
 
 # Training settings
 parser = argparse.ArgumentParser(description='SSDA Classification')
@@ -137,6 +138,10 @@ def train():
     param_lr_f = []
     for param_group in optimizer_f.param_groups:
         param_lr_f.append(param_group["lr"])
+
+    # Instantiating the augmentation class with default params now
+    augmentation = Augmentation()
+
     criterion = nn.CrossEntropyLoss().cuda()
     all_step = args.steps
     data_iter_s = iter(source_loader)
@@ -175,8 +180,8 @@ def train():
         
         # Augmentations happenning here - apply strong augmentation to labelled examples and confident unlabelled and (weak + strong) to unlablled examples
         # Process the batch and return augmentations
-        im_data_s, im_data_t,  = process_batch(im_data_s,label=True), process_batch(im_data_t, label=True)
-        im_data_tu_weak, im_data_tu_strong = process_batch(im_data_tu,label=False)
+        im_data_s, im_data_t,  = process_batch(im_data_s, augmentation, label=True), process_batch(im_data_t, augmentation, label=True)
+        im_data_tu_weak, im_data_tu_strong = process_batch(im_data_tu, augmentation, label=False)
         
 
 
