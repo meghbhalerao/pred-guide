@@ -30,7 +30,7 @@ class Augmentation:
     
         self.augs = list(self.global_augs_dict_strong.keys())
 
-    def _enhance(self,op, x, level):
+    def _enhance(self, x, op, level):
         return op(x).enhance(0.1 + 1.9 * level)
 
 
@@ -92,8 +92,8 @@ class Augmentation:
         return x.rotate(angle)
 
 
-    def sharpness(self, x, sharpness):
-        return self._enhance(x, ImageEnhance.Sharpness, sharpness)
+    def sharpness(self, x):
+        return self._enhance(x, ImageEnhance.Sharpness, self.level)
 
 
     def shear_x(self,x):
