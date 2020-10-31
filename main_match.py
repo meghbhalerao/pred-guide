@@ -1,9 +1,11 @@
 from __future__ import print_function
 import argparse
 import os
+import sys
 import numpy as np
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 import torch.optim as optim
 from torch.autograd import Variable
 from model.resnet import resnet34
@@ -141,6 +143,9 @@ def train():
 
     # Instantiating the augmentation class with default params now
     augmentation = Augmentation()
+    thresh = 0.4 # threshold for confident prediction to generate pseudo-labels
+
+
 
     criterion = nn.CrossEntropyLoss().cuda()
     all_step = args.steps
@@ -182,9 +187,15 @@ def train():
         # Process the batch and return augmentations
         im_data_s, im_data_t,  = process_batch(im_data_s, augmentation, label=True), process_batch(im_data_t, augmentation, label=True)
         im_data_tu_strong, im_data_tu_weak = process_batch(im_data_tu, augmentation, label=False)
+        im_data_tu_strong, im_data_tu_weak = im_data_tu_strong.cuda(),im_data_tu_weak.cuda()
         # Getting predictions of weak and strong augmented unlabled examples
         
-
+        pred_weak = F1(G(im_data_tu_weak))
+        prob_weak = F.softmax(pred_weak,dim=1)
+        pred_labels = prob_weak.max(1)[1]
+        pseudo_labels = ((prob_weak.max(1)[0] > thresh).long())* pred_labels
+        print(pseudo_labels)
+        # Calculate Cross Entropy Loss
 
         output = G(data)
         out1 = F1(output)
