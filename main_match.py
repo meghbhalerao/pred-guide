@@ -143,7 +143,7 @@ def train():
 
     # Instantiating the augmentation class with default params now
     augmentation = Augmentation()
-    thresh = 0.05 # threshold for confident prediction to generate pseudo-labels
+    thresh = 0.04 # threshold for confident prediction to generate pseudo-labels
     #criterion_pseduo = nn.CrossEntropyLoss().cuda()
 
 
@@ -193,20 +193,25 @@ def train():
         pred_weak_aug = F1(G(im_data_tu_weak_aug))
         prob_weak_aug = F.softmax(pred_weak_aug,dim=1)
         mask_loss = prob_weak_aug.max(1)[0]>thresh
-        
+        print(prob_weak_aug.max(1)[0])
         for idx, weight in enumerate(mask_loss):
             weight = weight.cpu().detach().item()
-            pred_weak_aug[idx] = (pred_weak_aug[idx] * int(weight)).int()
-        print(pred_weak_aug)
+            prob_weak_aug[idx] = (prob_weak_aug[idx] * int(weight)).int()
+
+        #print(prob_weak_aug.max(1))
+
+
         pseduo_labels = F.one_hot(gt_labels_t_unl,num_classes=len(class_list))
-        loss_pseduo_unl = torch.mean(torch.sum(pseduo_labels * (torch.log(pred_weak_aug + 1e-5)), 1))
-        print((torch.log(pred_weak_aug + 1e-5)))
+        #print(pred_weak_aug)
+        loss_pseduo_unl = torch.mean(torch.sum(pseduo_labels * (torch.log(prob_weak_aug + 1e-5)), 1))
+        print(mask_loss)
+        print(torch.sum(prob_weak_aug,1))
+        #print((torch.log(pred_weak_aug + 1e-5)))
         #print(loss_pseduo_unl)
         #print(im_data_tu.keys())    
         #pred_labels = prob_weak_aug.max(1)[1]
         #one_hot_labels = torch.one_hot()
-
-
+        
 
         #loss_pseudo = criterion_pseduo(pred_weak_aug, pred_labels) -   
 
