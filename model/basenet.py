@@ -4,20 +4,22 @@ import torch
 import torch.nn as nn
 from torch.autograd import Function
 
-"""
+
 class GradReverse(Function):
-    def __init__(self, lambd):
-        self.lambd = lambd
     @staticmethod
-    def forward(ctx, x):
+    def forward(self, x,lambd):
         result = x.view_as(x)
-        ctx.save_for_backward(result)
+        self.lambd = lambd
+        #self.save_for_backward(result)
         return result
     @staticmethod
-    def backward(ctx, grad_output):
-        return (grad_output * -self.lambd)
-"""
+    def backward(self, grad_output):
+        lambd = self.lambd
+        #print(self.saved_tensors)
+        #input = self.saved_tensors
+        return (grad_output * -lambd), None
 
+"""
 class GradReverse(Function):
     def __init__(self, lambd):
         self.lambd = lambd
@@ -27,11 +29,11 @@ class GradReverse(Function):
     #@staticmethod
     def backward(self, grad_output):
         return (grad_output * -self.lambd)
-
+"""
 
 
 def grad_reverse(x, lambd=1.0):
-    return GradReverse(lambd)(x)
+    return GradReverse.apply(x,lambd)
 
 
 def l2_norm(input):

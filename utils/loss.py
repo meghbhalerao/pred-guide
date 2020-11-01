@@ -39,3 +39,9 @@ def adentropy(F1, feat, lamda, eta=1.0):
     loss_adent = lamda * torch.mean(torch.sum(out_t1 *
                                               (torch.log(out_t1 + 1e-5)), 1))
     return loss_adent
+
+
+def my_CE_loss(inp, target, lamda, weight_list = None):
+        
+    loss_adent = lamda * torch.mean(weight_list * torch.sum(out_t1 * (torch.log(out_t1 + 1e-5)), 1).double())
+    return loss_adent
