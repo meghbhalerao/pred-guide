@@ -144,7 +144,7 @@ def train():
 
     # Instantiating the augmentation class with default params now
     augmentation = Augmentation()
-    thresh = 0.1 # threshold for confident prediction to generate pseudo-labels
+    thresh = 0.5 # threshold for confident prediction to generate pseudo-labels
 
 
     criterion = nn.CrossEntropyLoss().cuda()
@@ -185,8 +185,8 @@ def train():
         data = torch.cat((im_data_s, im_data_t), 0) #concatenating the labelled images
         target = torch.cat((gt_labels_s, gt_labels_t), 0)
         
-        # Augmentations happenning here - apply strong augmentation to labelled examples and confident unlabelled and (weak + strong) to unlablled examples
-        # Process the batch and return augmentations
+        # Augmentations happenning here - apply strong augmentation to labelled examples and (weak + strong) to unlablled examples
+        # Process the batch and return augmented examples
         im_data_s, im_data_t,  = process_batch(im_data_s, augmentation, label=True), process_batch(im_data_t, augmentation, label=True)
         im_data_tu_strong, im_data_tu_weak = process_batch(im_data_tu, augmentation, label=False)
         im_data_tu_strong_aug, im_data_tu_weak_aug = im_data_tu_strong.cuda(),im_data_tu_weak.cuda()
