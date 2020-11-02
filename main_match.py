@@ -187,22 +187,22 @@ def train():
         
         # Augmentations happenning here - apply strong augmentation to labelled examples and (weak + strong) to unlablled examples
         # Process the batch and return augmented examples
-        im_data_s, im_data_t,  = process_batch(im_data_s, augmentation, label=True), process_batch(im_data_t, augmentation, label=True)
+        #im_data_s, im_data_t  = process_batch(im_data_s, augmentation, label=True), process_batch(im_data_t, augmentation, label=True)
         im_data_tu_strong, im_data_tu_weak = process_batch(im_data_tu, augmentation, label=False)
         im_data_tu_strong_aug, im_data_tu_weak_aug = im_data_tu_strong.cuda(),im_data_tu_weak.cuda()
+
         # Getting predictions of weak and strong augmented unlabled examples
-        pred_weak_aug = F1(G(im_data_tu_weak_aug)); pred_strong_aug = F1(G(im_data_tu_strong_aug))
-        prob_weak_aug = F.softmax(pred_weak_aug,dim=1); prob_strong_aug = F.softmax(pred_strong_aug,dim=1)
+        pred_weak_aug = F1(G(im_data_tu_weak_aug))
+        pred_strong_aug = F1(G(im_data_tu_strong_aug))
+        prob_weak_aug = F.softmax(pred_weak_aug,dim=1)
+        prob_strong_aug = F.softmax(pred_strong_aug,dim=1)
 
         # Considering only the examples which have confidence above a certain threshold
         mask_loss = prob_weak_aug.max(1)[0]>thresh
-        for idx, weight in enumerate(mask_loss):
-            weight = weight.cpu().detach().item()
-            prob_weak_aug[idx] = (prob_weak_aug[idx] * torch.tensor(int(weight)))
-
         pseudo_labels = pred_weak_aug.max(axis=1)[1]
-        pseudo_labels = F.one_hot(pseudo_labels,num_classes=len(class_list))
-        loss_pseudo_unl = -torch.mean(torch.sum(pseudo_labels * (torch.log(prob_strong_aug + 1e-5)), 1)) # pseudo label loss
+        pseudo_labels = F.one_hot(pseudo_labels, num_classes=len(class_list))
+        loss_pseudo_unl = -torch.mean((mask_loss.int())*torch.sum(pseudo_labels * (torch.log(prob_strong_aug + 1e-5)), 1)) # pseudo label loss
+        #print(loss_pseudo_unl)
         loss_pseudo_unl.backward(retain_graph=True)
         
         output = G(data)
@@ -277,7 +277,7 @@ def train():
                     'best_acc_test': best_acc_test,
                     'optimizer_g' : optimizer_g.state_dict(),
                     'optimizer_f' : optimizer_f.state_dict(),
-                    },os.path.join(args.save_check,"%s_%s_%s_%d"%(args.net,args.source,args.target,step)))	
+                    },os.path.join(args.checkpath,"%s_%s_%s_%d"%(args.net,args.source,args.target,step)))	
 
 
 def test(loader):
@@ -311,3 +311,12 @@ def test(loader):
 
 
 train()
+
+
+
+"""
+for idx, weight in enumerate(mask_loss):
+    weight = weight.cpu().detach().item()
+    prob_strong_aug[idx] = (prob_strong_aug[idx] * torch.tensor(int(weight)))
+    prob_weak_aug[idx] = (prob_weak_aug[idx].clone() * torch.tensor(int(weight)))
+"""
