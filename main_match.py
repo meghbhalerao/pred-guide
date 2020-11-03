@@ -12,10 +12,9 @@ from model.resnet import resnet34
 from model.basenet import AlexNetBase, VGGBase, Predictor, Predictor_deep
 from utils.utils import weights_init
 from utils.lr_schedule import inv_lr_scheduler
-from utils.return_dataset import return_dataset
+from utils.return_dataset import return_dataset, return_dataset_randaugment
 from utils.loss import entropy, adentropy
-from utils.augmentation import *
-from utils.augmentation_class import Augmentation, process_batch
+from augmentations.augmentation_ours import *
 
 # Training settings
 parser = argparse.ArgumentParser(description='SSDA Classification')
@@ -63,13 +62,21 @@ parser.add_argument('--early', action='store_false', default=True,
                     help='early stopping on validation or not')
 parser.add_argument('--pretrained_ckpt', type=str, default=None,
                     help='path to pretrained weights')
+parser.add_argument('--augmentation_policy', type=str, default=None, choices=['ours', 'rand_augment','ct_augment'],
+                    help='which augmentation starategy to use - essentially, which method to follow')                  
+parser.add_argument('--adentropy', action='store_true', default=True,
+                    help='Use entropy maximization or not')
 
 torch.autograd.set_detect_anomaly(True) # Gradient anomaly detection is set true for debugging purposes
 args = parser.parse_args()
 print('Dataset %s Source %s Target %s Labeled num perclass %s Network %s' %
       (args.dataset, args.source, args.target, args.num, args.net))
-source_loader, target_loader, target_loader_unl, target_loader_val, \
-    target_loader_test, class_list = return_dataset(args)
+if args.augmentation_policy == "ours" or args.augmentation_policy == None:
+    source_loader, target_loader, target_loader_unl, target_loader_val, target_loader_test, class_list = return_dataset(args)
+elif args.augmentation_policy == "rand_augment":
+    source_loader, target_loader, target_loader_unl, target_loader_val, target_loader_test, class_list = return_dataset_randaugment(args)    
+
+
 use_gpu = torch.cuda.is_available()
 record_dir = 'record/%s/%s' % (args.dataset, args.method)
 if not os.path.exists(record_dir):
@@ -143,8 +150,10 @@ def train():
         param_lr_f.append(param_group["lr"])
 
     # Instantiating the augmentation class with default params now
-    augmentation = Augmentation()
-    thresh = 0.5 # threshold for confident prediction to generate pseudo-labels
+    if args.augmentation_policy == "ours":
+        augmentation = Augmentation()
+    if args.augmentation_policy == "ours" or args.augmentation_policy == "rand_augment":
+        thresh = 0.7 # threshold for confident prediction to generate pseudo-labels
 
 
     criterion = nn.CrossEntropyLoss().cuda()
@@ -178,19 +187,22 @@ def train():
         gt_labels_s = data_s[1].cuda()
         im_data_t = data_t[0].cuda()
         gt_labels_t = data_t[1].cuda()
-        im_data_tu = data_t_unl[0].cuda()
-        
+        if not args.augmentation_policy == "rand_augment":
+            im_data_tu = data_t_unl[0].cuda()
+        elif args.augmentation_policy == "rand_augment":
+            im_data_tu = data_t_unl[0][2].cuda()
 
         zero_grad_all()
         data = torch.cat((im_data_s, im_data_t), 0) #concatenating the labelled images
         target = torch.cat((gt_labels_s, gt_labels_t), 0)
         
-        # Augmentations happenning here - apply strong augmentation to labelled examples and (weak + strong) to unlablled examples
-        # Process the batch and return augmented examples
-        #im_data_s, im_data_t  = process_batch(im_data_s, augmentation, label=True), process_batch(im_data_t, augmentation, label=True)
-        im_data_tu_strong, im_data_tu_weak = process_batch(im_data_tu, augmentation, label=False)
-        im_data_tu_strong_aug, im_data_tu_weak_aug = im_data_tu_strong.cuda(),im_data_tu_weak.cuda()
+        if args.augmentation_policy == "ours": # can call a method here which does "ours" augmentation policy
+            im_data_tu_strong, im_data_tu_weak = process_batch(im_data_tu, augmentation, label=False) #Augmentations happenning here - apply strong augmentation to labelled examples and (weak + strong) to unlablled examples
+        elif args.augmentation_policy == "rand_augment":
+            im_data_tu_weak, im_data_tu_strong = data_t_unl[0][0], data_t_unl[0][1]
+            print(im_data_tu_weak.shape)
 
+        im_data_tu_strong_aug, im_data_tu_weak_aug = im_data_tu_strong.cuda(),im_data_tu_weak.cuda()
         # Getting predictions of weak and strong augmented unlabled examples
         pred_weak_aug = F1(G(im_data_tu_weak_aug))
         pred_strong_aug = F1(G(im_data_tu_strong_aug))
@@ -202,7 +214,7 @@ def train():
         pseudo_labels = pred_weak_aug.max(axis=1)[1]
         pseudo_labels = F.one_hot(pseudo_labels, num_classes=len(class_list))
         loss_pseudo_unl = -torch.mean((mask_loss.int())*torch.sum(pseudo_labels * (torch.log(prob_strong_aug + 1e-5)), 1)) # pseudo label loss
-        #print(loss_pseudo_unl)
+        #print(loss_pseudo_unl.cpu().data)
         loss_pseudo_unl.backward(retain_graph=True)
         
         output = G(data)
@@ -213,6 +225,7 @@ def train():
         loss.backward(retain_graph=True)
         optimizer_g.step()
         optimizer_f.step()
+
         zero_grad_all()
         if not args.method == 'S+T':
             output = G(im_data_tu)
