@@ -3,6 +3,7 @@ import argparse
 import os
 import sys
 import numpy as np
+from copy import deepcopy
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -11,7 +12,7 @@ from torch.autograd import Variable
 from model.resnet import resnet34
 from model.basenet import AlexNetBase, VGGBase, Predictor, Predictor_deep
 from utils.utils import weights_init
-from utils.lr_schedule import inv_lr_scheduler
+from utils.lr_schedule import inv_lr_scheduler, get_cosine_schedule_with_warmup
 from utils.return_dataset import return_dataset, return_dataset_randaugment
 from utils.loss import entropy, adentropy
 from augmentations.augmentation_ours import *
@@ -63,9 +64,15 @@ parser.add_argument('--early', action='store_false', default=True,
 parser.add_argument('--pretrained_ckpt', type=str, default=None,
                     help='path to pretrained weights')
 parser.add_argument('--augmentation_policy', type=str, default=None, choices=['ours', 'rand_augment','ct_augment'],
-                    help='which augmentation starategy to use - essentially, which method to follow')                  
+                    help='which augmentation starategy to use - essentially, which method to follow')
+parser.add_argument('--LR_scheduler', type=str, default='standard', choices=['standard', 'cosine'],
+                    help='Learning Rate scheduling policy')
 parser.add_argument('--adentropy', action='store_true', default=True,
                     help='Use entropy maximization or not')
+parser.add_argument('--use_ema', type=bool, default=False,
+                    help='use ema for model eval or not')
+
+
 
 torch.autograd.set_detect_anomaly(True) # Gradient anomaly detection is set true for debugging purposes
 args = parser.parse_args()
@@ -139,6 +146,16 @@ def train():
     optimizer_f = optim.SGD(list(F1.parameters()), lr=1.0, momentum=0.9,
                             weight_decay=0.0005, nesterov=True)
 
+    print(len(target_loader_unl))
+    # Define learning rate schedule here - to be updated at each iteration
+    if args.LR_scheduler == "cosine":
+        warmup = 0
+        total_steps = int(args.steps/len(target_loader_unl))
+        scheduler_g = get_cosine_schedule_with_warmup(optimizer_g, warmup, args.total_steps)
+        scheduler_f = get_cosine_schedule_with_warmup(optimizer_f, warmup, args.total_steps)
+
+
+
     def zero_grad_all():
         optimizer_g.zero_grad()
         optimizer_f.zero_grad()
@@ -148,6 +165,8 @@ def train():
     param_lr_f = []
     for param_group in optimizer_f.param_groups:
         param_lr_f.append(param_group["lr"])
+
+
 
     # Instantiating the augmentation class with default params now
     if args.augmentation_policy == "ours":
@@ -166,11 +185,22 @@ def train():
     len_train_target_semi = len(target_loader_unl)
     best_acc = 0
     counter = 0
+    if args.use_ema:
+        ema_F1 = ModelEMA(args, F1, args.ema_decay)
+        ema_G = ModelEMA(args, G, args.ema_decay)
+
+
     for step in range(all_step):
-        optimizer_g = inv_lr_scheduler(param_lr_g, optimizer_g, step,
-                                       init_lr=args.lr)
-        optimizer_f = inv_lr_scheduler(param_lr_f, optimizer_f, step,
-                                       init_lr=args.lr)
+        if args.LR_scheduler == "standard": # choosing appropriate learning rate
+            optimizer_g = inv_lr_scheduler(param_lr_g, optimizer_g, step,
+                                        init_lr=args.lr)
+            optimizer_f = inv_lr_scheduler(param_lr_f, optimizer_f, step,
+                                        init_lr=args.lr)
+        
+        elif args.LR_scheduler == "cosine":
+            scheduler_f.step()
+            scheduler_g.step()
+
         lr = optimizer_f.param_groups[0]['lr']
         if step % len_train_target == 0:
             data_iter_t = iter(target_loader)
@@ -187,6 +217,7 @@ def train():
         gt_labels_s = data_s[1].cuda()
         im_data_t = data_t[0].cuda()
         gt_labels_t = data_t[1].cuda()
+
         if not args.augmentation_policy == "rand_augment":
             im_data_tu = data_t_unl[0].cuda()
         elif args.augmentation_policy == "rand_augment":
@@ -200,7 +231,6 @@ def train():
             im_data_tu_strong, im_data_tu_weak = process_batch(im_data_tu, augmentation, label=False) #Augmentations happenning here - apply strong augmentation to labelled examples and (weak + strong) to unlablled examples
         elif args.augmentation_policy == "rand_augment":
             im_data_tu_weak, im_data_tu_strong = data_t_unl[0][0], data_t_unl[0][1]
-            print(im_data_tu_weak.shape)
 
         im_data_tu_strong_aug, im_data_tu_weak_aug = im_data_tu_strong.cuda(),im_data_tu_weak.cuda()
         # Getting predictions of weak and strong augmented unlabled examples
@@ -249,9 +279,8 @@ def train():
         else:
             log_train = 'S {} T {} Train Ep: {} lr{} \t ' \
                         'Loss Classification: {:.6f} Method {}\n'.\
-                format(args.source, args.target,
-                       step, lr, loss.data,
-                       args.method)
+                format(args.source, args.target, step, lr, loss.data, args.method)
+
         G.zero_grad()
         F1.zero_grad()
         zero_grad_all()
@@ -260,6 +289,7 @@ def train():
         if step % args.save_interval == 0 and step > 0:
             loss_test, acc_test = test(target_loader_test)
             loss_val, acc_val = test(target_loader_val)
+
             G.train()
             F1.train()
             if acc_val >= best_acc:
@@ -268,16 +298,15 @@ def train():
                 counter = 0
             else:
                 counter += 1
+               
             if args.early:
                 if counter > args.patience:
                     break
-            print('best acc test %f best acc val %f' % (best_acc_test,
-                                                        acc_val))
+            print('best acc test %f best acc val %f' % (best_acc_test, acc_val))
+
             print('record %s' % record_file)
             with open(record_file, 'a') as f:
-                f.write('step %d best %f final %f \n' % (step,
-                                                         best_acc_test,
-                                                         acc_val))
+                f.write('step %d best %f final %f \n' % (step, best_acc_test, acc_val))
             G.train()
             F1.train()
             if args.save_check:
@@ -323,9 +352,33 @@ def test(loader):
     return test_loss.data, 100. * float(correct) / size
 
 
+
 train()
+# Inference/Model performance estimation by moving average of model parameters
+class ModelEMA(object):
+    def __init__(self, args, model, decay):
+        self.ema = deepcopy(model)
+        self.ema.to(args.device)
+        self.ema.eval()
+        self.decay = decay
+        self.ema_has_module = hasattr(self.ema, 'module')
+        self.wd = args.wdecay
+        for p in self.ema.parameters():
+            p.requires_grad_(False)
 
-
+    def update(self, model, lr):
+        wd = lr * self.wd
+        needs_module = hasattr(model, 'module') and not self.ema_has_module
+        with torch.no_grad():
+            msd = model.state_dict()
+            for k, ema_v in self.ema.state_dict().items():
+                if needs_module:
+                    k = 'module.' + k
+                model_v = msd[k].detach()
+                ema_v.copy_(ema_v * self.decay + (1. - self.decay) * model_v)
+                # weight decay
+                if 'bn' not in k and 'bias' not in k:
+                    msd[k] = msd[k] * (1. - wd)
 
 """
 for idx, weight in enumerate(mask_loss):
