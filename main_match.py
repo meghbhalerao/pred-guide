@@ -13,7 +13,7 @@ from model.resnet import resnet34
 from model.basenet import AlexNetBase, VGGBase, Predictor, Predictor_deep
 from utils.utils import weights_init
 from utils.lr_schedule import inv_lr_scheduler, get_cosine_schedule_with_warmup
-from utils.return_dataset import return_dataset, return_dataset_randaugment
+from utils.return_dataset import return_dataset, return_dataset_randaugment, return_dataset_ctaugment
 from utils.loss import entropy, adentropy
 from augmentations.augmentation_ours import *
 
@@ -78,7 +78,7 @@ torch.autograd.set_detect_anomaly(True) # Gradient anomaly detection is set true
 args = parser.parse_args()
 print('Dataset %s Source %s Target %s Labeled num perclass %s Network %s' %
       (args.dataset, args.source, args.target, args.num, args.net))
-if args.augmentation_policy == "ours" or args.augmentation_policy == None:
+if args.augmentation_policy == "ours" or args.augmentation_policy == None or args.augmentation_policy == "ct_augment":
     source_loader, target_loader, target_loader_unl, target_loader_val, target_loader_test, class_list = return_dataset(args)
 elif args.augmentation_policy == "rand_augment":
     source_loader, target_loader, target_loader_unl, target_loader_val, target_loader_test, class_list = return_dataset_randaugment(args)    
@@ -171,7 +171,7 @@ def train():
     # Instantiating the augmentation class with default params now
     if args.augmentation_policy == "ours":
         augmentation = Augmentation()
-    if args.augmentation_policy == "ours" or args.augmentation_policy == "rand_augment":
+    if args.augmentation_policy == "ours" or args.augmentation_policy == "rand_augment" or args.augmentation_policy == "ct_augment":
         thresh = 0.7 # threshold for confident prediction to generate pseudo-labels
 
 
@@ -230,6 +230,8 @@ def train():
         if args.augmentation_policy == "ours": # can call a method here which does "ours" augmentation policy
             im_data_tu_strong, im_data_tu_weak = process_batch(im_data_tu, augmentation, label=False) #Augmentations happenning here - apply strong augmentation to labelled examples and (weak + strong) to unlablled examples
         elif args.augmentation_policy == "rand_augment":
+            im_data_tu_weak, im_data_tu_strong = data_t_unl[0][0], data_t_unl[0][1]
+        elif args.augmentation_policy == "ct_augment":
             im_data_tu_weak, im_data_tu_strong = data_t_unl[0][0], data_t_unl[0][1]
 
         im_data_tu_strong_aug, im_data_tu_weak_aug = im_data_tu_strong.cuda(),im_data_tu_weak.cuda()

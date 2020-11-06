@@ -17,7 +17,6 @@ logger = logging.getLogger(__name__)
 
 PARAMETER_MAX = 10
 
-
 def AutoContrast(img, **kwarg):
     return PIL.ImageOps.autocontrast(img)
 
@@ -150,7 +149,7 @@ def fixmatch_augment_pool():
     augs = [(AutoContrast, None, None),
             (Brightness, 0.9, 0.05),
             (Color, 0.9, 0.05),
-            (Contrast, 0.9, 0.05),
+            (Contrast, 0.9, 0.05)   ,
             (Equalize, None, None),
             (Identity, None, None),
             (Posterize, 4, 4),
@@ -184,14 +183,129 @@ def my_augment_pool():
             (TranslateY, 0.45, 0)]
     return augs
 
+
+class RandAugmentPC(object):
+    def __init__(self, n, m):
+        assert n >= 1
+        assert 1 <= m <= 10
+        self.n = n
+        self.m = m
+        self.augment_pool = my_augment_pool()
+
+    def __call__(self, img):
+        ops = random.choices(self.augment_pool, k=self.n)
+        for op, max_v, bias in ops:
+            prob = np.random.uniform(0.2, 0.8)
+            if random.random() + prob >= 1:
+                img = op(img, v=self.m, max_v=max_v, bias=bias)
+        img = CutoutAbs(img, 16)
+        return img
+
+
+class RandAugmentMC(object):
+    def __init__(self, n, m):
+        assert n >= 1
+        assert 1 <= m <= 10
+        self.n = n
+        self.m = m
+        self.augment_pool = fixmatch_augment_pool()
+
+    def __call__(self, img):
+        ops = random.choices(self.augment_pool, k=self.n)
+        for op, max_v, bias in ops:
+            v = np.random.randint(1, self.m)
+            if random.random() < 0.5:
+                img = op(img, v=v, max_v=max_v, bias=bias)
+        img = CutoutAbs(img, 16)
+        return img
+
+
+class CTAugment(object):
+    def __init__(self, n, m):
+        assert n >= 1
+        assert 1 <= m <= 10
+        self.n = n
+        self.m = m
+        self.augment_pool = fixmatch_augment_pool()
+
+    def rate_to_p(self, rate):
+        p = rate + (1 - self.decay)  # Avoid to have all zero.
+        p = p / p.max()
+        p[p < self.th] = 0
+        return p
+
+    def policy(self, probe):
+        kl = list(self.OPS.keys())
+        v = []
+        if probe:
+            for _ in range(self.depth):
+                k = random.choice(kl)
+                bins = self.rates[k]
+                rnd = np.random.uniform(0, 1, len(bins))
+                v.append(self.OP(k, rnd.tolist()))
+            return v
+        for _ in range(self.depth):
+            vt = []
+            k = random.choice(kl)
+            bins = self.rates[k]
+            rnd = np.random.uniform(0, 1, len(bins))
+            for r, bin in zip(rnd, bins):
+                p = self.rate_to_p(bin)
+                value = np.random.choice(p.shape[0], p=p / p.sum())
+                vt.append((value + r) / p.shape[0])
+            v.append(self.OP(k, vt))
+        return v
+
+    def update_rates(self, policy, proximity):
+        for k, bins in policy:
+            for p, rate in zip(bins, self.rates[k]):
+                p = int(p * len(rate) * 0.999)
+                rate[p] = rate[p] * self.decay + proximity * (1 - self.decay)
+
+
+    def __call__(self, img):
+        ops = random.choices(self.augment_pool, k=self.n)
+        for op, max_v, bias in ops:
+            v = np.random.randint(1, self.m)
+            if random.random() < 0.5:
+                img = op(img, v=v, max_v=max_v, bias=bias)
+        img = CutoutAbs(img, 16)
+        return img
+
+
+
+"""
+OPS = {}
+OP = namedtuple('OP', ('f', 'bins'))
+Sample = namedtuple('Sample', ('train', 'probe'))
+
+
+def register(*bins):
+    def wrap(f):
+        OPS[f.__name__] = OP(f, bins)
+        return f
+
+    return wrap
+
+
+def apply(x, ops):
+    if ops is None:
+        return x
+    y = Image.fromarray(np.round(127.5 * (1 + x)).clip(0, 255).astype('uint8'))
+    for op, args in ops:
+        y = OPS[op].f(y, *args)
+    return np.asarray(y).astype('f') / 127.5 - 1
+
+
 class CTAugment(object):
     def __init__(self, depth=2, th=0.85, decay=0.99):
         self.decay = decay
         self.depth = depth
         self.th = th
         self.rates = {}
-        self.OPS = fixmatch_augment_pool()
-        self.OP = namedtuple('OP', ('f', 'bins'))
+        self.OPS = {}
+        for idx, x in enumerate(fixmatch_augment_pool()):
+            self.OPS[x[0].__name__] = OP
 
         for k, op in self.OPS.items():
             self.rates[k] = tuple([np.ones(x, 'f') for x in op.bins])
@@ -235,38 +349,4 @@ class CTAugment(object):
 
 
 
-
-class RandAugmentPC(object):
-    def __init__(self, n, m):
-        assert n >= 1
-        assert 1 <= m <= 10
-        self.n = n
-        self.m = m
-        self.augment_pool = my_augment_pool()
-
-    def __call__(self, img):
-        ops = random.choices(self.augment_pool, k=self.n)
-        for op, max_v, bias in ops:
-            prob = np.random.uniform(0.2, 0.8)
-            if random.random() + prob >= 1:
-                img = op(img, v=self.m, max_v=max_v, bias=bias)
-        img = CutoutAbs(img, 16)
-        return img
-
-
-class RandAugmentMC(object):
-    def __init__(self, n, m):
-        assert n >= 1
-        assert 1 <= m <= 10
-        self.n = n
-        self.m = m
-        self.augment_pool = fixmatch_augment_pool()
-
-    def __call__(self, img):
-        ops = random.choices(self.augment_pool, k=self.n)
-        for op, max_v, bias in ops:
-            v = np.random.randint(1, self.m)
-            if random.random() < 0.5:
-                img = op(img, v=v, max_v=max_v, bias=bias)
-        img = CutoutAbs(img, 16)
-        return img
+"""
