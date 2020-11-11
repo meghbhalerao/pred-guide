@@ -169,8 +169,8 @@ def train():
         im_data_t_unl = data_t_unl[0].cuda()
         gt_labels_rot_t_unl = data_t_unl[1].cuda()
         
-        zero_grad_all()
         
+        zero_grad_all()
         # Loss labeled classification
         output = G(im_data_t)
         out_class = F1(output)

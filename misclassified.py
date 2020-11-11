@@ -72,7 +72,7 @@ else:
                    temp=args.T)
 weights_init(F1)
 
-ckpt = torch.load("./save_model_ssda/resnet34_real_sketch_6000")
+ckpt = torch.load("./resnet34_real_sketch_7500")
 G.load_state_dict(ckpt["G_state_dict"])
 F1.load_state_dict(ckpt["F1_state_dict"])
 G.cuda()
@@ -82,6 +82,7 @@ F1.eval()
 
 count_mis = 0
 count_thresh = 0
+pos_count = 0
 print(len(target_loader_unl.dataset))
 for idx, batch in enumerate(target_loader_unl):
     output = F.softmax(F1(G(batch[0].cuda())),dim=1)
@@ -90,12 +91,27 @@ for idx, batch in enumerate(target_loader_unl):
     gt_label = batch[1].cpu().data.item()
     if max_prob>0.9:
         count_thresh = count_thresh + 1
-        print("count_thresh: ", count_thresh)
+        #print("count_thresh: ", count_thresh)
         if pred_label!=gt_label:
-            print(pred_label,gt_label)
+            #print(pred_label,gt_label)
             count_mis = count_mis+1
-            print("Count Mis: ", count_mis)
+            #print(batch[2])
+            #print(pred_label)
+            #print(output.shape)
+            output, idx = torch.sort(output, descending=True)
+            idx = list(idx.cpu().numpy()[0])
+            pos = idx.index(gt_label)
+            if pos == 1:
+                pos_count = pos_count + 1
+            print(pos + 1)
+            #print(idx)
+            #print(gt_label)
+            #print(output[0,gt_label])
+            
 
+print("Count Thresh: ",count_thresh)
+print("Count Mis: ", count_mis)
+print("Number of 2nd pos: ", pos_count)
 
 
 def test(loader):

@@ -212,9 +212,9 @@ class TransformFix(object):
 
         """
         self.standard = transforms.Compose([
-            ResizeImage(256),
-            transforms.RandomHorizontalFlip(),
-            transforms.RandomCrop(self.crop_size),
+            ResizeImage(224),
+            #transforms.RandomHorizontalFlip(),
+            #transforms.RandomCrop(self.crop_size),
             transforms.ToTensor(),
             transforms.Normalize(mean=mean, std=std)])
 
