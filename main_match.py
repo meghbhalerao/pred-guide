@@ -234,25 +234,26 @@ def train():
         elif args.augmentation_policy == "ct_augment":
             im_data_tu_weak, im_data_tu_strong = data_t_unl[0][0], data_t_unl[0][1]
 
-        im_data_tu_strong_aug, im_data_tu_weak_aug, im_data_tu_standard_aug = im_data_tu_strong.cuda(),im_data_tu_weak.cuda(), im_data_tu_standard.cuda()
+        im_data_tu_strong_aug, im_data_tu_weak_aug, im_data_tu_standard_aug = im_data_tu_strong.cuda(),im_data_tu_weak.cuda(), im_data_tu_standard#.cuda()
         # Getting predictions of weak and strong augmented unlabled examples
-        #pred_weak_aug = F1(G(im_data_tu_weak_aug))
-        #torch.cuda.empty_cache()
         pred_strong_aug = F1(G(im_data_tu_strong_aug))
-        pred_standard_aug = F1(G(im_data_tu_standard_aug))      
-
-        #prob_weak_aug = F.softmax(pred_weak_aug,dim=1)
+        with torch.no_grad():
+            pred_weak_aug = F1(G(im_data_tu_weak_aug))
+            #pred_standard_aug = F1(G(im_data_tu_standard_aug))      
+        
+        prob_weak_aug = F.softmax(pred_weak_aug,dim=1)
         prob_strong_aug = F.softmax(pred_strong_aug,dim=1)
-        prob_standard_aug = F.softmax(pred_standard_aug,dim=1)
+        #prob_standard_aug = F.softmax(pred_standard_aug,dim=1)
         # Considering only the examples which have confidence above a certain threshold
         #mask_loss_weak = prob_weak_aug.max(1)[0]>thresh
         #mask_loss_std = prob_standard_aug.max(1)[0]>thresh
-        mask_loss = prob_standard_aug.max(1)[0]>thresh
+        mask_loss = prob_weak_aug.max(1)[0]>thresh
+        
         #mask_loss = mask_loss_std*mask_loss_weak
 
         #pseudo_labels_weak = pred_weak_aug.max(axis=1)[1]
         #pseudo_labels_std = pred_standard_aug.max(axis=1)[1]
-        pseudo_labels = pred_standard_aug.max(axis=1)[1]
+        pseudo_labels = pred_weak_aug.max(axis=1)[1]
         
         #pseudo_labels  = (pseudo_labels_weak == pseudo_labels_std) * (pseudo_labels_std)
         

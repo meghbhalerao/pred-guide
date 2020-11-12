@@ -92,7 +92,7 @@ weights_init(F1)
 
 G.cuda()
 F_rot.cuda()
-F1.cuda()
+#F1.cuda()
 
 params = []
 for key, value in dict(G.named_parameters()).items():
@@ -169,7 +169,7 @@ def train():
         im_data_t_unl = data_t_unl[0].cuda()
         gt_labels_rot_t_unl = data_t_unl[1].cuda()
         
-        
+
         zero_grad_all()
         # Loss labeled classification
         output = G(im_data_t)
