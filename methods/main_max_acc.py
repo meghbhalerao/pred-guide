@@ -133,7 +133,8 @@ if args.pretrained_ckpt is not None:
 lr = args.lr
 G.cuda()
 F1.cuda()
-
+G = nn.DataParallel(G, device_ids=[0, 1])
+F1 = nn.DataParallel(F1, device_ids=[0, 1])
 if os.path.exists(args.checkpath) == False:
     os.mkdir(args.checkpath)
 
@@ -237,27 +238,34 @@ def train():
 
         im_data_tu_strong_aug, im_data_tu_weak_aug = im_data_tu_strong.cuda(),im_data_tu_weak.cuda()
         # Getting predictions of weak and strong augmented unlabled examples
-        pred_weak_aug = F1(G(im_data_tu_weak_aug))
+        with torch.no_grad():
+            pred_weak_aug = F1(G(im_data_tu_weak_aug))
         pred_strong_aug = F1(G(im_data_tu_strong_aug))
         prob_weak_aug = F.softmax(pred_weak_aug,dim=1)
         prob_strong_aug = F.softmax(pred_strong_aug,dim=1)
 
         # Considering only the examples which have confidence above a certain threshold
-        mask_loss = prob_weak_aug.max(1)[0]>thresh
+        #mask_loss = prob_weak_aug.max(1)[0]>thresh
+        mask_loss_lesser = prob_weak_aug.max(1)[0]<thresh
         pseudo_labels = pred_weak_aug.max(axis=1)[1]
         #print(pseudo_labels==gt_data_tu)
-        mask_true = (pseudo_labels==gt_data_tu) * mask_loss
+        mask_lesser = (pseudo_labels==gt_data_tu) * mask_loss_lesser
+        mask_loss_greater = prob_weak_aug.max(1)[0]>thresh
+        mask_greater = (pseudo_labels!=gt_data_tu) * mask_loss_greater
+        mask_all = mask_lesser | mask_greater
         #print(mask_true)
+        #print(mask_all)
         pseudo_labels = F.one_hot(pseudo_labels, num_classes=len(class_list))
-        loss_pseudo_unl = -torch.mean((mask_true.int())*torch.sum(pseudo_labels * (torch.log(prob_strong_aug + 1e-5)), 1)) # pseudo label loss
+        #loss_pseudo_unl = -torch.mean((mask_true.int())*torch.sum(pseudo_labels * (torch.log(prob_strong_aug + 1e-5)), 1)) # pseudo label loss
+        loss_pseudo_unl = -torch.mean((mask_all.int())*torch.sum(F.one_hot(gt_data_tu, num_classes=len(class_list)) * (torch.log(prob_strong_aug + 1e-5)), 1)) # pseudo label loss
+        
         #print(loss_pseudo_unl.cpu().data)
         loss_pseudo_unl.backward(retain_graph=True)
         
         output = G(data)
         out1 = F1(output)
         loss = criterion(out1, target)
-        
-
+            
         loss.backward(retain_graph=True)
         optimizer_g.step()
         optimizer_f.step()

@@ -26,3 +26,4 @@ tsne/ckpts/
 .DS_Store
 .vscode
 *.py.*
+*.npy

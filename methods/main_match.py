@@ -129,10 +129,12 @@ if args.pretrained_ckpt is not None:
     G.load_state_dict(ckpt["G"])
     F1.load_state_dict(ckpt["F1"])
 
-
+4
 lr = args.lr
 G.cuda()
 F1.cuda()
+G = nn.DataParallel(G, device_ids=[0, 1])
+F1 = nn.DataParallel(F1, device_ids=[0, 1])
 
 if os.path.exists(args.checkpath) == False:
     os.mkdir(args.checkpath)
@@ -286,6 +288,7 @@ def train():
                 optimizer_g.step()
             else:
                 raise ValueError('Method cannot be recognized.')
+            
             log_train = 'S {} T {} Train Ep: {} lr{} \t ' \
                         'Loss Classification: {:.6f} Loss T {:.6f} ' \
                         'Method {}\n'.format(args.source, args.target,

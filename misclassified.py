@@ -72,7 +72,7 @@ else:
                    temp=args.T)
 weights_init(F1)
 
-ckpt = torch.load("./resnet34_real_sketch_7500")
+ckpt = torch.load("./")
 G.load_state_dict(ckpt["G_state_dict"])
 F1.load_state_dict(ckpt["F1_state_dict"])
 G.cuda()
