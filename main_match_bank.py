@@ -158,7 +158,7 @@ def train():
     feat_dict = edict(pickle.load(f))
     print(feat_dict.keys())
     print(len(feat_dict.names))
-
+    #feat_dict.feat_vec  = feat_dict.feat_vec.cuda()
     def zero_grad_all():
         optimizer_g.zero_grad()
         optimizer_f.zero_grad()
@@ -250,13 +250,10 @@ def train():
         loss_pseudo_unl.backward(retain_graph=True)
         
         feat_dict = update_features(feat_dict, data_t_unl, G, momentum)
-
-
         output = G(data)
         out1 = F1(output)
         loss = criterion(out1, target)
         
-
         loss.backward(retain_graph=True)
         optimizer_g.step()
         optimizer_f.step()

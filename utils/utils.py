@@ -26,8 +26,9 @@ def save_checkpoint(state, is_best, checkpoint='checkpoint',
 
 def update_features(feat_dict, data_t_unl, G, momentum):
     names_batch = data_t_unl[2]
-    img_batch = data_t_unl[0][0]
+    img_batch = data_t_unl[0][0].cuda()
     names_batch = list(names_batch)
     idx = [feat_dict.names.index(name) for name in names_batch]
-    feat_dict.feat_vec[idx] = momentum * feat_dict.feat_vec[idx] + (1 - momentum) * G(img_batch)
+    f_batch = G(img_batch).cpu()
+    feat_dict.feat_vec[idx] = (momentum * feat_dict.feat_vec[idx] + (1 - momentum) * f_batch).detach()
     return feat_dict
