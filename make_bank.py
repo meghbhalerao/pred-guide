@@ -21,9 +21,10 @@ target = "sketch"
 n_class = 126
 n_class_plot = 30
 k = 10
-image_list_target_unl = "./data/txt/multi/unlabeled_target_images_%s_1.txt"%(target)
+image_list_target_unl = "./data/txt/multi/unlabeled_target_images_%s_3.txt"%(target)
+f = open(image_list_target_unl,"r")
+print(len([line for line in f]))
 ours = False
-
 
 def test(loader):
     G.eval()
@@ -134,6 +135,8 @@ labels = []
 name_list = []
 start = time.time()
 # Features for easy examples
+print(len(target_loader_unl.dataset))
+
 with torch.no_grad():
     for idx, image_obj in enumerate(target_loader_unl):
         image = image_obj[0].cuda()
@@ -145,7 +148,7 @@ with torch.no_grad():
         output = output.cpu().numpy()
         features.append(output)
         labels.append(label)
-        name_list.append(name)
+        name_list.append(name[0])
         print(label)
 
 feat_dict = {}
@@ -159,5 +162,5 @@ print(len(labels))
 print(features.shape)
 print(len(name_list))
 print("Saving dictionary as pickle")
-filehandler = open("dictionary.pkl", 'wb')
+filehandler = open("dictionary_resnet.pkl", 'wb')
 pickle.dump(feat_dict, filehandler)

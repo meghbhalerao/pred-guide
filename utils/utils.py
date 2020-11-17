@@ -1,4 +1,5 @@
 import os
+from os import name
 import torch
 import torch.nn as nn
 import shutil
@@ -21,5 +22,12 @@ def save_checkpoint(state, is_best, checkpoint='checkpoint',
     filepath = os.path.join(checkpoint, filename)
     torch.save(state, filepath)
     if is_best:
-        shutil.copyfile(filepath, os.path.join(checkpoint,
-                                               'model_best.pth.tar'))
+        shutil.copyfile(filepath, os.path.join(checkpoint, 'model_best.pth.tar'))
+
+def update_features(feat_dict, data_t_unl, G, momentum):
+    names_batch = data_t_unl[2]
+    img_batch = data_t_unl[0][0]
+    names_batch = list(names_batch)
+    idx = [feat_dict.names.index(name) for name in names_batch]
+    feat_dict.feat_vec[idx] = momentum * feat_dict.feat_vec[idx] + (1 - momentum) * G(img_batch)
+    return feat_dict

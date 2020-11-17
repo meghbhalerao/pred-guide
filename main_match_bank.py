@@ -11,12 +11,13 @@ import torch.optim as optim
 from torch.autograd import Variable
 from model.resnet import resnet34
 from model.basenet import AlexNetBase, VGGBase, Predictor, Predictor_deep
-from utils.utils import weights_init
+from utils.utils import weights_init, update_features
 from utils.lr_schedule import inv_lr_scheduler, get_cosine_schedule_with_warmup
 from utils.return_dataset import return_dataset, return_dataset_randaugment
 from utils.loss import entropy, adentropy
 from augmentations.augmentation_ours import *
 import pickle
+from easydict import EasyDict as edict
 
 # Training settings
 parser = argparse.ArgumentParser(description='SSDA Classification')
@@ -135,12 +136,6 @@ F1.cuda()
 G = nn.DataParallel(G, device_ids=[0, 1])
 F1 = nn.DataParallel(F1, device_ids=[0, 1])
 
-# Loading the dictionary having the feature bank and corresponsing metadata
-f = open("dictionary.pkl","rb")
-feat_dict = pickle.load(f)
-print(feat_dict.keys())
-
-
 if os.path.exists(args.checkpath) == False:
     os.mkdir(args.checkpath)
 
@@ -150,13 +145,19 @@ def train():
     F1.train()
     optimizer_g = optim.SGD(params, momentum=0.9, weight_decay=0.0005, nesterov=True)
     optimizer_f = optim.SGD(list(F1.parameters()), lr=1.0, momentum=0.9, weight_decay=0.0005, nesterov=True)
-    print(len(target_loader_unl))
+    print(len(target_loader_unl.dataset))
     # Define learning rate schedule here - to be updated at each iteration
     if args.LR_scheduler == "cosine":
         warmup = 0
         total_steps = int(args.steps/len(target_loader_unl))
         scheduler_g = get_cosine_schedule_with_warmup(optimizer_g, warmup, args.total_steps)
         scheduler_f = get_cosine_schedule_with_warmup(optimizer_f, warmup, args.total_steps)
+    
+    # Loading the dictionary having the feature bank and corresponsing metadata
+    f = open("dictionary.pkl","rb")
+    feat_dict = edict(pickle.load(f))
+    print(feat_dict.keys())
+    print(len(feat_dict.names))
 
     def zero_grad_all():
         optimizer_g.zero_grad()
@@ -192,7 +193,7 @@ def train():
         ema_F1 = ModelEMA(args, F1, args.ema_decay)
         ema_G = ModelEMA(args, G, args.ema_decay)
 
-
+    momentum = 0.8
     for step in range(all_step):
         if args.LR_scheduler == "standard": # choosing appropriate learning rate
             optimizer_g = inv_lr_scheduler(param_lr_g, optimizer_g, step, init_lr=args.lr)
@@ -232,8 +233,7 @@ def train():
             im_data_tu_strong, im_data_tu_weak = process_batch(im_data_tu, augmentation, label=False) #Augmentations happenning here - apply strong augmentation to labelled examples and (weak + strong) to unlablled examples
         elif args.augmentation_policy == "rand_augment":
             im_data_tu_weak_aug, im_data_tu_strong_aug, im_data_tu_standard_aug = data_t_unl[0][0].cuda(), data_t_unl[0][1].cuda(), data_t_unl[0][2]
-            img_name = data_t_unl[2]
-            print(img_name)
+            img_name_batch = data_t_unl[2]
         elif args.augmentation_policy == "ct_augment":
             im_data_tu_weak, im_data_tu_strong = data_t_unl[0][0], data_t_unl[0][1]
 
@@ -249,9 +249,9 @@ def train():
         loss_pseudo_unl = -torch.mean(mask_loss.int() * criterion_pseudo(prob_strong_aug,pseudo_labels))
         loss_pseudo_unl.backward(retain_graph=True)
         
+        feat_dict = update_features(feat_dict, data_t_unl, G, momentum)
 
 
-        
         output = G(data)
         out1 = F1(output)
         loss = criterion(out1, target)

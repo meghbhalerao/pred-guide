@@ -69,7 +69,7 @@ class Imagelists_VISDA(object):
         if self.target_transform is not None:
             target = self.target_transform(target)
         if not self.test:
-            return img, target
+            return img, target, self.imgs[index]
         else:
             return img, target, self.imgs[index]
 
