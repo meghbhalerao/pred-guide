@@ -27,3 +27,6 @@ tsne/ckpts/
 .vscode
 *.py.*
 *.npy
+*pkl
+*pth
+*pth*
