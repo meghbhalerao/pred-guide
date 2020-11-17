@@ -16,6 +16,7 @@ from utils.lr_schedule import inv_lr_scheduler, get_cosine_schedule_with_warmup
 from utils.return_dataset import return_dataset, return_dataset_randaugment
 from utils.loss import entropy, adentropy
 from augmentations.augmentation_ours import *
+import pickle
 
 # Training settings
 parser = argparse.ArgumentParser(description='SSDA Classification')
@@ -128,12 +129,17 @@ if args.pretrained_ckpt is not None:
     G.load_state_dict(ckpt["G"])
     F1.load_state_dict(ckpt["F1"])
 
-4
 lr = args.lr
 G.cuda()
 F1.cuda()
 G = nn.DataParallel(G, device_ids=[0, 1])
 F1 = nn.DataParallel(F1, device_ids=[0, 1])
+
+# Loading the dictionary having the feature bank and corresponsing metadata
+f = open("dictionary.pkl","rb")
+feat_dict = pickle.load(f)
+print(feat_dict.keys())
+
 
 if os.path.exists(args.checkpath) == False:
     os.mkdir(args.checkpath)
@@ -142,11 +148,8 @@ if os.path.exists(args.checkpath) == False:
 def train():
     G.train()
     F1.train()
-    optimizer_g = optim.SGD(params, momentum=0.9,
-                            weight_decay=0.0005, nesterov=True)
-    optimizer_f = optim.SGD(list(F1.parameters()), lr=1.0, momentum=0.9,
-                            weight_decay=0.0005, nesterov=True)
-
+    optimizer_g = optim.SGD(params, momentum=0.9, weight_decay=0.0005, nesterov=True)
+    optimizer_f = optim.SGD(list(F1.parameters()), lr=1.0, momentum=0.9, weight_decay=0.0005, nesterov=True)
     print(len(target_loader_unl))
     # Define learning rate schedule here - to be updated at each iteration
     if args.LR_scheduler == "cosine":
@@ -154,7 +157,6 @@ def train():
         total_steps = int(args.steps/len(target_loader_unl))
         scheduler_g = get_cosine_schedule_with_warmup(optimizer_g, warmup, args.total_steps)
         scheduler_f = get_cosine_schedule_with_warmup(optimizer_f, warmup, args.total_steps)
-
 
     def zero_grad_all():
         optimizer_g.zero_grad()
@@ -176,6 +178,7 @@ def train():
 
 
     criterion = nn.CrossEntropyLoss().cuda()
+    criterion_pseudo = nn.CrossEntropyLoss(reduction='none').cuda()
     all_step = args.steps
     data_iter_s = iter(source_loader)
     data_iter_t = iter(target_loader)
@@ -192,10 +195,8 @@ def train():
 
     for step in range(all_step):
         if args.LR_scheduler == "standard": # choosing appropriate learning rate
-            optimizer_g = inv_lr_scheduler(param_lr_g, optimizer_g, step,
-                                        init_lr=args.lr)
-            optimizer_f = inv_lr_scheduler(param_lr_f, optimizer_f, step,
-                                        init_lr=args.lr)
+            optimizer_g = inv_lr_scheduler(param_lr_g, optimizer_g, step, init_lr=args.lr)
+            optimizer_f = inv_lr_scheduler(param_lr_f, optimizer_f, step, init_lr=args.lr)
         
         elif args.LR_scheduler == "cosine":
             scheduler_f.step()
@@ -230,37 +231,26 @@ def train():
         if args.augmentation_policy == "ours": # can call a method here which does "ours" augmentation policy
             im_data_tu_strong, im_data_tu_weak = process_batch(im_data_tu, augmentation, label=False) #Augmentations happenning here - apply strong augmentation to labelled examples and (weak + strong) to unlablled examples
         elif args.augmentation_policy == "rand_augment":
-            im_data_tu_weak, im_data_tu_strong, im_data_tu_standard = data_t_unl[0][0], data_t_unl[0][1], data_t_unl[0][2]
+            im_data_tu_weak_aug, im_data_tu_strong_aug, im_data_tu_standard_aug = data_t_unl[0][0].cuda(), data_t_unl[0][1].cuda(), data_t_unl[0][2]
+            img_name = data_t_unl[2]
+            print(img_name)
         elif args.augmentation_policy == "ct_augment":
             im_data_tu_weak, im_data_tu_strong = data_t_unl[0][0], data_t_unl[0][1]
 
-        im_data_tu_strong_aug, im_data_tu_weak_aug, im_data_tu_standard_aug = im_data_tu_strong.cuda(),im_data_tu_weak.cuda(), im_data_tu_standard#.cuda()
         # Getting predictions of weak and strong augmented unlabled examples
         pred_strong_aug = F1(G(im_data_tu_strong_aug))
         with torch.no_grad():
             pred_weak_aug = F1(G(im_data_tu_weak_aug))
-            #pred_standard_aug = F1(G(im_data_tu_standard_aug))      
         
         prob_weak_aug = F.softmax(pred_weak_aug,dim=1)
         prob_strong_aug = F.softmax(pred_strong_aug,dim=1)
-        #prob_standard_aug = F.softmax(pred_standard_aug,dim=1)
-        # Considering only the examples which have confidence above a certain threshold
-        #mask_loss_weak = prob_weak_aug.max(1)[0]>thresh
-        #mask_loss_std = prob_standard_aug.max(1)[0]>thresh
         mask_loss = prob_weak_aug.max(1)[0]>thresh
-        
-        #mask_loss = mask_loss_std*mask_loss_weak
-
-        #pseudo_labels_weak = pred_weak_aug.max(axis=1)[1]
-        #pseudo_labels_std = pred_standard_aug.max(axis=1)[1]
         pseudo_labels = pred_weak_aug.max(axis=1)[1]
-        
-        #pseudo_labels  = (pseudo_labels_weak == pseudo_labels_std) * (pseudo_labels_std)
-        
-        pseudo_labels = F.one_hot(pseudo_labels, num_classes=len(class_list))
-        loss_pseudo_unl = -torch.mean((mask_loss.int())*torch.sum(pseudo_labels * (torch.log(prob_strong_aug + 1e-5)), 1)) # pseudo label loss
-        #print(loss_pseudo_unl.cpu().data)
+        loss_pseudo_unl = -torch.mean(mask_loss.int() * criterion_pseudo(prob_strong_aug,pseudo_labels))
         loss_pseudo_unl.backward(retain_graph=True)
+        
+
+
         
         output = G(data)
         out1 = F1(output)

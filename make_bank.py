@@ -1,4 +1,5 @@
 #from tsnecuda import TSNE
+from __future__ import barry_as_FLUFL
 import torch
 import numpy as np
 import sys
@@ -11,6 +12,7 @@ from utils.return_dataset import ResizeImage
 import time
 import os
 from torch.autograd import Variable
+import pickle
 
 # Defining return dataset function here
 net = "resnet34"
@@ -129,33 +131,33 @@ G.load_state_dict(ckpt["G_state_dict"])
 """
 features = []   
 labels = []
-weights = []
-
+name_list = []
 start = time.time()
 # Features for easy examples
 with torch.no_grad():
     for idx, image_obj in enumerate(target_loader_unl):
         image = image_obj[0].cuda()
         label = image_obj[1].cpu().data.item()
+        name  = image_obj[2]
         img_path = image_obj[2][0]
         output = G(image)
         output = torch.flatten(output)
         output = output.cpu().numpy()
         features.append(output)
         labels.append(label)
-        weights.append(1)
+        name_list.append(name)
         print(label)
 
+feat_dict = {}
 end = time.time()
 print((end-start)/60)
-
-
-features = np.array(features)
-print(features.shape)
-np.save('features.npy', features)
+features = torch.tensor(np.array(features))
+feat_dict['feat_vec'] = features
+feat_dict['labels'] = labels
+feat_dict['names'] = name_list
 print(len(labels))
-labels = np.array(labels)
-np.save('labels.npy',labels)
-print(len(weights))
-weights = np.array(weights)
-np.save('weights.npy', weights)
+print(features.shape)
+print(len(name_list))
+print("Saving dictionary as pickle")
+filehandler = open("dictionary.pkl", 'wb')
+pickle.dump(feat_dict, filehandler)
