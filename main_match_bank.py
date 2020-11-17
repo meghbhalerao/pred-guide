@@ -11,7 +11,7 @@ import torch.optim as optim
 from torch.autograd import Variable
 from model.resnet import resnet34
 from model.basenet import AlexNetBase, VGGBase, Predictor, Predictor_deep
-from utils.utils import weights_init, update_features
+from utils.utils import weights_init, update_features, get_similarity_distribution
 from utils.lr_schedule import inv_lr_scheduler, get_cosine_schedule_with_warmup
 from utils.return_dataset import return_dataset, return_dataset_randaugment
 from utils.loss import entropy, adentropy
@@ -158,7 +158,8 @@ def train():
     feat_dict = edict(pickle.load(f))
     print(feat_dict.keys())
     print(len(feat_dict.names))
-    #feat_dict.feat_vec  = feat_dict.feat_vec.cuda()
+    feat_dict.feat_vec  = feat_dict.feat_vec.cuda() # Pushing computed features to cuda
+
     def zero_grad_all():
         optimizer_g.zero_grad()
         optimizer_f.zero_grad()
@@ -249,7 +250,10 @@ def train():
         loss_pseudo_unl = -torch.mean(mask_loss.int() * criterion_pseudo(prob_strong_aug,pseudo_labels))
         loss_pseudo_unl.backward(retain_graph=True)
         
-        feat_dict = update_features(feat_dict, data_t_unl, G, momentum)
+        feat_dict  = update_features(feat_dict, data_t_unl, G, momentum)
+        sim_distribution = get_similarity_distribution(feat_dict,data_t_unl,G)
+        # Get max of similarity distribution to check which element or label is it closest to in these vectors
+        
         output = G(data)
         out1 = F1(output)
         loss = criterion(out1, target)
@@ -306,10 +310,7 @@ def train():
                 if counter > args.patience:
                     break
             print('best acc test %f best acc val %f' % (best_acc_test, acc_val))
-
-            print('record %s' % record_file)
-            with open(record_file, 'a') as f:
-                f.write('step %d best %f final %f \n' % (step, best_acc_test, acc_val))
+            print(sim_distribution)
             G.train()
             F1.train()
             if args.save_check:

@@ -3,7 +3,7 @@ from os import name
 import torch
 import torch.nn as nn
 import shutil
-
+import torch.nn.functional as F
 
 def weights_init(m):
     classname = m.__class__.__name__
@@ -29,6 +29,13 @@ def update_features(feat_dict, data_t_unl, G, momentum):
     img_batch = data_t_unl[0][0].cuda()
     names_batch = list(names_batch)
     idx = [feat_dict.names.index(name) for name in names_batch]
-    f_batch = G(img_batch).cpu()
+    f_batch = G(img_batch)
     feat_dict.feat_vec[idx] = (momentum * feat_dict.feat_vec[idx] + (1 - momentum) * f_batch).detach()
     return feat_dict
+
+def get_similarity_distribution(feat_dict,data_t_unl, G):
+    img_batch = data_t_unl[0][0].cuda()
+    f_batch = G(img_batch)
+    print(F.normalize(feat_dict.feat_vec, dim=1).shape,F.normalize(torch.transpose(f_batch,0,1),dim = 0).shape)
+    sim_distribution  = torch.mm(F.normalize(feat_dict.feat_vec, dim=1),F.normalize(torch.transpose(f_batch,0,1),dim = 0))
+    return sim_distribution
