@@ -11,7 +11,7 @@ import torch.optim as optim
 from torch.autograd import Variable
 from model.resnet import resnet34
 from model.basenet import AlexNetBase, VGGBase, Predictor, Predictor_deep
-from utils.utils import weights_init, update_features, get_similarity_distribution
+from utils.utils import weights_init, update_features, get_similarity_distribution, get_kNN
 from utils.lr_schedule import inv_lr_scheduler, get_cosine_schedule_with_warmup
 from utils.return_dataset import return_dataset, return_dataset_randaugment
 from utils.loss import entropy, adentropy
@@ -86,14 +86,6 @@ elif args.augmentation_policy == "rand_augment":
     source_loader, target_loader, target_loader_unl, target_loader_val, target_loader_test, class_list = return_dataset_randaugment(args)    
 
 use_gpu = torch.cuda.is_available()
-record_dir = 'record/%s/%s' % (args.dataset, args.method)
-if not os.path.exists(record_dir):
-    os.makedirs(record_dir)
-record_file = os.path.join(record_dir,
-                           '%s_net_%s_%s_to_%s_num_%s' %
-                           (args.method, args.net, args.source,
-                            args.target, args.num))
-
 torch.cuda.manual_seed(args.seed)
 if args.net == 'resnet34':
     G = resnet34()
@@ -150,8 +142,8 @@ def train():
     if args.LR_scheduler == "cosine":
         warmup = 0
         total_steps = int(args.steps/len(target_loader_unl))
-        scheduler_g = get_cosine_schedule_with_warmup(optimizer_g, warmup, args.total_steps)
-        scheduler_f = get_cosine_schedule_with_warmup(optimizer_f, warmup, args.total_steps)
+        scheduler_g = get_cosine_schedule_with_warmup(optimizer_g, warmup, total_steps)
+        scheduler_f = get_cosine_schedule_with_warmup(optimizer_f, warmup, total_steps)
     
     # Loading the dictionary having the feature bank and corresponsing metadata
     f = open("dictionary.pkl","rb")
@@ -171,13 +163,11 @@ def train():
         param_lr_f.append(param_group["lr"])
 
 
-
     # Instantiating the augmentation class with default params now
     if args.augmentation_policy == "ours":
         augmentation = Augmentation()
     if args.augmentation_policy == "ours" or args.augmentation_policy == "rand_augment" or args.augmentation_policy == "ct_augment":
         thresh = 0.9 # threshold for confident prediction to generate pseudo-labels
-
 
     criterion = nn.CrossEntropyLoss().cuda()
     criterion_pseudo = nn.CrossEntropyLoss(reduction='none').cuda()
@@ -255,7 +245,13 @@ def train():
         feat_dict  = update_features(feat_dict, data_t_unl, G, momentum)
         sim_distribution = get_similarity_distribution(feat_dict,data_t_unl,G)
         # Get max of similarity distribution to check which element or label is it closest to in these vectors
-        
+        neighbors = get_kNN(sim_distribution, f_batch)
+
+
+
+
+
+
         output = G(data)
         out1 = F1(output)
         loss = criterion(out1, target)
@@ -386,9 +382,3 @@ class ModelEMA(object):
                 if 'bn' not in k and 'bias' not in k:
                     msd[k] = msd[k] * (1. - wd)
 
-"""
-for idx, weight in enumerate(mask_loss):
-    weight = weight.cpu().detach().item()
-    prob_strong_aug[idx] = (prob_strong_aug[idx] * torch.tensor(int(weight)))
-    prob_weak_aug[idx] = (prob_weak_aug[idx].clone() * torch.tensor(int(weight)))
-"""

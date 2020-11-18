@@ -4,6 +4,7 @@ import torch
 import torch.nn as nn
 import shutil
 import torch.nn.functional as F
+from easydict import EasyDict as edict
 
 def weights_init(m):
     classname = m.__class__.__name__
@@ -31,10 +32,14 @@ def update_features(feat_dict, data_t_unl, G, momentum):
     idx = [feat_dict.names.index(name) for name in names_batch]
     f_batch = G(img_batch)
     feat_dict.feat_vec[idx] = (momentum * feat_dict.feat_vec[idx] + (1 - momentum) * f_batch).detach()
-    return feat_dict
+    return f_batch, feat_dict
 
 def get_similarity_distribution(feat_dict,data_t_unl, G):
     img_batch = data_t_unl[0][0].cuda()
     f_batch = G(img_batch)
     sim_distribution  = torch.mm(F.normalize(feat_dict.feat_vec, dim=1),F.normalize(torch.transpose(f_batch,0,1),dim = 0))
+    sim_distribution = edict({"cosines": sim_distribution, "imgs": data_t_unl[2], "labels": data_t_unl[1]})
     return sim_distribution
+
+def get_kNN(feat_dict, f_batch):
+    pass
