@@ -1,0 +1,15 @@
+Dataset multi Source real Target sketch Labeled num perclass 3 Network resnet34
+126 classes in this dataset
+23826
+dict_keys(['feat_vec', 'labels', 'names'])
+23826
+S real T sketch Train Ep: 0 lr0.01 	 Loss Classification: 4.958836 Loss T 0.471383 Method MME
+
+S real T sketch Train Ep: 100 lr0.009925650290240803 	 Loss Classification: 1.082629 Loss T 0.307937 Method MME
+
+S real T sketch Train Ep: 200 lr0.009852577760521605 	 Loss Classification: 0.644801 Loss T 0.252269 Method MME
+
+S real T sketch Train Ep: 300 lr0.009780748269686728 	 Loss Classification: 0.686582 Loss T 0.219681 Method MME
+
+S real T sketch Train Ep: 400 lr0.009710128909124701 	 Loss Classification: 0.548466 Loss T 0.183774 Method MME
+

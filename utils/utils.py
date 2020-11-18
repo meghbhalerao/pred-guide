@@ -36,6 +36,5 @@ def update_features(feat_dict, data_t_unl, G, momentum):
 def get_similarity_distribution(feat_dict,data_t_unl, G):
     img_batch = data_t_unl[0][0].cuda()
     f_batch = G(img_batch)
-    print(F.normalize(feat_dict.feat_vec, dim=1).shape,F.normalize(torch.transpose(f_batch,0,1),dim = 0).shape)
     sim_distribution  = torch.mm(F.normalize(feat_dict.feat_vec, dim=1),F.normalize(torch.transpose(f_batch,0,1),dim = 0))
     return sim_distribution

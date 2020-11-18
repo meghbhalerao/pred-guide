@@ -233,7 +233,7 @@ def train():
         if args.augmentation_policy == "ours": # can call a method here which does "ours" augmentation policy
             im_data_tu_strong, im_data_tu_weak = process_batch(im_data_tu, augmentation, label=False) #Augmentations happenning here - apply strong augmentation to labelled examples and (weak + strong) to unlablled examples
         elif args.augmentation_policy == "rand_augment":
-            im_data_tu_weak_aug, im_data_tu_strong_aug, im_data_tu_standard_aug = data_t_unl[0][0].cuda(), data_t_unl[0][1].cuda(), data_t_unl[0][2]
+            im_data_tu_weak_aug, im_data_tu_strong_aug = data_t_unl[0][0].cuda(), data_t_unl[0][1].cuda()
             img_name_batch = data_t_unl[2]
         elif args.augmentation_policy == "ct_augment":
             im_data_tu_weak, im_data_tu_strong = data_t_unl[0][0], data_t_unl[0][1]
@@ -247,7 +247,9 @@ def train():
         prob_strong_aug = F.softmax(pred_strong_aug,dim=1)
         mask_loss = prob_weak_aug.max(1)[0]>thresh
         pseudo_labels = pred_weak_aug.max(axis=1)[1]
-        loss_pseudo_unl = -torch.mean(mask_loss.int() * criterion_pseudo(prob_strong_aug,pseudo_labels))
+        loss_pseudo_unl = torch.mean(mask_loss.int() * criterion_pseudo(pred_strong_aug,pseudo_labels))
+        #pseudo_labels = F.one_hot(pseudo_labels, num_classes=len(class_list))
+        #loss_pseudo_unl = -torch.mean((mask_loss.int())*torch.sum(pseudo_labels * (torch.log(prob_strong_aug + 1e-5)), 1)) # pseudo label loss
         loss_pseudo_unl.backward(retain_graph=True)
         
         feat_dict  = update_features(feat_dict, data_t_unl, G, momentum)
