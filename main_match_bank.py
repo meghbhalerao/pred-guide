@@ -146,12 +146,18 @@ def train():
         scheduler_f = get_cosine_schedule_with_warmup(optimizer_f, warmup, total_steps)
     
     # Loading the dictionary having the feature bank and corresponsing metadata
-    f = open("dictionary.pkl","rb")
-    feat_dict = edict(pickle.load(f))
-    print(feat_dict.keys())
-    print(len(feat_dict.names))
-    feat_dict.feat_vec  = feat_dict.feat_vec.cuda() # Pushing computed features to cuda
-
+    f = open("banks/unlabelled_target_sketch.pkl","rb")
+    feat_dict_target = edict(pickle.load(f))
+    print(feat_dict_target.keys())
+    print(len(feat_dict_target.names))
+    feat_dict_target.feat_vec  = feat_dict_target.feat_vec.cuda() # Pushing computed features to cuda
+    # Loading the feature bank for the source samples
+    f = open("banks/labelled_source_real.pkl","rb")
+    feat_dict_source = edict(pickle.load(f))
+    print(feat_dict_source.keys())
+    print(len(feat_dict_source.names))
+    feat_dict_source.feat_vec  = feat_dict_source.feat_vec.cuda() # Pushing computed features to cuda
+    
     def zero_grad_all():
         optimizer_g.zero_grad()
         optimizer_f.zero_grad()
@@ -161,7 +167,6 @@ def train():
     param_lr_f = []
     for param_group in optimizer_f.param_groups:
         param_lr_f.append(param_group["lr"])
-
 
     # Instantiating the augmentation class with default params now
     if args.augmentation_policy == "ours":
@@ -238,19 +243,16 @@ def train():
         mask_loss = prob_weak_aug.max(1)[0]>thresh
         pseudo_labels = pred_weak_aug.max(axis=1)[1]
         loss_pseudo_unl = torch.mean(mask_loss.int() * criterion_pseudo(pred_strong_aug,pseudo_labels))
-        #pseudo_labels = F.one_hot(pseudo_labels, num_classes=len(class_list))
-        #loss_pseudo_unl = -torch.mean((mask_loss.int())*torch.sum(pseudo_labels * (torch.log(prob_strong_aug + 1e-5)), 1)) # pseudo label loss
         loss_pseudo_unl.backward(retain_graph=True)
         
-        feat_dict  = update_features(feat_dict, data_t_unl, G, momentum)
-        sim_distribution = get_similarity_distribution(feat_dict,data_t_unl,G)
+        #f_batch, feat_dict_target  = update_features(feat_dict_target, data_t_unl, G, momentum)
+        f_batch, feat_dict_target  = update_features(feat_dict_source, data_s, G, momentum, source = True)
+        f_batch = f_batch.detach()
+        sim_distribution = get_similarity_distribution(feat_dict_target,data_t_unl,G)
         # Get max of similarity distribution to check which element or label is it closest to in these vectors
-        neighbors = get_kNN(sim_distribution, f_batch)
-
-
-
-
-
+        if step > 2000:
+            k_neighbors, labels_k_neighbors = get_kNN(sim_distribution, feat_dict_target, k = 3)    
+            print("Pseudo Labels:", pseudo_labels)
 
         output = G(data)
         out1 = F1(output)
@@ -307,6 +309,7 @@ def train():
             if args.early:
                 if counter > args.patience:
                     break
+            
             print('best acc test %f best acc val %f' % (best_acc_test, acc_val))
             print(sim_distribution)
             G.train()
