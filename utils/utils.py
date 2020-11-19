@@ -6,6 +6,7 @@ import shutil
 import torch.nn.functional as F
 from easydict import EasyDict as edict
 import numpy as np
+from kmeans_pytorch import kmeans
 
 def weights_init(m):
     classname = m.__class__.__name__
@@ -58,3 +59,8 @@ def get_kNN(sim_distribution, feat_dict, k = 1):
     print("True Labels: ", sim_distribution.labels)
     print("KNN Labels:", labels_k_neighbors)
     return k_neighbors, labels_k_neighbors
+
+
+def k_means(vectors, num_clusters):
+    cluster_ids_x, cluster_centers = kmeans( X=vectors, num_clusters=num_clusters, distance='euclidean', device=torch.device('cuda:0'))
+    return cluster_ids_x, cluster_centers

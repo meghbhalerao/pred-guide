@@ -245,13 +245,14 @@ def train():
         loss_pseudo_unl = torch.mean(mask_loss.int() * criterion_pseudo(pred_strong_aug,pseudo_labels))
         loss_pseudo_unl.backward(retain_graph=True)
         
-        #f_batch, feat_dict_target  = update_features(feat_dict_target, data_t_unl, G, momentum)
-        f_batch, feat_dict_target  = update_features(feat_dict_source, data_s, G, momentum, source = True)
+        f_batch, feat_dict_target  = update_features(feat_dict_target, data_t_unl, G, momentum)
+        #f_batch, feat_dict_source  = update_features(feat_dict_source, data_s, G, momentum, source = True)
         f_batch = f_batch.detach()
-        sim_distribution = get_similarity_distribution(feat_dict_target,data_t_unl,G)
+        sim_distribution = get_similarity_distribution(feat_dict_target ,data_t_unl,G)
         # Get max of similarity distribution to check which element or label is it closest to in these vectors
         if step > 2000:
             k_neighbors, labels_k_neighbors = get_kNN(sim_distribution, feat_dict_target, k = 3)    
+            #k_neighbors, labels_k_neighbors = get_kNN(sim_distribution, feat_dict_source, k = 3)
             print("Pseudo Labels:", pseudo_labels)
 
         output = G(data)
@@ -296,6 +297,8 @@ def train():
         if step % args.save_interval == 0 and step > 0:
             loss_test, acc_test = test(target_loader_test)
             loss_val, acc_val = test(target_loader_val)
+            # Cluster the target features
+            
 
             G.train()
             F1.train()
