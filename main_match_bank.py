@@ -11,7 +11,7 @@ import torch.optim as optim
 from torch.autograd import Variable
 from model.resnet import resnet34
 from model.basenet import AlexNetBase, VGGBase, Predictor, Predictor_deep
-from utils.utils import weights_init, update_features, get_similarity_distribution, get_kNN
+from utils.utils import weights_init, update_features, get_similarity_distribution, get_kNN, k_means
 from utils.lr_schedule import inv_lr_scheduler, get_cosine_schedule_with_warmup
 from utils.return_dataset import return_dataset, return_dataset_randaugment
 from utils.loss import entropy, adentropy
@@ -148,16 +148,12 @@ def train():
     # Loading the dictionary having the feature bank and corresponsing metadata
     f = open("banks/unlabelled_target_sketch.pkl","rb")
     feat_dict_target = edict(pickle.load(f))
-    print(feat_dict_target.keys())
-    print(len(feat_dict_target.names))
     feat_dict_target.feat_vec  = feat_dict_target.feat_vec.cuda() # Pushing computed features to cuda
-    # Loading the feature bank for the source samples
-    f = open("banks/labelled_source_real.pkl","rb")
+    f = open("banks/labelled_source_real.pkl","rb") # Loading the feature bank for the source samples
     feat_dict_source = edict(pickle.load(f))
-    print(feat_dict_source.keys())
-    print(len(feat_dict_source.names))
     feat_dict_source.feat_vec  = feat_dict_source.feat_vec.cuda() # Pushing computed features to cuda
-    
+    print("Bank keys - Target: ", feat_dict_target.keys(),"Source: ", feat_dict_source.keys())
+    print("Num  - Target: ", len(feat_dict_target.names), "Source: ", len(feat_dict_source.names))
     def zero_grad_all():
         optimizer_g.zero_grad()
         optimizer_f.zero_grad()
@@ -173,7 +169,7 @@ def train():
         augmentation = Augmentation()
     if args.augmentation_policy == "ours" or args.augmentation_policy == "rand_augment" or args.augmentation_policy == "ct_augment":
         thresh = 0.9 # threshold for confident prediction to generate pseudo-labels
-
+    
     criterion = nn.CrossEntropyLoss().cuda()
     criterion_pseudo = nn.CrossEntropyLoss(reduction='none').cuda()
     all_step = args.steps
@@ -248,9 +244,10 @@ def train():
         f_batch, feat_dict_target  = update_features(feat_dict_target, data_t_unl, G, momentum)
         #f_batch, feat_dict_source  = update_features(feat_dict_source, data_s, G, momentum, source = True)
         f_batch = f_batch.detach()
-        sim_distribution = get_similarity_distribution(feat_dict_target ,data_t_unl,G)
+        
         # Get max of similarity distribution to check which element or label is it closest to in these vectors
         if step > 2000:
+            sim_distribution = get_similarity_distribution(feat_dict_target,data_t_unl,G)
             k_neighbors, labels_k_neighbors = get_kNN(sim_distribution, feat_dict_target, k = 3)    
             #k_neighbors, labels_k_neighbors = get_kNN(sim_distribution, feat_dict_source, k = 3)
             print("Pseudo Labels:", pseudo_labels)
@@ -298,8 +295,10 @@ def train():
             loss_test, acc_test = test(target_loader_test)
             loss_val, acc_val = test(target_loader_val)
             # Cluster the target features
+            vectors = feat_dict_target.feat_vec
+            cluster_ids_x, cluster_centers = k_means(vectors, len(class_list))
+            print(cluster_ids_x, cluster_centers.shape)
             
-
             G.train()
             F1.train()
             if acc_val >= best_acc:
@@ -314,7 +313,6 @@ def train():
                     break
             
             print('best acc test %f best acc val %f' % (best_acc_test, acc_val))
-            print(sim_distribution)
             G.train()
             F1.train()
             if args.save_check:

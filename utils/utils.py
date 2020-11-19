@@ -60,7 +60,6 @@ def get_kNN(sim_distribution, feat_dict, k = 1):
     print("KNN Labels:", labels_k_neighbors)
     return k_neighbors, labels_k_neighbors
 
-
 def k_means(vectors, num_clusters):
     cluster_ids_x, cluster_centers = kmeans( X=vectors, num_clusters=num_clusters, distance='euclidean', device=torch.device('cuda:0'))
     return cluster_ids_x, cluster_centers
