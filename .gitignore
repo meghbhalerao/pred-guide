@@ -21,6 +21,7 @@ record/
 previous_models/ 
 target_rw_expts/
 tsne/ckpts/
+banks/
 # Some specific patterns
 *word2vec*
 .DS_Store
