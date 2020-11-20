@@ -146,10 +146,10 @@ def train():
         scheduler_f = get_cosine_schedule_with_warmup(optimizer_f, warmup, total_steps)
     
     # Loading the dictionary having the feature bank and corresponsing metadata
-    f = open("banks/unlabelled_target_sketch.pkl","rb")
+    f = open("banks/unlabelled_target_%s.pkl"%(args.target), "rb")
     feat_dict_target = edict(pickle.load(f))
     feat_dict_target.feat_vec  = feat_dict_target.feat_vec.cuda() # Pushing computed features to cuda
-    f = open("banks/labelled_source_real.pkl","rb") # Loading the feature bank for the source samples
+    f = open("banks/labelled_source_%s.pkl"%(args.source), "rb") # Loading the feature bank for the source samples
     feat_dict_source = edict(pickle.load(f))
     feat_dict_source.feat_vec  = feat_dict_source.feat_vec.cuda() # Pushing computed features to cuda
     print("Bank keys - Target: ", feat_dict_target.keys(),"Source: ", feat_dict_source.keys())
@@ -185,7 +185,7 @@ def train():
         ema_F1 = ModelEMA(args, F1, args.ema_decay)
         ema_G = ModelEMA(args, G, args.ema_decay)
 
-    momentum = 0.8
+    momentum = 0.9
     for step in range(all_step):
         if args.LR_scheduler == "standard": # choosing appropriate learning rate
             optimizer_g = inv_lr_scheduler(param_lr_g, optimizer_g, step, init_lr=args.lr)
@@ -296,8 +296,8 @@ def train():
             loss_val, acc_val = test(target_loader_val)
             # Cluster the target features
             vectors = feat_dict_target.feat_vec
-            cluster_ids_x, cluster_centers = k_means(vectors, len(class_list))
-            print(cluster_ids_x, cluster_centers.shape)
+            #cluster_ids_x, cluster_centers = k_means(vectors, len(class_list))
+            #print(cluster_ids_x, cluster_centers.shape)
             
             G.train()
             F1.train()
@@ -325,6 +325,7 @@ def train():
                     'best_acc_test': best_acc_test,
                     'optimizer_g' : optimizer_g.state_dict(),
                     'optimizer_f' : optimizer_f.state_dict(),
+                    'target_feat_dict': feat_dict_target
                     },os.path.join(args.checkpath,"%s_%s_%s_%d.ckpt.pth.tar"%(args.net,args.source,args.target,step)))
 
 def test(loader):

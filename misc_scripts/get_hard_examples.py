@@ -83,7 +83,7 @@ F1.eval()
 
 
 # Loading the weights from the checkpoint
-ckpt = torch.load("../save_model_ssda/resnet34_real_sketch_8500")
+ckpt = torch.load("../save_model_ssda/resnet34_real_sketch_8500.ckpt.pth.tar")
 G_dict = ckpt["G_state_dict"]
 G_dict_backup = G_dict.copy()
 for key in G_dict_backup.keys():
@@ -99,8 +99,9 @@ G.load_state_dict(G_dict)
 F1.load_state_dict(F1_dict)
 
 # Loading the feature banks
-f = open("../banks/unlabelled_target_sketch_8500.pkl","rb")
-feat_dict_target = edict(pickle.load(f))
+#f = open("../banks/unlabelled_target_sketch_8500.pkl","rb")
+#feat_dict_target = edict(pickle.load(f))
+feat_dict_target = ckpt["feat_dict_target"]
 feat_vectors_target  = feat_dict_target.feat_vec.cuda() # Pushing computed features to cuda
 
 # Conditionally performing k means clustering
@@ -126,8 +127,8 @@ features = []
 labels = []
 name_list = []
 start = time.time()
-# Pairwise distance between uncertain feature and cluster centers
 
+# Pairwise distance between uncertain feature and cluster centers
 def d_matrix_vector(matrix,vector):
     num_class = matrix.shape[0]
     d_vector = torch.ones(num_class)
@@ -137,41 +138,37 @@ def d_matrix_vector(matrix,vector):
         d_vector[i] = d
     return d_vector
 
-
+uncertain_count = 0
+correct_uncertain = 0
+correct_pseudo = 0
 with torch.no_grad():
     for idx, image_obj in enumerate(target_loader_unl):
         image = image_obj[0].cuda()
         label = image_obj[1].cpu().data.item()
         name  = image_obj[2]
-        img_path = image_obj[2][0]
         output = F1(G(image))
         output = F.softmax(output,dim=1)
         is_uncertain = (output.max(1)[0]<0.9)
         if is_uncertain:
-            pseudo_label = output.max(1)[1]
+            uncertain_count  = uncertain_count + 1
+            pseudo_label = output.max(1)[1].cpu().data.item()
             uncertain_feature = G(image)
             dist_from_centroid = d_matrix_vector(cluster_centers,uncertain_feature.detach())
             which_centroid = dist_from_centroid.argmin().cpu().data.item()
-            class_label_centroid = cluster_center_labels[which_centroid]
-            print(class_label_centroid)
+            class_label_centroid = cluster_center_labels[which_centroid].cpu().data.item()
+            print("k_means label: ",class_label_centroid)
+            print("pseudo label: ", pseudo_label)
+            correct_uncertain += int(class_label_centroid==label)
+            correct_pseudo += int(pseudo_label==label)
         features.append(output)
         labels.append(label)
         name_list.append(name[0])
         print(label)
-
+print("Correctly Labelled Uncertain using K-Means: ", correct_uncertain/uncertain_count)
+print("Correctly Labelled Uncertain using Pseudo Label: ", correct_pseudo/uncertain_count)
 feat_dict = {}
 end = time.time()
-print((end-start)/60)
-features = torch.tensor(np.array(features))
-feat_dict['feat_vec'] = features
-feat_dict['labels'] = labels
-feat_dict['names'] = name_list
-print(len(labels))
-print(features.shape)
-print(len(name_list))
-print("Saving dictionary as pickle")
-filehandler = open("../banks/dictionary.pkl", 'wb')
-pickle.dump(feat_dict, filehandler)
+print((end-start)/60, " minutes")
 
 
 def test(loader):

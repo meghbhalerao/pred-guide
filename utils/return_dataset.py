@@ -274,8 +274,9 @@ def return_dataset_randaugment(args):
             transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
         ]),
     }
-    source_dataset = Imagelists_VISDA(image_set_file_s, root=root,
-                                      transform=data_transforms['train'])
+    source_dataset = Imagelists_VISDA(image_set_file_s, root=root, transform=data_transforms['train']) #ORIGINAL
+    #source_dataset = Imagelists_VISDA(image_set_file_s, root=root, transform=TransformFix("randaugment", args.net, mean =[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]))
+
     target_dataset = Imagelists_VISDA(image_set_file_t, root=root,
                                       transform=data_transforms['val'])
     target_dataset_val = Imagelists_VISDA(image_set_file_t_val, root=root,
