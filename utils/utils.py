@@ -19,7 +19,6 @@ def weights_init(m):
         m.weight.data.normal_(1.0, 0.1)
         m.bias.data.fill_(0)
 
-
 def save_checkpoint(state, is_best, checkpoint='checkpoint',
                     filename='checkpoint.pth.tar'):
     filepath = os.path.join(checkpoint, filename)

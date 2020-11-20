@@ -325,7 +325,7 @@ def train():
                     'best_acc_test': best_acc_test,
                     'optimizer_g' : optimizer_g.state_dict(),
                     'optimizer_f' : optimizer_f.state_dict(),
-                    'target_feat_dict': feat_dict_target
+                    'feat_dict_target': feat_dict_target
                     },os.path.join(args.checkpath,"%s_%s_%s_%d.ckpt.pth.tar"%(args.net,args.source,args.target,step)))
 
 def test(loader):

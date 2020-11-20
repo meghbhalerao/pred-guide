@@ -83,7 +83,7 @@ F1.eval()
 
 
 # Loading the weights from the checkpoint
-ckpt = torch.load("../save_model_ssda/resnet34_real_sketch_8500.ckpt.pth.tar")
+ckpt = torch.load("../save_model_ssda/resnet34_real_sketch_5000.ckpt.pth.tar")
 G_dict = ckpt["G_state_dict"]
 G_dict_backup = G_dict.copy()
 for key in G_dict_backup.keys():
@@ -101,7 +101,8 @@ F1.load_state_dict(F1_dict)
 # Loading the feature banks
 #f = open("../banks/unlabelled_target_sketch_8500.pkl","rb")
 #feat_dict_target = edict(pickle.load(f))
-feat_dict_target = ckpt["feat_dict_target"]
+print(ckpt.keys())
+feat_dict_target = ckpt["target_feat_dict"]
 feat_vectors_target  = feat_dict_target.feat_vec.cuda() # Pushing computed features to cuda
 
 # Conditionally performing k means clustering
@@ -164,6 +165,7 @@ with torch.no_grad():
         labels.append(label)
         name_list.append(name[0])
         print(label)
+
 print("Correctly Labelled Uncertain using K-Means: ", correct_uncertain/uncertain_count)
 print("Correctly Labelled Uncertain using Pseudo Label: ", correct_pseudo/uncertain_count)
 feat_dict = {}
