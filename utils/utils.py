@@ -64,7 +64,6 @@ def k_means(vectors, num_clusters):
     cluster_ids_x, cluster_centers = kmeans( X=vectors, num_clusters=num_clusters, distance='euclidean', device=torch.device('cuda:0'))
     return cluster_ids_x, cluster_centers
 
-
 def get_confident_label(list_predictions, thresh):
     for prediction in list_predictions:
         prediction = F.softmax(prediction,dim=1)
@@ -72,8 +71,7 @@ def get_confident_label(list_predictions, thresh):
             return prediction.max(1)[1]
     return -1
 
-
-def get_confident(k_neighbors,feat_dict, K, G, F1, thresh, mask_loss_uncertain):
+def get_confident(k_neighbors,feat_dict, K, F1, thresh, mask_loss_uncertain):
     feat_vec = feat_dict.feat_vec
     k_feats = []
     for img in k_neighbors:
@@ -81,7 +79,6 @@ def get_confident(k_neighbors,feat_dict, K, G, F1, thresh, mask_loss_uncertain):
         for neighbor in range(K):
             img_feats.append(feat_vec[img[neighbor]])
         k_feats.append(img_feats)
-    k_feats = np.array(k_feats)
     pseudo_labels = []
     for idx, img_nearest in enumerate(k_feats):
         pred_list = []

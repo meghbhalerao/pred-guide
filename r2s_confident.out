@@ -126,3 +126,55 @@ S real T sketch Train Ep: 3500 lr0.007984535821401871 	 Loss Classification: 0.5
 
 Test set: Average loss: 3.1326, Accuracy: 9776/23808 F1 (41%)
 
+
+Test set: Average loss: 2.7697, Accuracy: 158/360 F1 (44%)
+
+best acc test 55.355343 best acc val 43.888889
+saving model...
+S real T sketch Train Ep: 3600 lr0.007940462859307384 	 Loss Classification: 0.198663 Loss T 0.091260 Method MME
+
+S real T sketch Train Ep: 3700 lr0.007896953388873518 	 Loss Classification: 0.458916 Loss T 0.083174 Method MME
+
+S real T sketch Train Ep: 3800 lr0.007853996170872714 	 Loss Classification: 0.369057 Loss T 0.102981 Method MME
+
+S real T sketch Train Ep: 3900 lr0.00781158026956848 	 Loss Classification: 0.481362 Loss T 0.112519 Method MME
+
+S real T sketch Train Ep: 4000 lr0.007769695042409123 	 Loss Classification: 0.304492 Loss T 0.102778 Method MME
+
+
+Test set: Average loss: 2.2170, Accuracy: 13661/23808 F1 (57%)
+
+
+Test set: Average loss: 2.0288, Accuracy: 201/360 F1 (56%)
+
+best acc test 55.355343 best acc val 55.833333
+saving model...
+S real T sketch Train Ep: 4100 lr0.007728330130142108 	 Loss Classification: 0.394918 Loss T 0.085571 Method MME
+
+S real T sketch Train Ep: 4200 lr0.007687475447329114 	 Loss Classification: 0.240051 Loss T 0.090030 Method MME
+
+S real T sketch Train Ep: 4300 lr0.0076471211732427845 	 Loss Classification: 0.269138 Loss T 0.070233 Method MME
+
+S real T sketch Train Ep: 4400 lr0.007607257743127307 	 Loss Classification: 0.484525 Loss T 0.101497 Method MME
+
+S real T sketch Train Ep: 4500 lr0.007567875839805858 	 Loss Classification: 0.458903 Loss T 0.103961 Method MME
+
+
+Test set: Average loss: 2.2194, Accuracy: 13729/23808 F1 (58%)
+
+
+Test set: Average loss: 2.0579, Accuracy: 195/360 F1 (54%)
+
+best acc test 55.355343 best acc val 54.166667
+saving model...
+S real T sketch Train Ep: 4600 lr0.007528966385618854 	 Loss Classification: 0.328661 Loss T 0.087596 Method MME
+
+S real T sketch Train Ep: 4700 lr0.007490520534677821 	 Loss Classification: 0.252821 Loss T 0.108401 Method MME
+
+S real T sketch Train Ep: 4800 lr0.007452529665420465 	 Loss Classification: 0.133289 Loss T 0.089884 Method MME
+
+S real T sketch Train Ep: 4900 lr0.007414985373453289 	 Loss Classification: 0.321720 Loss T 0.092865 Method MME
+
+S real T sketch Train Ep: 5000 lr0.007377879464668811 	 Loss Classification: 0.329343 Loss T 0.066675 Method MME
+
+run_train.sh: line 7: 1930073 Killed                  CUDA_VISIBLE_DEVICES=0,1 python main_match_confident.py --method MME --dataset multi --source real --target sketch --num 3 --net resnet34 --augmentation_policy rand_augment --save_check

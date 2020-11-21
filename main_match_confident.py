@@ -226,7 +226,6 @@ def train():
             im_data_tu_strong, im_data_tu_weak = process_batch(im_data_tu, augmentation, label=False) #Augmentations happenning here - apply strong augmentation to labelled examples and (weak + strong) to unlablled examples
         elif args.augmentation_policy == "rand_augment":
             im_data_tu_weak_aug, im_data_tu_strong_aug = data_t_unl[0][0].cuda(), data_t_unl[0][1].cuda()
-            img_name_batch = data_t_unl[2]
         elif args.augmentation_policy == "ct_augment":
             im_data_tu_weak, im_data_tu_strong = data_t_unl[0][0], data_t_unl[0][1]
 
@@ -236,7 +235,6 @@ def train():
             pred_weak_aug = F1(G(im_data_tu_weak_aug))
         
         prob_weak_aug = F.softmax(pred_weak_aug,dim=1)
-        prob_strong_aug = F.softmax(pred_strong_aug,dim=1)
         mask_loss = prob_weak_aug.max(1)[0]>thresh
         pseudo_labels = pred_weak_aug.max(axis=1)[1]
         loss_pseudo_unl = torch.mean(mask_loss.int() * criterion_pseudo(pred_strong_aug,pseudo_labels))
@@ -246,14 +244,13 @@ def train():
         f_batch = f_batch.detach()
         
         # Get max of similarity distribution to check which element or label is it closest to in these vectors
-        if step > 1:
+        if step > 2500:
             sim_distribution = get_similarity_distribution(feat_dict_target,data_t_unl,G)
             k_neighbors, _ = get_kNN(sim_distribution, feat_dict_target, K)    
-            mask_loss_uncertain = (prob_weak_aug.max(1)[0]<thresh) & (prob_weak_aug.max(1)[0]>0.3)
-            knn_confident_pseudo_labels = get_confident(k_neighbors,feat_dict_target, K, G, F1, thresh, mask_loss_uncertain)
+            mask_loss_uncertain = (prob_weak_aug.max(1)[0]<thresh) & (prob_weak_aug.max(1)[0]>0.7)
+            knn_confident_pseudo_labels = get_confident(k_neighbors,feat_dict_target, K, F1, thresh, mask_loss_uncertain)
             loss_pseudo_unl_knn = torch.mean(mask_loss_uncertain.int() * criterion_pseudo(pred_strong_aug,knn_confident_pseudo_labels))
             loss_pseudo_unl_knn.backward(retain_graph=True)
-
 
         output = G(data)
         out1 = F1(output)
