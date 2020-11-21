@@ -1,5 +1,6 @@
 import os
 from os import name
+from numpy.core.fromnumeric import shape
 import torch
 import torch.nn as nn
 import shutil
@@ -55,10 +56,41 @@ def get_kNN(sim_distribution, feat_dict, k = 1):
         l = idxs[i].cpu().data.numpy()
         k_neighbors.append(list(l))
         labels_k_neighbors.append(list(np.array(feat_dict.labels)[l]))
-    print("True Labels: ", sim_distribution.labels)
-    print("KNN Labels:", labels_k_neighbors)
+    #print("True Labels: ", sim_distribution.labels)
+    #print("KNN Labels:", labels_k_neighbors)
     return k_neighbors, labels_k_neighbors
 
 def k_means(vectors, num_clusters):
     cluster_ids_x, cluster_centers = kmeans( X=vectors, num_clusters=num_clusters, distance='euclidean', device=torch.device('cuda:0'))
     return cluster_ids_x, cluster_centers
+
+
+def get_confident_label(list_predictions, thresh):
+    for prediction in list_predictions:
+        prediction = F.softmax(prediction,dim=1)
+        if prediction.max(1)[0] > thresh:
+            return prediction.max(1)[1]
+    return -1
+
+
+def get_confident(k_neighbors,feat_dict, K, G, F1, thresh, mask_loss_uncertain):
+    feat_vec = feat_dict.feat_vec
+    k_feats = []
+    for img in k_neighbors:
+        img_feats = []
+        for neighbor in range(K):
+            img_feats.append(feat_vec[img[neighbor]])
+        k_feats.append(img_feats)
+    k_feats = np.array(k_feats)
+    pseudo_labels = []
+    for idx, img_nearest in enumerate(k_feats):
+        pred_list = []
+        for feat in img_nearest:
+            pred_label = F1(feat.unsqueeze(0))
+            pred_list.append(pred_label)
+        confident_label = get_confident_label(pred_list, thresh)
+        if confident_label == -1: # I will assign label only when it is confident
+            mask_loss_uncertain[idx] = False
+            confident_label = 0 # Just making this so that it is compatible with CE loss - anyways this is not going to be considered for the loss calculation
+        pseudo_labels.append(confident_label)        
+    return torch.tensor(pseudo_labels).cuda()
