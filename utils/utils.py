@@ -92,15 +92,36 @@ def get_confident(k_neighbors,feat_dict, K, F1, thresh, mask_loss_uncertain):
         pseudo_labels.append(confident_label)        
     return torch.tensor(pseudo_labels).cuda()
 
-def get_majority_vote_label(list_predictions):
+def unique(list1): 
+    unique_list = [] 
+    for x in list1: 
+        if x not in unique_list: 
+            unique_list.append(x) 
+    return unique_list
+
+def get_majority_from_list(x):
+    unique_x = unique(x)
+    element_count = []
+    for unique_number in unique_x:
+        for all_num in x:
+            if all_num == unique_number:
+                count = count + 1
+        element_count.append(count)
+        count = 0
+    element_count = np.array(element_count)
+    pos = np.argmax(element_count)
+    majority_label = unique_number[pos]
+    return majority_label, element_count[pos]
+        
+def get_majority_vote_label(list_predictions,K):
     print(len(list_predictions))
     label_list = []
     for prediction in list_predictions:
         prediction = F.softmax(prediction,dim=1)
         label_list.append(prediction.max(1)[1])
     print(len(label_list))
-    
-    pass
+    majority_label, num_maj = get_majority_from_list(label_list)
+    return majority_label, num_maj
 
 
 def get_majority_vote(k_neighbors,feat_dict, K, F1, thresh, mask_loss_uncertain):
@@ -118,9 +139,9 @@ def get_majority_vote(k_neighbors,feat_dict, K, F1, thresh, mask_loss_uncertain)
         for feat in img_nearest:
             pred_label = F1(feat.unsqueeze(0))
             pred_list.append(pred_label)
-        majority_vote_label = get_majority_vote_label(pred_list)
-        if confident_label == -1: # Disregard example when not confident
+        majority_vote_label, num_maj = get_majority_vote_label(pred_list,K)
+        if num_maj < int(K/2): # Disregard example when not confident
             mask_loss_uncertain[idx] = False
-            confident_label = 0 # Making it compatible with CE loss - anyways this is not considered for loss calculation
-        pseudo_labels.append(confident_label)        
+            majority_vote_label = 0 # Making it compatible with CE loss - anyways this is not considered for loss calculation
+        pseudo_labels.append(majority_vote_label)        
     return torch.tensor(pseudo_labels).cuda()
