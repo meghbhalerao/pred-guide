@@ -124,7 +124,7 @@ def get_majority_vote_label(list_predictions,K):
     majority_label, num_maj = get_majority_from_list(label_list)
     return majority_label, num_maj
 
-def get_majority_vote(k_neighbors,feat_dict, K, F1, thresh, mask_loss_uncertain):
+def get_majority_vote(k_neighbors,feat_dict, K, F1, mask_loss_uncertain):
     feat_vec = feat_dict.feat_vec
     k_feats = []
     for img in k_neighbors:

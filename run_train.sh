@@ -1,7 +1,7 @@
 #!/bin/sh
 #CUDA_VISIBLE_DEVICES=1 python main_match.py --method ENT --dataset multi --source real --target sketch --num 3 --net resnet34 --save_check
 
-CUDA_VISIBLE_DEVICES=1 python main_match_majvot.py --method MME --dataset multi --source real --target sketch --num 3 --net resnet34 --augmentation_policy rand_augment --save_check
+#CUDA_VISIBLE_DEVICES=1 python main_match_majvot.py --method MME --dataset multi --source real --target sketch --num 3 --net resnet34 --augmentation_policy rand_augment --save_check
 #CUDA_VISIBLE_DEVICES=0,1 python main_max_acc.py --method MME --dataset multi --source real --target sketch --num 3 --net resnet34 --augmentation_policy rand_augment --save_check
 
 #CUDA_VISIBLE_DEVICES=0 python main_match_confident.py --method MME --dataset multi --source real --target sketch --num 3 --net resnet34 --augmentation_policy rand_augment --save_check
@@ -10,7 +10,7 @@ CUDA_VISIBLE_DEVICES=1 python main_match_majvot.py --method MME --dataset multi 
 # Useful command to kill all nvidia processes
 #fuser -v /dev/nvidia*
 
-#CUDA_VISIBLE_DEVICES=0,1 python main_match_bank.py --method MME --dataset multi --source real --target sketch --num 3 --net resnet34 --augmentation_policy rand_augment --save_check
+CUDA_VISIBLE_DEVICES=0 python main_match.py --method MME --dataset multi --source real --target sketch --num 3 --net resnet34 --augmentation_policy rand_augment --save_check
 
 #CUDA_VISIBLE_DEVICES=1 python main_rot.py --dataset multi --target sketch --num 3 --net resnet34 --save_check
 #CUDA_VISIBLE_DEVICES=1 python main_rot.py --dataset multi --target clipart --num 3 --net resnet34 --save_check
