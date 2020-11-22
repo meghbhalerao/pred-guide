@@ -92,6 +92,17 @@ def get_confident(k_neighbors,feat_dict, K, F1, thresh, mask_loss_uncertain):
         pseudo_labels.append(confident_label)        
     return torch.tensor(pseudo_labels).cuda()
 
+def get_majority_vote_label(list_predictions):
+    print(len(list_predictions))
+    label_list = []
+    for prediction in list_predictions:
+        prediction = F.softmax(prediction,dim=1)
+        label_list.append(prediction.max(1)[1])
+    print(len(label_list))
+    
+    pass
+
+
 def get_majority_vote(k_neighbors,feat_dict, K, F1, thresh, mask_loss_uncertain):
     feat_vec = feat_dict.feat_vec
     k_feats = []
@@ -101,12 +112,13 @@ def get_majority_vote(k_neighbors,feat_dict, K, F1, thresh, mask_loss_uncertain)
             img_feats.append(feat_vec[img[neighbor]])
         k_feats.append(img_feats)
     pseudo_labels = []
+    print(len(k_feats))
     for idx, img_nearest in enumerate(k_feats):
         pred_list = []
         for feat in img_nearest:
             pred_label = F1(feat.unsqueeze(0))
             pred_list.append(pred_label)
-        confident_label = get_confident_label(pred_list, thresh)
+        majority_vote_label = get_majority_vote_label(pred_list)
         if confident_label == -1: # Disregard example when not confident
             mask_loss_uncertain[idx] = False
             confident_label = 0 # Making it compatible with CE loss - anyways this is not considered for loss calculation

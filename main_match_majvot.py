@@ -11,7 +11,7 @@ import torch.optim as optim
 from torch.autograd import Variable
 from model.resnet import resnet34
 from model.basenet import AlexNetBase, VGGBase, Predictor, Predictor_deep
-from utils.utils import get_confident, weights_init, update_features, get_similarity_distribution, get_kNN, k_means
+from utils.utils import get_confident, weights_init, update_features, get_similarity_distribution, get_kNN, k_means, get_majority_vote
 from utils.lr_schedule import inv_lr_scheduler, get_cosine_schedule_with_warmup
 from utils.return_dataset import return_dataset, return_dataset_randaugment
 from utils.loss import entropy, adentropy
@@ -248,8 +248,8 @@ def train():
             sim_distribution = get_similarity_distribution(feat_dict_target,data_t_unl,G)
             k_neighbors, _ = get_kNN(sim_distribution, feat_dict_target, K)    
             mask_loss_uncertain = (prob_weak_aug.max(1)[0]<thresh) & (prob_weak_aug.max(1)[0]>0.7)
-            knn_confident_pseudo_labels = get_confident(k_neighbors,feat_dict_target, K, F1, thresh, mask_loss_uncertain)
-            loss_pseudo_unl_knn = torch.mean(mask_loss_uncertain.int() * criterion_pseudo(pred_strong_aug,knn_confident_pseudo_labels))
+            knn_majvot_pseudo_labels = get_majority_vote(k_neighbors,feat_dict_target, K, F1, thresh, mask_loss_uncertain)
+            loss_pseudo_unl_knn = torch.mean(mask_loss_uncertain.int() * criterion_pseudo(pred_strong_aug,knn_majvot_pseudo_labels))
             loss_pseudo_unl_knn.backward(retain_graph=True)
 
         output = G(data)
