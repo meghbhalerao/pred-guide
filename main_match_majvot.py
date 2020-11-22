@@ -292,13 +292,8 @@ def train():
         if step % args.log_interval == 0:
             print(log_train)
         if step % args.save_interval == 0 and step > 0:
-            loss_test, acc_test = test(target_loader_test)
-            loss_val, acc_val = test(target_loader_val)
-            # Cluster the target features
-            vectors = feat_dict_target.feat_vec
-            #cluster_ids_x, cluster_centers = k_means(vectors, len(class_list))
-            #print(cluster_ids_x, cluster_centers.shape)
-            
+            _, acc_test = test(target_loader_test)
+            _, acc_val = test(target_loader_val)
             G.train()
             F1.train()
             if acc_val >= best_acc:

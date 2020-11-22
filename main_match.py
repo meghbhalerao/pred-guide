@@ -129,12 +129,11 @@ if args.pretrained_ckpt is not None:
     G.load_state_dict(ckpt["G"])
     F1.load_state_dict(ckpt["F1"])
 
-4
 lr = args.lr
 G.cuda()
 F1.cuda()
-G = nn.DataParallel(G, device_ids=[0, 1])
-F1 = nn.DataParallel(F1, device_ids=[0, 1])
+#G = nn.DataParallel(G, device_ids=[0, 1])
+#F1 = nn.DataParallel(F1, device_ids=[0, 1])
 
 if os.path.exists(args.checkpath) == False:
     os.mkdir(args.checkpath)
@@ -215,7 +214,7 @@ def train():
         data_t = next(data_iter_t)
         data_t_unl = next(data_iter_t_unl)
         data_s = next(data_iter_s)
-        #im_data_s = data_s[0].cuda()  - ORIGINAL 
+        im_data_s = data_s[0].cuda()  #- ORIGINAL 
         gt_labels_s = data_s[1].cuda()
 
 
@@ -230,10 +229,10 @@ def train():
             im_data_tu = data_t_unl[0][2].cuda()
 
         zero_grad_all()
-        #data = torch.cat((im_data_s, im_data_t), 0)  - ORIGINAL
-        #target = torch.cat((gt_labels_s, gt_labels_t), 0) - ORIGINAL 
-        data = torch.cat((im_data_s_weak, im_data_s_strong, im_data_t), 0) #concatenating the labelled images
-        target = torch.cat((gt_labels_s, gt_labels_s, gt_labels_t), 0)
+        data = torch.cat((im_data_s, im_data_t), 0)  #- ORIGINAL
+        target = torch.cat((gt_labels_s, gt_labels_t), 0) #- ORIGINAL 
+        #data = torch.cat((im_data_s_weak, im_data_s_strong, im_data_t), 0) #concatenating the labelled images
+        #target = torch.cat((gt_labels_s, gt_labels_s, gt_labels_t), 0)
         if args.augmentation_policy == "ours": # can call a method here which does "ours" augmentation policy
             im_data_tu_strong, im_data_tu_weak = process_batch(im_data_tu, augmentation, label=False) #Augmentations happenning here - apply strong augmentation to labelled examples and (weak + strong) to unlablled examples
         elif args.augmentation_policy == "rand_augment":

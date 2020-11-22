@@ -86,8 +86,29 @@ def get_confident(k_neighbors,feat_dict, K, F1, thresh, mask_loss_uncertain):
             pred_label = F1(feat.unsqueeze(0))
             pred_list.append(pred_label)
         confident_label = get_confident_label(pred_list, thresh)
-        if confident_label == -1: # I will assign label only when it is confident
+        if confident_label == -1: # Disregard example when not confident
             mask_loss_uncertain[idx] = False
-            confident_label = 0 # Just making this so that it is compatible with CE loss - anyways this is not going to be considered for the loss calculation
+            confident_label = 0 # Making it compatible with CE loss - anyways this is not considered for loss calculation
+        pseudo_labels.append(confident_label)        
+    return torch.tensor(pseudo_labels).cuda()
+
+def get_majority_vote(k_neighbors,feat_dict, K, F1, thresh, mask_loss_uncertain):
+    feat_vec = feat_dict.feat_vec
+    k_feats = []
+    for img in k_neighbors:
+        img_feats = []
+        for neighbor in range(K):
+            img_feats.append(feat_vec[img[neighbor]])
+        k_feats.append(img_feats)
+    pseudo_labels = []
+    for idx, img_nearest in enumerate(k_feats):
+        pred_list = []
+        for feat in img_nearest:
+            pred_label = F1(feat.unsqueeze(0))
+            pred_list.append(pred_label)
+        confident_label = get_confident_label(pred_list, thresh)
+        if confident_label == -1: # Disregard example when not confident
+            mask_loss_uncertain[idx] = False
+            confident_label = 0 # Making it compatible with CE loss - anyways this is not considered for loss calculation
         pseudo_labels.append(confident_label)        
     return torch.tensor(pseudo_labels).cuda()
