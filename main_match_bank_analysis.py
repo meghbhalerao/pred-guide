@@ -125,8 +125,8 @@ if args.pretrained_ckpt is not None:
 lr = args.lr
 G.cuda()
 F1.cuda()
-#G = nn.DataParallel(G, device_ids=[0, 1])
-#F1 = nn.DataParallel(F1, device_ids=[0, 1])
+G = nn.DataParallel(G, device_ids=[0, 1])
+F1 = nn.DataParallel(F1, device_ids=[0, 1])
 
 if os.path.exists(args.checkpath) == False:
     os.mkdir(args.checkpath)
@@ -246,11 +246,11 @@ def train():
         f_batch = f_batch.detach()
         
         # Get max of similarity distribution to check which element or label is it closest to in these vectors
-        if step > 2000:
+        if step > 20000:
             sim_distribution = get_similarity_distribution(feat_dict_target,data_t_unl,G)
             k_neighbors, labels_k_neighbors = get_kNN(sim_distribution, feat_dict_target, k = 3)    
             #k_neighbors, labels_k_neighbors = get_kNN(sim_distribution, feat_dict_source, k = 3)
-            print("Pseudo Labels:", pseudo_labels)
+            #print("Pseudo Labels:", pseudo_labels)
 
         output = G(data)
         out1 = F1(output)

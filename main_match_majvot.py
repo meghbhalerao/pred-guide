@@ -249,7 +249,7 @@ def train():
             k_neighbors, _ = get_kNN(sim_distribution, feat_dict_target, K)    
             mask_loss_uncertain = (prob_weak_aug.max(1)[0]<thresh) & (prob_weak_aug.max(1)[0]>0.7)
             knn_majvot_pseudo_labels = get_majority_vote(k_neighbors,feat_dict_target, K, F1, mask_loss_uncertain)
-            loss_pseudo_unl_knn = torch.mean(mask_loss_uncertain.int() * criterion_pseudo(pred_strong_aug,knn_majvot_pseudo_labels))
+            loss_pseudo_unl_knn = torch.mean(mask_loss_uncertain.int() * criterion_pseudo(pred_strong_aug, knn_majvot_pseudo_labels))
             loss_pseudo_unl_knn.backward(retain_graph=True)
 
         output = G(data)

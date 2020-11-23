@@ -244,7 +244,7 @@ def train():
         f_batch = f_batch.detach()
         
         # Get max of similarity distribution to check which element or label is it closest to in these vectors
-        if step > 1:
+        if step > 2500:
             sim_distribution = get_similarity_distribution(feat_dict_target,data_t_unl,G)
             k_neighbors, _ = get_kNN(sim_distribution, feat_dict_target, K)    
             mask_loss_uncertain = (prob_weak_aug.max(1)[0]<thresh) & (prob_weak_aug.max(1)[0]>0.7)

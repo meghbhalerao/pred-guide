@@ -132,8 +132,8 @@ if args.pretrained_ckpt is not None:
 lr = args.lr
 G.cuda()
 F1.cuda()
-#G = nn.DataParallel(G, device_ids=[0, 1])
-#F1 = nn.DataParallel(F1, device_ids=[0, 1])
+G = nn.DataParallel(G, device_ids=[0, 1])
+F1 = nn.DataParallel(F1, device_ids=[0, 1])
 
 if os.path.exists(args.checkpath) == False:
     os.mkdir(args.checkpath)
@@ -210,15 +210,14 @@ def train():
         if step % len_train_source == 0:
             data_iter_s = iter(source_loader)
         
-        # Extracting the batches from the iteratable dataloader
+        # Extracting the batches from the iterable dataloader
         data_t = next(data_iter_t)
         data_t_unl = next(data_iter_t_unl)
         data_s = next(data_iter_s)
         im_data_s = data_s[0].cuda()  #- ORIGINAL 
         gt_labels_s = data_s[1].cuda()
 
-
-        im_data_s_weak, im_data_s_strong, im_data_s_standard = data_s[0][0].cuda(), data_s[0][1].cuda(), data_s[0][2].cuda()
+        #im_data_s_weak, im_data_s_strong, im_data_s_standard = data_s[0][0].cuda(), data_s[0][1].cuda(), data_s[0][2].cuda()
 
         im_data_t = data_t[0].cuda()
         gt_labels_t = data_t[1].cuda()
