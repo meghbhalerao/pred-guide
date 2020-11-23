@@ -218,7 +218,7 @@ def train():
         gt_labels_s = data_s[1].cuda()
 
         #im_data_s_weak, im_data_s_strong, im_data_s_standard = data_s[0][0].cuda(), data_s[0][1].cuda(), data_s[0][2].cuda()
-
+    
         im_data_t = data_t[0].cuda()
         gt_labels_t = data_t[1].cuda()
 

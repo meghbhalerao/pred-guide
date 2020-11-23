@@ -11,7 +11,7 @@ import torch.optim as optim
 from torch.autograd import Variable
 from model.resnet import resnet34
 from model.basenet import AlexNetBase, VGGBase, Predictor, Predictor_deep
-from utils.utils import get_confident, weights_init, update_features, get_similarity_distribution, get_kNN, k_means, get_majority_vote
+from utils.utils import get_confident, get_most_confident, weights_init, update_features, get_similarity_distribution, get_kNN, k_means, get_majority_vote
 from utils.lr_schedule import inv_lr_scheduler, get_cosine_schedule_with_warmup
 from utils.return_dataset import return_dataset, return_dataset_randaugment
 from utils.loss import entropy, adentropy
@@ -125,8 +125,8 @@ if args.pretrained_ckpt is not None:
 lr = args.lr
 G.cuda()
 F1.cuda()
-#G = nn.DataParallel(G, device_ids=[0, 1])
-#F1 = nn.DataParallel(F1, device_ids=[0, 1])
+G = nn.DataParallel(G, device_ids=[0, 1])
+F1 = nn.DataParallel(F1, device_ids=[0, 1])
 
 if os.path.exists(args.checkpath) == False:
     os.mkdir(args.checkpath)
@@ -186,7 +186,7 @@ def train():
         ema_G = ModelEMA(args, G, args.ema_decay)
 
     momentum = 0
-    K = 30
+    K = 15
     for step in range(all_step):
         if args.LR_scheduler == "standard": # choosing appropriate learning rate
             optimizer_g = inv_lr_scheduler(param_lr_g, optimizer_g, step, init_lr=args.lr)
@@ -247,10 +247,15 @@ def train():
         if step > 2500:
             sim_distribution = get_similarity_distribution(feat_dict_target,data_t_unl,G)
             k_neighbors, _ = get_kNN(sim_distribution, feat_dict_target, K)    
-            mask_loss_uncertain = (prob_weak_aug.max(1)[0]<thresh) & (prob_weak_aug.max(1)[0]>0.7)
-            knn_majvot_pseudo_labels = get_majority_vote(k_neighbors,feat_dict_target, K, F1, mask_loss_uncertain)
-            loss_pseudo_unl_knn = torch.mean(mask_loss_uncertain.int() * criterion_pseudo(pred_strong_aug, knn_majvot_pseudo_labels))
-            loss_pseudo_unl_knn.backward(retain_graph=True)
+            #mask_loss_uncertain = (prob_weak_aug.max(1)[0]<thresh) & (prob_weak_aug.max(1)[0]>0.7)
+            mask_loss_uncertain = prob_weak_aug.max(1)[0]<thresh
+            #knn_majvot_pseudo_labels = get_majority_vote(k_neighbors,feat_dict_target, K, F1, mask_loss_uncertain)
+            knn_majvot_pseudo_labels = get_most_confident(k_neighbors,feat_dict_target, K, F1)
+            #loss_pseudo_unl_knn = torch.mean(mask_loss_uncertain.int() * criterion_pseudo(pred_strong_aug, knn_majvot_pseudo_labels))
+            if  not torch.sum(mask_loss_uncertain.int()) == 0:
+                loss_pseudo_unl_knn = torch.sum(mask_loss_uncertain.int() * criterion_pseudo(pred_strong_aug, knn_majvot_pseudo_labels))/(torch.sum(mask_loss_uncertain.int()))
+                loss_pseudo_unl_knn.backward(retain_graph=True)
+            
 
         output = G(data)
         out1 = F1(output)

@@ -247,7 +247,7 @@ def train():
         if step > 2500:
             sim_distribution = get_similarity_distribution(feat_dict_target,data_t_unl,G)
             k_neighbors, _ = get_kNN(sim_distribution, feat_dict_target, K)    
-            mask_loss_uncertain = (prob_weak_aug.max(1)[0]<thresh) & (prob_weak_aug.max(1)[0]>0.7)
+            mask_loss_uncertain = (prob_weak_aug.max(1)[0]<thresh) & (prob_weak_aug.max(1)[0]>0.4)
             knn_confident_pseudo_labels = get_confident(k_neighbors,feat_dict_target, K, F1, thresh, mask_loss_uncertain)
             loss_pseudo_unl_knn = torch.mean(mask_loss_uncertain.int() * criterion_pseudo(pred_strong_aug,knn_confident_pseudo_labels))
             loss_pseudo_unl_knn.backward(retain_graph=True)
