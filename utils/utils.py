@@ -33,17 +33,21 @@ def update_features(feat_dict, data, G, momentum, source  = False):
         img_batch = data[0][0].cuda()
     else:
         img_batch = data[0].cuda()
+        
     names_batch = list(names_batch)
     idx = [feat_dict.names.index(name) for name in names_batch]
     f_batch = G(img_batch)
     feat_dict.feat_vec[idx] = (momentum * feat_dict.feat_vec[idx] + (1 - momentum) * f_batch).detach()
     return f_batch, feat_dict
 
-def get_similarity_distribution(feat_dict,data_t_unl, G):
-    img_batch = data_t_unl[0][0].cuda()
+def get_similarity_distribution(feat_dict,data_batch, G, source = False):
+    if source:
+        img_batch  = data_batch[0].cuda()
+    else:
+        img_batch = data_batch[0][0].cuda()
     f_batch = G(img_batch)
     sim_distribution  = torch.mm(F.normalize(feat_dict.feat_vec, dim=1),F.normalize(torch.transpose(f_batch,0,1),dim = 0))
-    sim_distribution = edict({"cosines": sim_distribution, "names": data_t_unl[2], "labels": data_t_unl[1]})
+    sim_distribution = edict({"cosines": sim_distribution, "names": data_batch[2], "labels": data_batch[1]})
     return sim_distribution
 
 def get_kNN(sim_distribution, feat_dict, k = 1):
@@ -71,7 +75,7 @@ def get_confident_label(list_predictions, thresh):
             return prediction.max(1)[1].cpu().data.item()
     return -1
 
-def get_confident(k_neighbors,feat_dict, K, F1, thresh, mask_loss_uncertain):
+def get_confident(k_neighbors,feat_dict, K, F1, thresh, mask_loss_uncertain,source = False):
     feat_vec = feat_dict.feat_vec
     k_feats = []
     for img in k_neighbors:
@@ -124,8 +128,22 @@ def get_majority_vote_label(list_predictions,K):
     majority_label, num_maj = get_majority_from_list(label_list)
     return majority_label, num_maj
 
-def get_majority_vote(k_neighbors,feat_dict, K, F1, mask_loss_uncertain):
+def get_majority_vote(k_neighbors,feat_dict, K, F1, mask_loss_uncertain, source = False):
     feat_vec = feat_dict.feat_vec
+    labels = feat_dict.labels
+    if source:
+        k_feats = []
+        for img in k_neighbors:
+            pseudo_labels = []
+            for neighbor in range(K):
+                pseudo_labels.append(labels[img[neighbor]])
+            k_feats.append(pseudo_labels)
+        pseudo_labels_final = []
+        for img in k_feats:
+            majority_label, _ = get_majority_from_list(img)
+            pseudo_labels_final.append(majority_label)
+        return torch.tensor(pseudo_labels_final).cuda()
+
     k_feats = []
     for img in k_neighbors:
         img_feats = []

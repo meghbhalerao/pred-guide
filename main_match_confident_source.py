@@ -11,7 +11,7 @@ import torch.optim as optim
 from torch.autograd import Variable
 from model.resnet import resnet34
 from model.basenet import AlexNetBase, VGGBase, Predictor, Predictor_deep
-from utils.utils import get_confident, get_most_confident, weights_init, update_features, get_similarity_distribution, get_kNN, k_means, get_majority_vote
+from utils.utils import get_confident, get_majority_vote, weights_init, update_features, get_similarity_distribution, get_kNN, k_means
 from utils.lr_schedule import inv_lr_scheduler, get_cosine_schedule_with_warmup
 from utils.return_dataset import return_dataset, return_dataset_randaugment
 from utils.loss import entropy, adentropy
@@ -186,7 +186,7 @@ def train():
         ema_G = ModelEMA(args, G, args.ema_decay)
 
     momentum = 0
-    K = 15
+    K = 10
     for step in range(all_step):
         if args.LR_scheduler == "standard": # choosing appropriate learning rate
             optimizer_g = inv_lr_scheduler(param_lr_g, optimizer_g, step, init_lr=args.lr)
@@ -240,22 +240,19 @@ def train():
         loss_pseudo_unl = torch.mean(mask_loss.int() * criterion_pseudo(pred_strong_aug,pseudo_labels))
         loss_pseudo_unl.backward(retain_graph=True)
         
-        f_batch, feat_dict_target  = update_features(feat_dict_target, data_t_unl, G, momentum)
+        f_batch, feat_dict_source  = update_features(feat_dict_source, data_s, G, momentum, source  = True)
         f_batch = f_batch.detach()
         
         # Get max of similarity distribution to check which element or label is it closest to in these vectors
-        if step > 2500:
-            sim_distribution = get_similarity_distribution(feat_dict_target,data_t_unl,G)
-            k_neighbors, _ = get_kNN(sim_distribution, feat_dict_target, K)    
-            #mask_loss_uncertain = (prob_weak_aug.max(1)[0]<thresh) & (prob_weak_aug.max(1)[0]>0.7)
+        if step > 3000:
+            sim_distribution = get_similarity_distribution(feat_dict_source,data_t_unl,G,source = False)
+            k_neighbors, _ = get_kNN(sim_distribution, feat_dict_source, K)    
             mask_loss_uncertain = prob_weak_aug.max(1)[0]<thresh
-            #knn_majvot_pseudo_labels = get_majority_vote(k_neighbors,feat_dict_target, K, F1, mask_loss_uncertain)
-            knn_majvot_pseudo_labels = get_most_confident(k_neighbors,feat_dict_target, K, F1)
-            #loss_pseudo_unl_knn = torch.mean(mask_loss_uncertain.int() * criterion_pseudo(pred_strong_aug, knn_majvot_pseudo_labels))
-            if  not torch.sum(mask_loss_uncertain.int()) == 0:
-                loss_pseudo_unl_knn = torch.sum(mask_loss_uncertain.int() * criterion_pseudo(pred_strong_aug, knn_majvot_pseudo_labels))/(torch.sum(mask_loss_uncertain.int()))
+            knn_confident_pseudo_labels = get_majority_vote(k_neighbors,feat_dict_source, K, F1, mask_loss_uncertain, source = True)
+            #print(knn_confident_pseudo_labels)
+            if torch.sum(mask_loss_uncertain.int()):
+                loss_pseudo_unl_knn = torch.sum(mask_loss_uncertain.int() * criterion_pseudo(pred_strong_aug,knn_confident_pseudo_labels))/(torch.sum(mask_loss_uncertain.int()))
                 loss_pseudo_unl_knn.backward(retain_graph=True)
-            
 
         output = G(data)
         out1 = F1(output)
@@ -297,8 +294,13 @@ def train():
         if step % args.log_interval == 0:
             print(log_train)
         if step % args.save_interval == 0 and step > 0:
-            _, acc_test = test(target_loader_test)
-            _, acc_val = test(target_loader_val)
+            loss_test, acc_test = test(target_loader_test)
+            loss_val, acc_val = test(target_loader_val)
+            # Cluster the target features
+            vectors = feat_dict_source.feat_vec
+            #cluster_ids_x, cluster_centers = k_means(vectors, len(class_list))
+            #print(cluster_ids_x, cluster_centers.shape)
+            
             G.train()
             F1.train()
             if acc_val >= best_acc:
@@ -325,7 +327,7 @@ def train():
                     'best_acc_test': best_acc_test,
                     'optimizer_g' : optimizer_g.state_dict(),
                     'optimizer_f' : optimizer_f.state_dict(),
-                    'feat_dict_target': feat_dict_target
+                    'feat_dict_source': feat_dict_source
                     },os.path.join(args.checkpath,"%s_%s_%s_%d.ckpt.pth.tar"%(args.net,args.source,args.target,step)))
 
 def test(loader):

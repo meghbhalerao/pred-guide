@@ -1,287 +1,167 @@
-Dataset multi Target painting Network resnet34 Num per class 1
+Dataset multi Source real Target sketch Labeled num perclass 3 Network resnet34
 126 classes in this dataset
-THCudaCheck FAIL file=/opt/conda/conda-bld/pytorch_1535493744281/work/aten/src/THC/THCGeneral.cpp line=663 error=11 : invalid argument
-T painting Ep: 0 lr0.01 	 Loss Class: 4.801317 RotLab: 1.3853116035461426 Ent: 0.47054240107536316 RotUnl: 1.3853116035461426 
+23826
+Bank keys - Target:  dict_keys(['feat_vec', 'labels', 'names']) Source:  dict_keys(['feat_vec', 'labels', 'names'])
+Num  - Target:  23826 Source:  70358
+S real T sketch Train Ep: 0 lr0.01 	 Loss Classification: 5.036796 Loss T 0.469719 Method MME
 
-T painting Ep: 100 lr0.009925650290240803 	 Loss Class: 0.056177 RotLab: 0.2796218693256378 Ent: 0.042437173426151276 RotUnl: 0.2796218693256378 
+S real T sketch Train Ep: 100 lr0.009925650290240803 	 Loss Classification: 0.847145 Loss T 0.286416 Method MME
 
-T painting Ep: 200 lr0.009852577760521605 	 Loss Class: 0.043576 RotLab: 0.08475241810083389 Ent: 0.03441980853676796 RotUnl: 0.08475241810083389 
+S real T sketch Train Ep: 200 lr0.009852577760521605 	 Loss Classification: 0.491697 Loss T 0.218687 Method MME
 
-T painting Ep: 300 lr0.009780748269686728 	 Loss Class: 0.026411 RotLab: 0.05288245901465416 Ent: 0.02226698212325573 RotUnl: 0.05288245901465416 
+S real T sketch Train Ep: 300 lr0.009780748269686728 	 Loss Classification: 0.311571 Loss T 0.212276 Method MME
 
-T painting Ep: 400 lr0.009710128909124701 	 Loss Class: 0.026031 RotLab: 0.029244283214211464 Ent: 0.022041020914912224 RotUnl: 0.029244283214211464 
+S real T sketch Train Ep: 400 lr0.009710128909124701 	 Loss Classification: 0.467133 Loss T 0.171987 Method MME
 
-T painting Ep: 500 lr0.00964068794694323 	 Loss Class: 0.017029 RotLab: 0.036333322525024414 Ent: 0.015283390879631042 RotUnl: 0.036333322525024414 
+S real T sketch Train Ep: 500 lr0.00964068794694323 	 Loss Classification: 0.472520 Loss T 0.194352 Method MME
 
-\Target: Average loss: 4.3296, Accuracy: 4221/31368 F1 (13%)
 
-\Rotation: Average loss: 1.1178, Accuracy: 18131/31368 F1 (57%)
+Test set: Average loss: 2.1330, Accuracy: 12619/23808 F1 (53%)
 
-best acc class 13.456389
-record record/multi/net_resnet34_painting
-saving model
-T painting Ep: 600 lr0.00957239477517603 	 Loss Class: 0.017159 RotLab: 0.012181957252323627 Ent: 0.015292967669665813 RotUnl: 0.012181957252323627 
 
-T painting Ep: 700 lr0.009505219859830012 	 Loss Class: 0.015898 RotLab: 0.04355673864483833 Ent: 0.014411712065339088 RotUnl: 0.04355673864483833 
+Test set: Average loss: 1.9680, Accuracy: 188/360 F1 (52%)
 
-T painting Ep: 800 lr0.009439134693595126 	 Loss Class: 0.011449 RotLab: 0.0039431252516806126 Ent: 0.010789930820465088 RotUnl: 0.0039431252516806126 
+best acc test 53.003192 best acc val 52.222222
+saving model...
+S real T sketch Train Ep: 600 lr0.00957239477517603 	 Loss Classification: 0.316840 Loss T 0.164980 Method MME
 
-T painting Ep: 900 lr0.009374111751051751 	 Loss Class: 0.010428 RotLab: 0.004093984607607126 Ent: 0.009960212744772434 RotUnl: 0.004093984607607126 
+S real T sketch Train Ep: 700 lr0.009505219859830012 	 Loss Classification: 0.540066 Loss T 0.141226 Method MME
 
-T painting Ep: 1000 lr0.009310124446222227 	 Loss Class: 0.012374 RotLab: 0.028421977534890175 Ent: 0.0114014046266675 RotUnl: 0.028421977534890175 
+S real T sketch Train Ep: 800 lr0.009439134693595126 	 Loss Classification: 0.451209 Loss T 0.154425 Method MME
 
-\Target: Average loss: 4.3515, Accuracy: 4174/31368 F1 (13%)
+S real T sketch Train Ep: 900 lr0.009374111751051751 	 Loss Classification: 0.444135 Loss T 0.143769 Method MME
 
-\Rotation: Average loss: 1.2386, Accuracy: 18304/31368 F1 (58%)
+S real T sketch Train Ep: 1000 lr0.009310124446222227 	 Loss Classification: 0.271070 Loss T 0.157790 Method MME
 
-best acc class 13.456389
-record record/multi/net_resnet34_painting
-saving model
-T painting Ep: 1100 lr0.00924714709232377 	 Loss Class: 0.010678 RotLab: 0.015516012907028198 Ent: 0.010161170735955238 RotUnl: 0.015516012907028198 
 
-T painting Ep: 1200 lr0.009185154863590003 	 Loss Class: 0.008235 RotLab: 0.019357940182089806 Ent: 0.008021782152354717 RotUnl: 0.019357940182089806 
+Test set: Average loss: 1.9453, Accuracy: 13704/23808 F1 (58%)
 
-T painting Ep: 1300 lr0.00912412375903735 	 Loss Class: 0.010077 RotLab: 0.0020282864570617676 Ent: 0.009645876474678516 RotUnl: 0.0020282864570617676 
 
-T painting Ep: 1400 lr0.009064030568061049 	 Loss Class: 0.010155 RotLab: 0.0033949415665119886 Ent: 0.009713927283883095 RotUnl: 0.0033949415665119886 
+Test set: Average loss: 1.7348, Accuracy: 218/360 F1 (61%)
 
-T painting Ep: 1500 lr0.009004852837753237 	 Loss Class: 0.009159 RotLab: 0.0027485191822052 Ent: 0.008860712870955467 RotUnl: 0.0027485191822052 
+best acc test 57.560484 best acc val 60.555556
+saving model...
+S real T sketch Train Ep: 1100 lr0.00924714709232377 	 Loss Classification: 0.395892 Loss T 0.150703 Method MME
 
-\Target: Average loss: 4.3515, Accuracy: 4210/31368 F1 (13%)
+S real T sketch Train Ep: 1200 lr0.009185154863590003 	 Loss Classification: 0.714201 Loss T 0.149758 Method MME
 
-\Rotation: Average loss: 1.3215, Accuracy: 17847/31368 F1 (56%)
+S real T sketch Train Ep: 1300 lr0.00912412375903735 	 Loss Classification: 0.486019 Loss T 0.144432 Method MME
 
-best acc class 13.456389
-record record/multi/net_resnet34_painting
-saving model
-T painting Ep: 1600 lr0.008946568841842816 	 Loss Class: 0.009944 RotLab: 0.0022467176895588636 Ent: 0.009522026404738426 RotUnl: 0.0022467176895588636 
+S real T sketch Train Ep: 1400 lr0.009064030568061049 	 Loss Classification: 0.540427 Loss T 0.122964 Method MME
 
-T painting Ep: 1700 lr0.008889157551163433 	 Loss Class: 0.009113 RotLab: 0.005804926156997681 Ent: 0.008838869631290436 RotUnl: 0.005804926156997681 
+S real T sketch Train Ep: 1500 lr0.009004852837753237 	 Loss Classification: 0.059833 Loss T 0.135136 Method MME
 
-T painting Ep: 1800 lr0.008832598605562044 	 Loss Class: 0.008696 RotLab: 0.0009690721635706723 Ent: 0.00847651343792677 RotUnl: 0.0009690721635706723 
 
-T painting Ep: 1900 lr0.008776872287166303 	 Loss Class: 0.008284 RotLab: 0.002722839592024684 Ent: 0.008108180947601795 RotUnl: 0.002722839592024684 
+Test set: Average loss: 1.8721, Accuracy: 14423/23808 F1 (61%)
 
-T painting Ep: 2000 lr0.008721959494934213 	 Loss Class: 0.008256 RotLab: 0.0010379949817433953 Ent: 0.008126054890453815 RotUnl: 0.0010379949817433953 
 
-\Target: Average loss: 4.3291, Accuracy: 4405/31368 F1 (14%)
+Test set: Average loss: 1.5602, Accuracy: 237/360 F1 (66%)
 
-\Rotation: Average loss: 1.2900, Accuracy: 18387/31368 F1 (58%)
+best acc test 60.580477 best acc val 65.833333
+saving model...
+S real T sketch Train Ep: 1600 lr0.008946568841842816 	 Loss Classification: 0.357547 Loss T 0.136511 Method MME
 
-best acc class 14.042974
-record record/multi/net_resnet34_painting
-saving model
-T painting Ep: 2100 lr0.008667841720414475 	 Loss Class: 0.007745 RotLab: 0.006336341146379709 Ent: 0.007699746638536453 RotUnl: 0.006336341146379709 
+S real T sketch Train Ep: 1700 lr0.008889157551163433 	 Loss Classification: 0.268299 Loss T 0.167622 Method MME
 
-T painting Ep: 2200 lr0.008614501024650454 	 Loss Class: 0.007464 RotLab: 0.0016348561039194465 Ent: 0.007425287272781134 RotUnl: 0.0016348561039194465 
+S real T sketch Train Ep: 1800 lr0.008832598605562044 	 Loss Classification: 0.254951 Loss T 0.146452 Method MME
 
-T painting Ep: 2300 lr0.008561920016164943 	 Loss Class: 0.011160 RotLab: 0.002736429451033473 Ent: 0.010567393153905869 RotUnl: 0.002736429451033473 
+S real T sketch Train Ep: 1900 lr0.008776872287166303 	 Loss Classification: 0.427161 Loss T 0.135871 Method MME
 
-T painting Ep: 2400 lr0.008510081829966844 	 Loss Class: 0.006868 RotLab: 0.0021066267509013414 Ent: 0.006867533084005117 RotUnl: 0.0021066267509013414 
+S real T sketch Train Ep: 2000 lr0.008721959494934213 	 Loss Classification: 0.204679 Loss T 0.114113 Method MME
 
-T painting Ep: 2500 lr0.008458970107524513 	 Loss Class: 0.007598 RotLab: 0.002210895298048854 Ent: 0.007556501310318708 RotUnl: 0.002210895298048854 
 
-\Target: Average loss: 4.3214, Accuracy: 4363/31368 F1 (13%)
+Test set: Average loss: 1.7855, Accuracy: 14921/23808 F1 (63%)
 
-\Rotation: Average loss: 1.2811, Accuracy: 18533/31368 F1 (59%)
 
-best acc class 14.042974
-record record/multi/net_resnet34_painting
-saving model
-T painting Ep: 2600 lr0.008408568977653933 	 Loss Class: 0.006700 RotLab: 0.0024598240852355957 Ent: 0.00677737919613719 RotUnl: 0.0024598240852355957 
+Test set: Average loss: 1.5564, Accuracy: 233/360 F1 (65%)
 
-T painting Ep: 2700 lr0.00835886303827305 	 Loss Class: 0.007370 RotLab: 0.001921574235893786 Ent: 0.007368836551904678 RotUnl: 0.001921574235893786 
+best acc test 60.580477 best acc val 64.722222
+saving model...
+S real T sketch Train Ep: 2100 lr0.008667841720414475 	 Loss Classification: 0.341560 Loss T 0.112612 Method MME
 
-T painting Ep: 2800 lr0.008309837338976545 	 Loss Class: 0.008747 RotLab: 0.0010428627720102668 Ent: 0.008559554815292358 RotUnl: 0.0010428627720102668 
+S real T sketch Train Ep: 2200 lr0.008614501024650454 	 Loss Classification: 0.254977 Loss T 0.124518 Method MME
 
-T painting Ep: 2900 lr0.008261477364388068 	 Loss Class: 0.007642 RotLab: 0.004938364028930664 Ent: 0.007591953966766596 RotUnl: 0.004938364028930664 
+S real T sketch Train Ep: 2300 lr0.008561920016164943 	 Loss Classification: 0.853144 Loss T 0.124011 Method MME
 
-T painting Ep: 3000 lr0.008213769018249545 	 Loss Class: 0.007126 RotLab: 0.0008804003591649234 Ent: 0.007195915561169386 RotUnl: 0.0008804003591649234 
+S real T sketch Train Ep: 2400 lr0.008510081829966844 	 Loss Classification: 0.268451 Loss T 0.127015 Method MME
 
-\Target: Average loss: 4.3116, Accuracy: 4395/31368 F1 (14%)
+S real T sketch Train Ep: 2500 lr0.008458970107524513 	 Loss Classification: 0.338187 Loss T 0.117474 Method MME
 
-\Rotation: Average loss: 1.3223, Accuracy: 18326/31368 F1 (58%)
 
-best acc class 14.042974
-record record/multi/net_resnet34_painting
-saving model
-T painting Ep: 3100 lr0.008166698608209509 	 Loss Class: 0.007947 RotLab: 0.0012056430568918586 Ent: 0.007913641631603241 RotUnl: 0.0012056430568918586 
+Test set: Average loss: 1.7794, Accuracy: 15184/23808 F1 (64%)
 
-T painting Ep: 3200 lr0.008120252831274708 	 Loss Class: 0.007818 RotLab: 0.002189715625718236 Ent: 0.007790043950080872 RotUnl: 0.002189715625718236 
 
-T painting Ep: 3300 lr0.008074418759891278 	 Loss Class: 0.007804 RotLab: 0.0022759437561035156 Ent: 0.007795751094818115 RotUnl: 0.0022759437561035156 
+Test set: Average loss: 1.6125, Accuracy: 234/360 F1 (65%)
 
-T painting Ep: 3400 lr0.008029183828623731 	 Loss Class: 0.007819 RotLab: 0.0012518564471974969 Ent: 0.0077276029624044895 RotUnl: 0.0012518564471974969 
+best acc test 60.580477 best acc val 65.000000
+saving model...
+S real T sketch Train Ep: 2600 lr0.008408568977653933 	 Loss Classification: 0.627112 Loss T 0.073744 Method MME
 
-T painting Ep: 3500 lr0.007984535821401871 	 Loss Class: 0.007560 RotLab: 0.0017355084419250488 Ent: 0.0075517925433814526 RotUnl: 0.0017355084419250488 
+S real T sketch Train Ep: 2700 lr0.00835886303827305 	 Loss Classification: 0.579542 Loss T 0.102233 Method MME
 
-\Target: Average loss: 4.3192, Accuracy: 4370/31368 F1 (13%)
+S real T sketch Train Ep: 2800 lr0.008309837338976545 	 Loss Classification: 0.632268 Loss T 0.137401 Method MME
 
-\Rotation: Average loss: 1.3504, Accuracy: 18322/31368 F1 (58%)
+S real T sketch Train Ep: 2900 lr0.008261477364388068 	 Loss Classification: 0.412090 Loss T 0.113110 Method MME
 
-best acc class 14.042974
-record record/multi/net_resnet34_painting
-saving model
-T painting Ep: 3600 lr0.007940462859307384 	 Loss Class: 0.007726 RotLab: 0.009455184452235699 Ent: 0.0077336314134299755 RotUnl: 0.009455184452235699 
+S real T sketch Train Ep: 3000 lr0.008213769018249545 	 Loss Classification: 0.927087 Loss T 0.110522 Method MME
 
-T painting Ep: 3700 lr0.007896953388873518 	 Loss Class: 0.007826 RotLab: 0.0011095007648691535 Ent: 0.007833153009414673 RotUnl: 0.0011095007648691535 
 
-T painting Ep: 3800 lr0.007853996170872714 	 Loss Class: 0.006875 RotLab: 0.0010949770221486688 Ent: 0.00695381173864007 RotUnl: 0.0010949770221486688 
+Test set: Average loss: 2.3606, Accuracy: 13161/23808 F1 (55%)
 
-T painting Ep: 3900 lr0.00781158026956848 	 Loss Class: 0.008042 RotLab: 0.0012627443065866828 Ent: 0.007975706830620766 RotUnl: 0.0012627443065866828 
 
-T painting Ep: 4000 lr0.007769695042409123 	 Loss Class: 0.008359 RotLab: 0.0012593468418344855 Ent: 0.008314788341522217 RotUnl: 0.0012593468418344855 
+Test set: Average loss: 2.3309, Accuracy: 180/360 F1 (50%)
 
-\Target: Average loss: 4.2993, Accuracy: 4452/31368 F1 (14%)
+best acc test 60.580477 best acc val 50.000000
+saving model...
+S real T sketch Train Ep: 3100 lr0.008166698608209509 	 Loss Classification: 0.450439 Loss T 0.070761 Method MME
 
-\Rotation: Average loss: 1.3844, Accuracy: 18141/31368 F1 (57%)
+S real T sketch Train Ep: 3200 lr0.008120252831274708 	 Loss Classification: 0.417792 Loss T 0.080459 Method MME
 
-best acc class 14.192808
-record record/multi/net_resnet34_painting
-saving model
-T painting Ep: 4100 lr0.007728330130142108 	 Loss Class: 0.009193 RotLab: 0.0021328330039978027 Ent: 0.00903369765728712 RotUnl: 0.0021328330039978027 
+S real T sketch Train Ep: 3300 lr0.008074418759891278 	 Loss Classification: 0.492245 Loss T 0.080537 Method MME
 
-T painting Ep: 4200 lr0.007687475447329114 	 Loss Class: 0.008980 RotLab: 0.0012345711002126336 Ent: 0.008822664618492126 RotUnl: 0.0012345711002126336 
+S real T sketch Train Ep: 3400 lr0.008029183828623731 	 Loss Classification: 0.417527 Loss T 0.113582 Method MME
 
-T painting Ep: 4300 lr0.0076471211732427845 	 Loss Class: 0.007180 RotLab: 0.0012063384056091309 Ent: 0.007281746249645948 RotUnl: 0.0012063384056091309 
+S real T sketch Train Ep: 3500 lr0.007984535821401871 	 Loss Classification: 0.927889 Loss T 0.090693 Method MME
 
-T painting Ep: 4400 lr0.007607257743127307 	 Loss Class: 0.007386 RotLab: 0.0022572677116841078 Ent: 0.007446541916579008 RotUnl: 0.0022572677116841078 
 
-T painting Ep: 4500 lr0.007567875839805858 	 Loss Class: 0.007795 RotLab: 0.001095890998840332 Ent: 0.0078069837763905525 RotUnl: 0.001095890998840332 
+Test set: Average loss: 2.4213, Accuracy: 13332/23808 F1 (56%)
 
-\Target: Average loss: 4.2885, Accuracy: 4432/31368 F1 (14%)
 
-\Rotation: Average loss: 1.3848, Accuracy: 18163/31368 F1 (57%)
+Test set: Average loss: 2.2115, Accuracy: 196/360 F1 (54%)
 
-best acc class 14.192808
-record record/multi/net_resnet34_painting
-saving model
-T painting Ep: 4600 lr0.007528966385618854 	 Loss Class: 0.007109 RotLab: 0.0008286635274998844 Ent: 0.007217145059257746 RotUnl: 0.0008286635274998844 
+best acc test 60.580477 best acc val 54.444444
+saving model...
+S real T sketch Train Ep: 3600 lr0.007940462859307384 	 Loss Classification: 0.689600 Loss T 0.105074 Method MME
 
-T painting Ep: 4700 lr0.007490520534677821 	 Loss Class: 0.007437 RotLab: 0.0009416937828063965 Ent: 0.007510302122682333 RotUnl: 0.0009416937828063965 
+S real T sketch Train Ep: 3700 lr0.007896953388873518 	 Loss Classification: 0.554867 Loss T 0.092957 Method MME
 
-T painting Ep: 4800 lr0.007452529665420465 	 Loss Class: 0.008251 RotLab: 0.000769714533817023 Ent: 0.008230024017393589 RotUnl: 0.000769714533817023 
+S real T sketch Train Ep: 3800 lr0.007853996170872714 	 Loss Classification: 0.509252 Loss T 0.086952 Method MME
 
-T painting Ep: 4900 lr0.007414985373453289 	 Loss Class: 0.008034 RotLab: 0.0006502072210423648 Ent: 0.008066846989095211 RotUnl: 0.0006502072210423648 
+S real T sketch Train Ep: 3900 lr0.00781158026956848 	 Loss Classification: 0.291362 Loss T 0.083972 Method MME
 
-T painting Ep: 5000 lr0.007377879464668811 	 Loss Class: 0.008787 RotLab: 0.002104461193084717 Ent: 0.008723019622266293 RotUnl: 0.002104461193084717 
+S real T sketch Train Ep: 4000 lr0.007769695042409123 	 Loss Classification: 0.424741 Loss T 0.062117 Method MME
 
-\Target: Average loss: 4.2882, Accuracy: 4433/31368 F1 (14%)
 
-\Rotation: Average loss: 1.3777, Accuracy: 18284/31368 F1 (58%)
+Test set: Average loss: 2.4492, Accuracy: 13269/23808 F1 (56%)
 
-best acc class 14.192808
-record record/multi/net_resnet34_painting
-saving model
-T painting Ep: 5100 lr0.007341203948625087 	 Loss Class: 0.008859 RotLab: 0.0012489358196035028 Ent: 0.008788167499005795 RotUnl: 0.0012489358196035028 
 
-T painting Ep: 5200 lr0.007304951032175895 	 Loss Class: 0.007860 RotLab: 0.012634575366973877 Ent: 0.007903451099991798 RotUnl: 0.012634575366973877 
+Test set: Average loss: 2.3790, Accuracy: 196/360 F1 (54%)
 
-T painting Ep: 5300 lr0.007269113113340497 	 Loss Class: 0.008285 RotLab: 0.0010337034473195672 Ent: 0.008282487280666828 RotUnl: 0.0010337034473195672 
+best acc test 60.580477 best acc val 54.444444
+saving model...
+S real T sketch Train Ep: 4100 lr0.007728330130142108 	 Loss Classification: 0.675015 Loss T 0.076542 Method MME
 
-T painting Ep: 5400 lr0.007233682775402483 	 Loss Class: 0.008746 RotLab: 0.0012325843563303351 Ent: 0.008707641623914242 RotUnl: 0.0012325843563303351 
+S real T sketch Train Ep: 4200 lr0.007687475447329114 	 Loss Classification: 0.464568 Loss T 0.115929 Method MME
 
-T painting Ep: 5500 lr0.007198652781227704 	 Loss Class: 0.007995 RotLab: 0.001720468164421618 Ent: 0.008044748567044735 RotUnl: 0.001720468164421618 
+S real T sketch Train Ep: 4300 lr0.0076471211732427845 	 Loss Classification: 0.499629 Loss T 0.082148 Method MME
 
-\Target: Average loss: 4.2821, Accuracy: 4489/31368 F1 (14%)
+S real T sketch Train Ep: 4400 lr0.007607257743127307 	 Loss Classification: 0.427427 Loss T 0.086585 Method MME
 
-\Rotation: Average loss: 1.3680, Accuracy: 18388/31368 F1 (58%)
+S real T sketch Train Ep: 4500 lr0.007567875839805858 	 Loss Classification: 0.559350 Loss T 0.082098 Method MME
 
-best acc class 14.310763
-record record/multi/net_resnet34_painting
-saving model
-T painting Ep: 5600 lr0.007164016067791809 	 Loss Class: 0.007949 RotLab: 0.00252310442738235 Ent: 0.00801518838852644 RotUnl: 0.00252310442738235 
 
-T painting Ep: 5700 lr0.0071297657409083726 	 Loss Class: 0.008393 RotLab: 0.0018557509174570441 Ent: 0.008408593945205212 RotUnl: 0.0018557509174570441 
+Test set: Average loss: 2.4737, Accuracy: 13289/23808 F1 (56%)
 
-T painting Ep: 5800 lr0.0070958950701490225 	 Loss Class: 0.007766 RotLab: 0.0008518695831298828 Ent: 0.007822224870324135 RotUnl: 0.0008518695831298828 
 
-T painting Ep: 5900 lr0.007062397483947426 	 Loss Class: 0.008817 RotLab: 0.023591050878167152 Ent: 0.008810829371213913 RotUnl: 0.023591050878167152 
-
-T painting Ep: 6000 lr0.007029266564879363 	 Loss Class: 0.008612 RotLab: 0.0008992950315587223 Ent: 0.008592990227043629 RotUnl: 0.0008992950315587223 
-
-\Target: Average loss: 4.2769, Accuracy: 4373/31368 F1 (13%)
-
-\Rotation: Average loss: 1.3917, Accuracy: 18374/31368 F1 (58%)
-
-best acc class 14.310763
-record record/multi/net_resnet34_painting
-saving model
-T painting Ep: 6100 lr0.006996496045111504 	 Loss Class: 0.008368 RotLab: 0.004884521011263132 Ent: 0.008377199061214924 RotUnl: 0.004884521011263132 
-
-T painting Ep: 6200 lr0.00696407980201184 	 Loss Class: 0.008877 RotLab: 0.0005219976301304996 Ent: 0.00885038822889328 RotUnl: 0.0005219976301304996 
-
-T painting Ep: 6300 lr0.006932011853915101 	 Loss Class: 0.008518 RotLab: 0.0025422770995646715 Ent: 0.008535216562449932 RotUnl: 0.0025422770995646715 
-
-T painting Ep: 6400 lr0.006900286356036734 	 Loss Class: 0.008030 RotLab: 0.000773827254306525 Ent: 0.008089279755949974 RotUnl: 0.000773827254306525 
-
-T painting Ep: 6500 lr0.006868897596529406 	 Loss Class: 0.009084 RotLab: 0.0008310675621032715 Ent: 0.009028145112097263 RotUnl: 0.0008310675621032715 
-
-\Target: Average loss: 4.2769, Accuracy: 4495/31368 F1 (14%)
-
-\Rotation: Average loss: 1.4752, Accuracy: 17855/31368 F1 (56%)
-
-best acc class 14.329890
-record record/multi/net_resnet34_painting
-saving model
-T painting Ep: 6600 lr0.006837839992676177 	 Loss Class: 0.008507 RotLab: 0.00035506486892700195 Ent: 0.008555389009416103 RotUnl: 0.00035506486892700195 
-
-T painting Ep: 6700 lr0.006807108087214876 	 Loss Class: 0.008519 RotLab: 0.0038358967285603285 Ent: 0.008546195924282074 RotUnl: 0.0038358967285603285 
-
-T painting Ep: 6800 lr0.006776696544788352 	 Loss Class: 0.010232 RotLab: 0.0024078090209513903 Ent: 0.010072492994368076 RotUnl: 0.0024078090209513903 
-
-T painting Ep: 6900 lr0.006746600148515609 	 Loss Class: 0.008712 RotLab: 0.0004904866218566895 Ent: 0.008727692998945713 RotUnl: 0.0004904866218566895 
-
-T painting Ep: 7000 lr0.006716813796678979 	 Loss Class: 0.009595 RotLab: 0.00030225515365600586 Ent: 0.009542223997414112 RotUnl: 0.00030225515365600586 
-
-\Target: Average loss: 4.2559, Accuracy: 4538/31368 F1 (14%)
-
-\Rotation: Average loss: 1.4139, Accuracy: 18150/31368 F1 (57%)
-
-best acc class 14.466973
-record record/multi/net_resnet34_painting
-saving model
-T painting Ep: 7100 lr0.006687332499522798 	 Loss Class: 0.009022 RotLab: 0.0013735592365264893 Ent: 0.009022548794746399 RotUnl: 0.0013735592365264893 
-
-T painting Ep: 7200 lr0.006658151376159165 	 Loss Class: 0.008543 RotLab: 0.0009525815839879215 Ent: 0.008602296002209187 RotUnl: 0.0009525815839879215 
-
-T painting Ep: 7300 lr0.00662926565157663 	 Loss Class: 0.009592 RotLab: 0.0024332802277058363 Ent: 0.009525533765554428 RotUnl: 0.0024332802277058363 
-
-T painting Ep: 7400 lr0.006600670653747793 	 Loss Class: 0.010110 RotLab: 0.001674056053161621 Ent: 0.009997359476983547 RotUnl: 0.001674056053161621 
-
-T painting Ep: 7500 lr0.0065723618108320175 	 Loss Class: 0.009275 RotLab: 0.0009223818778991699 Ent: 0.009267701767385006 RotUnl: 0.0009223818778991699 
-
-\Target: Average loss: 4.2608, Accuracy: 4493/31368 F1 (14%)
-
-\Rotation: Average loss: 1.3984, Accuracy: 18298/31368 F1 (58%)
-
-best acc class 14.466973
-record record/multi/net_resnet34_painting
-saving model
-T painting Ep: 7600 lr0.006544334648469591 	 Loss Class: 0.008696 RotLab: 0.0012956062564626336 Ent: 0.008724414743483067 RotUnl: 0.0012956062564626336 
-
-T painting Ep: 7700 lr0.006516584787163857 	 Loss Class: 0.009767 RotLab: 0.0005593299865722656 Ent: 0.00968815665692091 RotUnl: 0.0005593299865722656 
-
-T painting Ep: 7800 lr0.006489107939747966 	 Loss Class: 0.009012 RotLab: 0.002251486061140895 Ent: 0.009014998562633991 RotUnl: 0.002251486061140895 
-
-T painting Ep: 7900 lr0.0064618999089330565 	 Loss Class: 0.010901 RotLab: 0.0017620126018300653 Ent: 0.010721459984779358 RotUnl: 0.0017620126018300653 
-
-T painting Ep: 8000 lr0.006434956584934828 	 Loss Class: 0.009933 RotLab: 0.00040519237518310547 Ent: 0.009854230098426342 RotUnl: 0.00040519237518310547 
-
-\Target: Average loss: 4.2476, Accuracy: 4579/31368 F1 (14%)
-
-\Rotation: Average loss: 1.3888, Accuracy: 18364/31368 F1 (58%)
-
-best acc class 14.597679
-record record/multi/net_resnet34_painting
-saving model
-T painting Ep: 8100 lr0.006408273943175546 	 Loss Class: 0.010145 RotLab: 0.0007177591323852539 Ent: 0.010059346444904804 RotUnl: 0.0007177591323852539 
-
-T painting Ep: 8200 lr0.006381848042058713 	 Loss Class: 0.009617 RotLab: 0.0016819039592519403 Ent: 0.009588503278791904 RotUnl: 0.0016819039592519403 
-
-T painting Ep: 8300 lr0.0063556750208137005 	 Loss Class: 0.010338 RotLab: 0.0006539027090184391 Ent: 0.010218522511422634 RotUnl: 0.0006539027090184391 
-
-T painting Ep: 8400 lr0.006329751097407787 	 Loss Class: 0.009375 RotLab: 0.001166741014458239 Ent: 0.00936008058488369 RotUnl: 0.001166741014458239 
-
-T painting Ep: 8500 lr0.0063040725665231365 	 Loss Class: 0.009088 RotLab: 0.0006652672891505063 Ent: 0.009112435393035412 RotUnl: 0.0006652672891505063 
+Test set: Average loss: 2.4266, Accuracy: 191/360 F1 (53%)
 

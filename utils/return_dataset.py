@@ -74,7 +74,9 @@ def return_dataset(args):
                                           transform=data_transforms['val'])
     target_dataset_test = Imagelists_VISDA(image_set_file_unl, root=root,
                                            transform=data_transforms['test'])
+    
     class_list = return_classlist(image_set_file_s)
+
     print("%d classes in this dataset" % len(class_list))
     if args.net == 'alexnet':
         bs = 32
