@@ -11,7 +11,7 @@ import torch.optim as optim
 from torch.autograd import Variable
 from model.resnet import resnet34
 from model.basenet import AlexNetBase, VGGBase, Predictor, Predictor_deep
-from utils.utils import get_confident, get_most_confident, weights_init, update_features, get_similarity_distribution, get_kNN, k_means, get_majority_vote
+from utils.utils import combine_dicts, get_confident, get_most_confident, weights_init, update_features, get_similarity_distribution, get_kNN, k_means, get_majority_vote, save_stats
 from utils.lr_schedule import inv_lr_scheduler, get_cosine_schedule_with_warmup
 from utils.return_dataset import return_dataset, return_dataset_randaugment
 from utils.loss import entropy, adentropy
@@ -67,8 +67,7 @@ parser.add_argument('--pretrained_ckpt', type=str, default=None,
                     help='path to pretrained weights')
 parser.add_argument('--augmentation_policy', type=str, default=None, choices=['ours', 'rand_augment','ct_augment'],
                     help='which augmentation starategy to use - essentially, which method to follow')
-parser.add_argument('--LR_scheduler', type=str, default='standard', choices=['standard', 'cosine'],
-                    help='Learning Rate scheduling policy')
+parser.add_argument('--LR_scheduler', type=str, default='standard', choices=['standard', 'cosine'], help='Learning Rate scheduling policy')
 parser.add_argument('--adentropy', action='store_true', default=True,
                     help='Use entropy maximization or not')
 parser.add_argument('--use_ema', type=bool, default=False,
@@ -80,13 +79,14 @@ torch.autograd.set_detect_anomaly(True) # Gradient anomaly detection is set true
 args = parser.parse_args()
 print('Dataset %s Source %s Target %s Labeled num perclass %s Network %s' %
       (args.dataset, args.source, args.target, args.num, args.net))
-if args.augmentation_policy == "ours" or args.augmentation_policy == None or args.augmentation_policy == "ct_augment":
-    source_loader, target_loader, target_loader_unl, target_loader_val, target_loader_test, class_list = return_dataset(args)
-elif args.augmentation_policy == "rand_augment":
-    source_loader, target_loader, target_loader_unl, target_loader_val, target_loader_test, class_list = return_dataset_randaugment(args)    
+
+source_loader, target_loader, target_loader_unl, target_loader_val, target_loader_test, class_list = return_dataset_randaugment(args)    
 
 use_gpu = torch.cuda.is_available()
+# Seeding everything for removing non-deterministic components
 torch.cuda.manual_seed(args.seed)
+#torch.set_deterministic(True)
+
 if args.net == 'resnet34':
     G = resnet34()
     inc = 512
@@ -131,27 +131,30 @@ F1 = nn.DataParallel(F1, device_ids=[0, 1])
 if os.path.exists(args.checkpath) == False:
     os.mkdir(args.checkpath)
 
-
 def train():
     G.train()
     F1.train()
     optimizer_g = optim.SGD(params, momentum=0.9, weight_decay=0.0005, nesterov=True)
     optimizer_f = optim.SGD(list(F1.parameters()), lr=1.0, momentum=0.9, weight_decay=0.0005, nesterov=True)
     print(len(target_loader_unl.dataset))
-    # Define learning rate schedule here - to be updated at each iteration
-    if args.LR_scheduler == "cosine":
-        warmup = 0
-        total_steps = int(args.steps/len(target_loader_unl))
-        scheduler_g = get_cosine_schedule_with_warmup(optimizer_g, warmup, total_steps)
-        scheduler_f = get_cosine_schedule_with_warmup(optimizer_f, warmup, total_steps)
-    
     # Loading the dictionary having the feature bank and corresponsing metadata
-    f = open("banks/unlabelled_target_%s.pkl"%(args.target), "rb")
+    f = open("./banks/unlabelled_target_%s.pkl"%(args.target), "rb")
     feat_dict_target = edict(pickle.load(f))
-    feat_dict_target.feat_vec  = feat_dict_target.feat_vec.cuda() # Pushing computed features to cuda
-    f = open("banks/labelled_source_%s.pkl"%(args.source), "rb") # Loading the feature bank for the source samples
+    feat_dict_target.feat_vec  = feat_dict_target.feat_vec.cuda()
+    num_target = len(feat_dict_target.names)
+    domain = ["T" for i in range(num_target)]
+    feat_dict_target.domain_identifier = domain
+
+    f = open("./banks/labelled_source_%s.pkl"%(args.source), "rb") # Loading the feature bank for the source samples
     feat_dict_source = edict(pickle.load(f))
-    feat_dict_source.feat_vec  = feat_dict_source.feat_vec.cuda() # Pushing computed features to cuda
+    feat_dict_source.feat_vec  = feat_dict_source.feat_vec.cuda() 
+    num_source = len(feat_dict_source.names)
+    domain = ["S" for i in range(num_source)]
+    feat_dict_source.domain_identifier = domain
+    # Concat the corresponsing components of the 2 dictionaries
+    feat_dict_combined = edict({})
+    feat_dict_combined  = combine_dicts(feat_dict_source, feat_dict_target)
+
     print("Bank keys - Target: ", feat_dict_target.keys(),"Source: ", feat_dict_source.keys())
     print("Num  - Target: ", len(feat_dict_target.names), "Source: ", len(feat_dict_source.names))
     def zero_grad_all():
@@ -164,12 +167,7 @@ def train():
     for param_group in optimizer_f.param_groups:
         param_lr_f.append(param_group["lr"])
 
-    # Instantiating the augmentation class with default params now
-    if args.augmentation_policy == "ours":
-        augmentation = Augmentation()
-    if args.augmentation_policy == "ours" or args.augmentation_policy == "rand_augment" or args.augmentation_policy == "ct_augment":
-        thresh = 0.9 # threshold for confident prediction to generate pseudo-labels
-    
+    thresh = 0.9 # threshold for confident prediction to generate pseudo-labels
     criterion = nn.CrossEntropyLoss().cuda()
     criterion_pseudo = nn.CrossEntropyLoss(reduction='none').cuda()
     all_step = args.steps
@@ -181,20 +179,11 @@ def train():
     len_train_target_semi = len(target_loader_unl)
     best_acc = 0
     counter = 0
-    if args.use_ema:
-        ema_F1 = ModelEMA(args, F1, args.ema_decay)
-        ema_G = ModelEMA(args, G, args.ema_decay)
-
     momentum = 0.9  
-    K = 30
+    K = 3
     for step in range(all_step):
-        if args.LR_scheduler == "standard": # choosing appropriate learning rate
-            optimizer_g = inv_lr_scheduler(param_lr_g, optimizer_g, step, init_lr=args.lr)
-            optimizer_f = inv_lr_scheduler(param_lr_f, optimizer_f, step, init_lr=args.lr)
-        
-        elif args.LR_scheduler == "cosine":
-            scheduler_f.step()
-            scheduler_g.step()
+        optimizer_g = inv_lr_scheduler(param_lr_g, optimizer_g, step, init_lr=args.lr)
+        optimizer_f = inv_lr_scheduler(param_lr_f, optimizer_f, step, init_lr=args.lr)
 
         lr = optimizer_f.param_groups[0]['lr']
         if step % len_train_target == 0:
@@ -212,22 +201,12 @@ def train():
         gt_labels_s = data_s[1].cuda()
         im_data_t = data_t[0].cuda()
         gt_labels_t = data_t[1].cuda()
-
-        if not args.augmentation_policy == "rand_augment":
-            im_data_tu = data_t_unl[0].cuda()
-        elif args.augmentation_policy == "rand_augment":
-            im_data_tu = data_t_unl[0][2].cuda()
+        im_data_tu = data_t_unl[0][2].cuda()
 
         zero_grad_all()
         data = torch.cat((im_data_s, im_data_t), 0) #concatenating the labelled images
         target = torch.cat((gt_labels_s, gt_labels_t), 0)
-        
-        if args.augmentation_policy == "ours": # can call a method here which does "ours" augmentation policy
-            im_data_tu_strong, im_data_tu_weak = process_batch(im_data_tu, augmentation, label=False) #Augmentations happenning here - apply strong augmentation to labelled examples and (weak + strong) to unlablled examples
-        elif args.augmentation_policy == "rand_augment":
-            im_data_tu_weak_aug, im_data_tu_strong_aug = data_t_unl[0][0].cuda(), data_t_unl[0][1].cuda()
-        elif args.augmentation_policy == "ct_augment":
-            im_data_tu_weak, im_data_tu_strong = data_t_unl[0][0], data_t_unl[0][1]
+        im_data_tu_weak_aug, im_data_tu_strong_aug = data_t_unl[0][0].cuda(), data_t_unl[0][1].cuda()
 
         # Getting predictions of weak and strong augmented unlabled examples
         pred_strong_aug = F1(G(im_data_tu_strong_aug))
@@ -235,28 +214,32 @@ def train():
             pred_weak_aug = F1(G(im_data_tu_weak_aug))
         
         prob_weak_aug = F.softmax(pred_weak_aug,dim=1)
-        mask_loss = prob_weak_aug.max(1)[0]>thresh
-        pseudo_labels = pred_weak_aug.max(axis=1)[1]
-        loss_pseudo_unl = torch.mean(mask_loss.int() * criterion_pseudo(pred_strong_aug,pseudo_labels))
-        loss_pseudo_unl.backward(retain_graph=True)
+        #mask_loss = prob_weak_aug.max(1)[0]>thresh
+        #pseudo_labels = pred_weak_aug.max(axis=1)[1]
+        #loss_pseudo_unl = torch.mean(mask_loss.int() * criterion_pseudo(pred_strong_aug,pseudo_labels))
+        #loss_pseudo_unl.backward(retain_graph=True)
+        # Updating the features in the bank for both source and target
         
-        f_batch, feat_dict_target  = update_features(feat_dict_target, data_t_unl, G, momentum)
-        f_batch = f_batch.detach()
+        f_batch_target, feat_dict_target  = update_features(feat_dict_target, data_t_unl, G, momentum)
+        f_batch_target = f_batch_target.detach()
+
+        f_batch_source, feat_dict_source  = update_features(feat_dict_source, data_s, G, momentum, source = True)
+        f_batch_source = f_batch_source.detach()      
         
         # Get max of similarity distribution to check which element or label is it closest to in these vectors
-        if step > 2500:
-            sim_distribution = get_similarity_distribution(feat_dict_target,data_t_unl,G)
-            k_neighbors, _ = get_kNN(sim_distribution, feat_dict_target, K)    
-            #mask_loss_uncertain = (prob_weak_aug.max(1)[0]<thresh) & (prob_weak_aug.max(1)[0]>0.7)
-            mask_loss_uncertain = prob_weak_aug.max(1)[0]<thresh
-            #knn_majvot_pseudo_labels = get_majority_vote(k_neighbors,feat_dict_target, K, F1, mask_loss_uncertain)
-            knn_majvot_pseudo_labels = get_most_confident(k_neighbors,feat_dict_target, K, F1)
-            #loss_pseudo_unl_knn = torch.mean(mask_loss_uncertain.int() * criterion_pseudo(pred_strong_aug, knn_majvot_pseudo_labels))
-            if  not torch.sum(mask_loss_uncertain.int()) == 0:
-                loss_pseudo_unl_knn = torch.sum(mask_loss_uncertain.int() * criterion_pseudo(pred_strong_aug, knn_majvot_pseudo_labels))/(torch.sum(mask_loss_uncertain.int()))
-                loss_pseudo_unl_knn.backward(retain_graph=True)
-            
-
+        feat_dict_combined = combine_dicts(feat_dict_target, feat_dict_source)
+        sim_distribution = get_similarity_distribution(feat_dict_combined,data_t_unl,G)
+        k_neighbors, _ = get_kNN(sim_distribution, feat_dict_combined, K)    
+        #mask_loss_uncertain = (prob_weak_aug.max(1)[0]<thresh) & (prob_weak_aug.max(1)[0]>0.7)
+        mask_loss_uncertain = prob_weak_aug.max(1)[0]>thresh
+        knn_majvot_pseudo_labels = get_majority_vote(k_neighbors,feat_dict_combined, K, F1, mask_loss_uncertain, len(target_loader_unl.dataset))
+        loss_pseudo_unl_knn = torch.mean(mask_loss_uncertain.int() * criterion_pseudo(pred_strong_aug, knn_majvot_pseudo_labels))
+        
+        #if  not torch.sum(mask_loss_uncertain.int()) == 0:
+        #    loss_pseudo_unl_knn = torch.sum(mask_loss_uncertain.int() * criterion_pseudo(pred_strong_aug, knn_majvot_pseudo_labels))/(torch.sum(mask_loss_uncertain.int()))
+        loss_pseudo_unl_knn.backward(retain_graph=True)
+        
+        #save_stats(F1, G, target_loader_unl, step, feat_dict_combined, data_t_unl, K, mask_loss_uncertain)
         output = G(data)
         out1 = F1(output)
         loss = criterion(out1, target)
@@ -294,9 +277,12 @@ def train():
         G.zero_grad()
         F1.zero_grad()
         zero_grad_all()
+        
         if step % args.log_interval == 0:
             print(log_train)
         if step % args.save_interval == 0 and step > 0:
+            if step % 2000 == 0:
+                save_stats(F1, G, target_loader_unl, step, feat_dict_combined, data_t_unl, K, mask_loss_uncertain)
             _, acc_test = test(target_loader_test)
             _, acc_val = test(target_loader_val)
             G.train()
@@ -356,33 +342,4 @@ def test(loader):
           format(test_loss, correct, size,
                  100. * correct / size))
     return test_loss.data, 100. * float(correct) / size
-
-
-
 train()
-# Inference/Model performance estimation by moving average of model parameters
-class ModelEMA(object):
-    def __init__(self, args, model, decay):
-        self.ema = deepcopy(model)
-        self.ema.to(args.device)
-        self.ema.eval()
-        self.decay = decay
-        self.ema_has_module = hasattr(self.ema, 'module')
-        self.wd = args.wdecay
-        for p in self.ema.parameters():
-            p.requires_grad_(False)
-
-    def update(self, model, lr):
-        wd = lr * self.wd
-        needs_module = hasattr(model, 'module') and not self.ema_has_module
-        with torch.no_grad():
-            msd = model.state_dict()
-            for k, ema_v in self.ema.state_dict().items():
-                if needs_module:
-                    k = 'module.' + k
-                model_v = msd[k].detach()
-                ema_v.copy_(ema_v * self.decay + (1. - self.decay) * model_v)
-                # weight decay
-                if 'bn' not in k and 'bias' not in k:
-                    msd[k] = msd[k] * (1. - wd)
-

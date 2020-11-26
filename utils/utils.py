@@ -32,8 +32,7 @@ def update_features(feat_dict, data, G, momentum, source  = False):
     if not source:
         img_batch = data[0][0].cuda()
     else:
-        img_batch = data[0].cuda()
-        
+        img_batch = data[0].cuda() 
     names_batch = list(names_batch)
     idx = [feat_dict.names.index(name) for name in names_batch]
     f_batch = G(img_batch)
@@ -50,6 +49,18 @@ def get_similarity_distribution(feat_dict,data_batch, G, source = False):
     sim_distribution = edict({"cosines": sim_distribution, "names": data_batch[2], "labels": data_batch[1]})
     return sim_distribution
 
+"""
+def get_similarity_distribution(feat_vec,data_batch, G, source = False):
+    if source:
+        img_batch  = data_batch[0].cuda()
+    else:
+        img_batch = data_batch[0][0].cuda()
+    f_batch = G(img_batch)
+    sim_distribution  = torch.mm(F.normalize(feat_vec, dim=1),F.normalize(torch.transpose(f_batch,0,1),dim = 0))
+    sim_distribution = edict({"cosines": sim_distribution, "names": data_batch[2], "labels": data_batch[1]})
+    return sim_distribution
+"""
+
 def get_kNN(sim_distribution, feat_dict, k = 1):
     k_neighbors = torch.topk(torch.transpose(sim_distribution.cosines,0,1), k, dim = 1)
     idxs = k_neighbors[1]
@@ -64,7 +75,7 @@ def get_kNN(sim_distribution, feat_dict, k = 1):
     #print("KNN Labels:", labels_k_neighbors)
     return k_neighbors, labels_k_neighbors
 
-def k_means(vectors, num_clusters):
+def k_means(vectors, num_clusters): 
     cluster_ids_x, cluster_centers = kmeans( X=vectors, num_clusters=num_clusters, distance='euclidean', device=torch.device('cuda:0'))
     return cluster_ids_x, cluster_centers
 
@@ -128,7 +139,7 @@ def get_majority_vote_label(list_predictions,K):
     majority_label, num_maj = get_majority_from_list(label_list)
     return majority_label, num_maj
 
-def get_majority_vote(k_neighbors,feat_dict, K, F1, mask_loss_uncertain, source = False):
+def get_majority_vote(k_neighbors,feat_dict, K, F1, mask_loss_uncertain, len_target, source = False):
     feat_vec = feat_dict.feat_vec
     labels = feat_dict.labels
     if source:
@@ -143,7 +154,6 @@ def get_majority_vote(k_neighbors,feat_dict, K, F1, mask_loss_uncertain, source 
             majority_label, _ = get_majority_from_list(img)
             pseudo_labels_final.append(majority_label)
         return torch.tensor(pseudo_labels_final).cuda()
-
     k_feats = []
     for img in k_neighbors:
         img_feats = []
@@ -153,16 +163,19 @@ def get_majority_vote(k_neighbors,feat_dict, K, F1, mask_loss_uncertain, source 
     pseudo_labels = []
     for idx, img_nearest in enumerate(k_feats):
         pred_list = []
-        for feat in img_nearest:
-            pred_label = F1(feat.unsqueeze(0))
-            pred_list.append(pred_label)
-        majority_vote_label, num_maj = get_majority_vote_label(pred_list,K)
+        for idx_feat, feat in enumerate(img_nearest):
+            if k_neighbors[idx][idx_feat] > len_target:
+                pred_list.append(feat_dict.labels[k_neighbors[idx][idx_feat]])
+            else:
+                prediction = F1(feat.unsqueeze(0))
+                pred_list.append(F.softmax(prediction, dim=1).max(1)[1].cpu().data.item())
+        majority_vote_label, num_maj = get_majority_from_list(pred_list)
         if num_maj < int(K/2): # Disregard example when it's not absolute majority
             mask_loss_uncertain[idx] = False
             majority_vote_label = 0 # Making it compatible with CE loss - anyways this is not considered for loss calculation
         pseudo_labels.append(majority_vote_label)
     return torch.tensor(pseudo_labels).cuda()
-
+######################################################################
 
 def get_most_confident_label(list_predictions):
     max_prob = 0
@@ -172,7 +185,6 @@ def get_most_confident_label(list_predictions):
             max_prob = prediction.max(1)[0].cpu().data.item()
             curr_label = prediction.max(1)[1].cpu().data.item()
     return curr_label
-
 
 def get_most_confident(k_neighbors,feat_dict, K, F1):
     feat_vec = feat_dict.feat_vec
@@ -191,3 +203,36 @@ def get_most_confident(k_neighbors,feat_dict, K, F1):
         confident_label = get_most_confident_label(pred_list)
         pseudo_labels.append(confident_label) 
     return torch.tensor(pseudo_labels).cuda()
+
+
+def combine_dicts(feat_dict_target, feat_dict_source): # expects the easydict object
+    feat_dict_combined = edict({})
+    feat_dict_combined.feat_vec = torch.cat([feat_dict_target.feat_vec, feat_dict_source.feat_vec], dim=0)
+    feat_dict_combined.labels = feat_dict_target.labels + feat_dict_source.labels
+    feat_dict_combined.names = feat_dict_target.names + feat_dict_source.names
+    feat_dict_combined.domain_identifier = feat_dict_target.domain_identifier + feat_dict_source.domain_identifier
+    return feat_dict_combined
+
+def save_stats(F1, G, loader, step, feat_dict_combined, batch, K, mask_loss_uncertain):
+    fixmatch_label_list, gt_label_list, names_list, knn_labels_list = [], [], [], []
+    for idx, batch in enumerate(loader):
+        im_weak = batch[0][0].cuda()
+        pred_label = F1(G(im_weak))
+        pred_label = list(pred_label.max(1)[1].cpu().detach().numpy())
+        fixmatch_label_list.extend(pred_label)
+        gt_labels = batch[1]
+        gt_label_list.extend(gt_labels)
+        names = batch[2]
+        names_list.extend(names)
+        sim_distribution = get_similarity_distribution(feat_dict_combined,batch,G)
+        k_neighbors, _ = get_kNN(sim_distribution, feat_dict_combined, K)    
+        knn_majvot_pseudo_labels = get_majority_vote(k_neighbors,feat_dict_combined, K, F1, mask_loss_uncertain, len(loader.dataset)).cpu().detach().numpy()
+        knn_labels_list.extend(knn_majvot_pseudo_labels)
+    # Writing all these lists to a csv file
+    f = open(os.path.join("logs","analysis" + str(step) + ".csv"),"w")
+    f.write("Name,GT Label, Fixmatch, KNN Label\n")
+    num_examples = len(names_list)
+    for i in range(num_examples):
+        f.write(str(names_list[i]) + "," + str(gt_label_list[i].data.item()) + "," + str(fixmatch_label_list[i]) + "," + str(knn_labels_list[i]))
+        f.write("\n")  
+    return 0

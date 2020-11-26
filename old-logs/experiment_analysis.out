@@ -928,3 +928,544 @@ Uncertain Example Loss:  1.0583385229110718
 tensor(31, device='cuda:0')
 S real T sketch Train Ep: 500 lr0.00964068794694323 	 Loss Classification: 0.765474 Loss T 0.121942 Method MME
 
+
+Test set: Average loss: 3.0724, Accuracy: 9085/23808 F1 (38%)
+
+
+Test set: Average loss: 2.9194, Accuracy: 136/360 F1 (38%)
+
+best acc test 38.159442 best acc val 37.777778
+saving model...
+Uncertain Example Loss:  1.8187990188598633
+tensor(34, device='cuda:0')
+Uncertain Example Loss:  1.3500856161117554
+tensor(42, device='cuda:0')
+Uncertain Example Loss:  1.0188109874725342
+tensor(47, device='cuda:0')
+Uncertain Example Loss:  0.9627347588539124
+tensor(50, device='cuda:0')
+Uncertain Example Loss:  0.8258432745933533
+tensor(54, device='cuda:0')
+Uncertain Example Loss:  1.312904953956604
+tensor(56, device='cuda:0')
+Uncertain Example Loss:  1.0059192180633545
+tensor(59, device='cuda:0')
+Uncertain Example Loss:  0.5780171155929565
+tensor(64, device='cuda:0')
+Uncertain Example Loss:  0.9284936785697937
+tensor(69, device='cuda:0')
+Uncertain Example Loss:  0.8926709294319153
+tensor(73, device='cuda:0')
+Uncertain Example Loss:  0.8903611898422241
+tensor(79, device='cuda:0')
+Uncertain Example Loss:  0.8726834058761597
+tensor(84, device='cuda:0')
+Uncertain Example Loss:  1.4230254888534546
+tensor(88, device='cuda:0')
+Uncertain Example Loss:  1.519822359085083
+tensor(93, device='cuda:0')
+Uncertain Example Loss:  0.9691711068153381
+tensor(96, device='cuda:0')
+Uncertain Example Loss:  0.8638865351676941
+tensor(100, device='cuda:0')
+Uncertain Example Loss:  0.687364935874939
+tensor(105, device='cuda:0')
+Uncertain Example Loss:  1.1337034702301025
+tensor(110, device='cuda:0')
+Uncertain Example Loss:  1.3793306350708008
+tensor(115, device='cuda:0')
+Uncertain Example Loss:  0.6831420063972473
+tensor(119, device='cuda:0')
+Uncertain Example Loss:  0.9878475666046143
+tensor(121, device='cuda:0')
+Uncertain Example Loss:  1.1078846454620361
+tensor(127, device='cuda:0')
+Uncertain Example Loss:  0.6617987751960754
+tensor(130, device='cuda:0')
+Uncertain Example Loss:  1.0931897163391113
+tensor(134, device='cuda:0')
+Uncertain Example Loss:  1.1140797138214111
+tensor(141, device='cuda:0')
+Uncertain Example Loss:  0.685727596282959
+tensor(143, device='cuda:0')
+Uncertain Example Loss:  0.7514626979827881
+tensor(148, device='cuda:0')
+Uncertain Example Loss:  1.1903208494186401
+tensor(151, device='cuda:0')
+Uncertain Example Loss:  0.6993842124938965
+tensor(153, device='cuda:0')
+Uncertain Example Loss:  1.436798095703125
+tensor(160, device='cuda:0')
+Uncertain Example Loss:  1.133441686630249
+tensor(165, device='cuda:0')
+Uncertain Example Loss:  0.7252724766731262
+tensor(175, device='cuda:0')
+Uncertain Example Loss:  1.4635686874389648
+tensor(181, device='cuda:0')
+Uncertain Example Loss:  1.0769129991531372
+tensor(188, device='cuda:0')
+Uncertain Example Loss:  0.41627973318099976
+tensor(192, device='cuda:0')
+Uncertain Example Loss:  1.562198281288147
+tensor(197, device='cuda:0')
+Uncertain Example Loss:  1.2086150646209717
+tensor(203, device='cuda:0')
+Uncertain Example Loss:  1.5423460006713867
+tensor(207, device='cuda:0')
+Uncertain Example Loss:  1.3109947443008423
+tensor(213, device='cuda:0')
+Uncertain Example Loss:  0.672222912311554
+tensor(220, device='cuda:0')
+Uncertain Example Loss:  0.9796390533447266
+tensor(226, device='cuda:0')
+Uncertain Example Loss:  1.0961424112319946
+tensor(233, device='cuda:0')
+Uncertain Example Loss:  0.9855383038520813
+tensor(238, device='cuda:0')
+Uncertain Example Loss:  0.9559640288352966
+tensor(244, device='cuda:0')
+Uncertain Example Loss:  0.7684237957000732
+tensor(252, device='cuda:0')
+Uncertain Example Loss:  1.4646856784820557
+tensor(259, device='cuda:0')
+Uncertain Example Loss:  1.3440701961517334
+tensor(270, device='cuda:0')
+Uncertain Example Loss:  1.053623914718628
+tensor(274, device='cuda:0')
+Uncertain Example Loss:  0.8710449934005737
+tensor(279, device='cuda:0')
+Uncertain Example Loss:  0.7153294682502747
+tensor(285, device='cuda:0')
+Uncertain Example Loss:  1.3666518926620483
+tensor(291, device='cuda:0')
+Uncertain Example Loss:  1.719010353088379
+tensor(297, device='cuda:0')
+Uncertain Example Loss:  1.2145661115646362
+tensor(300, device='cuda:0')
+Uncertain Example Loss:  1.5853458642959595
+tensor(305, device='cuda:0')
+Uncertain Example Loss:  1.2209511995315552
+tensor(309, device='cuda:0')
+Uncertain Example Loss:  1.1429730653762817
+tensor(312, device='cuda:0')
+Uncertain Example Loss:  0.9066759943962097
+tensor(316, device='cuda:0')
+Uncertain Example Loss:  0.9901242852210999
+tensor(324, device='cuda:0')
+Uncertain Example Loss:  1.3646219968795776
+tensor(331, device='cuda:0')
+Uncertain Example Loss:  0.9415919184684753
+tensor(336, device='cuda:0')
+Uncertain Example Loss:  0.7057852745056152
+tensor(340, device='cuda:0')
+Uncertain Example Loss:  1.0235651731491089
+tensor(355, device='cuda:0')
+Uncertain Example Loss:  1.6821179389953613
+tensor(362, device='cuda:0')
+Uncertain Example Loss:  0.9432133436203003
+tensor(367, device='cuda:0')
+Uncertain Example Loss:  1.2272902727127075
+tensor(373, device='cuda:0')
+Uncertain Example Loss:  1.507195234298706
+tensor(376, device='cuda:0')
+Uncertain Example Loss:  0.7664881348609924
+tensor(384, device='cuda:0')
+Uncertain Example Loss:  1.3844406604766846
+tensor(394, device='cuda:0')
+Uncertain Example Loss:  1.5344390869140625
+tensor(401, device='cuda:0')
+Uncertain Example Loss:  0.7211694121360779
+tensor(406, device='cuda:0')
+Uncertain Example Loss:  0.5687543749809265
+tensor(411, device='cuda:0')
+Uncertain Example Loss:  1.0855320692062378
+tensor(416, device='cuda:0')
+Uncertain Example Loss:  0.807659924030304
+tensor(419, device='cuda:0')
+Uncertain Example Loss:  1.1526012420654297
+tensor(423, device='cuda:0')
+Uncertain Example Loss:  1.2787171602249146
+tensor(428, device='cuda:0')
+Uncertain Example Loss:  1.656036615371704
+tensor(436, device='cuda:0')
+Uncertain Example Loss:  1.1926294565200806
+tensor(444, device='cuda:0')
+Uncertain Example Loss:  0.8914125561714172
+tensor(449, device='cuda:0')
+Uncertain Example Loss:  0.8697115778923035
+tensor(457, device='cuda:0')
+Uncertain Example Loss:  0.649985134601593
+tensor(462, device='cuda:0')
+Uncertain Example Loss:  1.496674656867981
+tensor(465, device='cuda:0')
+Uncertain Example Loss:  1.1355239152908325
+tensor(470, device='cuda:0')
+Uncertain Example Loss:  1.5133485794067383
+tensor(477, device='cuda:0')
+Uncertain Example Loss:  1.2101999521255493
+tensor(481, device='cuda:0')
+Uncertain Example Loss:  1.2289113998413086
+tensor(487, device='cuda:0')
+Uncertain Example Loss:  1.2789192199707031
+tensor(491, device='cuda:0')
+Uncertain Example Loss:  0.8182939887046814
+tensor(498, device='cuda:0')
+Uncertain Example Loss:  1.017857551574707
+tensor(504, device='cuda:0')
+Uncertain Example Loss:  1.0105531215667725
+tensor(510, device='cuda:0')
+Uncertain Example Loss:  1.010349154472351
+tensor(515, device='cuda:0')
+Uncertain Example Loss:  0.8910154104232788
+tensor(518, device='cuda:0')
+Uncertain Example Loss:  0.5259659886360168
+tensor(523, device='cuda:0')
+Uncertain Example Loss:  1.153996229171753
+tensor(529, device='cuda:0')
+Uncertain Example Loss:  0.9053499698638916
+tensor(533, device='cuda:0')
+Uncertain Example Loss:  1.3743062019348145
+tensor(538, device='cuda:0')
+Uncertain Example Loss:  1.1407504081726074
+tensor(547, device='cuda:0')
+Uncertain Example Loss:  1.6315724849700928
+tensor(553, device='cuda:0')
+Uncertain Example Loss:  1.644667387008667
+tensor(558, device='cuda:0')
+Uncertain Example Loss:  1.6458970308303833
+tensor(566, device='cuda:0')
+Uncertain Example Loss:  1.4811073541641235
+tensor(572, device='cuda:0')
+S real T sketch Train Ep: 600 lr0.00957239477517603 	 Loss Classification: 0.957612 Loss T 0.081661 Method MME
+
+Uncertain Example Loss:  0.7158822417259216
+tensor(576, device='cuda:0')
+Uncertain Example Loss:  0.4048128128051758
+tensor(583, device='cuda:0')
+Uncertain Example Loss:  1.0795079469680786
+tensor(588, device='cuda:0')
+Uncertain Example Loss:  0.9920320510864258
+tensor(593, device='cuda:0')
+Uncertain Example Loss:  1.2491662502288818
+tensor(599, device='cuda:0')
+Uncertain Example Loss:  1.4103238582611084
+tensor(605, device='cuda:0')
+Uncertain Example Loss:  0.9814888834953308
+tensor(609, device='cuda:0')
+Uncertain Example Loss:  0.8004117608070374
+tensor(619, device='cuda:0')
+Uncertain Example Loss:  0.9882475733757019
+tensor(624, device='cuda:0')
+Uncertain Example Loss:  1.0529093742370605
+tensor(633, device='cuda:0')
+Uncertain Example Loss:  0.994426429271698
+tensor(635, device='cuda:0')
+Uncertain Example Loss:  1.200055480003357
+tensor(640, device='cuda:0')
+Uncertain Example Loss:  0.8712607622146606
+tensor(654, device='cuda:0')
+Uncertain Example Loss:  1.4596949815750122
+tensor(662, device='cuda:0')
+Uncertain Example Loss:  1.2364615201950073
+tensor(666, device='cuda:0')
+Uncertain Example Loss:  0.997308075428009
+tensor(674, device='cuda:0')
+Uncertain Example Loss:  0.9249338507652283
+tensor(679, device='cuda:0')
+Uncertain Example Loss:  1.0966150760650635
+tensor(683, device='cuda:0')
+Uncertain Example Loss:  1.0625540018081665
+tensor(689, device='cuda:0')
+Uncertain Example Loss:  1.5698184967041016
+tensor(691, device='cuda:0')
+Uncertain Example Loss:  1.370184063911438
+tensor(698, device='cuda:0')
+Uncertain Example Loss:  1.1608805656433105
+tensor(705, device='cuda:0')
+Uncertain Example Loss:  0.929935872554779
+tensor(710, device='cuda:0')
+Uncertain Example Loss:  1.3416576385498047
+tensor(719, device='cuda:0')
+Uncertain Example Loss:  0.9343271851539612
+tensor(724, device='cuda:0')
+Uncertain Example Loss:  0.765662431716919
+tensor(731, device='cuda:0')
+Uncertain Example Loss:  0.4321035146713257
+tensor(735, device='cuda:0')
+Uncertain Example Loss:  0.907433807849884
+tensor(743, device='cuda:0')
+Uncertain Example Loss:  1.6405218839645386
+tensor(745, device='cuda:0')
+Uncertain Example Loss:  0.46190229058265686
+tensor(750, device='cuda:0')
+Uncertain Example Loss:  1.5472584962844849
+tensor(758, device='cuda:0')
+Uncertain Example Loss:  1.5177003145217896
+tensor(768, device='cuda:0')
+Uncertain Example Loss:  1.7362970113754272
+tensor(772, device='cuda:0')
+Uncertain Example Loss:  1.0927963256835938
+tensor(777, device='cuda:0')
+Uncertain Example Loss:  1.9186793565750122
+tensor(782, device='cuda:0')
+Uncertain Example Loss:  1.2740646600723267
+tensor(788, device='cuda:0')
+Uncertain Example Loss:  1.2994571924209595
+tensor(794, device='cuda:0')
+Uncertain Example Loss:  1.408630609512329
+tensor(799, device='cuda:0')
+Uncertain Example Loss:  1.4329637289047241
+tensor(805, device='cuda:0')
+Uncertain Example Loss:  1.5823339223861694
+tensor(810, device='cuda:0')
+Uncertain Example Loss:  1.1366266012191772
+tensor(816, device='cuda:0')
+Uncertain Example Loss:  1.723650336265564
+tensor(822, device='cuda:0')
+Uncertain Example Loss:  1.0110682249069214
+tensor(829, device='cuda:0')
+Uncertain Example Loss:  0.7575528621673584
+tensor(837, device='cuda:0')
+Uncertain Example Loss:  1.312604308128357
+tensor(842, device='cuda:0')
+Uncertain Example Loss:  1.3173831701278687
+tensor(849, device='cuda:0')
+Uncertain Example Loss:  2.0632882118225098
+tensor(857, device='cuda:0')
+Uncertain Example Loss:  1.8068249225616455
+tensor(859, device='cuda:0')
+Uncertain Example Loss:  1.6313564777374268
+tensor(863, device='cuda:0')
+Uncertain Example Loss:  1.3157858848571777
+tensor(868, device='cuda:0')
+Uncertain Example Loss:  1.5386881828308105
+tensor(877, device='cuda:0')
+Uncertain Example Loss:  1.2566730976104736
+tensor(883, device='cuda:0')
+Uncertain Example Loss:  1.207939624786377
+tensor(890, device='cuda:0')
+Uncertain Example Loss:  1.54290771484375
+tensor(900, device='cuda:0')
+Uncertain Example Loss:  1.4225796461105347
+tensor(906, device='cuda:0')
+Uncertain Example Loss:  1.0880752801895142
+tensor(917, device='cuda:0')
+Uncertain Example Loss:  0.8051098585128784
+tensor(921, device='cuda:0')
+Uncertain Example Loss:  1.2879916429519653
+tensor(927, device='cuda:0')
+Uncertain Example Loss:  1.0315834283828735
+tensor(938, device='cuda:0')
+Uncertain Example Loss:  0.9336112141609192
+tensor(946, device='cuda:0')
+Uncertain Example Loss:  1.5118809938430786
+tensor(954, device='cuda:0')
+Uncertain Example Loss:  1.4569696187973022
+tensor(959, device='cuda:0')
+Uncertain Example Loss:  1.073117971420288
+tensor(965, device='cuda:0')
+Uncertain Example Loss:  1.5292905569076538
+tensor(974, device='cuda:0')
+Uncertain Example Loss:  0.815028727054596
+tensor(983, device='cuda:0')
+Uncertain Example Loss:  1.3406548500061035
+tensor(993, device='cuda:0')
+Uncertain Example Loss:  1.3605642318725586
+tensor(1002, device='cuda:0')
+Uncertain Example Loss:  1.538580298423767
+tensor(1009, device='cuda:0')
+Uncertain Example Loss:  1.112198829650879
+tensor(1013, device='cuda:0')
+Uncertain Example Loss:  2.0440611839294434
+tensor(1022, device='cuda:0')
+Uncertain Example Loss:  1.3441054821014404
+tensor(1027, device='cuda:0')
+Uncertain Example Loss:  1.7368041276931763
+tensor(1033, device='cuda:0')
+Uncertain Example Loss:  1.3361974954605103
+tensor(1042, device='cuda:0')
+Uncertain Example Loss:  1.4426584243774414
+tensor(1054, device='cuda:0')
+Uncertain Example Loss:  1.7236592769622803
+tensor(1059, device='cuda:0')
+Uncertain Example Loss:  1.1493844985961914
+tensor(1069, device='cuda:0')
+Uncertain Example Loss:  0.6867950558662415
+tensor(1076, device='cuda:0')
+Uncertain Example Loss:  1.170919418334961
+tensor(1085, device='cuda:0')
+Uncertain Example Loss:  1.071985125541687
+tensor(1092, device='cuda:0')
+Uncertain Example Loss:  1.4794758558273315
+tensor(1101, device='cuda:0')
+Uncertain Example Loss:  1.304062843322754
+tensor(1109, device='cuda:0')
+Uncertain Example Loss:  1.0566222667694092
+tensor(1112, device='cuda:0')
+Uncertain Example Loss:  1.1563762426376343
+tensor(1121, device='cuda:0')
+Uncertain Example Loss:  1.3801820278167725
+tensor(1125, device='cuda:0')
+Uncertain Example Loss:  1.190574288368225
+tensor(1132, device='cuda:0')
+Uncertain Example Loss:  1.468820571899414
+tensor(1141, device='cuda:0')
+Uncertain Example Loss:  1.3926218748092651
+tensor(1147, device='cuda:0')
+Uncertain Example Loss:  0.5277868509292603
+tensor(1152, device='cuda:0')
+Uncertain Example Loss:  0.7820638418197632
+tensor(1159, device='cuda:0')
+Uncertain Example Loss:  0.9792566895484924
+tensor(1165, device='cuda:0')
+Uncertain Example Loss:  1.4395217895507812
+tensor(1172, device='cuda:0')
+Uncertain Example Loss:  1.2929461002349854
+tensor(1179, device='cuda:0')
+Uncertain Example Loss:  1.4030964374542236
+tensor(1185, device='cuda:0')
+Uncertain Example Loss:  1.1613320112228394
+tensor(1192, device='cuda:0')
+Uncertain Example Loss:  1.0448272228240967
+tensor(1197, device='cuda:0')
+Uncertain Example Loss:  1.3015272617340088
+tensor(1205, device='cuda:0')
+Uncertain Example Loss:  1.5331308841705322
+tensor(1208, device='cuda:0')
+Uncertain Example Loss:  1.1619197130203247
+tensor(1218, device='cuda:0')
+Uncertain Example Loss:  1.0559626817703247
+tensor(1226, device='cuda:0')
+Uncertain Example Loss:  1.591851830482483
+tensor(1231, device='cuda:0')
+S real T sketch Train Ep: 700 lr0.009505219859830012 	 Loss Classification: 0.728469 Loss T 0.101445 Method MME
+
+Uncertain Example Loss:  1.5701475143432617
+tensor(1236, device='cuda:0')
+Uncertain Example Loss:  1.1367230415344238
+tensor(1241, device='cuda:0')
+Uncertain Example Loss:  1.9414781332015991
+tensor(1249, device='cuda:0')
+Uncertain Example Loss:  1.045341968536377
+tensor(1255, device='cuda:0')
+Uncertain Example Loss:  0.8945882320404053
+tensor(1266, device='cuda:0')
+Uncertain Example Loss:  1.0178096294403076
+tensor(1270, device='cuda:0')
+Uncertain Example Loss:  1.1633002758026123
+tensor(1274, device='cuda:0')
+Uncertain Example Loss:  1.5709125995635986
+tensor(1279, device='cuda:0')
+Uncertain Example Loss:  1.2214102745056152
+tensor(1281, device='cuda:0')
+Uncertain Example Loss:  1.8133307695388794
+tensor(1286, device='cuda:0')
+Uncertain Example Loss:  1.0494983196258545
+tensor(1288, device='cuda:0')
+Uncertain Example Loss:  1.0937793254852295
+tensor(1294, device='cuda:0')
+Uncertain Example Loss:  1.6427721977233887
+tensor(1301, device='cuda:0')
+Uncertain Example Loss:  1.5958071947097778
+tensor(1306, device='cuda:0')
+Uncertain Example Loss:  1.272223949432373
+tensor(1315, device='cuda:0')
+Uncertain Example Loss:  1.242573857307434
+tensor(1322, device='cuda:0')
+Uncertain Example Loss:  1.1740591526031494
+tensor(1331, device='cuda:0')
+Uncertain Example Loss:  0.6200878024101257
+tensor(1334, device='cuda:0')
+Uncertain Example Loss:  1.7305444478988647
+tensor(1341, device='cuda:0')
+Uncertain Example Loss:  1.4041563272476196
+tensor(1351, device='cuda:0')
+Uncertain Example Loss:  1.0314937829971313
+tensor(1356, device='cuda:0')
+Uncertain Example Loss:  1.3829498291015625
+tensor(1368, device='cuda:0')
+Uncertain Example Loss:  0.6494898200035095
+tensor(1377, device='cuda:0')
+Uncertain Example Loss:  1.0605231523513794
+tensor(1380, device='cuda:0')
+Uncertain Example Loss:  1.954614281654358
+tensor(1390, device='cuda:0')
+Uncertain Example Loss:  1.5181925296783447
+tensor(1399, device='cuda:0')
+Uncertain Example Loss:  1.1772693395614624
+tensor(1405, device='cuda:0')
+Uncertain Example Loss:  1.3289059400558472
+tensor(1409, device='cuda:0')
+Uncertain Example Loss:  1.08015775680542
+tensor(1412, device='cuda:0')
+Uncertain Example Loss:  1.3436354398727417
+tensor(1414, device='cuda:0')
+Uncertain Example Loss:  1.479196310043335
+tensor(1418, device='cuda:0')
+Uncertain Example Loss:  1.125982403755188
+tensor(1424, device='cuda:0')
+Uncertain Example Loss:  1.392425775527954
+tensor(1433, device='cuda:0')
+Uncertain Example Loss:  1.7826708555221558
+tensor(1439, device='cuda:0')
+Uncertain Example Loss:  1.6011408567428589
+tensor(1442, device='cuda:0')
+Uncertain Example Loss:  3.283759355545044
+tensor(1447, device='cuda:0')
+Uncertain Example Loss:  1.6058586835861206
+tensor(1455, device='cuda:0')
+Uncertain Example Loss:  1.1463497877120972
+tensor(1461, device='cuda:0')
+Uncertain Example Loss:  1.210334300994873
+tensor(1467, device='cuda:0')
+Uncertain Example Loss:  1.588858723640442
+tensor(1477, device='cuda:0')
+Uncertain Example Loss:  1.5942716598510742
+tensor(1484, device='cuda:0')
+Uncertain Example Loss:  1.752992868423462
+tensor(1494, device='cuda:0')
+Uncertain Example Loss:  2.328721046447754
+tensor(1499, device='cuda:0')
+Uncertain Example Loss:  2.2159101963043213
+tensor(1508, device='cuda:0')
+Uncertain Example Loss:  1.2252129316329956
+tensor(1514, device='cuda:0')
+Uncertain Example Loss:  2.5116758346557617
+tensor(1519, device='cuda:0')
+Uncertain Example Loss:  1.3747485876083374
+tensor(1527, device='cuda:0')
+Uncertain Example Loss:  2.919477701187134
+tensor(1532, device='cuda:0')
+Uncertain Example Loss:  1.9594734907150269
+tensor(1536, device='cuda:0')
+Uncertain Example Loss:  1.0118836164474487
+tensor(1542, device='cuda:0')
+Uncertain Example Loss:  0.8322901725769043
+tensor(1544, device='cuda:0')
+Uncertain Example Loss:  1.2130249738693237
+tensor(1552, device='cuda:0')
+Uncertain Example Loss:  0.6057818531990051
+tensor(1557, device='cuda:0')
+Uncertain Example Loss:  1.706214427947998
+tensor(1562, device='cuda:0')
+Uncertain Example Loss:  2.0141704082489014
+tensor(1571, device='cuda:0')
+Uncertain Example Loss:  2.279524326324463
+tensor(1580, device='cuda:0')
+Uncertain Example Loss:  1.4903429746627808
+tensor(1587, device='cuda:0')
+Uncertain Example Loss:  1.5876966714859009
+tensor(1596, device='cuda:0')
+Uncertain Example Loss:  1.2727869749069214
+tensor(1608, device='cuda:0')
+Uncertain Example Loss:  2.020850658416748
+tensor(1611, device='cuda:0')
+Uncertain Example Loss:  1.6759012937545776
+tensor(1618, device='cuda:0')
+Uncertain Example Loss:  2.5637190341949463
+tensor(1623, device='cuda:0')
+Uncertain Example Loss:  1.5891588926315308
+tensor(1631, device='cuda:0')
+Uncertain Example Loss:  2.316861867904663
+tensor(1638, device='cuda:0')
+Terminated

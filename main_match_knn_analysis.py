@@ -202,8 +202,8 @@ def train():
             data_iter_t = iter(target_loader)
         if step % len_train_target_semi == 0:
             data_iter_t_unl = iter(target_loader_unl)
-            matching_pseudo_labels = 0
             print("Matching are: ", matching_pseudo_labels/len(target_loader_unl.dataset))
+            matching_pseudo_labels = 0
         if step % len_train_source == 0:
             data_iter_s = iter(source_loader)
         
