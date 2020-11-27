@@ -11,7 +11,9 @@ import torch.optim as optim
 from torch.autograd import Variable
 from model.resnet import resnet34
 from model.basenet import AlexNetBase, VGGBase, Predictor, Predictor_deep
-from utils.utils import combine_dicts, get_confident, get_most_confident, weights_init, update_features, get_similarity_distribution, get_kNN, k_means, get_majority_vote, save_stats
+from utils.utils import *
+from utils.majority_voting import *
+from utils.confidence_knn import *
 from utils.lr_schedule import inv_lr_scheduler, get_cosine_schedule_with_warmup
 from utils.return_dataset import return_dataset, return_dataset_randaugment
 from utils.loss import entropy, adentropy
@@ -105,7 +107,7 @@ for key, value in dict(G.named_parameters()).items():
         if 'classifier' not in key:
             params += [{'params': [value], 'lr': args.multi,
                         'weight_decay': 0.0005}]
-        else:
+        else: 
             params += [{'params': [value], 'lr': args.multi * 10,
                         'weight_decay': 0.0005}]
 
@@ -116,6 +118,11 @@ else:
     F1 = Predictor(num_class=len(class_list), inc=inc,
                    temp=args.T)
 weights_init(F1)
+
+if args.net == "resnet34":
+    G_final = nn.Sequential(G,F1.fc1)
+    F1.fc1 = nn.Identity()
+    G = deepcopy(G_final)
 
 if args.pretrained_ckpt is not None:
     ckpt = torch.load(args.pretrained_ckpt)
@@ -167,7 +174,7 @@ def train():
     for param_group in optimizer_f.param_groups:
         param_lr_f.append(param_group["lr"])
 
-    thresh = 0.9 # threshold for confident prediction to generate pseudo-labels
+    thresh = 0 # threshold for confident prediction to generate pseudo-labels
     criterion = nn.CrossEntropyLoss().cuda()
     criterion_pseudo = nn.CrossEntropyLoss(reduction='none').cuda()
     all_step = args.steps
@@ -180,7 +187,7 @@ def train():
     best_acc = 0
     counter = 0
     momentum = 0.9  
-    K = 3
+    K = 12
     for step in range(all_step):
         optimizer_g = inv_lr_scheduler(param_lr_g, optimizer_g, step, init_lr=args.lr)
         optimizer_f = inv_lr_scheduler(param_lr_f, optimizer_f, step, init_lr=args.lr)
@@ -233,13 +240,14 @@ def train():
         #mask_loss_uncertain = (prob_weak_aug.max(1)[0]<thresh) & (prob_weak_aug.max(1)[0]>0.7)
         mask_loss_uncertain = prob_weak_aug.max(1)[0]>thresh
         knn_majvot_pseudo_labels = get_majority_vote(k_neighbors,feat_dict_combined, K, F1, mask_loss_uncertain, len(target_loader_unl.dataset))
-        loss_pseudo_unl_knn = torch.mean(mask_loss_uncertain.int() * criterion_pseudo(pred_strong_aug, knn_majvot_pseudo_labels))
+        #loss_pseudo_unl_knn = torch.mean(mask_loss_uncertain.int() * criterion_pseudo(pred_strong_aug, knn_majvot_pseudo_labels))
         
-        #if  not torch.sum(mask_loss_uncertain.int()) == 0:
-        #    loss_pseudo_unl_knn = torch.sum(mask_loss_uncertain.int() * criterion_pseudo(pred_strong_aug, knn_majvot_pseudo_labels))/(torch.sum(mask_loss_uncertain.int()))
-        loss_pseudo_unl_knn.backward(retain_graph=True)
+        if  not torch.sum(mask_loss_uncertain.int()) == 0:
+            loss_pseudo_unl_knn = torch.sum(mask_loss_uncertain.int() * criterion_pseudo(pred_strong_aug, knn_majvot_pseudo_labels))/(torch.sum(mask_loss_uncertain.int()))
+            loss_pseudo_unl_knn.backward(retain_graph=True)
         
         #save_stats(F1, G, target_loader_unl, step, feat_dict_combined, data_t_unl, K, mask_loss_uncertain)
+        #print(knn_majvot_pseudo_labels, mask_loss_uncertain)
         output = G(data)
         out1 = F1(output)
         loss = criterion(out1, target)

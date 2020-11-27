@@ -88,7 +88,6 @@ class VGGBase(nn.Module):
         x = self.classifier(x)
         return x
 
-
 class Predictor(nn.Module):
     def __init__(self, num_class=64, inc=4096, temp=0.05):
         super(Predictor, self).__init__()

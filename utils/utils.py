@@ -8,6 +8,7 @@ import torch.nn.functional as F
 from easydict import EasyDict as edict
 import numpy as np
 from kmeans_pytorch import kmeans
+from utils.majority_voting import *
 
 def weights_init(m):
     classname = m.__class__.__name__
@@ -79,131 +80,6 @@ def k_means(vectors, num_clusters):
     cluster_ids_x, cluster_centers = kmeans( X=vectors, num_clusters=num_clusters, distance='euclidean', device=torch.device('cuda:0'))
     return cluster_ids_x, cluster_centers
 
-def get_confident_label(list_predictions, thresh):
-    for prediction in list_predictions:
-        prediction = F.softmax(prediction,dim=1)
-        if prediction.max(1)[0] > thresh:
-            return prediction.max(1)[1].cpu().data.item()
-    return -1
-
-def get_confident(k_neighbors,feat_dict, K, F1, thresh, mask_loss_uncertain,source = False):
-    feat_vec = feat_dict.feat_vec
-    k_feats = []
-    for img in k_neighbors:
-        img_feats = []
-        for neighbor in range(K):
-            img_feats.append(feat_vec[img[neighbor]])
-        k_feats.append(img_feats)
-    pseudo_labels = []
-    for idx, img_nearest in enumerate(k_feats):
-        pred_list = []
-        for feat in img_nearest:
-            pred_label = F1(feat.unsqueeze(0))
-            pred_list.append(pred_label)
-        confident_label = get_confident_label(pred_list, thresh)
-        if confident_label == -1: # Disregard example when not confident
-            mask_loss_uncertain[idx] = False
-            confident_label = 0 # Making it compatible with CE loss - anyways this is not considered for loss calculation
-        pseudo_labels.append(confident_label) 
-    return torch.tensor(pseudo_labels).cuda()
-
- ####### functions for majority voting #####
-def unique(list1): 
-    unique_list = [] 
-    for x in list1: 
-        if x not in unique_list: 
-            unique_list.append(x) 
-    return unique_list
-
-def get_majority_from_list(x):
-    x.sort()
-    unique_x = unique(x)
-    element_count = []
-    count = 0
-    for unique_number in unique_x:
-        for all_num in x:
-            if all_num == unique_number:
-                count = count + 1
-        element_count.append(count)
-        count = 0
-    element_count = np.array(element_count)
-    pos = np.argmax(element_count)
-    majority_label = unique_x[pos]
-    return majority_label, element_count[pos]
-        
-def get_majority_vote_label(list_predictions,K):
-    label_list = []
-    for prediction in list_predictions:
-        prediction = F.softmax(prediction,dim=1)
-        label_list.append(prediction.max(1)[1].cpu().data.item())
-    majority_label, num_maj = get_majority_from_list(label_list)
-    return majority_label, num_maj
-
-def get_majority_vote(k_neighbors,feat_dict, K, F1, mask_loss_uncertain, len_target, source = False):
-    feat_vec = feat_dict.feat_vec
-    labels = feat_dict.labels
-    if source:
-        k_feats = []
-        for img in k_neighbors:
-            pseudo_labels = []
-            for neighbor in range(K):
-                pseudo_labels.append(labels[img[neighbor]])
-            k_feats.append(pseudo_labels)
-        pseudo_labels_final = []
-        for img in k_feats:
-            majority_label, _ = get_majority_from_list(img)
-            pseudo_labels_final.append(majority_label)
-        return torch.tensor(pseudo_labels_final).cuda()
-    k_feats = []
-    for img in k_neighbors:
-        img_feats = []
-        for neighbor in range(K):
-            img_feats.append(feat_vec[img[neighbor]])
-        k_feats.append(img_feats)
-    pseudo_labels = []
-    for idx, img_nearest in enumerate(k_feats):
-        pred_list = []
-        for idx_feat, feat in enumerate(img_nearest):
-            if k_neighbors[idx][idx_feat] > len_target:
-                pred_list.append(feat_dict.labels[k_neighbors[idx][idx_feat]])
-            else:
-                prediction = F1(feat.unsqueeze(0))
-                pred_list.append(F.softmax(prediction, dim=1).max(1)[1].cpu().data.item())
-        majority_vote_label, num_maj = get_majority_from_list(pred_list)
-        if num_maj < int(K/2): # Disregard example when it's not absolute majority
-            mask_loss_uncertain[idx] = False
-            majority_vote_label = 0 # Making it compatible with CE loss - anyways this is not considered for loss calculation
-        pseudo_labels.append(majority_vote_label)
-    return torch.tensor(pseudo_labels).cuda()
-######################################################################
-
-def get_most_confident_label(list_predictions):
-    max_prob = 0
-    for prediction in list_predictions:
-        prediction = F.softmax(prediction,dim=1)
-        if prediction.max(1)[0].cpu().data.item() > max_prob:
-            max_prob = prediction.max(1)[0].cpu().data.item()
-            curr_label = prediction.max(1)[1].cpu().data.item()
-    return curr_label
-
-def get_most_confident(k_neighbors,feat_dict, K, F1):
-    feat_vec = feat_dict.feat_vec
-    k_feats = []
-    for img in k_neighbors:
-        img_feats = []
-        for neighbor in range(K):
-            img_feats.append(feat_vec[img[neighbor]])
-        k_feats.append(img_feats)
-    pseudo_labels = []
-    for idx, img_nearest in enumerate(k_feats):
-        pred_list = []
-        for feat in img_nearest:
-            pred_label = F1(feat.unsqueeze(0))
-            pred_list.append(pred_label)
-        confident_label = get_most_confident_label(pred_list)
-        pseudo_labels.append(confident_label) 
-    return torch.tensor(pseudo_labels).cuda()
-
 
 def combine_dicts(feat_dict_target, feat_dict_source): # expects the easydict object
     feat_dict_combined = edict({})
@@ -215,11 +91,13 @@ def combine_dicts(feat_dict_target, feat_dict_source): # expects the easydict ob
 
 def save_stats(F1, G, loader, step, feat_dict_combined, batch, K, mask_loss_uncertain):
     fixmatch_label_list, gt_label_list, names_list, knn_labels_list = [], [], [], []
+    weak_prob= []
     for idx, batch in enumerate(loader):
         im_weak = batch[0][0].cuda()
         pred_label = F1(G(im_weak))
-        pred_label = list(pred_label.max(1)[1].cpu().detach().numpy())
-        fixmatch_label_list.extend(pred_label)
+        pred_label_list = list(pred_label.max(1)[1].cpu().detach().numpy())
+        fixmatch_label_list.extend(pred_label_list)
+        weak_prob.extend(list(pred_label.max(1)[0].cpu().detach().numpy()))
         gt_labels = batch[1]
         gt_label_list.extend(gt_labels)
         names = batch[2]
@@ -228,8 +106,9 @@ def save_stats(F1, G, loader, step, feat_dict_combined, batch, K, mask_loss_unce
         k_neighbors, _ = get_kNN(sim_distribution, feat_dict_combined, K)    
         knn_majvot_pseudo_labels = get_majority_vote(k_neighbors,feat_dict_combined, K, F1, mask_loss_uncertain, len(loader.dataset)).cpu().detach().numpy()
         knn_labels_list.extend(knn_majvot_pseudo_labels)
+        print(knn_majvot_pseudo_labels)
     # Writing all these lists to a csv file
-    f = open(os.path.join("logs","analysis" + str(step) + ".csv"),"w")
+    f = open(os.path.join("logs","analysis_" + str(step) + ".csv"),"w")
     f.write("Name,GT Label, Fixmatch, KNN Label\n")
     num_examples = len(names_list)
     for i in range(num_examples):
