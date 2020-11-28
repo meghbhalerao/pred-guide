@@ -64,15 +64,19 @@ def get_majority_vote(k_neighbors,feat_dict, K, F1, mask_loss_uncertain, len_tar
         prob_list = []
         for idx_feat, feat in enumerate(img_nearest):
             if feat_dict.domain_identifier[k_neighbors[idx][idx_feat]] == "S":
+            #if k_neighbors[idx][idx_feat] > len_target:
+                #print(feat_dict.domain_identifier[k_neighbors[idx][idx_feat]])
                 pred_list.append(feat_dict.labels[k_neighbors[idx][idx_feat]])
                 prob_list.append(1)
             else:
                 prediction = F1(feat.unsqueeze(0))
                 pred_list.append(F.softmax(prediction, dim=1).max(1)[1].cpu().data.item())
                 prob_list.append(F.softmax(prediction, dim=1).max(1)[0].cpu().data.item())
-        prob_list = list((np.array(prob_list)>0.9).astype(np.int8))
-        idxs_keep = [i for i in range(len(prob_list)) if prob_list[i] == 1]
-        pred_list = [pred_list[keep] for keep in idxs_keep] 
+        #prob_list = list((np.array(prob_list)>0.9).astype(np.int8))
+        #idxs_keep = [i for i in range(len(prob_list)) if prob_list[i] == 1]
+        #pred_list = [pred_list[keep] for keep in idxs_keep] 
+        #print(prob_list)
+        #print(len(pred_list))
         if pred_list:
             majority_vote_label, num_maj = get_majority_from_list(pred_list)
             if num_maj < int(K/2): # Disregard example when it's not absolute majority

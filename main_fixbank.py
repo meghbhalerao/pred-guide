@@ -188,6 +188,7 @@ def train():
     counter = 0
     momentum = 0.9  
     K = 12
+
     for step in range(all_step):
         optimizer_g = inv_lr_scheduler(param_lr_g, optimizer_g, step, init_lr=args.lr)
         optimizer_f = inv_lr_scheduler(param_lr_f, optimizer_f, step, init_lr=args.lr)
@@ -231,8 +232,7 @@ def train():
         f_batch_target = f_batch_target.detach()
 
         f_batch_source, feat_dict_source  = update_features(feat_dict_source, data_s, G, momentum, source = True)
-        f_batch_source = f_batch_source.detach()      
-        
+        f_batch_source = f_batch_source.detach()
         # Get max of similarity distribution to check which element or label is it closest to in these vectors
         feat_dict_combined = combine_dicts(feat_dict_target, feat_dict_source)
         sim_distribution = get_similarity_distribution(feat_dict_combined,data_t_unl,G)

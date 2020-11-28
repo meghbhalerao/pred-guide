@@ -1,4 +1,5 @@
-Name,GT Label, Fixmatch, KNN Labelsketch/shoe/sketch_260_000463.jpg,100,100,100
+Name,GT Label,Fixmatch,KNN Label
+sketch/shoe/sketch_260_000463.jpg,100,100,100
 sketch/table/sketch_302_000139.jpg,111,111,111
 sketch/lobster/sketch_177_000112.jpg,71,13,13
 sketch/saxophone/sketch_251_000198.jpg,95,95,95

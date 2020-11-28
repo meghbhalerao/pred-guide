@@ -80,7 +80,6 @@ def k_means(vectors, num_clusters):
     cluster_ids_x, cluster_centers = kmeans( X=vectors, num_clusters=num_clusters, distance='euclidean', device=torch.device('cuda:0'))
     return cluster_ids_x, cluster_centers
 
-
 def combine_dicts(feat_dict_target, feat_dict_source): # expects the easydict object
     feat_dict_combined = edict({})
     feat_dict_combined.feat_vec = torch.cat([feat_dict_target.feat_vec, feat_dict_source.feat_vec], dim=0)
@@ -106,7 +105,6 @@ def save_stats(F1, G, loader, step, feat_dict_combined, batch, K, mask_loss_unce
         k_neighbors, _ = get_kNN(sim_distribution, feat_dict_combined, K)    
         knn_majvot_pseudo_labels = get_majority_vote(k_neighbors,feat_dict_combined, K, F1, mask_loss_uncertain, len(loader.dataset)).cpu().detach().numpy()
         knn_labels_list.extend(knn_majvot_pseudo_labels)
-        print(knn_majvot_pseudo_labels)
     # Writing all these lists to a csv file
     f = open(os.path.join("logs","analysis_" + str(step) + ".csv"),"w")
     f.write("Name,GT Label, Fixmatch, KNN Label\n")
@@ -115,3 +113,5 @@ def save_stats(F1, G, loader, step, feat_dict_combined, batch, K, mask_loss_unce
         f.write(str(names_list[i]) + "," + str(gt_label_list[i].data.item()) + "," + str(fixmatch_label_list[i]) + "," + str(knn_labels_list[i]))
         f.write("\n")  
     return 0
+
+    

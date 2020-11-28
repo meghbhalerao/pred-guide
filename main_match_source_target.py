@@ -17,7 +17,6 @@ from utils.confidence_knn import *
 from utils.lr_schedule import inv_lr_scheduler, get_cosine_schedule_with_warmup
 from utils.return_dataset import return_dataset, return_dataset_randaugment
 from utils.loss import entropy, adentropy
-from augmentations.augmentation_ours import *
 import pickle
 from easydict import EasyDict as edict
 
@@ -119,10 +118,12 @@ else:
                    temp=args.T)
 weights_init(F1)
 
+"""
 if args.net == "resnet34":
     G_final = nn.Sequential(G,F1.fc1)
     F1.fc1 = nn.Identity()
     G = deepcopy(G_final)
+"""
 
 if args.pretrained_ckpt is not None:
     ckpt = torch.load(args.pretrained_ckpt)
@@ -174,7 +175,7 @@ def train():
     for param_group in optimizer_f.param_groups:
         param_lr_f.append(param_group["lr"])
 
-    thresh = 0 # threshold for confident prediction to generate pseudo-labels
+    thresh = 0.9 # threshold for confident prediction to generate pseudo-labels
     criterion = nn.CrossEntropyLoss().cuda()
     criterion_pseudo = nn.CrossEntropyLoss(reduction='none').cuda()
     all_step = args.steps
@@ -221,10 +222,10 @@ def train():
             pred_weak_aug = F1(G(im_data_tu_weak_aug))
         
         prob_weak_aug = F.softmax(pred_weak_aug,dim=1)
-        #mask_loss = prob_weak_aug.max(1)[0]>thresh
-        #pseudo_labels = pred_weak_aug.max(axis=1)[1]
-        #loss_pseudo_unl = torch.mean(mask_loss.int() * criterion_pseudo(pred_strong_aug,pseudo_labels))
-        #loss_pseudo_unl.backward(retain_graph=True)
+        mask_loss = prob_weak_aug.max(1)[0]>thresh
+        pseudo_labels = pred_weak_aug.max(axis=1)[1]
+        loss_pseudo_unl = torch.mean(mask_loss.int() * criterion_pseudo(pred_strong_aug,pseudo_labels))
+        loss_pseudo_unl.backward(retain_graph=True)
         # Updating the features in the bank for both source and target
         
         f_batch_target, feat_dict_target  = update_features(feat_dict_target, data_t_unl, G, momentum)
@@ -232,20 +233,25 @@ def train():
 
         f_batch_source, feat_dict_source  = update_features(feat_dict_source, data_s, G, momentum, source = True)
         f_batch_source = f_batch_source.detach()      
-        
         # Get max of similarity distribution to check which element or label is it closest to in these vectors
-        feat_dict_combined = combine_dicts(feat_dict_target, feat_dict_source)
-        sim_distribution = get_similarity_distribution(feat_dict_combined,data_t_unl,G)
-        k_neighbors, _ = get_kNN(sim_distribution, feat_dict_combined, K)    
-        #mask_loss_uncertain = (prob_weak_aug.max(1)[0]<thresh) & (prob_weak_aug.max(1)[0]>0.7)
-        mask_loss_uncertain = prob_weak_aug.max(1)[0]>thresh
-        knn_majvot_pseudo_labels = get_majority_vote(k_neighbors,feat_dict_combined, K, F1, mask_loss_uncertain, len(target_loader_unl.dataset))
-        #loss_pseudo_unl_knn = torch.mean(mask_loss_uncertain.int() * criterion_pseudo(pred_strong_aug, knn_majvot_pseudo_labels))
-        
-        if  not torch.sum(mask_loss_uncertain.int()) == 0:
-            loss_pseudo_unl_knn = torch.sum(mask_loss_uncertain.int() * criterion_pseudo(pred_strong_aug, knn_majvot_pseudo_labels))/(torch.sum(mask_loss_uncertain.int()))
+        if step > 3500:
+            feat_dict_combined = combine_dicts(feat_dict_target, feat_dict_source)
+            sim_distribution = get_similarity_distribution(feat_dict_combined,data_t_unl,G)
+            k_neighbors, _ = get_kNN(sim_distribution, feat_dict_combined, K)    
+            mask_loss_uncertain = (prob_weak_aug.max(1)[0]<thresh) & (prob_weak_aug.max(1)[0]>0.3)
+            
+            #mask_loss_uncertain = prob_weak_aug.max(1)[0]>thresh
+            knn_majvot_pseudo_labels = get_majority_vote(k_neighbors,feat_dict_combined, K, F1, mask_loss_uncertain, len(target_loader_unl.dataset))
+            """
+            loss_pseudo_unl_knn = torch.mean(mask_loss_uncertain.int() * criterion_pseudo(pred_strong_aug, knn_majvot_pseudo_labels))
             loss_pseudo_unl_knn.backward(retain_graph=True)
-        
+            print(loss_pseudo_unl_knn.cpu().data.item())
+            """
+            
+            if  not torch.sum(mask_loss_uncertain.int()) == 0:
+                loss_pseudo_unl_knn = torch.sum(mask_loss_uncertain.int() * criterion_pseudo(pred_strong_aug, knn_majvot_pseudo_labels))/(torch.sum(mask_loss_uncertain.int()))
+                loss_pseudo_unl_knn.backward(retain_graph=True)
+            
         #save_stats(F1, G, target_loader_unl, step, feat_dict_combined, data_t_unl, K, mask_loss_uncertain)
         #print(knn_majvot_pseudo_labels, mask_loss_uncertain)
         output = G(data)
