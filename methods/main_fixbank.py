@@ -214,8 +214,9 @@ def train():
         zero_grad_all()
         data = torch.cat((im_data_s, im_data_t), 0) #concatenating the labelled images
         target = torch.cat((gt_labels_s, gt_labels_t), 0)
-        im_data_tu_weak_aug, im_data_tu_strong_aug = data_t_unl[0][0].cuda(), data_t_unl[0][1].cuda()
-
+        im_data_tu_weak_aug = data_t_unl[0][0].cuda()
+        im_data_tu_strong_aug = data_t_unl[0][1].cuda()
+        
         # Getting predictions of weak and strong augmented unlabled examples
         pred_strong_aug = F1(G(im_data_tu_strong_aug))
         with torch.no_grad():

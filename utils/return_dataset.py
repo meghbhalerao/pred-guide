@@ -141,7 +141,6 @@ def return_dataset_test(args):
                                     shuffle=False, drop_last=False)
     return target_loader_unl, class_list
 
-
 def return_dataset_rot(args):
     base_path = './data/txt/%s' % args.dataset
     root = './data/%s/' % args.dataset
@@ -202,10 +201,7 @@ class TransformFix(object):
 
         self.standard = transforms.Compose([
             ResizeImage(256),
-            transforms.CenterCrop(self.crop_size),
-            transforms.ToTensor(),
-            transforms.Normalize(mean = mean, std = std)
-        ])
+            transforms.CenterCrop(self.crop_size)])
 
         self.normalize = transforms.Compose([
             transforms.ToTensor(),
@@ -214,7 +210,8 @@ class TransformFix(object):
     def __call__(self, x):
         weak = self.weak(x)
         strong = self.strong(x)
-        return self.normalize(weak), self.normalize(strong), self.standard(x)
+        standard = self.standard(x)
+        return self.normalize(weak), self.normalize(strong), self.normalize(standard)
 
 
 def return_dataset_randaugment(args):
@@ -276,8 +273,7 @@ def return_dataset_randaugment(args):
                                     shuffle=True, drop_last=True)
     target_loader_val = \
         torch.utils.data.DataLoader(target_dataset_val,
-                                    batch_size=min(bs,
-                                                   len(target_dataset_val)),
+                                    batch_size=min(bs, len(target_dataset_val)),
                                     num_workers=3,
                                     shuffle=True, drop_last=True)
     target_loader_unl = \
