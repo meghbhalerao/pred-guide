@@ -192,33 +192,20 @@ class TransformFix(object):
         self.weak = transforms.Compose([
             ResizeImage(256),
             transforms.RandomHorizontalFlip(),
-            transforms.RandomCrop(size=self.crop_size,
-                                  padding=int(self.crop_size*0.125),
-                                  padding_mode='reflect')])
+            transforms.RandomCrop(size=self.crop_size, padding=int(self.crop_size*0.125),padding_mode='reflect')])
+
         if self.aug_policy == "randaugment":
             self.strong = transforms.Compose([
                 ResizeImage(256),
                 transforms.RandomHorizontalFlip(),
-                transforms.RandomCrop(size=self.crop_size,
-                                    padding=int(self.crop_size*0.125),
-                                    padding_mode='reflect'),
-                RandAugmentMC(n=2, m=10)])
-        """    
-        elif self.aug_policy == "ct_augment":
-            self.strong = transforms.Compose([
-                ResizeImage(256),
-                transforms.RandomHorizontalFlip(),
-                transforms.RandomCrop(size=self.crop_size,
-                                    padding=int(self.crop_size*0.125),
-                                    padding_mode='reflect'), CTAugment()])    
+                transforms.RandomCrop(size=self.crop_size, padding=int(self.crop_size*0.125),padding_mode='reflect'), RandAugmentMC(n=2, m=10)])
 
-        """
         self.standard = transforms.Compose([
-            ResizeImage(224),
-            #transforms.RandomHorizontalFlip(),
-            #transforms.RandomCrop(self.crop_size),
+            ResizeImage(256),
+            transforms.CenterCrop(self.crop_size),
             transforms.ToTensor(),
-            transforms.Normalize(mean=mean, std=std)])
+            transforms.Normalize(mean = mean, std = std)
+        ])
 
         self.normalize = transforms.Compose([
             transforms.ToTensor(),
@@ -233,22 +220,10 @@ class TransformFix(object):
 def return_dataset_randaugment(args):
     base_path = './data/txt/%s' % args.dataset
     root = './data/%s/' % args.dataset
-    image_set_file_s = \
-        os.path.join(base_path,
-                     'labeled_source_images_' +
-                     args.source + '.txt')
-    image_set_file_t = \
-        os.path.join(base_path,
-                     'labeled_target_images_' +
-                     args.target + '_%d.txt' % (args.num))
-    image_set_file_t_val = \
-        os.path.join(base_path,
-                     'validation_target_images_' +
-                     args.target + '_3.txt')
-    image_set_file_unl = \
-        os.path.join(base_path,
-                     'unlabeled_target_images_' +
-                     args.target + '_%d.txt' % (args.num))
+    image_set_file_s = os.path.join(base_path, 'labeled_source_images_' + args.source + '.txt')
+    image_set_file_t = os.path.join(base_path, 'labeled_target_images_' + args.target + '_%d.txt' % (args.num))
+    image_set_file_t_val = os.path.join(base_path, 'validation_target_images_' + args.target + '_3.txt')
+    image_set_file_unl = os.path.join(base_path, 'unlabeled_target_images_' + args.target + '_%d.txt' % (args.num))
 
     if args.net == 'alexnet':
         crop_size = 227
@@ -276,17 +251,15 @@ def return_dataset_randaugment(args):
             transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
         ]),
     }
-    source_dataset = Imagelists_VISDA(image_set_file_s, root=root, transform=data_transforms['train']) #ORIGINAL
-    #source_dataset = Imagelists_VISDA(image_set_file_s, root=root, transform=TransformFix("randaugment", args.net, mean =[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]))
+    source_dataset = Imagelists_VISDA(image_set_file_s, root=root, transform=data_transforms['train'])
+    if args.uda:
+        target_dataset = Imagelists_VISDA(image_set_file_t, root=root, transform=TransformFix("randaugment", args.net, mean =[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]))
+    else:
+        target_dataset = Imagelists_VISDA(image_set_file_t, root=root, transform=data_transforms['val'])       
 
-    target_dataset = Imagelists_VISDA(image_set_file_t, root=root,
-                                      transform=data_transforms['val'])
-    target_dataset_val = Imagelists_VISDA(image_set_file_t_val, root=root,
-                                          transform=data_transforms['val'])
-    target_dataset_unl = Imagelists_VISDA(image_set_file_unl, root=root,
-                                          transform=TransformFix("randaugment", args.net, mean =[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]))
-    target_dataset_test = Imagelists_VISDA(image_set_file_unl, root=root,
-                                           transform=data_transforms['test'])
+    target_dataset_val = Imagelists_VISDA(image_set_file_t_val, root=root, transform=data_transforms['val'])
+    target_dataset_unl = Imagelists_VISDA(image_set_file_unl, root=root, transform=TransformFix("randaugment", args.net, mean =[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]))
+    target_dataset_test = Imagelists_VISDA(image_set_file_unl, root=root, transform=data_transforms['test'])
     class_list = return_classlist(image_set_file_s)
     print("%d classes in this dataset" % len(class_list))
     if args.net == 'alexnet':
@@ -316,3 +289,16 @@ def return_dataset_randaugment(args):
                                     batch_size=bs * 2, num_workers=3,
                                     shuffle=True, drop_last=True)
     return source_loader, target_loader, target_loader_unl, target_loader_val, target_loader_test, class_list
+
+
+
+"""    
+elif self.aug_policy == "ct_augment":
+    self.strong = transforms.Compose([
+        ResizeImage(256),
+        transforms.RandomHorizontalFlip(),
+        transforms.RandomCrop(size=self.crop_size,
+                            padding=int(self.crop_size*0.125),
+                            padding_mode='reflect'), CTAugment()])    
+
+"""

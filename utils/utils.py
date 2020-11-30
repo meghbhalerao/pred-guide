@@ -83,7 +83,7 @@ def combine_dicts(feat_dict_target, feat_dict_source): # expects the easydict ob
 def save_stats(F1, G, loader, step, feat_dict_combined, batch, K, mask_loss_uncertain):
     fixmatch_label_list, gt_label_list, names_list, knn_labels_list = [], [], [], []
     weak_prob= []
-    for idx, batch in enumerate(loader):
+    for _, batch in enumerate(loader):
         im_weak = batch[0][0].cuda()
         pred_label = F1(G(im_weak))
         pred_label_list = list(pred_label.max(1)[1].cpu().detach().numpy())
@@ -148,3 +148,5 @@ def do_method_bank(feat_dict_source, feat_dict_target, feat_dict_combined, momen
     if  not torch.sum(mask_loss_uncertain.int()) == 0:
         loss_pseudo_unl_knn = torch.sum(mask_loss_uncertain.int() * criterion_pseudo(pred_strong_aug, knn_majvot_pseudo_labels))/(torch.sum(mask_loss_uncertain.int()))
         loss_pseudo_unl_knn.backward(retain_graph=True)
+        
+    return mask_loss_uncertain

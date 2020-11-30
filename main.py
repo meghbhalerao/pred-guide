@@ -218,8 +218,9 @@ def train():
         loss_pseudo_unl.backward(retain_graph=True)
         # Updating the features in the bank for both source and target
         if args.use_bank:
-            do_method_bank(feat_dict_source, feat_dict_target, feat_dict_combined, momentum, data_t_unl, data_s, prob_weak_aug, thresh, K, pred_strong_aug, criterion_pseudo, target_loader_unl, G, F1)
-        
+            mask_loss_uncertain = do_method_bank(feat_dict_source, feat_dict_target, feat_dict_combined, momentum, data_t_unl, data_s, prob_weak_aug, thresh, K, pred_strong_aug, criterion_pseudo, target_loader_unl, G, F1)
+
+
         output = G(data)
         out1 = F1(output)
         loss = criterion(out1, target)
@@ -244,15 +245,9 @@ def train():
             else:
                 raise ValueError('Method cannot be recognized.')
             
-            log_train = 'S {} T {} Train Ep: {} lr{} \t ' \
-                        'Loss Classification: {:.6f} Loss T {:.6f} ' \
-                        'Method {}\n'.format(args.source, args.target,
-                                             step, lr, loss.data,
-                                             -loss_t.data, args.method)
+            log_train = 'S {} T {} Train Ep: {} lr{} \t Loss Classification: {:.6f} Loss T {:.6f} Method {}\n'.format(args.source, args.target, step, lr, loss.data, -loss_t.data, args.method)
         else:
-            log_train = 'S {} T {} Train Ep: {} lr{} \t ' \
-                        'Loss Classification: {:.6f} Method {}\n'.\
-                format(args.source, args.target, step, lr, loss.data, args.method)
+            log_train = 'S {} T {} Train Ep: {} lr{} \t Loss Classification: {:.6f} Method {}\n'.format(args.source, args.target, step, lr, loss.data, args.method)
 
         G.zero_grad()
         F1.zero_grad()
