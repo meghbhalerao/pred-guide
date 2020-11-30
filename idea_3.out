@@ -65,3 +65,13 @@ S real T sketch Train Ep: 1700 lr0.008889157551163433 	 Loss Classification: 0.4
 
 S real T sketch Train Ep: 1800 lr0.008832598605562044 	 Loss Classification: 0.151463 Loss T 0.116793 Method MME
 
+S real T sketch Train Ep: 1900 lr0.008776872287166303 	 Loss Classification: 0.463032 Loss T 0.130490 Method MME
+
+S real T sketch Train Ep: 2000 lr0.008721959494934213 	 Loss Classification: 0.366046 Loss T 0.156289 Method MME
+
+Traceback (most recent call last):
+  File "main_match_source_target.py", line 359, in <module>
+    train()
+  File "main_match_source_target.py", line 299, in train
+    save_stats(F1, G, target_loader_unl, step, feat_dict_combined, data_t_unl, K, mask_loss_uncertain)
+UnboundLocalError: local variable 'mask_loss_uncertain' referenced before assignment
