@@ -132,8 +132,9 @@ if args.pretrained_ckpt is not None:
 lr = args.lr
 G.cuda()
 F1.cuda()
-G = nn.DataParallel(G, device_ids=[0, 1])
-F1 = nn.DataParallel(F1, device_ids=[0, 1])
+
+#G = nn.DataParallel(G, device_ids=[0, 1])
+#F1 = nn.DataParallel(F1, device_ids=[0, 1])
 
 if os.path.exists(args.checkpath) == False:
     os.mkdir(args.checkpath)
@@ -151,7 +152,6 @@ def train():
         feat_dict_source, feat_dict_target, feat_dict_combined = load_bank(args)
     else:
         feat_dict_source, feat_dict_target, feat_dict_combined = 0,0,0
-
 
     def zero_grad_all():
         optimizer_g.zero_grad()
@@ -176,7 +176,7 @@ def train():
     best_acc_val = 0
     counter = 0
     momentum = 0.9  
-    K = 12
+    K = 3
 
     for step in range(all_step):
         optimizer_g = inv_lr_scheduler(param_lr_g, optimizer_g, step, init_lr=args.lr)
@@ -318,6 +318,7 @@ def test(loader, mode='Test'):
                     confusion_matrix[t.long(), p.long()] += 1
                 correct += pred1.eq(gt_labels_t.data).cpu().sum()
                 test_loss += criterion(output1, gt_labels_t) / len(loader)
+                np.save("cf_unlabeled_target.npy",confusion_matrix)
             elif mode == "Labeled Target":
                 im_data_t_weak, im_data_t_strong, im_data_t_standard = data_t[0][0].cuda(), data_t[0][1].cuda(), data_t[0][2].cuda()
                 gt_labels_t = data_t[1].cuda()
@@ -335,9 +336,9 @@ def test(loader, mode='Test'):
                 correct += pred1_weak.eq(gt_labels_t.data).cpu().sum() + pred1_strong.eq(gt_labels_t.data).cpu().sum() + pred1_standard.eq(gt_labels_t.data).cpu().sum()
 
                 test_loss += criterion(output1_weak, gt_labels_t)/(3*len(loader))  + criterion(output1_strong, gt_labels_t)/(3*len(loader)) + criterion(output1_standard, gt_labels_t)/(3*len(loader)) 
+                np.save("cf_labeled_target.npy",confusion_matrix)
 
     print('\n{} set: Average loss: {:.4f}, Accuracy: {}/{} F1 ({:.4f}%)\n'.format(mode, test_loss,correct,size,100.*correct/size))
-    np.save("cf.npy",confusion_matrix)
     return test_loss.data,100.*float(correct)/size
 
 train()

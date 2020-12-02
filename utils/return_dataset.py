@@ -214,9 +214,9 @@ class TransformFix(object):
         return self.normalize(weak), self.normalize(strong), self.normalize(standard)
 
 
-def return_dataset_randaugment(args):
-    base_path = './data/txt/%s' % args.dataset
-    root = './data/%s/' % args.dataset
+def return_dataset_randaugment(args,txt_path='./data/txt/',root_path='./data/',bs_alex = 32,bs_resnet = 24):
+    base_path = os.path.join(txt_path,args.dataset)
+    root = os.path.join(root_path,args.dataset)
     image_set_file_s = os.path.join(base_path, 'labeled_source_images_' + args.source + '.txt')
     image_set_file_t = os.path.join(base_path, 'labeled_target_images_' + args.target + '_%d.txt' % (args.num))
     image_set_file_t_val = os.path.join(base_path, 'validation_target_images_' + args.target + '_3.txt')
@@ -260,9 +260,9 @@ def return_dataset_randaugment(args):
     class_list = return_classlist(image_set_file_s)
     print("%d classes in this dataset" % len(class_list))
     if args.net == 'alexnet':
-        bs = 32
+        bs = bs_alex
     else:
-        bs = 24
+        bs = bs_resnet
     source_loader = torch.utils.data.DataLoader(source_dataset, batch_size=bs,
                                                 num_workers=3, shuffle=True,
                                                 drop_last=True)
@@ -282,7 +282,7 @@ def return_dataset_randaugment(args):
                                     shuffle=True, drop_last=True)
     target_loader_test = \
         torch.utils.data.DataLoader(target_dataset_test,
-                                    batch_size=bs * 2, num_workers=3,
+                                    batch_size=bs, num_workers=3,
                                     shuffle=True, drop_last=True)
     return source_loader, target_loader, target_loader_unl, target_loader_val, target_loader_test, class_list
 

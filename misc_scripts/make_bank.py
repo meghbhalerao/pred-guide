@@ -89,14 +89,8 @@ G.eval()
 F1.eval()
 
 # Loading the weights from the checkpoint
-ckpt = torch.load("../save_model_ssda/resnet34_real_sketch_8500")
+ckpt = torch.load("../save_model_ssda/resnet34_real_sketch_8000.ckpt.pth.tar")
 G_dict = ckpt["G_state_dict"]
-G_dict_backup = G_dict.copy()
-
-for key in G_dict_backup.keys():
-    new_key = key.replace("module.","")
-    G_dict[new_key] = G_dict.pop(key)
-#print(G_dict.keys())
 G.load_state_dict(ckpt["G_state_dict"])
 
 features = []   
@@ -131,7 +125,7 @@ print(len(labels))
 print(features.shape)
 print(len(name_list))
 print("Saving dictionary as pickle")
-filehandler = open("../banks/dictionary.pkl", 'wb')
+filehandler = open("../banks/resnet34_sketch_8000.pkl", 'wb')
 pickle.dump(feat_dict, filehandler)
 
 

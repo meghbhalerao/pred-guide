@@ -139,7 +139,7 @@ def do_method_bank(feat_dict_source, feat_dict_target, feat_dict_combined, momen
     # Get max of similarity distribution to check which element or label is it closest to in these vectors
     feat_dict_combined = combine_dicts(feat_dict_target, feat_dict_source)
     sim_distribution = get_similarity_distribution(feat_dict_combined,data_t_unl,G)
-    k_neighbors, _ = get_kNN(sim_distribution, feat_dict_combined, K)    
+    k_neighbors, labels_k_neighbors = get_kNN(sim_distribution, feat_dict_combined, K)    
     #mask_loss_uncertain = (prob_weak_aug.max(1)[0]<thresh) & (prob_weak_aug.max(1)[0]>0.7)
     mask_loss_uncertain = prob_weak_aug.max(1)[0]>thresh
     knn_majvot_pseudo_labels = get_majority_vote(k_neighbors,feat_dict_combined, K, F1, mask_loss_uncertain, len(target_loader_unl.dataset))
