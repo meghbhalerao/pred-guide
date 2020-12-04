@@ -12,6 +12,7 @@ from utils.majority_voting import *
 import pickle 
 from utils.majority_voting import *
 from utils.confidence_knn import *
+import sys
 
 def weights_init(m):
     classname = m.__class__.__name__
@@ -43,16 +44,35 @@ def update_features(feat_dict, data, G, momentum, source  = False):
     feat_dict.feat_vec[idx] = (momentum * feat_dict.feat_vec[idx] + (1 - momentum) * f_batch).detach()
     return f_batch, feat_dict
 
-def get_similarity_distribution(feat_dict,data_batch, G, source = False):
+def pairwise_distance(feat_bank, feat_batch):
+    '''
+    feat_batch: batch_size x feat_dim
+    feat_bank : total_examples_num x feat_dim
+    output: total_examples x batch_size
+    '''
+    batch_size = feat_batch.shape[0]
+    total_examples_num = feat_bank.shape[0]
+    output = torch.zeros(total_examples_num, batch_size)
+    print(output.shape)
+    for idx_im_batch in range(batch_size):
+        for idx_im_bank in range(total_examples_num):
+            eu_dist = torch.sum(torch.pow(feat_batch[idx_im_batch] - feat_bank[idx_im_bank],2),dim=0)
+            #sys.exit()
+            output[idx_im_bank][idx_im_batch] = eu_dist
+    return output
+
+def get_similarity_distribution(feat_dict,data_batch, G, source = False, i =0, mode = 'cosine'):
     if source:
         img_batch  = data_batch[0].cuda()
     else:
-        img_batch = data_batch[0][0].cuda()
+        img_batch = data_batch[0][i].cuda()
     f_batch = G(img_batch)
-    sim_distribution  = torch.mm(F.normalize(feat_dict.feat_vec, dim=1),F.normalize(torch.transpose(f_batch,0,1),dim = 0))
+    if mode == 'cosine':
+        sim_distribution  = torch.mm(F.normalize(feat_dict.feat_vec, dim=1),F.normalize(torch.transpose(f_batch,0,1),dim = 0))        
+    elif mode == 'euclid':
+        sim_distribution = pairwise_distance(feat_dict.feat_vec, f_batch)
     sim_distribution = edict({"cosines": sim_distribution, "names": data_batch[2], "labels": data_batch[1]})
     return sim_distribution
-
 
 def get_kNN(sim_distribution, feat_dict, k = 1):
     k_neighbors = torch.topk(torch.transpose(sim_distribution.cosines,0,1), k, dim = 1)

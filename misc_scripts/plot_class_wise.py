@@ -31,10 +31,14 @@ def plt_class_wise(cf_labelled,cf_unlabelled, pred_matrix,confidence_matrix):
         f.write(to_write)
 
 
+def main():
+    cf_labelled = np.load("cf_labelled_target.npy")
+    cf_unlabelled = np.load("cf_unlabelled_target.npy")
+    pred_matrix = np.load("pred_matrix.npy")
+    confidence_matrix = np.load("confidence_matrix.npy")
+    plt_class_wise(cf_labelled,cf_unlabelled, pred_matrix,confidence_matrix)
 
-cf_labelled = np.load("cf_labelled_target.npy")
-cf_unlabelled = np.load("cf_unlabelled_target.npy")
-pred_matrix = np.load("pred_matrix.npy")
-confidence_matrix = np.load("confidence_matrix.npy")
+if __name__ == "__main__":
+    main()
 
-plt_class_wise(cf_labelled,cf_unlabelled, pred_matrix,confidence_matrix)
+

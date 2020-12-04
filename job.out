@@ -1,0 +1,40 @@
+Dataset multi Source real Target sketch Labeled num perclass 3 Network resnet34
+126 classes in this dataset
+Unlabelled Target Dataset Size:  23826
+Labelled Target Dataset Size:  378
+S real T sketch Train Ep: 0 lr0.01 	 Loss Classification: 5.044148 Loss T 0.469364 Method MME
+
+S real T sketch Train Ep: 100 lr0.009925650290240803 	 Loss Classification: 0.684704 Loss T 0.301123 Method MME
+
+S real T sketch Train Ep: 200 lr0.009852577760521605 	 Loss Classification: 0.626302 Loss T 0.211506 Method MME
+
+S real T sketch Train Ep: 300 lr0.009780748269686728 	 Loss Classification: 0.276832 Loss T 0.210339 Method MME
+
+S real T sketch Train Ep: 400 lr0.009710128909124701 	 Loss Classification: 0.241286 Loss T 0.183231 Method MME
+
+S real T sketch Train Ep: 500 lr0.00964068794694323 	 Loss Classification: 0.333096 Loss T 0.178228 Method MME
+
+
+Test set: Average loss: 2.0077, Accuracy: 12989/23808 F1 (54.5573%)
+
+
+Val set: Average loss: 1.7803, Accuracy: 200/360 F1 (55.5556%)
+
+Traceback (most recent call last):
+  File "main.py", line 347, in <module>
+    train()
+  File "main.py", line 270, in train
+    _, acc_labeled_target = test(target_loader, mode = 'Labeled Target')
+  File "main.py", line 328, in test
+    feat_weak, feat_strong, feat_standard = G(im_data_t_weak), G(im_data_t_strong),G(im_data_t_standard)
+  File "/home/megh/anaconda3/envs/ssal/lib/python3.7/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/megh/projects/domain-adaptation/SSAL/model/resnet.py", line 186, in forward
+    x = self.conv1(x)
+  File "/home/megh/anaconda3/envs/ssal/lib/python3.7/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/megh/anaconda3/envs/ssal/lib/python3.7/site-packages/torch/nn/modules/conv.py", line 423, in forward
+    return self._conv_forward(input, self.weight)
+  File "/home/megh/anaconda3/envs/ssal/lib/python3.7/site-packages/torch/nn/modules/conv.py", line 420, in _conv_forward
+    self.padding, self.dilation, self.groups)
+RuntimeError: Expected 4-dimensional input for 4-dimensional weight [64, 3, 7, 7], but got 3-dimensional input of size [3, 224, 224] instead

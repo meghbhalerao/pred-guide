@@ -163,9 +163,13 @@ def train():
     for param_group in optimizer_f.param_groups:
         param_lr_f.append(param_group["lr"])
 
-    thresh = 0.9 # threshold for confident prediction to generate pseudo-labels
+    thresh = 0.95 # threshold for confident prediction to generate pseudo-labels
     criterion = nn.CrossEntropyLoss().cuda()
     criterion_pseudo = nn.CrossEntropyLoss(reduction='none').cuda()
+    weight = False
+    if weight:
+        criterion_weight = torch.nn.functional.cross_entropy
+
     all_step = args.steps
     data_iter_s = iter(source_loader)
     data_iter_t = iter(target_loader)
@@ -196,7 +200,10 @@ def train():
         data_s = next(data_iter_s)
         im_data_s = data_s[0].cuda()
         gt_labels_s = data_s[1].cuda()
-        im_data_t = data_t[0][0].cuda()
+        if args.uda:
+            im_data_t = data_t[0][0].cuda()
+        else:
+            im_data_t = data_t[0].cuda()
         gt_labels_t = data_t[1].cuda()
         im_data_tu = data_t_unl[0][2].cuda()
 
@@ -257,14 +264,15 @@ def train():
         zero_grad_all()
         if step % args.log_interval == 0:
             print(log_train)
-        if step % args.save_interval == 0 and step > 0:
+        if step % args.save_interval == 0:# and step > 0:
             if step % 2000 == 0:
                 #save_stats(F1, G, target_loader_unl, step, feat_dict_combined, data_t_unl, K, mask_loss_uncertain)
                 pass
 
-            _, acc_test = test(target_loader_test, mode = 'Test')
-            _, acc_val = test(target_loader_val, mode = 'Val')
-            _, acc_labeled_target = test(target_loader, mode = 'Labeled Target')
+            if args.uda:
+                _, acc_labeled_target, criterion_pseudo = test(target_loader, mode = 'Labeled Target')
+            _, acc_test,_ = test(target_loader_test, mode = 'Test')
+            _, acc_val, _ = test(target_loader_val, mode = 'Val')
 
             G.train()
             F1.train()
@@ -318,11 +326,11 @@ def test(loader, mode='Test'):
                     confusion_matrix[t.long(), p.long()] += 1
                 correct += pred1.eq(gt_labels_t.data).cpu().sum()
                 test_loss += criterion(output1, gt_labels_t) / len(loader)
-                np.save("cf_unlabeled_target.npy",confusion_matrix)
+
             elif mode == "Labeled Target":
                 im_data_t_weak, im_data_t_strong, im_data_t_standard = data_t[0][0].cuda(), data_t[0][1].cuda(), data_t[0][2].cuda()
                 gt_labels_t = data_t[1].cuda()
-                feat_weak, feat_strong, feat_standard = G(im_data_t_weak), G(im_data_t_strong),G(im_data_t_standard)
+                feat_weak, feat_strong, feat_standard = G(im_data_t_weak), G(im_data_t_strong), G(im_data_t_standard)
                 output1_weak, output1_strong, output1_standard = F1(feat_weak), F1(feat_strong), F1(feat_standard)
 
                 size += im_data_t_weak.size(0) + im_data_t_strong.size(0) + im_data_t_standard.size(0)
@@ -336,9 +344,24 @@ def test(loader, mode='Test'):
                 correct += pred1_weak.eq(gt_labels_t.data).cpu().sum() + pred1_strong.eq(gt_labels_t.data).cpu().sum() + pred1_standard.eq(gt_labels_t.data).cpu().sum()
 
                 test_loss += criterion(output1_weak, gt_labels_t)/(3*len(loader))  + criterion(output1_strong, gt_labels_t)/(3*len(loader)) + criterion(output1_standard, gt_labels_t)/(3*len(loader)) 
-                np.save("cf_labeled_target.npy",confusion_matrix)
+                per_cls_acc = per_class_accuracy(confusion_matrix)
+
+    if not mode == 'Labeled Target':
+        np.save("cf_unlabeled_target.npy",confusion_matrix)
+    elif mode =='Labeled Target':
+        np.save("cf_labeled_target.npy",confusion_matrix)
+        per_cls_acc = per_class_accuracy(confusion_matrix)
+        loss_fn = torch.nn.CrossEntropyLoss(weight=per_cls_acc) 
 
     print('\n{} set: Average loss: {:.4f}, Accuracy: {}/{} F1 ({:.4f}%)\n'.format(mode, test_loss,correct,size,100.*correct/size))
-    return test_loss.data,100.*float(correct)/size
+    return test_loss.data,100.*float(correct)/size,loss_fn
+
+def per_class_accuracy(confusion_matrix):
+    num_class, _ = confusion_matrix.shape
+    per_cls_acc = []
+    for i in range(num_class):
+        per_cls_acc.append(confusion_matrix[i,i]/sum(confusion_matrix[i,:]))
+    per_cls_acc = torch.tensor(per_cls_acc).cuda()
+    return per_cls_acc
 
 train()

@@ -15,9 +15,10 @@ import pickle
 from easydict import EasyDict as edict
 from utils.return_dataset import *
 from easydict import EasyDict as edict
-from misc_scripts.plot_class_wise import *
+#from misc_scripts.plot_class_wise import *
 
 def main():
+    
     net = "resnet34"
     root = '../data/multi/'
     target = "sketch"
@@ -63,7 +64,7 @@ def main():
 
 
     # Loading the weights from the checkpoint
-    ckpt = torch.load("../save_model_ssda/resnet34_real_sketch_5000.ckpt.pth.tar")
+    ckpt = torch.load("../save_model_ssda/resnet34_real_sketch_8000.ckpt.pth.tar")
     G_dict = ckpt["G_state_dict"]
 
     G_dict_backup = G_dict.copy()
@@ -141,18 +142,17 @@ def test(loader, G, F1, num_class, pred_matrix, confidence_matrix, mode='Test'):
 
                 if pred1_weak.eq(gt_labels_t.data).cpu().sum() or pred1_strong.eq(gt_labels_t).cpu().sum() or pred1_standard.eq(gt_labels_t).cpu().sum():
                     if prob_weak > 0.9 or prob_strong > 0.9 or prob_standard > 0.9:
-                        pred_matrix[3, gt_labels_t.data] +=1
-                        confidence_matrix[2,gt_labels_t.data] +=1
+                        pred_matrix[3, gt_labels_t.data] += int(pred1_weak.eq(gt_labels_t.data).cpu().sum()) + int(pred1_strong.eq(gt_labels_t.data).cpu().sum()) + int(pred1_standard.eq(gt_labels_t).cpu().sum())
+                        confidence_matrix[2,gt_labels_t.data] +=int(pred1_weak.eq(gt_labels_t.data).cpu().sum()) + int(pred1_strong.eq(gt_labels_t.data).cpu().sum()) + int(pred1_standard.eq(gt_labels_t).cpu().sum())
                     elif prob_weak > 0.8 or prob_strong > 0.8 or prob_standard > 0.8:
-                        pred_matrix[4, gt_labels_t.data] +=1
+                        pred_matrix[4, gt_labels_t.data] += int(prob_weak > 0.8) + int(prob_strong > 0.8) + int(prob_standard > 0.8)
                     elif prob_weak > 0.7 or prob_strong>0.7 or prob_standard>0.7:
-                        pred_matrix[5,gt_labels_t.data] +=1
-
+                        pred_matrix[5,gt_labels_t.data] += int(prob_weak > 0.7) + int(prob_strong > 0.7) + int(prob_standard > 0.7)
                     else:
                         pass
                 else:
                     if prob_weak > 0.9 or prob_strong > 0.9 or prob_standard > 0.9:
-                        confidence_matrix[3,gt_labels_t.data] +=1
+                        confidence_matrix[3,gt_labels_t.data] += int(prob_weak > 0.9) + int(prob_strong > 0.9) + int(prob_standard > 0.9)
 
 
                 for t, p_weak, p_strong, p_standard in zip(gt_labels_t.view(-1), pred1_weak.view(-1), pred1_strong.view(-1), pred1_standard.view(-1)):
