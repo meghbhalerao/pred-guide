@@ -270,10 +270,10 @@ def train():
                 pass
 
             if args.uda:
-                _, acc_labeled_target, criterion_pseudo = test(target_loader, mode = 'Labeled Target')
+                _, acc_labeled_target, weight = test(target_loader, mode = 'Labeled Target')
             _, acc_test,_ = test(target_loader_test, mode = 'Test')
             _, acc_val, _ = test(target_loader_val, mode = 'Val')
-
+            criterion_pseudo = nn.CrossEntropyLoss(reduction='none',weight=weight).cuda()
             G.train()
             F1.train()
             if acc_val >= best_acc_val:
@@ -348,13 +348,14 @@ def test(loader, mode='Test'):
 
     if not mode == 'Labeled Target':
         np.save("cf_unlabeled_target.npy",confusion_matrix)
+        weight = torch.ones([num_class,1]).cuda()
     elif mode =='Labeled Target':
         np.save("cf_labeled_target.npy",confusion_matrix)
         per_cls_acc = per_class_accuracy(confusion_matrix)
-        loss_fn = torch.nn.CrossEntropyLoss(weight=per_cls_acc) 
+        weight = per_cls_acc 
 
     print('\n{} set: Average loss: {:.4f}, Accuracy: {}/{} F1 ({:.4f}%)\n'.format(mode, test_loss,correct,size,100.*correct/size))
-    return test_loss.data,100.*float(correct)/size,loss_fn
+    return test_loss.data,100.*float(correct)/size, weight
 
 def per_class_accuracy(confusion_matrix):
     num_class, _ = confusion_matrix.shape
