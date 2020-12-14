@@ -21,7 +21,7 @@ target = "sketch"
 n_class = 126
 n_class_plot = 30
 k = 10
-image_list_target_unl = "../data/txt/multi/unlabeled_target_images_%s_3.txt"%(target)
+image_list_target_unl = "../data/txt/multi/unlabeled_target_images_%s_1.txt"%(target)
 #image_list_target_unl = "../data/txt/multi/labeled_source_images_real.txt"
 f = open(image_list_target_unl,"r")
 print(len([line for line in f]))

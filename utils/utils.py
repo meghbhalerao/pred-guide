@@ -44,6 +44,27 @@ def update_features(feat_dict, data, G, momentum, source  = False):
     feat_dict.feat_vec[idx] = (momentum * feat_dict.feat_vec[idx] + (1 - momentum) * f_batch).detach()
     return f_batch, feat_dict
 
+def update_label_bank(label_bank, data, pseudo_labels, mask_loss):
+    names_batch = data[2]
+    names_batch = list(names_batch)
+    names_batch_confident = []
+    names_batch_unconfident = []
+    pseudo_labels_confident = []
+    # Use only names with confidence greater than 0.9
+    mask_loss_list = list(mask_loss.cpu().detach().numpy().astype(int))
+    for i, item in enumerate(mask_loss_list):
+        if not item == 0:
+            names_batch_confident.append(names_batch[i])
+            pseudo_labels_confident.append(pseudo_labels[i])
+        #else:
+            #names_batch_unconfident.append(names_batch[i])
+
+    idx = [label_bank.names.index(name) for name in names_batch_confident]
+    #idx_unconfident = [label_bank.names.index(name) for name in names_batch_unconfident]
+    label_bank.labels[idx] =  np.array(pseudo_labels_confident)
+    #label_bank.labels[idx_unconfident] = np.ones(len(idx_unconfident))* -1
+    return 0
+
 def pairwise_distance(feat_bank, feat_batch):
     '''
     feat_batch: batch_size x feat_dim
@@ -127,7 +148,7 @@ def save_stats(F1, G, loader, step, feat_dict_combined, batch, K, mask_loss_unce
     return 0
 
 def load_bank(args):
-    f = open("./banks/unlabelled_target_%s.pkl"%(args.target), "rb")
+    f = open("./banks/unlabelled_target_%s_%s.pkl"%(args.target,args.num), "rb")
     feat_dict_target = edict(pickle.load(f))
     feat_dict_target.feat_vec  = feat_dict_target.feat_vec.cuda()
     num_target = len(feat_dict_target.names)
@@ -168,5 +189,15 @@ def do_method_bank(feat_dict_source, feat_dict_target, feat_dict_combined, momen
     if  not torch.sum(mask_loss_uncertain.int()) == 0:
         loss_pseudo_unl_knn = torch.sum(mask_loss_uncertain.int() * criterion_pseudo(pred_strong_aug, knn_majvot_pseudo_labels))/(torch.sum(mask_loss_uncertain.int()))
         loss_pseudo_unl_knn.backward(retain_graph=True)
-        
     return mask_loss_uncertain
+
+def get_per_class_examples(label_bank, class_list):
+    classes_idx = np.arange(len(class_list))
+    class_num_list = np.zeros(len(class_list),dtype=np.int32)
+    for i, class_ in enumerate(classes_idx):
+        for l in label_bank.labels:
+            if l == class_:
+                class_num_list[i] +=1
+    return class_num_list
+
+    

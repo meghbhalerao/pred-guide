@@ -16,7 +16,7 @@ from utils.majority_voting import *
 from utils.confidence_knn import *
 from utils.lr_schedule import inv_lr_scheduler, get_cosine_schedule_with_warmup
 from utils.return_dataset import return_dataset, return_dataset_randaugment
-from utils.loss import entropy, adentropy
+from utils.loss import *
 from augmentations.augmentation_ours import *
 import pickle
 from easydict import EasyDict as edict
@@ -117,12 +117,6 @@ else:
     F1 = Predictor(num_class=len(class_list), inc=inc, temp=args.T)
 weights_init(F1)
 
-"""
-if args.net == "resnet34":
-    G_final = nn.Sequential(G,F1.fc1)
-    F1.fc1 = nn.Identity()
-    G = deepcopy(G_final)
-"""
 
 if args.pretrained_ckpt is not None:
     ckpt = torch.load(args.pretrained_ckpt)
@@ -147,11 +141,6 @@ def train():
     print("Unlabelled Target Dataset Size: ",len(target_loader_unl.dataset))
     print("Labelled Target Dataset Size: ",len(target_loader.dataset))
     # Loading the dictionary having the feature bank and corresponding metadata
-    if args.use_bank == 1:
-        print("Using Feature Vector Banks")
-        feat_dict_source, feat_dict_target, feat_dict_combined = load_bank(args)
-    else:
-        feat_dict_source, feat_dict_target, feat_dict_combined = 0,0,0
 
     def zero_grad_all():
         optimizer_g.zero_grad()
@@ -163,12 +152,14 @@ def train():
     for param_group in optimizer_f.param_groups:
         param_lr_f.append(param_group["lr"])
 
-    thresh = 0.95 # threshold for confident prediction to generate pseudo-labels
+    thresh = 0.9   # threshold for confident prediction to generate pseudo-labels
     criterion = nn.CrossEntropyLoss().cuda()
     criterion_pseudo = nn.CrossEntropyLoss(reduction='none').cuda()
-    weight = False
-    if weight:
-        criterion_weight = torch.nn.functional.cross_entropy
+    criterion_lab_target = nn.CrossEntropyLoss(reduction='none').cuda()
+    _, feat_dict_target, _ = load_bank(args)
+    num_target = len(feat_dict_target.names) 
+    
+    label_bank = edict({"names": feat_dict_target.names, "labels": np.zeros(num_target,dtype=int)-1})
 
     all_step = args.steps
     data_iter_s = iter(source_loader)
@@ -179,9 +170,8 @@ def train():
     len_train_target_semi = len(target_loader_unl)
     best_acc_val = 0
     counter = 0
-    momentum = 0.9  
     K = 3
-
+    beta = 0.99
     for step in range(all_step):
         optimizer_g = inv_lr_scheduler(param_lr_g, optimizer_g, step, init_lr=args.lr)
         optimizer_f = inv_lr_scheduler(param_lr_f, optimizer_f, step, init_lr=args.lr)
@@ -200,37 +190,40 @@ def train():
         data_s = next(data_iter_s)
         im_data_s = data_s[0].cuda()
         gt_labels_s = data_s[1].cuda()
-        if args.uda:
-            im_data_t = data_t[0][0].cuda()
-        else:
-            im_data_t = data_t[0].cuda()
+        
+
+        im_data_t = data_t[0][0].cuda()
         gt_labels_t = data_t[1].cuda()
         im_data_tu = data_t_unl[0][2].cuda()
 
         zero_grad_all()
-        if args.uda == 0:
-            data = torch.cat((im_data_s, im_data_t), 0) #concatenating the labelled images
-            target = torch.cat((gt_labels_s, gt_labels_t), 0)
-        else:
-            data = im_data_s # For UDA training
-            target = gt_labels_s    
-
+        #data = im_data_s
+        #target = gt_labels_s    
+        data = torch.cat((im_data_s, im_data_t), 0) #concatenating the labelled images
+        target = torch.cat((gt_labels_s, gt_labels_t), 0)
         im_data_tu_weak_aug, im_data_tu_strong_aug = data_t_unl[0][0].cuda(), data_t_unl[0][1].cuda()
-
         # Getting predictions of weak and strong augmented unlabled examples
         pred_strong_aug = F1(G(im_data_tu_strong_aug))
         with torch.no_grad():
             pred_weak_aug = F1(G(im_data_tu_weak_aug))
-        
         prob_weak_aug = F.softmax(pred_weak_aug,dim=1)
         mask_loss = prob_weak_aug.max(1)[0]>thresh
         pseudo_labels = pred_weak_aug.max(axis=1)[1]
         loss_pseudo_unl = torch.mean(mask_loss.int() * criterion_pseudo(pred_strong_aug,pseudo_labels))
         loss_pseudo_unl.backward(retain_graph=True)
         # Updating the features in the bank for both source and target
-        if args.use_bank == 1:
-            mask_loss_uncertain = do_method_bank(feat_dict_source, feat_dict_target, feat_dict_combined, momentum, data_t_unl, data_s, prob_weak_aug, thresh, K, pred_strong_aug, criterion_pseudo, target_loader_unl, G, F1)
-
+        update_label_bank(label_bank, data_t_unl, pseudo_labels, mask_loss)
+        if step >= 453500:
+            class_num_list = get_per_class_examples(label_bank, class_list)
+            effective_num = 1.0 - np.power(beta, class_num_list)
+            per_cls_weights = (1.0 - beta) / np.array(effective_num)
+            per_cls_weights = per_cls_weights / np.sum(per_cls_weights) * len(class_num_list)
+            per_cls_weights = torch.FloatTensor(per_cls_weights).cuda()
+            criterion_lab_target = CBFocalLoss(weight=per_cls_weights, gamma=0.5).cuda()
+            out_lab_target = F1(G(im_data_t))
+            loss_lab_target = criterion_lab_target(out_lab_target,gt_labels_t)
+            loss_lab_target.backward()
+    
         output = G(data)
         out1 = F1(output)
         loss = criterion(out1, target)
@@ -268,11 +261,10 @@ def train():
             if step % 2000 == 0:
                 #save_stats(F1, G, target_loader_unl, step, feat_dict_combined, data_t_unl, K, mask_loss_uncertain)
                 pass
-            if args.uda:
-                _, acc_labeled_target, weight = test(target_loader, mode = 'Labeled Target')
+            _, acc_labeled_target, _ = test(target_loader, mode = 'Labeled Target')
             _, acc_test,_ = test(target_loader_test, mode = 'Test')
             _, acc_val, _ = test(target_loader_val, mode = 'Val')
-            criterion_pseudo = nn.CrossEntropyLoss(reduction='none',weight=weight).cuda()
+
             G.train()
             F1.train()
             if acc_val >= best_acc_val:
@@ -354,7 +346,6 @@ def test(loader, mode='Test'):
         per_cls_acc = per_class_accuracy(confusion_matrix)
         weight = per_cls_acc 
         weight = (weight>0.5).int()*1.5 + (weight<0.5).int()*0.5
-        print(weight)
     print('\n{} set: Average loss: {:.4f}, Accuracy: {}/{} F1 ({:.4f}%)\n'.format(mode, test_loss,correct,size,100.*correct/size))
     return test_loss.data,100.*float(correct)/size, weight
 
