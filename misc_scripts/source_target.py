@@ -15,18 +15,25 @@ import pickle
 from easydict import EasyDict as edict
 from utils.return_dataset import *
 from easydict import EasyDict as edict
+from loaders.data_list import *
 #from misc_scripts.plot_class_wise import *
+import pandas as pd
 
 def main():
     net = "resnet34"
     root = '../data/multi/'
+    source = "real"
     target = "sketch"
     image_list_target_unl = "../data/txt/multi/unlabeled_target_images_%s_3.txt"%(target)
+    image_list_source =  "../data/txt/multi/labeled_source_images_%s.txt"%(source)
     num = 3
+    
     f = open(image_list_target_unl,"r")
     print(len([line for line in f]))
+    f = open(image_list_source,"r")
+    print(len([line for line in f]))
 
-    args = edict({"net":net,"source":"real","target":target,"dataset":"multi","num":num,"uda":1})
+    args = edict({"net":net,"source":source,"target":target,"dataset":"multi","num":num,"uda":1})
     source_loader, target_loader, target_loader_unl, target_loader_val, target_loader_test, class_list = return_dataset_randaugment(args,txt_path='../data/txt/',root_path='../data/', bs_alex=1, bs_resnet=1)        
     n_class = len(class_list)
     print(len(target_loader_unl.dataset))
@@ -60,8 +67,25 @@ def main():
     confidence_matrix = np.zeros((4,126),dtype=int)
 
 
-    cf_target_unl = test(target_loader_test, G, F1, len(class_list), pred_matrix, confidence_matrix, mode = 'Test')
-    cf_source = test(source_loader, G, F1, len(class_list), pred_matrix, confidence_matrix, mode = 'Test')
+    #cf_target_unl = test(target_loader_test, G, F1, len(class_list), pred_matrix, confidence_matrix, mode = 'Test')
+    #np.save("cf_target_unl.npy",cf_target_unl)
+    #cf_source = test(source_loader, G, F1, len(class_list), pred_matrix, confidence_matrix, mode = 'Test')
+    #np.save("cf_source_lab.npy",cf_source)
+
+    cf_target_unl = np.load("cf_target_unl.npy")
+    cf_source = np.load("cf_source_lab.npy")
+    print(cf_source)
+    per_class_acc_target = per_class_accuracy(cf_target_unl)
+    per_class_acc_source = per_class_accuracy(cf_source)
+    per_class_target = return_number_of_label_per_class(image_list_target_unl,126)
+    per_class_source = return_number_of_label_per_class(image_list_source,126)
+    f = open("stats.csv","w")
+    f.write("class_name, target_acc, source_acc, target_ex, source_ex\n")
+    for idx, class_ in enumerate(class_list):
+        f.write(str(class_) + "," + str(per_class_acc_target[idx]) + "," + str(per_class_acc_source[idx]) + "," + str(per_class_target[idx]) + "," + str(per_class_source[idx]) + "\n")
+    f.close()
+    stats_file = pd.read_csv("stats.csv")
+    print(stats_file)
 
 def test(loader, G, F1, num_class, pred_matrix, confidence_matrix, mode='Test'):
     G.eval()
@@ -101,7 +125,7 @@ def test(loader, G, F1, num_class, pred_matrix, confidence_matrix, mode='Test'):
                     confusion_matrix[t.long(), p.long()] += 1
                 correct += pred1.eq(gt_labels_t.data).cpu().sum()
                 test_loss += criterion(output1, gt_labels_t) / len(loader)
-                np.save("cf_unlabelled_target.npy",confusion_matrix)
+                #np.save("cf_unlabelled_target.npy",confusion_matrix)
                 print(idx)
             
             elif mode == "Labeled Target":
@@ -138,7 +162,7 @@ def test(loader, G, F1, num_class, pred_matrix, confidence_matrix, mode='Test'):
                 correct += pred1_weak.eq(gt_labels_t.data).cpu().sum() + pred1_strong.eq(gt_labels_t.data).cpu().sum() + pred1_standard.eq(gt_labels_t.data).cpu().sum()
 
                 test_loss += criterion(output1_weak, gt_labels_t)/(3*len(loader))  + criterion(output1_strong, gt_labels_t)/(3*len(loader)) + criterion(output1_standard, gt_labels_t)/(3*len(loader)) 
-                np.save("cf_labelled_target.npy",confusion_matrix)
+                #np.save("cf_labelled_target.npy",confusion_matrix)
                 print(idx)
     if not mode == 'Labeled Target':
         np.save("cf_unlabelled_target.npy",confusion_matrix)
@@ -172,6 +196,14 @@ def get_dataset(net,root,image_set_file_test):
 
     target_loader_unl = torch.utils.data.DataLoader(target_dataset_unl, batch_size=bs, num_workers=3, shuffle=False, drop_last=False)
     return target_loader_unl,class_list
+
+def per_class_accuracy(confusion_matrix):
+    num_class, _ = confusion_matrix.shape
+    per_cls_acc = []
+    for i in range(num_class):
+        per_cls_acc.append(confusion_matrix[i,i]/sum(confusion_matrix[i,:]))
+    #per_cls_acc = torch.tensor(per_cls_acc).cuda()
+    return per_cls_acc
 
 if __name__ == '__main__':
     main()

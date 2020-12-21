@@ -20,6 +20,7 @@ from utils.loss import entropy, adentropy
 from augmentations.augmentation_ours import *
 import pickle
 from easydict import EasyDict as edict
+from loaders.data_list import *
 
 # Training settings
 parser = argparse.ArgumentParser(description='SSDA Classification')

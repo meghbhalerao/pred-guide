@@ -29,6 +29,13 @@ def make_dataset_fromlist(image_list):
     image_index = image_index[selected_list]
     return image_index, label_list
 
+def return_number_of_label_per_class(image_list,number_of_classes):
+    with open(image_list) as f:
+        label_list = [0] * number_of_classes
+        for ind, x in enumerate(f.readlines()):
+            label = int(x.split(' ')[1])
+            label_list[label]+=1
+    return label_list
 
 
 def return_classlist(image_list):

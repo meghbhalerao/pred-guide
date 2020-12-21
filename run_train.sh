@@ -6,7 +6,7 @@
 
 #CUDA_VISIBLE_DEVICES=0,1 python main_match_majvot.py --method MME --dataset multi --source real --target sketch --num 3 --net resnet34 --augmentation_policy rand_augment --save_check
 
-CUDA_VISIBLE_DEVICES=0,1 python main_cbfl.py --method MME --dataset multi --source real --target sketch --num 1 --net resnet34 --augmentation_policy rand_augment --uda 1 --use_bank 0 --save_check
+CUDA_VISIBLE_DEVICES=0,1 python main.py --method MME --dataset multi --source real --target sketch --num 1 --net resnet34 --augmentation_policy rand_augment --uda 1 --use_bank 1 --save_check
 
 #CUDA_VISIBLE_DEVICES=0,1 python main_match_knn_analysis.py --method MME --dataset multi --source real --target sketch --num 3 --net resnet34 --augmentation_policy rand_augment --save_check
 
