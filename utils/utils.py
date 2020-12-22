@@ -82,7 +82,7 @@ def pairwise_distance(feat_bank, feat_batch):
             output[idx_im_bank][idx_im_batch] = eu_dist
     return output
 
-def get_similarity_distribution(feat_dict,data_batch, G, source = False, i =0, mode = 'cosine'):
+def get_similarity_distribution(feat_dict,data_batch, G, source = False, i=0, mode='cosine'):
     if source:
         img_batch  = data_batch[0].cuda()
     else:
@@ -170,8 +170,7 @@ def load_bank(args):
 
     return feat_dict_source, feat_dict_target, feat_dict_combined
     
-def do_method_bank(feat_dict_source, feat_dict_target, feat_dict_combined, momentum, data_t_unl, data_s, prob_weak_aug, thresh, K, pred_strong_aug, criterion_pseudo, target_loader_unl, G, F1):
-
+def do_method_bank(feat_dict_source, feat_dict_target, feat_dict_combined, momentum, data_t_unl, data_s, prob_weak_aug, thresh, K, pred_strong_aug, criterion_pseudo, target_loader_unl, G, F1, backprop = True):
     f_batch_target, feat_dict_target  = update_features(feat_dict_target, data_t_unl, G, momentum)
     f_batch_target = f_batch_target.detach()
 
@@ -185,10 +184,10 @@ def do_method_bank(feat_dict_source, feat_dict_target, feat_dict_combined, momen
     mask_loss_uncertain = prob_weak_aug.max(1)[0]>thresh
     knn_majvot_pseudo_labels = get_majority_vote(k_neighbors,feat_dict_combined, K, F1, mask_loss_uncertain, len(target_loader_unl.dataset))
     #loss_pseudo_unl_knn = torch.mean(mask_loss_uncertain.int() * criterion_pseudo(pred_strong_aug, knn_majvot_pseudo_labels))
-    
-    if  not torch.sum(mask_loss_uncertain.int()) == 0:
-        loss_pseudo_unl_knn = torch.sum(mask_loss_uncertain.int() * criterion_pseudo(pred_strong_aug, knn_majvot_pseudo_labels))/(torch.sum(mask_loss_uncertain.int()))
-        loss_pseudo_unl_knn.backward(retain_graph=True)
+    if backprop:
+        if  not torch.sum(mask_loss_uncertain.int()) == 0:
+            loss_pseudo_unl_knn = torch.sum(mask_loss_uncertain.int() * criterion_pseudo(pred_strong_aug, knn_majvot_pseudo_labels))/(torch.sum(mask_loss_uncertain.int()))
+            loss_pseudo_unl_knn.backward(retain_graph=True)
     return mask_loss_uncertain
 
 def get_per_class_examples(label_bank, class_list):
@@ -201,3 +200,12 @@ def get_per_class_examples(label_bank, class_list):
     return class_num_list
 
     
+def weighted_source_loss(feat_dict_source, data, K_farthest_source, k_neighbors, labels_k_neighbors):
+    b_size = len(k_neighbors)
+    for example in range(b_size):
+        for neighbor in range(K_farthest_source):
+            feat_dict_source.sample_weights[neighbor] = 0.7
+    names_batch = list(data[2])
+    idx = [feat_dict_source.names.index(name) for name in names_batch] 
+    weights_source = feat_dict_source.sample_weights[idx]
+    return weights_source

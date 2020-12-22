@@ -240,6 +240,8 @@ def train():
         optimizer_g.step()
         optimizer_f.step()
 
+        
+
         zero_grad_all()
         if not args.method == 'S+T':
             output = G(im_data_tu)
