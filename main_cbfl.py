@@ -222,10 +222,10 @@ def train():
 
             if step >=3500:
                 f_batch_source, sim_distribution = get_similarity_distribution(feat_dict_source,data_t,G)
-                print(sim_distribution.cosines.shape)
                 sim_distribution.cosines = 1 - sim_distribution.cosines
                 k_neighbors, labels_k_neighbors = get_kNN(sim_distribution, feat_dict_source, K)    
                 weights_source  = weighted_source_loss(feat_dict_source, data_s, K_farthest_source, k_neighbors, labels_k_neighbors)
+                
 
         update_label_bank(label_bank, data_t_unl, pseudo_labels, mask_loss)
 
@@ -246,6 +246,7 @@ def train():
 
         if step >= 3500:
             loss = torch.mean(weights_source * criterion(out1, target))
+            print(loss)
         else:
             loss = torch.mean(criterion(out1, target))
         

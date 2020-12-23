@@ -1,0 +1,11 @@
+Dataset multi Source real Target sketch Labeled num perclass 3 Network resnet34
+126 classes in this dataset
+Unlabelled Target Dataset Size:  23826
+Labelled Target Dataset Size:  378
+Bank keys - Target:  dict_keys(['feat_vec', 'labels', 'names', 'domain_identifier']) Source:  dict_keys(['feat_vec', 'labels', 'names', 'domain_identifier'])
+Num  - Target:  23826 Source:  70358
+S real T sketch Train Ep: 0 lr0.01 	 Loss Classification: 4.952414 Loss T 0.470185 Method MME
+
+
+Labeled Target set: Average loss: 4.9747, Accuracy: 21/1080 F1 (1.9444%)
+
