@@ -127,8 +127,8 @@ lr = args.lr
 G.cuda()
 F1.cuda()
 
-#G = nn.DataParallel(G, device_ids=[0, 1])
-#F1 = nn.DataParallel(F1, device_ids=[0, 1])
+G = nn.DataParallel(G, device_ids=[0, 1])
+F1 = nn.DataParallel(F1, device_ids=[0, 1])
 
 if os.path.exists(args.checkpath) == False:
     os.mkdir(args.checkpath)
@@ -218,15 +218,17 @@ def train():
         loss_pseudo_unl.backward(retain_graph=True)
         # Updating the features in the bank for both source and target
         if args.use_bank == 1:
-            f_batch_target, feat_dict_source = update_features(feat_dict_source, data_s, G, 0, source = True)
+            f_batch_source, feat_dict_source = update_features(feat_dict_source, data_s, G, 0, source = True)
 
-            if step >=0:
-                sim_distribution = get_similarity_distribution(feat_dict_source,data_t_unl,G)
+            if step >=3500:
+                f_batch_source, sim_distribution = get_similarity_distribution(feat_dict_source,data_t,G)
+                print(sim_distribution.cosines.shape)
                 sim_distribution.cosines = 1 - sim_distribution.cosines
                 k_neighbors, labels_k_neighbors = get_kNN(sim_distribution, feat_dict_source, K)    
                 weights_source  = weighted_source_loss(feat_dict_source, data_s, K_farthest_source, k_neighbors, labels_k_neighbors)
 
         update_label_bank(label_bank, data_t_unl, pseudo_labels, mask_loss)
+
         if step >= 3500:
             class_num_list = get_per_class_examples(label_bank, class_list)
             effective_num = 1.0 - np.power(beta, class_num_list)
@@ -237,9 +239,9 @@ def train():
             out_lab_target = F1(G(im_data_t))
             loss_lab_target = criterion_lab_target(out_lab_target,gt_labels_t)
             loss_lab_target.backward()
-
     
-        output = G(data)
+        #output = G(data)
+        output = f_batch_source
         out1 = F1(output)
 
         if step >= 3500:

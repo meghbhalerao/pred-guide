@@ -93,7 +93,7 @@ def get_similarity_distribution(feat_dict,data_batch, G, source = False, i=0, mo
     elif mode == 'euclid':
         sim_distribution = pairwise_distance(feat_dict.feat_vec, f_batch)
     sim_distribution = edict({"cosines": sim_distribution, "names": data_batch[2], "labels": data_batch[1]})
-    return sim_distribution
+    return f_batch, sim_distribution
 
 def get_kNN(sim_distribution, feat_dict, k = 1):
     k_neighbors = torch.topk(torch.transpose(sim_distribution.cosines,0,1), k, dim = 1)
