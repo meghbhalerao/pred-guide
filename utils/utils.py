@@ -199,13 +199,22 @@ def get_per_class_examples(label_bank, class_list):
                 class_num_list[i] +=1
     return class_num_list
 
-    
-def weighted_source_loss(feat_dict_source, data, K_farthest_source, k_neighbors, labels_k_neighbors):
+def set_source_weights_batch(feat_dict_source, K_farthest_source, k_neighbors):
     b_size = len(k_neighbors)
     for example in range(b_size):
         for neighbor in range(K_farthest_source):
             feat_dict_source.sample_weights[neighbor] = 0.7
-    names_batch = list(data[2])
-    idx = [feat_dict_source.names.index(name) for name in names_batch] 
-    weights_source = feat_dict_source.sample_weights[idx]
-    return weights_source
+    #names_batch = list(data[2])
+    #idx = [feat_dict_source.names.index(name) for name in names_batch] 
+    #weights_source = feat_dict_source.sample_weights[idx]
+    #return weights_source
+    pass
+
+def set_source_weights_all(target_loader,feat_dict_source,K_farthest_source,k_neighbors,G):
+    for data_t in target_loader:
+        f_batch_source, sim_distribution = get_similarity_distribution(feat_dict_source,data_t,G)
+        sim_distribution.cosines = 1 - sim_distribution.cosines
+        k_neighbors, labels_k_neighbors = get_kNN(sim_distribution, feat_dict_source, K_farthest_source)    
+        set_source_weights_batch(feat_dict_source,K_farthest_source,k_neighbors)
+    pass
+

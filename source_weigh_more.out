@@ -1,0 +1,44 @@
+Dataset multi Source real Target sketch Labeled num perclass 3 Network resnet34
+126 classes in this dataset
+Unlabelled Target Dataset Size:  23826
+Labelled Target Dataset Size:  378
+Bank keys - Target:  dict_keys(['feat_vec', 'labels', 'names', 'domain_identifier']) Source:  dict_keys(['feat_vec', 'labels', 'names', 'domain_identifier'])
+Num  - Target:  23826 Source:  70358
+S real T sketch Train Ep: 0 lr0.01 	 Loss Classification: 5.080125 Loss T 0.471888 Method MME
+
+
+Labeled Target set: Average loss: 4.9588, Accuracy: 14/1080 F1 (1.2963%)
+
+
+Test set: Average loss: 4.9678, Accuracy: 195/23808 F1 (0.8191%)
+
+
+Val set: Average loss: 4.9771, Accuracy: 6/360 F1 (1.6667%)
+
+best acc test 0.819052  acc val 1.666667 acc labeled target 1.296296
+saving model...
+S real T sketch Train Ep: 100 lr0.009925650290240803 	 Loss Classification: 1.497934 Loss T 0.304202 Method MME
+
+S real T sketch Train Ep: 200 lr0.009852577760521605 	 Loss Classification: 0.804190 Loss T 0.210032 Method MME
+
+S real T sketch Train Ep: 300 lr0.009780748269686728 	 Loss Classification: 0.605165 Loss T 0.205911 Method MME
+
+S real T sketch Train Ep: 400 lr0.009710128909124701 	 Loss Classification: 0.830530 Loss T 0.165341 Method MME
+
+S real T sketch Train Ep: 500 lr0.00964068794694323 	 Loss Classification: 1.318807 Loss T 0.179068 Method MME
+
+
+Labeled Target set: Average loss: 2.6665, Accuracy: 462/1080 F1 (42.7778%)
+
+
+Test set: Average loss: 2.5094, Accuracy: 11152/23808 F1 (46.8414%)
+
+
+Val set: Average loss: 2.3668, Accuracy: 179/360 F1 (49.7222%)
+
+best acc test 46.841398  acc val 49.722222 acc labeled target 42.777778
+saving model...
+S real T sketch Train Ep: 600 lr0.00957239477517603 	 Loss Classification: 1.012052 Loss T 0.183088 Method MME
+
+S real T sketch Train Ep: 700 lr0.009505219859830012 	 Loss Classification: 0.347842 Loss T 0.201254 Method MME
+
