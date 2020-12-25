@@ -214,7 +214,7 @@ class TransformFix(object):
         return self.normalize(weak), self.normalize(strong), self.normalize(standard)
 
 
-def return_dataset_randaugment(args,txt_path='./data/txt/',root_path='./data/',bs_alex = 32,bs_resnet = 24):
+def return_dataset_randaugment(args,txt_path='./data/txt/',root_path='./data/',bs_alex = 32, bs_resnet = 24):
     base_path = os.path.join(txt_path,args.dataset)
     root = os.path.join(root_path,args.dataset)
     image_set_file_s = os.path.join(base_path, 'labeled_source_images_' + args.source + '.txt')
@@ -226,6 +226,7 @@ def return_dataset_randaugment(args,txt_path='./data/txt/',root_path='./data/',b
         crop_size = 227
     else:
         crop_size = 224
+
     data_transforms = {
         'train': transforms.Compose([
             ResizeImage(256),
@@ -249,6 +250,7 @@ def return_dataset_randaugment(args,txt_path='./data/txt/',root_path='./data/',b
         ]),
     }
     source_dataset = Imagelists_VISDA(image_set_file_s, root=root, transform=data_transforms['train'])
+
     if args.uda:
         target_dataset = Imagelists_VISDA(image_set_file_t, root=root, transform=TransformFix("randaugment", args.net, mean =[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]))
     else:
@@ -271,6 +273,9 @@ def return_dataset_randaugment(args,txt_path='./data/txt/',root_path='./data/',b
                                     batch_size=min(bs, len(target_dataset)),
                                     num_workers=3,
                                     shuffle=True, drop_last=True)
+                                    
+    target_loader_misc = torch.utils.data.DataLoader(target_dataset, batch_size=1, num_workers=3, shuffle=False)
+
     target_loader_val = \
         torch.utils.data.DataLoader(target_dataset_val,
                                     batch_size=min(bs, len(target_dataset_val)),
@@ -284,7 +289,7 @@ def return_dataset_randaugment(args,txt_path='./data/txt/',root_path='./data/',b
         torch.utils.data.DataLoader(target_dataset_test,
                                     batch_size=bs, num_workers=3,
                                     shuffle=True, drop_last=True)
-    return source_loader, target_loader, target_loader_unl, target_loader_val, target_loader_test, class_list
+    return source_loader, target_loader, target_loader_misc, target_loader_unl, target_loader_val, target_loader_test, class_list
 
 
 
