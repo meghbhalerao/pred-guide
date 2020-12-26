@@ -2,6 +2,7 @@ from __future__ import print_function
 import argparse
 import os
 import sys
+from utils.fixmatch import do_fixmatch
 from utils.source_classwise_weighting import do_source_weighting
 import numpy as np
 from copy import deepcopy
@@ -141,8 +142,6 @@ def train():
     optimizer_f = optim.SGD(list(F1.parameters()), lr=1.0, momentum=0.9, weight_decay=0.0005, nesterov=True)
     print("Unlabelled Target Dataset Size: ",len(target_loader_unl.dataset))
     print("Labelled Target Dataset Size: ",len(target_loader.dataset))
-    # Loading the dictionary having the feature bank and corresponding metadata
-    
     def zero_grad_all():
         optimizer_g.zero_grad()
         optimizer_f.zero_grad()
@@ -153,7 +152,7 @@ def train():
     for param_group in optimizer_f.param_groups:
         param_lr_f.append(param_group["lr"])
 
-    thresh = 0.9   # threshold for confident prediction to generate pseudo-labels
+    thresh = 0.9
     criterion = nn.CrossEntropyLoss(reduction='none').cuda()
     criterion_pseudo = nn.CrossEntropyLoss(reduction='none').cuda()
     criterion_lab_target = nn.CrossEntropyLoss(reduction='none').cuda()
@@ -195,7 +194,6 @@ def train():
         data_s = next(data_iter_s)
         im_data_s = data_s[0].cuda()
         gt_labels_s = data_s[1].cuda()
-
         im_data_t = data_t[0][0].cuda()
         gt_labels_t = data_t[1].cuda()
         im_data_tu = data_t_unl[0][2].cuda()
@@ -203,22 +201,14 @@ def train():
         zero_grad_all()
         data = im_data_s
         target = gt_labels_s
-        im_data_tu_weak_aug, im_data_tu_strong_aug = data_t_unl[0][0].cuda(), data_t_unl[0][1].cuda()
-        # Getting predictions of weak and strong augmented unlabled examples
-        pred_strong_aug = F1(G(im_data_tu_strong_aug))
-        with torch.no_grad():
-            pred_weak_aug = F1(G(im_data_tu_weak_aug))
-        prob_weak_aug = F.softmax(pred_weak_aug,dim=1)
-        mask_loss = prob_weak_aug.max(1)[0]>thresh
-        pseudo_labels = pred_weak_aug.max(axis=1)[1]
-        loss_pseudo_unl = torch.mean(mask_loss.int() * criterion_pseudo(pred_strong_aug,pseudo_labels))
-        loss_pseudo_unl.backward(retain_graph=True)
+        
+        pseudo_labels, mask_loss = do_fixmatch(data_t_unl,F1,G,thresh,criterion_pseudo)
+
         # Updating the features in the bank for both source and target
         if args.use_bank == 1:
             f_batch_source, feat_dict_source = update_features(feat_dict_source, data_s, G, 0, source = True)
             if step >=3500 and step % 1500:
-                feat_dict_source.sample_weights = torch.tensor(np.ones(num_source)).cuda()
-                do_source_weighting(target_loader_misc)
+                do_source_weighting(target_loader_misc,feat_dict_source,G,K_farthest_source)
 
         update_label_bank(label_bank, data_t_unl, pseudo_labels, mask_loss)
 

@@ -25,17 +25,27 @@ def make_feat_dict_from_idx(feat_dict,idxs):
     feat_dict_idx.domain_identifier = feat_dict.domain_identifier[idxs]
     return feat_dict_idx
 
+def get_k_farthest_neighbors(sim_distribution,feat_dict,K_farthest):
+        sim_distribution.cosines = 1 - sim_distribution.cosines
+        k_farthest, labels_k_neighbors = get_kNN(sim_distribution, feat_dict, K_farthest)
+        return k_farthest, labels_k_neighbors
 
 def do_source_weighting(loader, feat_dict,G,K_farthest):
     farthest_classwise_examples_idx = []
+    n_examples = len(feat_dict.domain_identifier)
+    feat_dict.sample_weights = torch.tensor(np.ones(n_examples)).cuda()
     for idx, batch in enumerate(loader):
         img_vec = G(batch[0])
         img_label = batch[1]
         idxs_label = feat_dict.labels.index(img_label)
         feat_dict_label = make_feat_dict_from_idx(feat_dict,idxs_label)
         f_batch, sim_distribution = get_similarity_distribution(feat_dict_label,batch,G)
-        sim_distribution.cosines = 1 - sim_distribution.cosines
-        k_farthest, labels_k_neighbors = get_kNN(sim_distribution, feat_dict_label, K_farthest)
+        k_farthest, labels_k_neighbors = get_k_farthest_neighbors(sim_distribution,feat_dict_label,K_farthest)
+        for farthest in k_farthest:
+            
+
+
+
 
 
 
