@@ -89,6 +89,7 @@ def get_similarity_distribution(feat_dict,data_batch, G, source = False, i=0, mo
         img_batch = data_batch[0][i].cuda()
     f_batch = G(img_batch)
     if mode == 'cosine':
+        #print(feat_dict.feat_vec.shape,f_batch.shape)
         sim_distribution  = torch.mm(F.normalize(feat_dict.feat_vec, dim=1),F.normalize(torch.transpose(f_batch,0,1),dim = 0))        
     elif mode == 'euclid':
         sim_distribution = pairwise_distance(feat_dict.feat_vec, f_batch)
@@ -151,7 +152,7 @@ def save_stats(F1, G, loader, step, feat_dict_combined, batch, K, mask_loss_unce
 def load_bank(args):
     f = open("./banks/unlabelled_target_%s_%s.pkl"%(args.target,args.num), "rb")
     feat_dict_target = edict(pickle.load(f))
-    feat_dict_target.feat_vec  = feat_dict_target.feat_vec.cuda()
+    feat_dict_target.feat_vec = feat_dict_target.feat_vec.cuda()
     num_target = len(feat_dict_target.names)
     domain = ["T" for i in range(num_target)]
     feat_dict_target.domain_identifier = domain

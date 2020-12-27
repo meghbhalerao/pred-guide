@@ -203,15 +203,13 @@ def train():
         target = gt_labels_s
         
         pseudo_labels, mask_loss = do_fixmatch(data_t_unl,F1,G,thresh,criterion_pseudo)
+        f_batch_source, feat_dict_source = update_features(feat_dict_source, data_s, G, 0, source = True)
 
-        # Updating the features in the bank for both source and target
-        if args.use_bank == 1:
-            f_batch_source, feat_dict_source = update_features(feat_dict_source, data_s, G, 0, source = True)
-            if step >=3500 and step % 1500:
-                do_source_weighting(target_loader_misc,feat_dict_source,G,K_farthest_source)
+        if step >=3500 and step % 1500:
+            do_source_weighting(target_loader_misc,feat_dict_source,G,K_farthest_source)
+
 
         update_label_bank(label_bank, data_t_unl, pseudo_labels, mask_loss)
-
         if step >= 3500:
             class_num_list = get_per_class_examples(label_bank, class_list)
             effective_num = 1.0 - np.power(beta, class_num_list)
