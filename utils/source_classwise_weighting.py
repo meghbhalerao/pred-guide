@@ -16,7 +16,7 @@ def get_kNN(sim_distribution, feat_dict, k = 1):
         l = idxs[i].cpu().data.numpy()
         k_neighbors.append(list(l))
         labels_k_neighbors.append(list(np.array(feat_dict.labels)[l]))
-        names_k_neighbors.append(feat_dict.names[list(l)])
+        names_k_neighbors.append([feat_dict.names[idx] for idx in list(l)])
     return k_neighbors, labels_k_neighbors, names_k_neighbors
 
 def make_feat_dict_from_idx(feat_dict,idxs):
@@ -37,12 +37,14 @@ def do_source_weighting(loader, feat_dict,G,K_farthest,weight=0.8,aug = 2):
     n_examples = len(feat_dict.domain_identifier)
     feat_dict.sample_weights = torch.tensor(np.ones(n_examples)).cuda()
     for idx, batch in enumerate(loader):
+        print(idx)
         img_vec = G(batch[0][aug])
         img_label = batch[1]
         idxs_label = [i for i, x in enumerate(feat_dict.labels) if x == img_label]
         feat_dict_label = make_feat_dict_from_idx(feat_dict,idxs_label)
         f_batch, sim_distribution = get_similarity_distribution(feat_dict_label,batch,G)
         k_farthest, labels_k_farthest, names_k_farthest = get_k_farthest_neighbors(sim_distribution,feat_dict_label,K_farthest)
+        names_k_farthest = names_k_farthest[0] # 0 - since batch_size is 1 for assigning weights
         for name in names_k_farthest:
             idx_to_weigh = feat_dict.names.index(name)
             feat_dict.sample_weights[idx_to_weigh] = weight

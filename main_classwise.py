@@ -207,7 +207,7 @@ def train():
 
         if step >=3500 and step % 1500:
             do_source_weighting(target_loader_misc,feat_dict_source,G,K_farthest_source)
-
+            print("Assigned Classwise weights to source")
 
         update_label_bank(label_bank, data_t_unl, pseudo_labels, mask_loss)
         if step >= 3500:
@@ -263,7 +263,7 @@ def train():
         zero_grad_all()
         if step % args.log_interval == 0:
             print(log_train)
-        if step % args.save_interval == 0:# and step > 0:
+        if step % args.save_interval == 0 and step > 0:
             if step % 2000 == 0:
                 #save_stats(F1, G, target_loader_unl, step, feat_dict_combined, data_t_unl, K, mask_loss_uncertain)
                 pass
