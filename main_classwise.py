@@ -205,7 +205,7 @@ def train():
         pseudo_labels, mask_loss = do_fixmatch(data_t_unl,F1,G,thresh,criterion_pseudo)
         f_batch_source, feat_dict_source = update_features(feat_dict_source, data_s, G, 0, source = True)
 
-        if step >=3500 and step % 1500:
+        if step >=3500 and step % 1500 == 0:
             do_source_weighting(target_loader_misc,feat_dict_source,G,K_farthest_source)
             print("Assigned Classwise weights to source")
 
@@ -219,8 +219,11 @@ def train():
             criterion_lab_target = CBFocalLoss(weight=per_cls_weights, gamma=0.5).cuda()
             out_lab_target = F1(G(im_data_t))
             loss_lab_target = criterion_lab_target(out_lab_target,gt_labels_t)
-            loss_lab_target.backward()
-
+            try:
+                loss_lab_target.backward()
+            except:
+                pass
+        print("Passed except")
         #output = G(data)
         output = f_batch_source
         out1 = F1(output)

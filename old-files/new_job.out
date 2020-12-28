@@ -1,0 +1,8609 @@
+Dataset multi Source real Target sketch Labeled num perclass 3 Network resnet34
+126 classes in this dataset
+Unlabelled Target Dataset Size:  23826
+Labelled Target Dataset Size:  378
+Bank keys - Target:  dict_keys(['feat_vec', 'labels', 'names', 'domain_identifier']) Source:  dict_keys(['feat_vec', 'labels', 'names', 'domain_identifier'])
+Num  - Target:  23826 Source:  70358
+Passed except
+S real T sketch Train Ep: 0 lr0.01 	 Loss Classification: 5.065262 Loss T 0.470325 Method MME
+
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+S real T sketch Train Ep: 100 lr0.009925650290240803 	 Loss Classification: 1.444706 Loss T 0.292447 Method MME
+
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+S real T sketch Train Ep: 200 lr0.009852577760521605 	 Loss Classification: 1.237424 Loss T 0.242326 Method MME
+
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+S real T sketch Train Ep: 300 lr0.009780748269686728 	 Loss Classification: 0.385220 Loss T 0.184761 Method MME
+
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+S real T sketch Train Ep: 400 lr0.009710128909124701 	 Loss Classification: 0.748154 Loss T 0.166621 Method MME
+
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+S real T sketch Train Ep: 500 lr0.00964068794694323 	 Loss Classification: 0.400178 Loss T 0.185050 Method MME
+
+
+Labeled Target set: Average loss: 2.6174, Accuracy: 443/1080 F1 (41.0185%)
+
+
+Test set: Average loss: 2.5805, Accuracy: 10907/23808 F1 (45.8123%)
+
+
+Val set: Average loss: 2.2934, Accuracy: 174/360 F1 (48.3333%)
+
+best acc test 45.812332  acc val 48.333333 acc labeled target 41.018519
+saving model...
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+S real T sketch Train Ep: 600 lr0.00957239477517603 	 Loss Classification: 2.035739 Loss T 0.173500 Method MME
+
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+S real T sketch Train Ep: 700 lr0.009505219859830012 	 Loss Classification: 0.542681 Loss T 0.135224 Method MME
+
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+S real T sketch Train Ep: 800 lr0.009439134693595126 	 Loss Classification: 1.416325 Loss T 0.126601 Method MME
+
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+S real T sketch Train Ep: 900 lr0.009374111751051751 	 Loss Classification: 1.247115 Loss T 0.149738 Method MME
+
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+S real T sketch Train Ep: 1000 lr0.009310124446222227 	 Loss Classification: 0.884005 Loss T 0.152739 Method MME
+
+
+Labeled Target set: Average loss: 2.5198, Accuracy: 518/1080 F1 (47.9630%)
+
+
+Test set: Average loss: 2.3459, Accuracy: 12341/23808 F1 (51.8355%)
+
+
+Val set: Average loss: 2.2291, Accuracy: 185/360 F1 (51.3889%)
+
+best acc test 51.835517  acc val 51.388889 acc labeled target 47.962963
+saving model...
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+S real T sketch Train Ep: 1100 lr0.00924714709232377 	 Loss Classification: 0.471773 Loss T 0.130647 Method MME
+
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+S real T sketch Train Ep: 1200 lr0.009185154863590003 	 Loss Classification: 1.194183 Loss T 0.153581 Method MME
+
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+S real T sketch Train Ep: 1300 lr0.00912412375903735 	 Loss Classification: 1.000091 Loss T 0.138288 Method MME
+
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+S real T sketch Train Ep: 1400 lr0.009064030568061049 	 Loss Classification: 0.577304 Loss T 0.123882 Method MME
+
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+S real T sketch Train Ep: 1500 lr0.009004852837753237 	 Loss Classification: 0.440174 Loss T 0.117029 Method MME
+
+
+Labeled Target set: Average loss: 2.4183, Accuracy: 529/1080 F1 (48.9815%)
+
+
+Test set: Average loss: 2.3447, Accuracy: 12664/23808 F1 (53.1922%)
+
+
+Val set: Average loss: 2.1814, Accuracy: 199/360 F1 (55.2778%)
+
+best acc test 53.192204  acc val 55.277778 acc labeled target 48.981481
+saving model...
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+S real T sketch Train Ep: 1600 lr0.008946568841842816 	 Loss Classification: 1.190935 Loss T 0.150860 Method MME
+
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+S real T sketch Train Ep: 1700 lr0.008889157551163433 	 Loss Classification: 0.887606 Loss T 0.137953 Method MME
+
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+S real T sketch Train Ep: 1800 lr0.008832598605562044 	 Loss Classification: 0.971838 Loss T 0.131601 Method MME
+
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+S real T sketch Train Ep: 1900 lr0.008776872287166303 	 Loss Classification: 0.246131 Loss T 0.120243 Method MME
+
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+S real T sketch Train Ep: 2000 lr0.008721959494934213 	 Loss Classification: 1.479902 Loss T 0.125977 Method MME
+
+
+Labeled Target set: Average loss: 2.1653, Accuracy: 591/1080 F1 (54.7222%)
+
+
+Test set: Average loss: 2.2491, Accuracy: 13215/23808 F1 (55.5066%)
+
+
+Val set: Average loss: 1.9559, Accuracy: 208/360 F1 (57.7778%)
+
+best acc test 55.506552  acc val 57.777778 acc labeled target 54.722222
+saving model...
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+S real T sketch Train Ep: 2100 lr0.008667841720414475 	 Loss Classification: 0.932151 Loss T 0.108049 Method MME
+
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+S real T sketch Train Ep: 2200 lr0.008614501024650454 	 Loss Classification: 0.720197 Loss T 0.112454 Method MME
+
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+S real T sketch Train Ep: 2300 lr0.008561920016164943 	 Loss Classification: 0.729754 Loss T 0.111784 Method MME
+
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+S real T sketch Train Ep: 2400 lr0.008510081829966844 	 Loss Classification: 0.500610 Loss T 0.098198 Method MME
+
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+S real T sketch Train Ep: 2500 lr0.008458970107524513 	 Loss Classification: 0.745224 Loss T 0.118898 Method MME
+
+
+Labeled Target set: Average loss: 2.3061, Accuracy: 564/1080 F1 (52.2222%)
+
+
+Test set: Average loss: 2.3208, Accuracy: 13188/23808 F1 (55.3931%)
+
+
+Val set: Average loss: 2.1708, Accuracy: 205/360 F1 (56.9444%)
+
+best acc test 55.506552  acc val 56.944444 acc labeled target 52.222222
+saving model...
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+S real T sketch Train Ep: 2600 lr0.008408568977653933 	 Loss Classification: 0.842669 Loss T 0.084146 Method MME
+
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+S real T sketch Train Ep: 2700 lr0.00835886303827305 	 Loss Classification: 0.272896 Loss T 0.121710 Method MME
+
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+S real T sketch Train Ep: 2800 lr0.008309837338976545 	 Loss Classification: 1.218078 Loss T 0.089104 Method MME
+
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+S real T sketch Train Ep: 2900 lr0.008261477364388068 	 Loss Classification: 1.162147 Loss T 0.103076 Method MME
+
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+S real T sketch Train Ep: 3000 lr0.008213769018249545 	 Loss Classification: 0.751548 Loss T 0.106031 Method MME
+
+
+Labeled Target set: Average loss: 2.1958, Accuracy: 597/1080 F1 (55.2778%)
+
+
+Test set: Average loss: 2.2126, Accuracy: 13623/23808 F1 (57.2203%)
+
+
+Val set: Average loss: 2.0331, Accuracy: 203/360 F1 (56.3889%)
+
+best acc test 55.506552  acc val 56.388889 acc labeled target 55.277778
+saving model...
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+S real T sketch Train Ep: 3100 lr0.008166698608209509 	 Loss Classification: 0.553544 Loss T 0.104034 Method MME
+
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+S real T sketch Train Ep: 3200 lr0.008120252831274708 	 Loss Classification: 0.969477 Loss T 0.104754 Method MME
+
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+S real T sketch Train Ep: 3300 lr0.008074418759891278 	 Loss Classification: 0.865896 Loss T 0.096634 Method MME
+
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+S real T sketch Train Ep: 3400 lr0.008029183828623731 	 Loss Classification: 0.917170 Loss T 0.093451 Method MME
+
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+Passed except
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+Assigned Classwise weights to source
+Passed except
+tensor(0.4278, device='cuda:0', dtype=torch.float64, grad_fn=<MeanBackward0>)
+S real T sketch Train Ep: 3500 lr0.007984535821401871 	 Loss Classification: 0.427801 Loss T 0.120168 Method MME
+
+
+Labeled Target set: Average loss: 2.4607, Accuracy: 551/1080 F1 (51.0185%)
+
+
+Test set: Average loss: 2.4474, Accuracy: 12920/23808 F1 (54.2675%)
+
+
+Val set: Average loss: 2.3429, Accuracy: 191/360 F1 (53.0556%)
+
+best acc test 55.506552  acc val 53.055556 acc labeled target 51.018519
+saving model...
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+Assigned Classwise weights to source
+Passed except
+tensor(0.5069, device='cuda:0', dtype=torch.float64, grad_fn=<MeanBackward0>)
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+Assigned Classwise weights to source
+Passed except
+tensor(0.2715, device='cuda:0', dtype=torch.float64, grad_fn=<MeanBackward0>)
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+Assigned Classwise weights to source
+Passed except
+tensor(1.4736, device='cuda:0', dtype=torch.float64, grad_fn=<MeanBackward0>)
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+Assigned Classwise weights to source
+Passed except
+tensor(0.7448, device='cuda:0', dtype=torch.float64, grad_fn=<MeanBackward0>)
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+Assigned Classwise weights to source
+Passed except
+tensor(1.2242, device='cuda:0', dtype=torch.float64, grad_fn=<MeanBackward0>)
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+Assigned Classwise weights to source
+Passed except
+tensor(3.9985, device='cuda:0', dtype=torch.float64, grad_fn=<MeanBackward0>)
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+Assigned Classwise weights to source
+Passed except
+tensor(1.1319, device='cuda:0', dtype=torch.float64, grad_fn=<MeanBackward0>)
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+Assigned Classwise weights to source
+Passed except
+tensor(1.1390, device='cuda:0', dtype=torch.float64, grad_fn=<MeanBackward0>)
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+Assigned Classwise weights to source
+Passed except
+tensor(0.9883, device='cuda:0', dtype=torch.float64, grad_fn=<MeanBackward0>)
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+Assigned Classwise weights to source
+Passed except
+tensor(1.1039, device='cuda:0', dtype=torch.float64, grad_fn=<MeanBackward0>)
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+Assigned Classwise weights to source
+Passed except
+tensor(0.7853, device='cuda:0', dtype=torch.float64, grad_fn=<MeanBackward0>)
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+Assigned Classwise weights to source
+Passed except
+tensor(1.5569, device='cuda:0', dtype=torch.float64, grad_fn=<MeanBackward0>)
+Terminated
