@@ -142,6 +142,7 @@ def train():
     optimizer_f = optim.SGD(list(F1.parameters()), lr=1.0, momentum=0.9, weight_decay=0.0005, nesterov=True)
     print("Unlabelled Target Dataset Size: ",len(target_loader_unl.dataset))
     print("Labelled Target Dataset Size: ",len(target_loader.dataset))
+    print("Misc. Labelled Target Dataset Size: ",len(target_loader_misc.dataset))
     def zero_grad_all():
         optimizer_g.zero_grad()
         optimizer_f.zero_grad()
@@ -176,6 +177,7 @@ def train():
     K = 3
     K_farthest_source = 5
     beta = 0.99
+    per_cls_acc = np.array([1 for _ in range(len(class_list))]) # Just defining for sake of clarity and debugging
     for step in range(all_step):
         optimizer_g = inv_lr_scheduler(param_lr_g, optimizer_g, step, init_lr=args.lr)
         optimizer_f = inv_lr_scheduler(param_lr_f, optimizer_f, step, init_lr=args.lr)
@@ -205,8 +207,11 @@ def train():
         pseudo_labels, mask_loss = do_fixmatch(data_t_unl,F1,G,thresh,criterion_pseudo)
         f_batch_source, feat_dict_source = update_features(feat_dict_source, data_s, G, 0, source = True)
 
-        if step >=3500 and step % 1500 == 0:
-            do_source_weighting(target_loader_misc,feat_dict_source,G,K_farthest_source,weight=1.2)
+        if step >=0 and step % 250 == 0 and step<=3500:
+            poor_class_list = list(np.argsort(per_cls_acc))[0:50]
+            print(per_cls_acc)
+            print(poor_class_list)
+            do_source_weighting(target_loader_misc,feat_dict_source,G,K_farthest_source,weight=0.8, aug = 2, only_for_poor=True, poor_class_list=poor_class_list)
             print("Assigned Classwise weights to source")
 
         update_label_bank(label_bank, data_t_unl, pseudo_labels, mask_loss)
@@ -219,11 +224,11 @@ def train():
             criterion_lab_target = CBFocalLoss(weight=per_cls_weights, gamma=0.5).cuda()
             out_lab_target = F1(G(im_data_t))
             loss_lab_target = criterion_lab_target(out_lab_target,gt_labels_t)
-            try:
-                loss_lab_target.backward()
-            except:
-                pass
-        print("Passed except")
+            #try:
+            loss_lab_target.backward()
+            #except:
+            #pass
+
         #output = G(data)
         output = f_batch_source
         out1 = F1(output)
@@ -233,7 +238,7 @@ def train():
             idx = [feat_dict_source.names.index(name) for name in names_batch] 
             weights_source = feat_dict_source.sample_weights[idx]
             loss = torch.mean(weights_source * criterion(out1, target))
-            print(loss)
+            print(sum(weights_source))
         else:
             loss = torch.mean(criterion(out1, target))
         
@@ -266,13 +271,13 @@ def train():
         zero_grad_all()
         if step % args.log_interval == 0:
             print(log_train)
-        if step % args.save_interval == 0 and step > 0:
+        if step % args.save_interval == 0:# and step > 0:
             if step % 2000 == 0:
                 #save_stats(F1, G, target_loader_unl, step, feat_dict_combined, data_t_unl, K, mask_loss_uncertain)
                 pass
-            _, acc_labeled_target, _ = test(target_loader, mode = 'Labeled Target')
-            _, acc_test,_ = test(target_loader_test, mode = 'Test')
-            _, acc_val, _ = test(target_loader_val, mode = 'Val')
+            _, acc_labeled_target, _, per_cls_acc = test(target_loader, mode = 'Labeled Target')
+            _, acc_test,_,_ = test(target_loader_test, mode = 'Test')
+            _, acc_val, _, _ = test(target_loader_val, mode = 'Val')
 
             G.train()
             F1.train()
@@ -350,13 +355,14 @@ def test(loader, mode='Test'):
     if not mode == 'Labeled Target':
         np.save("cf_unlabeled_target.npy",confusion_matrix)
         weight = torch.ones([num_class,1]).cuda()
+        per_cls_acc = torch.tensor(np.ones(num_class)).cuda()
     elif mode =='Labeled Target':
         np.save("cf_labeled_target.npy",confusion_matrix)
         per_cls_acc = per_class_accuracy(confusion_matrix)
         weight = per_cls_acc 
         weight = (weight>0.5).int()*1.5 + (weight<0.5).int()*0.5
     print('\n{} set: Average loss: {:.4f}, Accuracy: {}/{} F1 ({:.4f}%)\n'.format(mode, test_loss,correct,size,100.*correct/size))
-    return test_loss.data,100.*float(correct)/size, weight
+    return test_loss.data,100.*float(correct)/size, weight, per_cls_acc.cpu().numpy()
 
 def per_class_accuracy(confusion_matrix):
     num_class, _ = confusion_matrix.shape

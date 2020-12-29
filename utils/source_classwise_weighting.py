@@ -32,12 +32,11 @@ def get_k_farthest_neighbors(sim_distribution,feat_dict,K_farthest):
         k_farthest, labels_k_farthest, names_k_farthest = get_kNN(sim_distribution, feat_dict, K_farthest)
         return k_farthest, labels_k_farthest, names_k_farthest
 
-def do_source_weighting(loader, feat_dict,G,K_farthest,weight=0.8,aug = 2):
+def do_source_weighting(loader, feat_dict,G,K_farthest,weight=0.8,aug = 2, only_for_poor = False, poor_class_list = None):
     farthest_classwise_examples_idx = []
     n_examples = len(feat_dict.domain_identifier)
     feat_dict.sample_weights = torch.tensor(np.ones(n_examples)).cuda()
     for idx, batch in enumerate(loader):
-        print(idx)
         img_vec = G(batch[0][aug])
         img_label = batch[1]
         idxs_label = [i for i, x in enumerate(feat_dict.labels) if x == img_label]
@@ -47,7 +46,9 @@ def do_source_weighting(loader, feat_dict,G,K_farthest,weight=0.8,aug = 2):
         names_k_farthest = names_k_farthest[0] # 0 - since batch_size is 1 for assigning weights
         for name in names_k_farthest:
             idx_to_weigh = feat_dict.names.index(name)
-            feat_dict.sample_weights[idx_to_weigh] = weight
+            if img_label in poor_class_list:
+                print(img_label.item())
+                feat_dict.sample_weights[idx_to_weigh] = weight
             
 
 
