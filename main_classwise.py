@@ -206,7 +206,7 @@ def train():
         f_batch_source, feat_dict_source = update_features(feat_dict_source, data_s, G, 0, source = True)
 
         if step >=3500 and step % 1500 == 0:
-            do_source_weighting(target_loader_misc,feat_dict_source,G,K_farthest_source)
+            do_source_weighting(target_loader_misc,feat_dict_source,G,K_farthest_source,weight=1.2)
             print("Assigned Classwise weights to source")
 
         update_label_bank(label_bank, data_t_unl, pseudo_labels, mask_loss)
