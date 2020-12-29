@@ -156,7 +156,7 @@ def train():
     thresh = 0.9
     criterion = nn.CrossEntropyLoss(reduction='none').cuda()
     criterion_pseudo = nn.CrossEntropyLoss(reduction='none').cuda()
-    criterion_lab_target = nn.CrossEntropyLoss(reduction='none').cuda()
+    criterion_lab_target = nn.CrossEntropyLoss(reduction='mean').cuda()
     feat_dict_source, feat_dict_target, _ = load_bank(args)
     
     num_target = len(feat_dict_target.names)
@@ -207,21 +207,25 @@ def train():
         pseudo_labels, mask_loss = do_fixmatch(data_t_unl,F1,G,thresh,criterion_pseudo)
         f_batch_source, feat_dict_source = update_features(feat_dict_source, data_s, G, 0, source = True)
 
-        if step >=0 and step % 250 == 0 and step<=3500:
-            poor_class_list = list(np.argsort(per_cls_acc))[0:50]
+        #if step >=0 and step % 250 == 0 and step<=3500:
+        if step >=3500 and step % 1500 == 0:
+            poor_class_list = list(np.argsort(per_cls_acc))[0:125]
             print(per_cls_acc)
             print(poor_class_list)
             do_source_weighting(target_loader_misc,feat_dict_source,G,K_farthest_source,weight=0.8, aug = 2, only_for_poor=True, poor_class_list=poor_class_list)
             print("Assigned Classwise weights to source")
 
+
         update_label_bank(label_bank, data_t_unl, pseudo_labels, mask_loss)
         if step >= 3500:
+            """
             class_num_list = get_per_class_examples(label_bank, class_list)
             effective_num = 1.0 - np.power(beta, class_num_list)
             per_cls_weights = (1.0 - beta) / np.array(effective_num)
             per_cls_weights = per_cls_weights / np.sum(per_cls_weights) * len(class_num_list)
             per_cls_weights = torch.FloatTensor(per_cls_weights).cuda()
             criterion_lab_target = CBFocalLoss(weight=per_cls_weights, gamma=0.5).cuda()
+            """
             out_lab_target = F1(G(im_data_t))
             loss_lab_target = criterion_lab_target(out_lab_target,gt_labels_t)
             #try:
