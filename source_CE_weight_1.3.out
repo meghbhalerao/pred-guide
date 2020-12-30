@@ -1,0 +1,47 @@
+Dataset multi Source real Target sketch Labeled num perclass 3 Network resnet34
+126 classes in this dataset
+Unlabelled Target Dataset Size:  23826
+Labelled Target Dataset Size:  378
+Misc. Labelled Target Dataset Size:  378
+Bank keys - Target:  dict_keys(['feat_vec', 'labels', 'names', 'domain_identifier']) Source:  dict_keys(['feat_vec', 'labels', 'names', 'domain_identifier'])
+Num  - Target:  23826 Source:  70358
+S real T sketch Train Ep: 0 lr0.01 	 Loss Classification: 4.878045 Loss T 0.469688 Method MME
+
+
+Labeled Target set: Average loss: 4.9654, Accuracy: 8/1080 F1 (0.7407%)
+
+
+Test set: Average loss: 4.9623, Accuracy: 208/23808 F1 (0.8737%)
+
+
+Val set: Average loss: 4.9913, Accuracy: 2/360 F1 (0.5556%)
+
+best acc test 0.873656  acc val 0.555556 acc labeled target 0.740741
+saving model...
+S real T sketch Train Ep: 100 lr0.009925650290240803 	 Loss Classification: 1.179721 Loss T 0.290578 Method MME
+
+S real T sketch Train Ep: 200 lr0.009852577760521605 	 Loss Classification: 1.115526 Loss T 0.201862 Method MME
+
+S real T sketch Train Ep: 300 lr0.009780748269686728 	 Loss Classification: 0.908040 Loss T 0.230505 Method MME
+
+S real T sketch Train Ep: 400 lr0.009710128909124701 	 Loss Classification: 1.071321 Loss T 0.163483 Method MME
+
+S real T sketch Train Ep: 500 lr0.00964068794694323 	 Loss Classification: 0.478872 Loss T 0.150441 Method MME
+
+
+Labeled Target set: Average loss: 2.6857, Accuracy: 451/1080 F1 (41.7593%)
+
+
+Test set: Average loss: 2.5199, Accuracy: 11197/23808 F1 (47.0304%)
+
+
+Val set: Average loss: 2.4347, Accuracy: 169/360 F1 (46.9444%)
+
+best acc test 47.030410  acc val 46.944444 acc labeled target 41.759259
+saving model...
+S real T sketch Train Ep: 600 lr0.00957239477517603 	 Loss Classification: 0.594234 Loss T 0.172698 Method MME
+
+S real T sketch Train Ep: 700 lr0.009505219859830012 	 Loss Classification: 1.000127 Loss T 0.165925 Method MME
+
+S real T sketch Train Ep: 800 lr0.009439134693595126 	 Loss Classification: 1.100305 Loss T 0.150902 Method MME
+

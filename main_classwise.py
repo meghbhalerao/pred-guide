@@ -212,7 +212,7 @@ def train():
             poor_class_list = list(np.argsort(per_cls_acc))[0:125]
             print(per_cls_acc)
             print(poor_class_list)
-            do_source_weighting(target_loader_misc,feat_dict_source,G,K_farthest_source,weight=0.8, aug = 2, only_for_poor=True, poor_class_list=poor_class_list)
+            do_source_weighting(target_loader_misc,feat_dict_source,G,K_farthest_source,weight=1.3, aug = 2, only_for_poor=True, poor_class_list=poor_class_list)
             print("Assigned Classwise weights to source")
 
 
