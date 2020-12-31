@@ -4,6 +4,7 @@ import os
 import sys 
 from utils.utils import *
 from easydict import EasyDict as edict
+from utils.loss import *
 
 def get_kNN(sim_distribution, feat_dict, k = 1):
     k_neighbors = torch.topk(torch.transpose(sim_distribution.cosines,0,1), k, dim = 1)
@@ -54,9 +55,19 @@ def do_source_weighting(loader, feat_dict,G,K_farthest,weight=0.8,aug = 2, only_
                 print(img_label.item())
                 feat_dict.sample_weights[idx_to_weigh] = weight          
 
-def do_cbfl_target():
-    
-    pass
+def do_lab_target_loss(label_bank,class_list,G,F1,im_data_t, gt_labels_t, criterion_lab_target,beta=0.99,mode='cbfl'):
+    if mode == 'cbfl':
+        class_num_list = get_per_class_examples(label_bank, class_list)
+        effective_num = 1.0 - np.power(beta, class_num_list)
+        per_cls_weights = (1.0 - beta) / np.array(effective_num)
+        per_cls_weights = per_cls_weights / np.sum(per_cls_weights) * len(class_num_list)
+        per_cls_weights = torch.FloatTensor(per_cls_weights).cuda()
+        criterion_lab_target = CBFocalLoss(weight=per_cls_weights, gamma=0.5).cuda()
+    elif mode == 'ce':
+        pass
+    out_lab_target = F1(G(im_data_t))
+    loss_lab_target = criterion_lab_target(out_lab_target,gt_labels_t)
+    loss_lab_target.backward()
 
 
 

@@ -3,7 +3,7 @@ import argparse
 import os
 import sys
 from utils.fixmatch import do_fixmatch
-from utils.source_classwise_weighting import do_source_weighting
+from utils.source_classwise_weighting import do_lab_target_loss, do_source_weighting
 import numpy as np
 from copy import deepcopy
 import torch
@@ -215,23 +215,9 @@ def train():
             do_source_weighting(target_loader_misc,feat_dict_source,G,K_farthest_source,weight=1.3, aug = 2, only_for_poor=True, poor_class_list=poor_class_list)
             print("Assigned Classwise weights to source")
 
-
         update_label_bank(label_bank, data_t_unl, pseudo_labels, mask_loss)
-        if step >= 3500:
-            """
-            class_num_list = get_per_class_examples(label_bank, class_list)
-            effective_num = 1.0 - np.power(beta, class_num_list)
-            per_cls_weights = (1.0 - beta) / np.array(effective_num)
-            per_cls_weights = per_cls_weights / np.sum(per_cls_weights) * len(class_num_list)
-            per_cls_weights = torch.FloatTensor(per_cls_weights).cuda()
-            criterion_lab_target = CBFocalLoss(weight=per_cls_weights, gamma=0.5).cuda()
-            """
-            out_lab_target = F1(G(im_data_t))
-            loss_lab_target = criterion_lab_target(out_lab_target,gt_labels_t)
-            #try:
-            loss_lab_target.backward()
-            #except:
-            #pass
+        if step >= 0:
+            do_lab_target_loss(label_bank,class_list,G,F1,im_data_t, gt_labels_t, criterion_lab_target,beta=0.99,mode='ce')
 
         #output = G(data)
         output = f_batch_source
