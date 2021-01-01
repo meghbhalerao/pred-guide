@@ -212,12 +212,16 @@ def train():
             poor_class_list = list(np.argsort(per_cls_acc))[0:125]
             print(per_cls_acc)
             print(poor_class_list)
-            do_source_weighting(target_loader_misc,feat_dict_source,G,K_farthest_source,weight=1.3, aug = 2, only_for_poor=True, poor_class_list=poor_class_list)
+
+            do_source_weighting(target_loader_misc,feat_dict_source,G,K_farthest_source,weight=0.8, aug = 2, only_for_poor=True, poor_class_list=poor_class_list,weighing_mode='F')
+
+            do_source_weighting(target_loader_misc,feat_dict_source,G,K_farthest_source,weight=1.2, aug = 2, only_for_poor=True, poor_class_list=poor_class_list,weighing_mode='N')
+
             print("Assigned Classwise weights to source")
 
         update_label_bank(label_bank, data_t_unl, pseudo_labels, mask_loss)
-        if step >= 0:
-            do_lab_target_loss(label_bank,class_list,G,F1,im_data_t, gt_labels_t, criterion_lab_target,beta=0.99,mode='ce')
+        if step >= 3500:
+            do_lab_target_loss(label_bank,class_list,G,F1,im_data_t, gt_labels_t, criterion_lab_target,beta=0.99,mode= 'ce')
 
         #output = G(data)
         output = f_batch_source
