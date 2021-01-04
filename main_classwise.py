@@ -3,7 +3,7 @@ import argparse
 import os
 import sys
 from utils.fixmatch import do_fixmatch
-from utils.source_classwise_weighting import do_lab_target_loss, do_source_weighting
+from utils.source_classwise_weighting import do_lab_target_loss, do_source_weighting, make_st_aug_loader
 import numpy as np
 from copy import deepcopy
 import torch
@@ -17,7 +17,7 @@ from utils.utils import *
 from utils.majority_voting import *
 from utils.confidence_knn import *
 from utils.lr_schedule import inv_lr_scheduler, get_cosine_schedule_with_warmup
-from utils.return_dataset import return_dataset, return_dataset_randaugment
+from utils.return_dataset import return_dataset, return_dataset_randaugment, TransformFix
 from utils.loss import *
 from augmentations.augmentation_ours import *
 import pickle
@@ -69,7 +69,7 @@ parser.add_argument('--early', action='store_false', default=True,
                     help='early stopping on validation or not')
 parser.add_argument('--pretrained_ckpt', type=str, default=None,
                     help='path to pretrained weights')
-parser.add_argument('--augmentation_policy', type=str, default=None, choices=['ours', 'rand_augment','ct_augment'],
+parser.add_argument('--augmentation_policy', type=str, default='rand_augment', choices=['ours', 'rand_augment','ct_augment'],
                     help='which augmentation starategy to use - essentially, which method to follow')
 parser.add_argument('--LR_scheduler', type=str, default='standard', choices=['standard', 'cosine'], help='Learning Rate scheduling policy')
 parser.add_argument('--adentropy', action='store_true', default=True,
@@ -154,11 +154,18 @@ def train():
         param_lr_f.append(param_group["lr"])
 
     thresh = 0.9
+    root_folder = "./data/%s"%(args.dataset)
     criterion = nn.CrossEntropyLoss(reduction='none').cuda()
     criterion_pseudo = nn.CrossEntropyLoss(reduction='none').cuda()
     criterion_lab_target = nn.CrossEntropyLoss(reduction='mean').cuda()
+    criterion_strong_source = nn.CrossEntropyLoss(reduction='mean').cuda()
     feat_dict_source, feat_dict_target, _ = load_bank(args)
-    
+
+    """
+    if args.augmentation_policy == 'rand_augment':
+        augmentation  = TransformFix(args.augmentation_policy,args.net,mean =[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+    """
+
     num_target = len(feat_dict_target.names)
     num_source = len(feat_dict_source.names)
 
@@ -178,6 +185,7 @@ def train():
     K_farthest_source = 5
     beta = 0.99
     per_cls_acc = np.array([1 for _ in range(len(class_list))]) # Just defining for sake of clarity and debugging
+    source_strong_near_loader = None
     for step in range(all_step):
         optimizer_g = inv_lr_scheduler(param_lr_g, optimizer_g, step, init_lr=args.lr)
         optimizer_f = inv_lr_scheduler(param_lr_f, optimizer_f, step, init_lr=args.lr)
@@ -189,7 +197,10 @@ def train():
             data_iter_t_unl = iter(target_loader_unl)
         if step % len_train_source == 0:
             data_iter_s = iter(source_loader)
-        
+        if source_strong_near_loader is not None:
+            if step % len(source_strong_near_loader) == 0:
+                data_iter_s_near_strong = iter(source_strong_near_loader)
+            
         # Extracting the batches from the iteratable dataloader
         data_t = next(data_iter_t)
         data_t_unl = next(data_iter_t_unl)
@@ -199,35 +210,50 @@ def train():
         im_data_t = data_t[0][0].cuda()
         gt_labels_t = data_t[1].cuda()
         im_data_tu = data_t_unl[0][2].cuda()
-
+        if source_strong_near_loader is not None:
+            try:
+                im_near_source_strong = next(source_strong_near_loader)[0][1].cuda()
+                gt_near_source_strong = next(source_strong_near_loader)[1].cuda()
+            except:
+                source_strong_near_loader = iter(source_strong_near_loader)
+            strong_logits = F1(G(im_near_source_strong))
+            loss_source_strong = criterion_strong_source(strong_logits,gt_near_source_strong)
+            loss_source_strong.backward(retain_graph=True)
+        
         zero_grad_all()
         data = im_data_s
         target = gt_labels_s
         
         pseudo_labels, mask_loss = do_fixmatch(data_t_unl,F1,G,thresh,criterion_pseudo)
         f_batch_source, feat_dict_source = update_features(feat_dict_source, data_s, G, 0, source = True)
+        update_label_bank(label_bank, data_t_unl, pseudo_labels, mask_loss)
 
         #if step >=0 and step % 250 == 0 and step<=3500:
-        if step >=3500 and step % 1500 == 0:
-            poor_class_list = list(np.argsort(per_cls_acc))[0:125]
-            print(per_cls_acc)
-            print(poor_class_list)
+        if step >=0:
+            if step % 1500 == 0:
+                print("here")
+                poor_class_list = list(np.argsort(per_cls_acc))[0:125]
+                print(per_cls_acc)
+                print(poor_class_list)
 
-            do_source_weighting(target_loader_misc,feat_dict_source,G,K_farthest_source,weight=0.8, aug = 2, only_for_poor=True, poor_class_list=poor_class_list,weighing_mode='F')
+                classwise_near = do_source_weighting(target_loader_misc,feat_dict_source,G,K_farthest_source,weight=1.2, aug = 2, only_for_poor=True, poor_class_list=poor_class_list,weighing_mode='N')
 
-            do_source_weighting(target_loader_misc,feat_dict_source,G,K_farthest_source,weight=1.2, aug = 2, only_for_poor=True, poor_class_list=poor_class_list,weighing_mode='N')
+                do_source_weighting(target_loader_misc,feat_dict_source,G,K_farthest_source,weight=0.8, aug = 2, only_for_poor=True, poor_class_list=poor_class_list,weighing_mode='F')
 
-            print("Assigned Classwise weights to source")
+                print("Assigned Classwise weights to source")
+                print(len(classwise_near.names))
+                print(len(classwise_near.labels))
 
-        update_label_bank(label_bank, data_t_unl, pseudo_labels, mask_loss)
-        if step >= 3500:
-            do_lab_target_loss(label_bank,class_list,G,F1,im_data_t, gt_labels_t, criterion_lab_target,beta=0.99,mode= 'ce')
+                source_strong_near_loader = make_st_aug_loader(args,classwise_near)
+
+            do_lab_target_loss(label_bank,class_list,G,F1,data_t,im_data_t, gt_labels_t, criterion_lab_target,beta=0.99,mode='ce')
+
 
         #output = G(data)
         output = f_batch_source
         out1 = F1(output)
 
-        if step >= 3500:
+        if step >= 0:
             names_batch = list(data_s[2])
             idx = [feat_dict_source.names.index(name) for name in names_batch] 
             weights_source = feat_dict_source.sample_weights[idx]
