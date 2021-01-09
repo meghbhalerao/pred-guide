@@ -13,16 +13,18 @@ import time
 import os
 from torch.autograd import Variable
 import pickle
+import copy 
 
 # Defining return dataset function here
 net = "resnet34"
 root = '../data/multi/'
-target = "sketch"
+domain = "painting"
 n_class = 126
 n_class_plot = 30
 k = 10
-image_list_target_unl = "../data/txt/multi/unlabeled_target_images_%s_1.txt"%(target)
-#image_list_target_unl = "../data/txt/multi/labeled_source_images_real.txt"
+num = 3
+#image_list_target_unl = "../data/txt/multi/unlabeled_target_images_%s_%s.txt"%(domain,num)
+image_list_target_unl = "../data/txt/multi/labeled_source_images_%s.txt"%(domain)
 f = open(image_list_target_unl,"r")
 print(len([line for line in f]))
 ours = False
@@ -91,7 +93,18 @@ F1.eval()
 # Loading the weights from the checkpoint
 ckpt = torch.load("../save_model_ssda/resnet34_real_sketch_8000.ckpt.pth.tar")
 G_dict = ckpt["G_state_dict"]
-G.load_state_dict(ckpt["G_state_dict"])
+G_dict_new = {}
+G_dict_new_keys = G_dict_new.keys()
+for key in G_dict.keys():
+    new_key = copy.copy(key)
+    new_key = new_key.replace("module.","")
+    G_dict_new[new_key] = G_dict[key]
+    print(new_key)
+print(G_dict_new.keys())
+#print(G_dict.keys())
+#sys.exit()
+G.load_state_dict(G_dict_new)
+#G.load_state_dict(ckpt["G_state_dict"])
 
 features = []   
 labels = []
@@ -125,7 +138,7 @@ print(len(labels))
 print(features.shape)
 print(len(name_list))
 print("Saving dictionary as pickle")
-filehandler = open("../banks/resnet34_sketch_8000.pkl", 'wb')
+filehandler = open("./resnet34_%s_%s.pkl"%(domain,str(num)), 'wb')
 pickle.dump(feat_dict, filehandler)
 
 

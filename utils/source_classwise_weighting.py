@@ -10,7 +10,6 @@ from utils.return_dataset import *
 from PIL import Image
 from loaders.data_list import Imagelists_VISDA
 
-
 def get_kNN(sim_distribution, feat_dict, k = 1):
     k_neighbors = torch.topk(torch.transpose(sim_distribution.cosines,0,1), k, dim = 1)
     idxs = k_neighbors[1]
@@ -107,12 +106,3 @@ gt = classwise.labels[idx]
 _,strong,_ = augmentation(img)
 strong = strong.cuda()
 """
-
-
-
-
-
-
-
-
-

@@ -185,7 +185,8 @@ def do_method_bank(feat_dict_source, feat_dict_target, feat_dict_combined, momen
     #mask_loss_uncertain = (prob_weak_aug.max(1)[0]<thresh) & (prob_weak_aug.max(1)[0]>0.7)
     mask_loss_uncertain = prob_weak_aug.max(1)[0]>thresh
     knn_majvot_pseudo_labels = get_majority_vote(k_neighbors,feat_dict_combined, K, F1, mask_loss_uncertain, len(target_loader_unl.dataset))
-    #loss_pseudo_unl_knn = torch.mean(mask_loss_uncertain.int() * criterion_pseudo(pred_strong_aug, knn_majvot_pseudo_labels))
+    #loss_pseudo_unl_knn = torch.mean(mask_loss
+    # _uncertain.int() * criterion_pseudo(pred_strong_aug, knn_majvot_pseudo_labels))
     if backprop:
         if  not torch.sum(mask_loss_uncertain.int()) == 0:
             loss_pseudo_unl_knn = torch.sum(mask_loss_uncertain.int() * criterion_pseudo(pred_strong_aug, knn_majvot_pseudo_labels))/(torch.sum(mask_loss_uncertain.int()))

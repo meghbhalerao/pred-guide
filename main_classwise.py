@@ -187,6 +187,9 @@ def train():
     per_cls_acc = np.array([1 for _ in range(len(class_list))]) # Just defining for sake of clarity and debugging
     source_strong_near_loader = None
     for step in range(all_step):
+
+        source_strong_near_loader = None
+
         optimizer_g = inv_lr_scheduler(param_lr_g, optimizer_g, step, init_lr=args.lr)
         optimizer_f = inv_lr_scheduler(param_lr_f, optimizer_f, step, init_lr=args.lr)
 
@@ -229,31 +232,30 @@ def train():
         update_label_bank(label_bank, data_t_unl, pseudo_labels, mask_loss)
 
         #if step >=0 and step % 250 == 0 and step<=3500:
-        if step >=0:
+        if step>0:
             if step % 1500 == 0:
                 print("here")
                 poor_class_list = list(np.argsort(per_cls_acc))[0:125]
                 print(per_cls_acc)
                 print(poor_class_list)
 
-                classwise_near = do_source_weighting(target_loader_misc,feat_dict_source,G,K_farthest_source,weight=1.2, aug = 2, only_for_poor=True, poor_class_list=poor_class_list,weighing_mode='N')
+                classwise_near = do_source_weighting(target_loader_misc,feat_dict_source,G,K_farthest_source,weight=1, aug = 2, only_for_poor=True, poor_class_list=poor_class_list,weighing_mode='N')
 
-                do_source_weighting(target_loader_misc,feat_dict_source,G,K_farthest_source,weight=0.8, aug = 2, only_for_poor=True, poor_class_list=poor_class_list,weighing_mode='F')
+                do_source_weighting(target_loader_misc,feat_dict_source,G,K_farthest_source,weight=1, aug = 2, only_for_poor=True, poor_class_list=poor_class_list,weighing_mode='F')
 
                 print("Assigned Classwise weights to source")
                 print(len(classwise_near.names))
                 print(len(classwise_near.labels))
 
-                source_strong_near_loader = make_st_aug_loader(args,classwise_near)
+                #source_strong_near_loader = make_st_aug_loader(args,classwise_near)
 
             do_lab_target_loss(label_bank,class_list,G,F1,data_t,im_data_t, gt_labels_t, criterion_lab_target,beta=0.99,mode='ce')
-
 
         #output = G(data)
         output = f_batch_source
         out1 = F1(output)
 
-        if step >= 0:
+        if step>0:
             names_batch = list(data_s[2])
             idx = [feat_dict_source.names.index(name) for name in names_batch] 
             weights_source = feat_dict_source.sample_weights[idx]
@@ -289,6 +291,7 @@ def train():
         G.zero_grad()
         F1.zero_grad()
         zero_grad_all()
+        
         if step % args.log_interval == 0:
             print(log_train)
         if step % args.save_interval == 0:# and step > 0:
