@@ -246,7 +246,7 @@ def train():
         update_label_bank(label_bank, data_t_unl, pseudo_labels, mask_loss)
 
         #if step >=0 and step % 250 == 0 and step<=3500:
-        if step>=0:
+        if step>0:
             if step % 1500 == 0:
                 print("here")
                 poor_class_list = list(np.argsort(per_cls_acc))[0:125]
@@ -266,7 +266,7 @@ def train():
 
                 #source_strong_near_loader = make_st_aug_loader(args,classwise_near)
 
-            feat_disc_t = do_lab_target_loss(label_bank,class_list,G,F1,data_t,im_data_t, gt_labels_t, criterion_lab_target,beta=0.99,mode='ce')
+        feat_disc_t = do_lab_target_loss(label_bank,class_list,G,F1,data_t,im_data_t, gt_labels_t, criterion_lab_target,beta=0.99,mode='ce')
 
         #output = G(data)
         output = f_batch_source

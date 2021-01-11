@@ -128,8 +128,8 @@ def do_probability_weighing(G,D,source_loader,feat_dict):
         probablities_weight = F.softmax(D(G(batch[0])),dim=1)
         probability_target = probablities_weight[:,1]
         feat_dict.sample_weights[indexes] = probability_target.detach().double().cpu()
-        print(idx)
-        break
+    print("Done Probablity Weighing")
+        
 
 
 
