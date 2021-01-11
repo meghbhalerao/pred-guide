@@ -13,7 +13,7 @@ import torch.nn.functional as F
 import torch.optim as optim
 from torch.autograd import Variable
 from model.resnet import resnet34
-from model.basenet import AlexNetBase, Discriminator, VGGBase, Predictor, Predictor_deep
+from model.basenet import AlexNetBase, Discriminator, Discriminator_classwise, VGGBase, Predictor, Predictor_deep
 from utils.utils import *
 from utils.majority_voting import *
 from utils.confidence_knn import *
@@ -120,6 +120,8 @@ weights_init(F1)
 
 D = Discriminator(inc=inc)
 
+D_all_class = Discriminator_classwise(inc=inc,num_class=len(class_list))
+
 if args.pretrained_ckpt is not None:
     ckpt = torch.load(args.pretrained_ckpt)
     G.load_state_dict(ckpt["G"])
@@ -129,6 +131,7 @@ lr = args.lr
 G.cuda()
 F1.cuda()
 D.cuda()
+D_all_class.cuda()
 
 G = nn.DataParallel(G, device_ids=[0, 1])
 F1 = nn.DataParallel(F1, device_ids=[0, 1])
@@ -274,7 +277,7 @@ def train():
         feat_disc_source = output.clone().detach()
         feat_disc_tu = output_tu.clone().detach()
 
-        do_domain_classification(D,feat_disc_source, feat_disc_tu, feat_disc_t, gt_labels_s,gt_labels_t,gt_labels_tu, criterion_discriminator,optimizer_d)
+        do_domain_classification(D_all_class,feat_disc_source, feat_disc_tu, feat_disc_t, gt_labels_s,gt_labels_t,gt_labels_tu, criterion_discriminator,optimizer_d,mode='classwise')
 
         out1 = F1(output)
 

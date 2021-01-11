@@ -139,14 +139,17 @@ class Discriminator(nn.Module):
 
 class Discriminator_classwise(nn.Module):
     def __init__(self, inc=4096, num_class=126):
-        super(Discriminator, self).__init__()
+        super(Discriminator_classwise, self).__init__()
         self.classfier_list = []
         for _ in range(num_class):
-            self.classfier_list.append(nn.Sequential(nn.Linear(inc,512),nn.Linear(512,512),nn.Linear(512,2)))
+            self.classfier_list.append(nn.Sequential(nn.Linear(inc,512),nn.Linear(512,512),nn.Linear(512,2)).cuda())
 
-    def forward(self, x, reverse=False, eta=1.0, choose_class = 0):
+    def forward(self, x, reverse=False, eta=1.0, choose_class=0):
         if reverse:
             x = grad_reverse(x, eta)
         which_classifier = self.classfier_list[choose_class]
         x_out = which_classifier(x)
         return x_out
+
+
+#reverse=False, eta=1.0,choose_class=0

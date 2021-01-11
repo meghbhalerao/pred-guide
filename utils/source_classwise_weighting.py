@@ -116,11 +116,15 @@ def do_domain_classification(D,feat_disc_source, feat_disc_tu, feat_disc_t, gt_l
         loss_domain_source = criterion_discriminator(prob_domain_source,gt_source)
         loss_domain_target = criterion_discriminator(prob_domain_target, gt_target_unl)
         loss_domain_lab_target = criterion_discriminator(prob_domain_lab_target,gt_target_lab)
+
         loss_total = loss_domain_source + loss_domain_target + loss_domain_lab_target
+
         loss_total.backward()
         optimizer_d.step()
         optimizer_d.zero_grad()
         D.zero_grad()
+    elif mode == 'classwise':
+        prob_domain_source = D(feat_disc_source,reverse=False,eta=1.0,choose_class=4)
 
 
 def do_probability_weighing(G,D,source_loader,feat_dict):
@@ -132,10 +136,6 @@ def do_probability_weighing(G,D,source_loader,feat_dict):
         feat_dict.sample_weights[indexes] = probability_target.detach().double().cpu()
     print("Done Probablity Weighing")
         
-def do_domain_classification_classwise():
-    pass
-
-
 
 """
 print(os.path.join(root_folder,image))
