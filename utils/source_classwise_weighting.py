@@ -1,4 +1,5 @@
 from numpy.lib.utils import source
+from numpy.testing._private.utils import break_cycles
 import torch 
 import numpy as np
 import os
@@ -9,6 +10,7 @@ from utils.loss import *
 from utils.return_dataset import *
 from PIL import Image
 from loaders.data_list import Imagelists_VISDA
+import torch.nn.functional as F
 
 def get_kNN(sim_distribution, feat_dict, k = 1):
     k_neighbors = torch.topk(torch.transpose(sim_distribution.cosines,0,1), k, dim = 1)
@@ -76,9 +78,11 @@ def do_lab_target_loss(label_bank,class_list,G,F1,data_t,im_data_t, gt_labels_t,
         pass
     for i in range(len(data_t[0])):
         im_data_t = data_t[0][i]
-        out_lab_target = F1(G(im_data_t))
+        feat_lab = G(im_data_t)
+        out_lab_target = F1(feat_lab)
         loss_lab_target = criterion_lab_target(out_lab_target,gt_labels_t)
         loss_lab_target.backward()
+    return feat_lab.clone().detach()
 
 def pil_loader(path):
     with open(path, 'rb') as f:
@@ -99,14 +103,35 @@ def make_st_aug_loader(args,classwise,root_folder="./data/multi/"):
     print(len(source_strong_near_loader))
     return iter(source_strong_near_loader)
 
-def do_domain_classification(D,feat_disc_source, feat_disc_tu, gt_labels_s,gt_labels_t,gt_labels_tu, criterion_discriminator):
+def do_domain_classification(D,feat_disc_source, feat_disc_tu, feat_disc_t, gt_labels_s,gt_labels_t,gt_labels_tu, criterion_discriminator,optimizer_d):
     prob_domain_source = D(feat_disc_source)
     prob_domain_target = D(feat_disc_tu)
+    prob_domain_lab_target = D(feat_disc_t)
+
     gt_source = gt_labels_s.clone().detach() * 0
-    gt_target = gt_labels_t.clone().detach() * 0 + 1
-    gt_target_2 = gt_labels_tu.clone().detach() * 0 + 1
+    gt_target_lab = gt_labels_t.clone().detach() * 0 + 1
+    gt_target_unl = gt_labels_tu.clone().detach() * 0 + 1
+
     loss_domain_source = criterion_discriminator(prob_domain_source,gt_source)
-    loss_domain_target = criterion_discriminator(prob_domain_target, gt_target_2)
+    loss_domain_target = criterion_discriminator(prob_domain_target, gt_target_unl)
+    loss_domain_lab_target = criterion_discriminator(prob_domain_lab_target,gt_target_lab)
+    loss_total = loss_domain_source + loss_domain_target + loss_domain_lab_target
+    loss_total.backward()
+    optimizer_d.step()
+    optimizer_d.zero_grad()
+    D.zero_grad()
+
+def do_probability_weighing(G,D,source_loader,feat_dict):
+    for idx, batch in enumerate(source_loader):
+        names_batch = list(batch[2])
+        indexes = [feat_dict.names.index(name) for name in names_batch]
+        probablities_weight = F.softmax(D(G(batch[0])),dim=1)
+        probability_target = probablities_weight[:,1]
+        feat_dict.sample_weights[indexes] = probability_target.detach().double().cpu()
+        print(idx)
+        break
+
+
 
 """
 print(os.path.join(root_folder,image))

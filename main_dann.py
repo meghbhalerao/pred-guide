@@ -170,7 +170,7 @@ def train():
     criterion_lab_target = nn.CrossEntropyLoss(reduction='mean').cuda()
     criterion_strong_source = nn.CrossEntropyLoss(reduction='mean').cuda()
     feat_dict_source, feat_dict_target, _ = load_bank(args)
-    criterion_discriminator = nn.CrossEntropyLoss(reduction='none')
+    criterion_discriminator = nn.CrossEntropyLoss(reduction='mean')
 
     """
     if args.augmentation_policy == 'rand_augment':
@@ -180,7 +180,7 @@ def train():
     num_target = len(feat_dict_target.names)
     num_source = len(feat_dict_source.names)
 
-    feat_dict_source.sample_weights = torch.tensor(np.ones(num_source)).cuda()
+    feat_dict_source.sample_weights = torch.tensor(np.ones(num_source))
     label_bank = edict({"names": feat_dict_target.names, "labels": np.zeros(num_target,dtype=int)-1})
 
     all_step = args.steps
@@ -203,6 +203,7 @@ def train():
 
         optimizer_g = inv_lr_scheduler(param_lr_g, optimizer_g, step, init_lr=args.lr)
         optimizer_f = inv_lr_scheduler(param_lr_f, optimizer_f, step, init_lr=args.lr)
+        optimizer_d = inv_lr_scheduler(param_lr_d, optimizer_d, step, init_lr=args.lr)
 
         lr = optimizer_f.param_groups[0]['lr']
         if step % len_train_target == 0:
@@ -245,20 +246,23 @@ def train():
         update_label_bank(label_bank, data_t_unl, pseudo_labels, mask_loss)
 
         #if step >=0 and step % 250 == 0 and step<=3500:
-        if step>0:
+        if step>=0:
             if step % 1500 == 0:
                 print("here")
                 poor_class_list = list(np.argsort(per_cls_acc))[0:125]
                 print(per_cls_acc)
                 print(poor_class_list)
 
-                classwise_near = do_source_weighting(target_loader_misc,feat_dict_source,G,K_farthest_source,weight=1, aug = 2, only_for_poor=True, poor_class_list=poor_class_list,weighing_mode='N')
+                #classwise_near = do_source_weighting(target_loader_misc,feat_dict_source,G,K_farthest_source,weight=1, aug = 2, only_for_poor=True, poor_class_list=poor_class_list,weighing_mode='N')
 
-                do_source_weighting(target_loader_misc,feat_dict_source,G,K_farthest_source,weight=1, aug = 2, only_for_poor=True, poor_class_list=poor_class_list,weighing_mode='F')
+                #do_source_weighting(target_loader_misc,feat_dict_source,G,K_farthest_source,weight=1, aug = 2, only_for_poor=True, poor_class_list=poor_class_list,weighing_mode='F')
 
-                print("Assigned Classwise weights to source")
-                print(len(classwise_near.names))
-                print(len(classwise_near.labels))
+                do_probability_weighing(G,D,source_loader,feat_dict_source)
+
+
+                print("Assigned weights to source")
+                #print(len(classwise_near.names))
+                #print(len(classwise_near.labels))
 
                 #source_strong_near_loader = make_st_aug_loader(args,classwise_near)
 
@@ -269,7 +273,8 @@ def train():
         output_tu = G(im_data_tu)
         feat_disc_source = output.clone().detach()
         feat_disc_tu = output_tu.clone().detach()
-        (D,feat_disc_source, feat_disc_tu, feat_disc_t, gt_labels_s,gt_labels_t,gt_labels_tu, criterion_discriminator,optimizer_d)
+
+        do_domain_classification(D,feat_disc_source, feat_disc_tu, feat_disc_t, gt_labels_s,gt_labels_t,gt_labels_tu, criterion_discriminator,optimizer_d)
 
         out1 = F1(output)
 
@@ -277,7 +282,7 @@ def train():
             names_batch = list(data_s[2])
             idx = [feat_dict_source.names.index(name) for name in names_batch] 
             weights_source = feat_dict_source.sample_weights[idx]
-            loss = torch.mean(weights_source * criterion(out1, target))
+            loss = torch.mean(weights_source.cuda() * criterion(out1, target))
         else:
             loss = torch.mean(criterion(out1, target))
         
@@ -285,11 +290,10 @@ def train():
             if args.method == 'ENT':
                 loss_t = entropy(F1, output_tu, args.lamda)
                 loss_t.backward(retain_graph=True)
-                optimizer_f.step()
-                optimizer_g.step()
+                #optimizer_f.step()
+                #optimizer_g.step()
             elif args.method == 'MME':
                 loss_t = adentropy(F1, output_tu, args.lamda)
-                print(loss_t)
                 loss_t.backward(retain_graph=True)
                 #optimizer_f.step()
                 #optimizer_g.step()
