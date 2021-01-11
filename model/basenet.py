@@ -120,18 +120,19 @@ class Predictor_deep(nn.Module):
         return x_out
 
 
-
 class Discriminator(nn.Module):
     def __init__(self, inc=4096):
         super(Discriminator, self).__init__()
         self.fc1_1 = nn.Linear(inc, 512)
         self.fc2_1 = nn.Linear(512, 512)
-        self.fc3_1 = nn.Linear(512, 1)
+        self.fc3_1 = nn.Linear(512, 2)
 
-    def forward(self, x, reverse=True, eta=1.0):
+    def forward(self, x, reverse=False, eta=1.0):
         if reverse:
             x = grad_reverse(x, eta)
         x = F.relu(self.fc1_1(x))
         x = F.relu(self.fc2_1(x))
-        x_out = F.sigmoid(self.fc3_1(x))
+        #x_out = F.sigmoid(self.fc3_1(x))
+        #return x_out
+        x_out = self.fc3_1(x)
         return x_out

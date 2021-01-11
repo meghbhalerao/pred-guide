@@ -99,6 +99,15 @@ def make_st_aug_loader(args,classwise,root_folder="./data/multi/"):
     print(len(source_strong_near_loader))
     return iter(source_strong_near_loader)
 
+def do_domain_classification(D,feat_disc_source, feat_disc_tu, gt_labels_s,gt_labels_t,gt_labels_tu, criterion_discriminator):
+    prob_domain_source = D(feat_disc_source)
+    prob_domain_target = D(feat_disc_tu)
+    gt_source = gt_labels_s.clone().detach() * 0
+    gt_target = gt_labels_t.clone().detach() * 0 + 1
+    gt_target_2 = gt_labels_tu.clone().detach() * 0 + 1
+    loss_domain_source = criterion_discriminator(prob_domain_source,gt_source)
+    loss_domain_target = criterion_discriminator(prob_domain_target, gt_target_2)
+
 """
 print(os.path.join(root_folder,image))
 img = pil_loader(os.path.join(root_folder,image))

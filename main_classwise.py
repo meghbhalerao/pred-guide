@@ -3,8 +3,9 @@ import argparse
 import os
 import sys
 from utils.fixmatch import do_fixmatch
-from utils.source_classwise_weighting import do_lab_target_loss, do_source_weighting, make_st_aug_loader
+from utils.source_classwise_weighting import *
 import numpy as np
+import copy
 from copy import deepcopy
 import torch
 import torch.nn as nn
@@ -12,7 +13,7 @@ import torch.nn.functional as F
 import torch.optim as optim
 from torch.autograd import Variable
 from model.resnet import resnet34
-from model.basenet import AlexNetBase, VGGBase, Predictor, Predictor_deep
+from model.basenet import AlexNetBase, Discriminator, VGGBase, Predictor, Predictor_deep
 from utils.utils import *
 from utils.majority_voting import *
 from utils.confidence_knn import *
@@ -119,6 +120,7 @@ else:
     F1 = Predictor(num_class=len(class_list), inc=inc, temp=args.T)
 weights_init(F1)
 
+D = Discriminator(inc=inc)
 
 if args.pretrained_ckpt is not None:
     ckpt = torch.load(args.pretrained_ckpt)
@@ -128,9 +130,11 @@ if args.pretrained_ckpt is not None:
 lr = args.lr
 G.cuda()
 F1.cuda()
+D.cuda()
 
 G = nn.DataParallel(G, device_ids=[0, 1])
 F1 = nn.DataParallel(F1, device_ids=[0, 1])
+D = nn.DataParallel(D, device_ids=[0, 1])
 
 if os.path.exists(args.checkpath) == False:
     os.mkdir(args.checkpath)
@@ -160,6 +164,7 @@ def train():
     criterion_lab_target = nn.CrossEntropyLoss(reduction='mean').cuda()
     criterion_strong_source = nn.CrossEntropyLoss(reduction='mean').cuda()
     feat_dict_source, feat_dict_target, _ = load_bank(args)
+    criterion_discriminator = nn.CrossEntropyLoss(reduction='none')
 
     """
     if args.augmentation_policy == 'rand_augment':
@@ -213,6 +218,9 @@ def train():
         im_data_t = data_t[0][0].cuda()
         gt_labels_t = data_t[1].cuda()
         im_data_tu = data_t_unl[0][2].cuda()
+        gt_labels_tu = data_t_unl[1].cuda()
+        print(im_data_tu.shape,gt_labels_tu.shape)
+
         if source_strong_near_loader is not None:
             try:
                 im_near_source_strong = next(source_strong_near_loader)[0][1].cuda()
@@ -253,6 +261,13 @@ def train():
 
         #output = G(data)
         output = f_batch_source
+        feat_disc_source = output.clone().detach()
+        print(feat_disc_source.requires_grad)
+        output_tu = G(im_data_tu)
+        feat_disc_tu = output_tu.clone().detach()
+
+        do_domain_classification(D,feat_disc_source, feat_disc_tu, gt_labels_s,gt_labels_t,gt_labels_tu, criterion_discriminator)
+
         out1 = F1(output)
 
         if step>0:
@@ -260,7 +275,6 @@ def train():
             idx = [feat_dict_source.names.index(name) for name in names_batch] 
             weights_source = feat_dict_source.sample_weights[idx]
             loss = torch.mean(weights_source * criterion(out1, target))
-            print(sum(weights_source))
         else:
             loss = torch.mean(criterion(out1, target))
         
@@ -270,14 +284,14 @@ def train():
 
         zero_grad_all()
         if not args.method == 'S+T':
-            output = G(im_data_tu)
             if args.method == 'ENT':
-                loss_t = entropy(F1, output, args.lamda)
+                loss_t = entropy(F1, output_tu, args.lamda)
                 loss_t.backward()
                 optimizer_f.step()
                 optimizer_g.step()
             elif args.method == 'MME':
-                loss_t = adentropy(F1, output, args.lamda)
+                loss_t = adentropy(F1, output_tu, args.lamda)
+                print(loss_t)
                 loss_t.backward()
                 optimizer_f.step()
                 optimizer_g.step()
@@ -294,7 +308,7 @@ def train():
         
         if step % args.log_interval == 0:
             print(log_train)
-        if step % args.save_interval == 0:# and step > 0:
+        if step % args.save_interval == 0 and step > 0:
             if step % 2000 == 0:
                 #save_stats(F1, G, target_loader_unl, step, feat_dict_combined, data_t_unl, K, mask_loss_uncertain)
                 pass
@@ -314,7 +328,6 @@ def train():
             if args.early:
                 if counter > args.patience:
                     break
-            
             print('best acc test %f  acc val %f acc labeled target %f' % (best_acc_test, acc_val, acc_labeled_target))
             G.train()
             F1.train()
