@@ -103,23 +103,25 @@ def make_st_aug_loader(args,classwise,root_folder="./data/multi/"):
     print(len(source_strong_near_loader))
     return iter(source_strong_near_loader)
 
-def do_domain_classification(D,feat_disc_source, feat_disc_tu, feat_disc_t, gt_labels_s,gt_labels_t,gt_labels_tu, criterion_discriminator,optimizer_d):
-    prob_domain_source = D(feat_disc_source)
-    prob_domain_target = D(feat_disc_tu)
-    prob_domain_lab_target = D(feat_disc_t)
+def do_domain_classification(D,feat_disc_source, feat_disc_tu, feat_disc_t, gt_labels_s,gt_labels_t,gt_labels_tu, criterion_discriminator,optimizer_d,mode='all'):
+    if mode == 'all':
+        prob_domain_source = D(feat_disc_source)
+        prob_domain_target = D(feat_disc_tu)
+        prob_domain_lab_target = D(feat_disc_t)
 
-    gt_source = gt_labels_s.clone().detach() * 0
-    gt_target_lab = gt_labels_t.clone().detach() * 0 + 1
-    gt_target_unl = gt_labels_tu.clone().detach() * 0 + 1
+        gt_source = gt_labels_s.clone().detach() * 0
+        gt_target_lab = gt_labels_t.clone().detach() * 0 + 1
+        gt_target_unl = gt_labels_tu.clone().detach() * 0 + 1
 
-    loss_domain_source = criterion_discriminator(prob_domain_source,gt_source)
-    loss_domain_target = criterion_discriminator(prob_domain_target, gt_target_unl)
-    loss_domain_lab_target = criterion_discriminator(prob_domain_lab_target,gt_target_lab)
-    loss_total = loss_domain_source + loss_domain_target + loss_domain_lab_target
-    loss_total.backward()
-    optimizer_d.step()
-    optimizer_d.zero_grad()
-    D.zero_grad()
+        loss_domain_source = criterion_discriminator(prob_domain_source,gt_source)
+        loss_domain_target = criterion_discriminator(prob_domain_target, gt_target_unl)
+        loss_domain_lab_target = criterion_discriminator(prob_domain_lab_target,gt_target_lab)
+        loss_total = loss_domain_source + loss_domain_target + loss_domain_lab_target
+        loss_total.backward()
+        optimizer_d.step()
+        optimizer_d.zero_grad()
+        D.zero_grad()
+
 
 def do_probability_weighing(G,D,source_loader,feat_dict):
     for idx, batch in enumerate(source_loader):
@@ -130,6 +132,8 @@ def do_probability_weighing(G,D,source_loader,feat_dict):
         feat_dict.sample_weights[indexes] = probability_target.detach().double().cpu()
     print("Done Probablity Weighing")
         
+def do_domain_classification_classwise():
+    pass
 
 
 
