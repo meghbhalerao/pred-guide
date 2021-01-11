@@ -219,7 +219,6 @@ def train():
         gt_labels_t = data_t[1].cuda()
         im_data_tu = data_t_unl[0][2].cuda()
         gt_labels_tu = data_t_unl[1].cuda()
-        print(im_data_tu.shape,gt_labels_tu.shape)
 
         if source_strong_near_loader is not None:
             try:
@@ -261,12 +260,10 @@ def train():
 
         #output = G(data)
         output = f_batch_source
-        feat_disc_source = output.clone().detach()
-        print(feat_disc_source.requires_grad)
+        #feat_disc_source = output.clone().detach()
+        #feat_disc_tu = output_tu.clone().detach()
         output_tu = G(im_data_tu)
-        feat_disc_tu = output_tu.clone().detach()
-
-        do_domain_classification(D,feat_disc_source, feat_disc_tu, gt_labels_s,gt_labels_t,gt_labels_tu, criterion_discriminator)
+        #do_domain_classification(D,feat_disc_source, feat_disc_tu, gt_labels_s,gt_labels_t,gt_labels_tu, criterion_discriminator)
 
         out1 = F1(output)
 
@@ -278,26 +275,26 @@ def train():
         else:
             loss = torch.mean(criterion(out1, target))
         
-        loss.backward(retain_graph=True)
-        optimizer_g.step()
-        optimizer_f.step()
-
-        zero_grad_all()
         if not args.method == 'S+T':
             if args.method == 'ENT':
                 loss_t = entropy(F1, output_tu, args.lamda)
-                loss_t.backward()
+                loss_t.backward(retain_graph=True)
                 optimizer_f.step()
                 optimizer_g.step()
             elif args.method == 'MME':
                 loss_t = adentropy(F1, output_tu, args.lamda)
                 print(loss_t)
-                loss_t.backward()
-                optimizer_f.step()
-                optimizer_g.step()
+                loss_t.backward(retain_graph=True)
+                #optimizer_f.step()
+                #optimizer_g.step()
             else:
                 raise ValueError('Method cannot be recognized.')
-            
+
+            loss.backward()
+            optimizer_g.step()
+            optimizer_f.step()
+            zero_grad_all()
+
             log_train = 'S {} T {} Train Ep: {} lr{} \t Loss Classification: {:.6f} Loss T {:.6f} Method {}\n'.format(args.source, args.target, step, lr, loss.data, -loss_t.data, args.method)
         else:
             log_train = 'S {} T {} Train Ep: {} lr{} \t Loss Classification: {:.6f} Method {}\n'.format(args.source, args.target, step, lr, loss.data, args.method)
