@@ -277,7 +277,7 @@ def train():
         feat_disc_source = output.clone().detach()
         feat_disc_tu = output_tu.clone().detach()
 
-        do_domain_classification(D_all_class,feat_disc_source, feat_disc_tu, feat_disc_t, gt_labels_s,gt_labels_t,gt_labels_tu, criterion_discriminator,optimizer_d,mode='classwise')
+        do_domain_classification(D_all_class,feat_disc_source, feat_disc_tu, feat_disc_t, gt_labels_s, gt_labels_t, gt_labels_tu, pseudo_labels, criterion_discriminator,optimizer_d,mode='classwise')
 
         out1 = F1(output)
 

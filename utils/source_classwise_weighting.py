@@ -103,7 +103,7 @@ def make_st_aug_loader(args,classwise,root_folder="./data/multi/"):
     print(len(source_strong_near_loader))
     return iter(source_strong_near_loader)
 
-def do_domain_classification(D,feat_disc_source, feat_disc_tu, feat_disc_t, gt_labels_s,gt_labels_t,gt_labels_tu, criterion_discriminator,optimizer_d,mode='all'):
+def do_domain_classification(D,feat_disc_source, feat_disc_tu, feat_disc_t, gt_labels_s,gt_labels_t,gt_labels_tu, pseudo_labels, criterion_discriminator,optimizer_d,mode='all'):
     if mode == 'all':
         prob_domain_source = D(feat_disc_source)
         prob_domain_target = D(feat_disc_tu)
@@ -124,6 +124,14 @@ def do_domain_classification(D,feat_disc_source, feat_disc_tu, feat_disc_t, gt_l
         optimizer_d.zero_grad()
         D.zero_grad()
     elif mode == 'classwise':
+        gt_source = gt_labels_s.clone().detach() * 0
+        gt_target_lab = gt_labels_t.clone().detach() * 0 + 1
+        gt_target_unl = gt_labels_tu.clone().detach() * 0 + 1 
+        class_sources = gt_source
+        class_lab_targets = gt_target_lab
+        class_targets = pseudo_labels
+
+        
         prob_domain_source = D(feat_disc_source,reverse=False,eta=1.0,choose_class=4)
 
 

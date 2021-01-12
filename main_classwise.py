@@ -118,8 +118,6 @@ else:
     F1 = Predictor(num_class=len(class_list), inc=inc, temp=args.T)
 weights_init(F1)
 
-D = Discriminator(inc=inc)
-
 if args.pretrained_ckpt is not None:
     ckpt = torch.load(args.pretrained_ckpt)
     G.load_state_dict(ckpt["G"])
@@ -128,11 +126,9 @@ if args.pretrained_ckpt is not None:
 lr = args.lr
 G.cuda()
 F1.cuda()
-D.cuda()
 
 G = nn.DataParallel(G, device_ids=[0, 1])
 F1 = nn.DataParallel(F1, device_ids=[0, 1])
-D = nn.DataParallel(D, device_ids=[0, 1])
 
 if os.path.exists(args.checkpath) == False:
     os.mkdir(args.checkpath)
@@ -143,7 +139,6 @@ def train():
 
     optimizer_g = optim.SGD(params, momentum=0.9, weight_decay=0.0005, nesterov=True)
     optimizer_f = optim.SGD(list(F1.parameters()), lr=1.0, momentum=0.9, weight_decay=0.0005, nesterov=True)
-    optimizer_d = optim.SGD(D.parameters(), lr=1.0, momentum=0.9,weight_decay=0.0005, nesterov=True)
 
     print("Unlabelled Target Dataset Size: ",len(target_loader_unl.dataset))
     print("Labelled Target Dataset Size: ",len(target_loader.dataset))
@@ -159,9 +154,7 @@ def train():
     param_lr_f = []
     for param_group in optimizer_f.param_groups:
         param_lr_f.append(param_group["lr"])
-    param_lr_d = []
-    for param_group in optimizer_d.param_groups:
-        param_lr_d.append(param_group["lr"])
+
 
     thresh = 0.9
     root_folder = "./data/%s"%(args.dataset)
@@ -170,7 +163,6 @@ def train():
     criterion_lab_target = nn.CrossEntropyLoss(reduction='mean').cuda()
     criterion_strong_source = nn.CrossEntropyLoss(reduction='mean').cuda()
     feat_dict_source, feat_dict_target, _ = load_bank(args)
-    criterion_discriminator = nn.CrossEntropyLoss(reduction='none')
 
     """
     if args.augmentation_policy == 'rand_augment':
@@ -266,10 +258,6 @@ def train():
 
         #output = G(data)
         output = f_batch_source
-        output_tu = G(im_data_tu)
-        feat_disc_source = output.clone().detach()
-        feat_disc_tu = output_tu.clone().detach()
-        (D,feat_disc_source, feat_disc_tu, feat_disc_t, gt_labels_s,gt_labels_t,gt_labels_tu, criterion_discriminator,optimizer_d)
 
         out1 = F1(output)
 
@@ -282,13 +270,14 @@ def train():
             loss = torch.mean(criterion(out1, target))
         
         if not args.method == 'S+T':
+            output = G(im_data_tu)
             if args.method == 'ENT':
-                loss_t = entropy(F1, output_tu, args.lamda)
+                loss_t = entropy(F1, output, args.lamda)
                 loss_t.backward(retain_graph=True)
                 optimizer_f.step()
                 optimizer_g.step()
             elif args.method == 'MME':
-                loss_t = adentropy(F1, output_tu, args.lamda)
+                loss_t = adentropy(F1, output, args.lamda)
                 print(loss_t)
                 loss_t.backward(retain_graph=True)
                 #optimizer_f.step()
