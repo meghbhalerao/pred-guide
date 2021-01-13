@@ -237,16 +237,16 @@ def train():
         update_label_bank(label_bank, data_t_unl, pseudo_labels, mask_loss)
 
         #if step >=0 and step % 250 == 0 and step<=3500:
-        if step>0:
+        if step>=0:
             if step % 1500 == 0:
                 print("here")
                 poor_class_list = list(np.argsort(per_cls_acc))[0:125]
                 print(per_cls_acc)
                 print(poor_class_list)
 
-                classwise_near = do_source_weighting(target_loader_misc,feat_dict_source,G,K_farthest_source,weight=1, aug = 2, only_for_poor=True, poor_class_list=poor_class_list,weighing_mode='N')
+                classwise_near = do_source_weighting(target_loader_misc,feat_dict_source,G,K_farthest_source,per_class_accuracy = per_cls_acc, weight=1, aug = 2, only_for_poor=True, poor_class_list=poor_class_list,weighing_mode='N')
 
-                do_source_weighting(target_loader_misc,feat_dict_source,G,K_farthest_source,weight=1, aug = 2, only_for_poor=True, poor_class_list=poor_class_list,weighing_mode='F')
+                do_source_weighting(target_loader_misc,feat_dict_source,G,K_farthest_source, per_class_accuracy = per_cls_acc, weight=1, aug = 2, only_for_poor=True, poor_class_list=poor_class_list,weighing_mode='F')
 
                 print("Assigned Classwise weights to source")
                 print(len(classwise_near.names))
@@ -258,7 +258,6 @@ def train():
 
         #output = G(data)
         output = f_batch_source
-
         out1 = F1(output)
 
         if step>0:
@@ -268,7 +267,7 @@ def train():
             loss = torch.mean(weights_source * criterion(out1, target))
         else:
             loss = torch.mean(criterion(out1, target))
-        
+
         if not args.method == 'S+T':
             output = G(im_data_tu)
             if args.method == 'ENT':
