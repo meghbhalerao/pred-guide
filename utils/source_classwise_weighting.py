@@ -60,12 +60,12 @@ def do_source_weighting(loader, feat_dict,G,K_farthest,per_class_accuracy = None
             class_wise_examples.names.extend(names_k[0])
             class_wise_examples.labels.extend(labels_k_nearest[0])
 
-
+        print(type(per_class_accuracy))
         if per_class_accuracy is not None:
             if weighing_mode == 'N':
-                per_class_weights = 0.8 * (1 - math.exp(per_class_accuracy))
+                per_class_weights = 0.8 * (1 - np.exp(per_class_accuracy))
             elif weighing_mode == 'F':
-                per_class_weights = 0.8 * (1 + math.exp(per_class_accuracy))
+                per_class_weights = 0.8 * (1 + np.exp(per_class_accuracy))
 
 
         names_k = names_k[0] # 0 - since batch_size is 1 for 
@@ -74,15 +74,16 @@ def do_source_weighting(loader, feat_dict,G,K_farthest,per_class_accuracy = None
             idx_to_weigh = feat_dict.names.index(name)
             if only_for_poor:
                 if img_label in poor_class_list:
-                    if per_class_accuracy == None:
+                    if per_class_accuracy is None:
                         feat_dict.sample_weights[idx_to_weigh] = weight
                     else:
                         feat_dict.sample_weights[idx_to_weigh] = per_class_weights[img_label]
             else:
-                if per_class_accuracy == None:
+                if per_class_accuracy is None:
                     feat_dict.sample_weights[idx_to_weigh] = weight  
                 else:
                     feat_dict.sample_weights[idx_to_weigh] = per_class_weights[img_label]
+        break
     return class_wise_examples        
 
 def do_lab_target_loss(label_bank,class_list,G,F1,data_t,im_data_t, gt_labels_t, criterion_lab_target,beta=0.99,mode='cbfl'):
@@ -95,12 +96,12 @@ def do_lab_target_loss(label_bank,class_list,G,F1,data_t,im_data_t, gt_labels_t,
         criterion_lab_target = CBFocalLoss(weight=per_cls_weights, gamma=0.5).cuda()
     elif mode == 'ce':
         pass
-    for i in range(len(data_t[0])):
-        im_data_t = data_t[0][i]
-        feat_lab = G(im_data_t)
-        out_lab_target = F1(feat_lab)
-        loss_lab_target = criterion_lab_target(out_lab_target,gt_labels_t)
-        loss_lab_target.backward()
+    #for i in range(len(data_t[0])):
+    #im_data_t = data_t[0][i]
+    feat_lab = G(im_data_t)
+    out_lab_target = F1(feat_lab)
+    loss_lab_target = criterion_lab_target(out_lab_target,gt_labels_t)
+    loss_lab_target.backward()
     return feat_lab.clone().detach()
 
 def pil_loader(path):

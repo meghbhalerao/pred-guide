@@ -127,8 +127,8 @@ lr = args.lr
 G.cuda()
 F1.cuda()
 
-G = nn.DataParallel(G, device_ids=[0, 1])
-F1 = nn.DataParallel(F1, device_ids=[0, 1])
+#G = nn.DataParallel(G, device_ids=[0, 1])
+#F1 = nn.DataParallel(F1, device_ids=[0, 1])
 
 if os.path.exists(args.checkpath) == False:
     os.mkdir(args.checkpath)
@@ -246,7 +246,7 @@ def train():
 
                 classwise_near = do_source_weighting(target_loader_misc,feat_dict_source,G,K_farthest_source,per_class_accuracy = per_cls_acc, weight=1, aug = 2, only_for_poor=True, poor_class_list=poor_class_list,weighing_mode='N')
 
-                do_source_weighting(target_loader_misc,feat_dict_source,G,K_farthest_source, per_class_accuracy = per_cls_acc, weight=1, aug = 2, only_for_poor=True, poor_class_list=poor_class_list,weighing_mode='F')
+                do_source_weighting(target_loader_misc,feat_dict_source, G, K_farthest_source, per_class_accuracy = per_cls_acc, weight=1, aug = 2, only_for_poor=True, poor_class_list=poor_class_list,weighing_mode='F')
 
                 print("Assigned Classwise weights to source")
                 print(len(classwise_near.names))
@@ -254,7 +254,7 @@ def train():
 
                 #source_strong_near_loader = make_st_aug_loader(args,classwise_near)
 
-            feat_disc_t = do_lab_target_loss(label_bank,class_list,G,F1,data_t,im_data_t, gt_labels_t, criterion_lab_target,beta=0.99,mode='ce')
+            feat_disc_t = do_lab_target_loss(label_bank,class_list,G,F1,data_t,im_data_t, gt_labels_t, criterion_lab_target,beta=0.99,mode='cbfl')
 
         #output = G(data)
         output = f_batch_source

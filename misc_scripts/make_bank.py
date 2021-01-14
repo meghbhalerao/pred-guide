@@ -3,7 +3,8 @@ from __future__ import barry_as_FLUFL
 import torch
 import numpy as np
 import sys
-sys.path.append("/home/megh/projects/domain-adaptation/SSAL/")
+#sys.path.append("/home/megh/projects/domain-adaptation/SSAL/")
+sys.path.append("/cbica/home/bhaleram/comp_space/random/personal/others/SSAL/")
 from loaders.data_list import Imagelists_VISDA, return_classlist
 from model.basenet import *
 from model.resnet import *
@@ -18,11 +19,10 @@ import copy
 # Defining return dataset function here
 net = "resnet34"
 root = '../data/multi/'
-domain = "painting"
+domain = "real"
 n_class = 126
-n_class_plot = 30
-k = 10
 num = 3
+load_pretrained = False
 #image_list_target_unl = "../data/txt/multi/unlabeled_target_images_%s_%s.txt"%(domain,num)
 image_list_target_unl = "../data/txt/multi/labeled_source_images_%s.txt"%(domain)
 f = open(image_list_target_unl,"r")
@@ -91,20 +91,21 @@ G.eval()
 F1.eval()
 
 # Loading the weights from the checkpoint
-ckpt = torch.load("../save_model_ssda/resnet34_real_sketch_8000.ckpt.pth.tar")
-G_dict = ckpt["G_state_dict"]
-G_dict_new = {}
-G_dict_new_keys = G_dict_new.keys()
-for key in G_dict.keys():
-    new_key = copy.copy(key)
-    new_key = new_key.replace("module.","")
-    G_dict_new[new_key] = G_dict[key]
-    print(new_key)
-print(G_dict_new.keys())
-#print(G_dict.keys())
-#sys.exit()
-G.load_state_dict(G_dict_new)
-#G.load_state_dict(ckpt["G_state_dict"])
+if load_pretrained:
+    ckpt = torch.load("../save_model_ssda/resnet34_real_sketch_8000.ckpt.pth.tar")
+    G_dict = ckpt["G_state_dict"]
+    G_dict_new = {}
+    G_dict_new_keys = G_dict_new.keys()
+    for key in G_dict.keys():
+        new_key = copy.copy(key)
+        new_key = new_key.replace("module.","")
+        G_dict_new[new_key] = G_dict[key]
+        print(new_key)
+    print(G_dict_new.keys())
+    #print(G_dict.keys())
+    #sys.exit()
+    G.load_state_dict(G_dict_new)
+    #G.load_state_dict(ckpt["G_state_dict"])
 
 features = []   
 labels = []
