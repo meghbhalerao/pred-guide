@@ -256,7 +256,7 @@ def train():
 
                 #source_strong_near_loader = make_st_aug_loader(args,classwise_near)
 
-            feat_disc_t = do_lab_target_loss(label_bank,class_list,G,F1,data_t,im_data_t, gt_labels_t, criterion_lab_target,beta=0.99,mode='cbfl')
+            feat_disc_t = do_lab_target_loss(G,F1,data_t,im_data_t, gt_labels_t, criterion_lab_target)
 
             update_loss_functions(criterion,criterion_pseudo,criterion_lab_target,criterion_strong_source)
 

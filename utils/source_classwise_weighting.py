@@ -86,7 +86,7 @@ def do_source_weighting(loader, feat_dict,G,K_farthest,per_class_accuracy = None
         break
     return class_wise_examples        
 
-def do_lab_target_loss(label_bank,class_list,G,F1,data_t,im_data_t, gt_labels_t, criterion_lab_target):
+def do_lab_target_loss(G,F1,data_t,im_data_t, gt_labels_t, criterion_lab_target):
     #for i in range(len(data_t[0])):
     #im_data_t = data_t[0][i]
     feat_lab = G(im_data_t)
