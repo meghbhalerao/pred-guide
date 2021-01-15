@@ -233,7 +233,9 @@ def train():
         target = gt_labels_s
         
         pseudo_labels, mask_loss = do_fixmatch(data_t_unl,F1,G,thresh,criterion_pseudo)
+        
         f_batch_source, feat_dict_source = update_features(feat_dict_source, data_s, G, 0, source = True)
+
         update_label_bank(label_bank, data_t_unl, pseudo_labels, mask_loss)
 
         #if step >=0 and step % 250 == 0 and step<=3500:
@@ -255,6 +257,10 @@ def train():
                 #source_strong_near_loader = make_st_aug_loader(args,classwise_near)
 
             feat_disc_t = do_lab_target_loss(label_bank,class_list,G,F1,data_t,im_data_t, gt_labels_t, criterion_lab_target,beta=0.99,mode='cbfl')
+
+            update_loss_functions(criterion,criterion_pseudo,criterion_lab_target,criterion_strong_source)
+
+
 
         #output = G(data)
         output = f_batch_source

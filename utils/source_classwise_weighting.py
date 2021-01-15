@@ -86,16 +86,7 @@ def do_source_weighting(loader, feat_dict,G,K_farthest,per_class_accuracy = None
         break
     return class_wise_examples        
 
-def do_lab_target_loss(label_bank,class_list,G,F1,data_t,im_data_t, gt_labels_t, criterion_lab_target,beta=0.99,mode='cbfl'):
-    if mode == 'cbfl':
-        class_num_list = get_per_class_examples(label_bank, class_list)
-        effective_num = 1.0 - np.power(beta, class_num_list)
-        per_cls_weights = (1.0 - beta) / np.array(effective_num)
-        per_cls_weights = per_cls_weights / np.sum(per_cls_weights) * len(class_num_list)
-        per_cls_weights = torch.FloatTensor(per_cls_weights).cuda()
-        criterion_lab_target = CBFocalLoss(weight=per_cls_weights, gamma=0.5).cuda()
-    elif mode == 'ce':
-        pass
+def do_lab_target_loss(label_bank,class_list,G,F1,data_t,im_data_t, gt_labels_t, criterion_lab_target):
     #for i in range(len(data_t[0])):
     #im_data_t = data_t[0][i]
     feat_lab = G(im_data_t)
@@ -124,7 +115,7 @@ def make_st_aug_loader(args,classwise,root_folder="./data/multi/"):
     print(len(source_strong_near_loader))
     return iter(source_strong_near_loader)
 
-def do_domain_classification(D,feat_disc_source, feat_disc_tu, feat_disc_t, gt_labels_s,gt_labels_t,gt_labels_tu, pseudo_labels, criterion_discriminator,optimizer_d,mode='all'):
+def do_domain_classification(D,feat_disc_source, feat_disc_tu, feat_disc_t, gt_labels_s,gt_labels_t,gt_labels_tu, pseudo_labels, criterion_discriminator,optimizer_d, mode='all'):
     if mode == 'all':
         prob_domain_source = D(feat_disc_source)
         prob_domain_target = D(feat_disc_tu)
@@ -134,7 +125,7 @@ def do_domain_classification(D,feat_disc_source, feat_disc_tu, feat_disc_t, gt_l
         gt_target_lab = gt_labels_t.clone().detach() * 0 + 1
         gt_target_unl = gt_labels_tu.clone().detach() * 0 + 1
 
-        loss_domain_source = criterion_discriminator(prob_domain_source,gt_source)
+        loss_domain_source = criterion_discriminator(prob_domain_source, gt_source)
         loss_domain_target = criterion_discriminator(prob_domain_target, gt_target_unl)
         loss_domain_lab_target = criterion_discriminator(prob_domain_lab_target,gt_target_lab)
 
@@ -155,7 +146,6 @@ def do_domain_classification(D,feat_disc_source, feat_disc_tu, feat_disc_t, gt_l
         
         prob_domain_source = D(feat_disc_source,reverse=False,eta=1.0,choose_class=4)
 
-
 def do_probability_weighing(G,D,source_loader,feat_dict):
     for idx, batch in enumerate(source_loader):
         names_batch = list(batch[2])
@@ -165,6 +155,13 @@ def do_probability_weighing(G,D,source_loader,feat_dict):
         feat_dict.sample_weights[indexes] = probability_target.detach().double().cpu()
     print("Done Probablity Weighing")
         
+def update_loss_functions(criterion,criterion_pseudo,criterion_lab_target,criterion_strong_source, label_bank):
+    class_num_list = get_per_class_examples(label_bank, class_list)
+    effective_num = 1.0 - np.power(beta, class_num_list)
+    per_cls_weights = (1.0 - beta) / np.array(effective_num)
+    per_cls_weights = per_cls_weights / np.sum(per_cls_weights) * len(class_num_list)
+    per_cls_weights = torch.FloatTensor(per_cls_weights).cuda()
+    criterion_lab_target = CBFocalLoss(weight=per_cls_weights, gamma=0.5).cuda()
 
 """
 print(os.path.join(root_folder,image))
