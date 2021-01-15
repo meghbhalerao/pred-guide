@@ -155,14 +155,16 @@ def do_probability_weighing(G,D,source_loader,feat_dict):
         feat_dict.sample_weights[indexes] = probability_target.detach().double().cpu()
     print("Done Probablity Weighing")
         
-def update_loss_functions(criterion,criterion_pseudo,criterion_lab_target,criterion_strong_source, label_bank):
+def update_loss_functions(criterion,criterion_pseudo,criterion_lab_target,criterion_strong_source, label_bank, class_list):
     class_num_list = get_per_class_examples(label_bank, class_list)
     effective_num = 1.0 - np.power(beta, class_num_list)
     per_cls_weights = (1.0 - beta) / np.array(effective_num)
     per_cls_weights = per_cls_weights / np.sum(per_cls_weights) * len(class_num_list)
     per_cls_weights = torch.FloatTensor(per_cls_weights).cuda()
+    criterion = CBFocalLoss(weight=per_cls_weights, gamma=0.5).cuda()
+    criterion_pseudo = CBFocalLoss(weight=per_cls_weights, gamma=0.5).cuda()
     criterion_lab_target = CBFocalLoss(weight=per_cls_weights, gamma=0.5).cuda()
-
+    criterion_strong_source = CBFocalLoss(weight=per_cls_weights, gamma=0.5).cuda()
 """
 print(os.path.join(root_folder,image))
 img = pil_loader(os.path.join(root_folder,image))
