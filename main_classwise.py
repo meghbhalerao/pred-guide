@@ -127,8 +127,8 @@ lr = args.lr
 G.cuda()
 F1.cuda()
 
-G = nn.DataParallel(G, device_ids=[0,1])
-F1 = nn.DataParallel(F1, device_ids=[0,1])
+#G = nn.DataParallel(G, device_ids=[0,1])
+#F1 = nn.DataParallel(F1, device_ids=[0,1])
 
 if os.path.exists(args.checkpath) == False:
     os.mkdir(args.checkpath)
@@ -239,7 +239,7 @@ def train():
 
 
         #if step >=0 and step % 250 == 0 and step<=3500:
-        if step>=1000:
+        if step>=0:
             if step % 1000 == 0:
                 poor_class_list = list(np.argsort(per_cls_acc))[0:125]
                 print("Per Class Accuracy Calculated According to the Labelled Target examples is: ", per_cls_acc)

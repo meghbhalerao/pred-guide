@@ -43,7 +43,6 @@ def get_k_farthest_neighbors(sim_distribution,feat_dict,K_farthest):
 def do_source_weighting(loader, feat_dict,G,K_farthest,per_class_accuracy = None, weight=0.8,aug = 0, only_for_poor = False, poor_class_list = None, weighing_mode='F'):
     class_wise_examples = edict({"names":[],"labels":[]})
     n_examples = len(feat_dict.domain_identifier)
-
     for idx, batch in enumerate(loader):
         #img_vec = G(batch[0][aug])
         print(idx)
@@ -166,7 +165,7 @@ def update_loss_functions(label_bank, class_list,beta=0.99):
     criterion_pseudo = CBFocalLoss(weight=per_cls_weights, gamma=0.5).cuda()
     criterion_lab_target = CBFocalLoss(weight=per_cls_weights, gamma=0.5).cuda()
     criterion_strong_source = CBFocalLoss(weight=per_cls_weights, gamma=0.5).cuda()
-
+    print(class_num_list)
     return criterion, criterion_pseudo, criterion_lab_target, criterion_strong_source
 
 """
