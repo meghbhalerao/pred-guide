@@ -43,7 +43,6 @@ def get_k_farthest_neighbors(sim_distribution,feat_dict,K_farthest):
 def do_source_weighting(loader, feat_dict,G,K_farthest,per_class_accuracy = None, weight=0.8,aug = 0, only_for_poor = False, poor_class_list = None, weighing_mode='F'):
     class_wise_examples = edict({"names":[],"labels":[]})
     n_examples = len(feat_dict.domain_identifier)
-    feat_dict.sample_weights = torch.tensor(np.ones(n_examples)).cuda()
 
     for idx, batch in enumerate(loader):
         #img_vec = G(batch[0][aug])
@@ -52,7 +51,6 @@ def do_source_weighting(loader, feat_dict,G,K_farthest,per_class_accuracy = None
         idxs_label = [i for i, x in enumerate(feat_dict.labels) if x == img_label]
         feat_dict_label = make_feat_dict_from_idx(feat_dict,idxs_label)
         f_batch, sim_distribution = get_similarity_distribution(feat_dict_label,batch,G,i=aug)
-
         if weighing_mode == 'F':
             k, labels_k, names_k = get_k_farthest_neighbors(sim_distribution,feat_dict_label,K_farthest)
         elif weighing_mode == 'N':
@@ -60,16 +58,16 @@ def do_source_weighting(loader, feat_dict,G,K_farthest,per_class_accuracy = None
             class_wise_examples.names.extend(names_k[0])
             class_wise_examples.labels.extend(labels_k_nearest[0])
 
-        print(type(per_class_accuracy))
+        #print(type(per_class_accuracy))
         if per_class_accuracy is not None:
             if weighing_mode == 'N':
-                per_class_weights = 0.8 * (1 - np.exp(per_class_accuracy))
+                per_class_weights = 0.8 * (1 - 1/np.exp(per_class_accuracy))
             elif weighing_mode == 'F':
-                per_class_weights = 0.8 * (1 + np.exp(per_class_accuracy))
+                per_class_weights = 1.2 * (1 + 1/np.exp(per_class_accuracy))
+        per_class_weights = torch.tensor(per_class_accuracy)
 
-
+        #print(names_k)
         names_k = names_k[0] # 0 - since batch_size is 1 for 
-        
         for name in names_k:
             idx_to_weigh = feat_dict.names.index(name)
             if only_for_poor:
@@ -78,12 +76,13 @@ def do_source_weighting(loader, feat_dict,G,K_farthest,per_class_accuracy = None
                         feat_dict.sample_weights[idx_to_weigh] = weight
                     else:
                         feat_dict.sample_weights[idx_to_weigh] = per_class_weights[img_label]
+
             else:
                 if per_class_accuracy is None:
                     feat_dict.sample_weights[idx_to_weigh] = weight  
                 else:
                     feat_dict.sample_weights[idx_to_weigh] = per_class_weights[img_label]
-        break
+        #break
     return class_wise_examples        
 
 def do_lab_target_loss(G,F1,data_t,im_data_t, gt_labels_t, criterion_lab_target):
@@ -91,8 +90,11 @@ def do_lab_target_loss(G,F1,data_t,im_data_t, gt_labels_t, criterion_lab_target)
     #im_data_t = data_t[0][i]
     feat_lab = G(im_data_t)
     out_lab_target = F1(feat_lab)
-    loss_lab_target = criterion_lab_target(out_lab_target,gt_labels_t)
-    loss_lab_target.backward()
+    try:
+        loss_lab_target = criterion_lab_target(out_lab_target,gt_labels_t)
+        loss_lab_target.backward()
+    except:
+        pass
     return feat_lab.clone().detach()
 
 def pil_loader(path):
@@ -143,7 +145,6 @@ def do_domain_classification(D,feat_disc_source, feat_disc_tu, feat_disc_t, gt_l
         class_lab_targets = gt_target_lab
         class_targets = pseudo_labels
 
-        
         prob_domain_source = D(feat_disc_source,reverse=False,eta=1.0,choose_class=4)
 
 def do_probability_weighing(G,D,source_loader,feat_dict):
@@ -155,7 +156,7 @@ def do_probability_weighing(G,D,source_loader,feat_dict):
         feat_dict.sample_weights[indexes] = probability_target.detach().double().cpu()
     print("Done Probablity Weighing")
         
-def update_loss_functions(criterion,criterion_pseudo,criterion_lab_target,criterion_strong_source, label_bank, class_list):
+def update_loss_functions(label_bank, class_list,beta=0.99):
     class_num_list = get_per_class_examples(label_bank, class_list)
     effective_num = 1.0 - np.power(beta, class_num_list)
     per_cls_weights = (1.0 - beta) / np.array(effective_num)
@@ -165,6 +166,9 @@ def update_loss_functions(criterion,criterion_pseudo,criterion_lab_target,criter
     criterion_pseudo = CBFocalLoss(weight=per_cls_weights, gamma=0.5).cuda()
     criterion_lab_target = CBFocalLoss(weight=per_cls_weights, gamma=0.5).cuda()
     criterion_strong_source = CBFocalLoss(weight=per_cls_weights, gamma=0.5).cuda()
+
+    return criterion, criterion_pseudo, criterion_lab_target, criterion_strong_source
+
 """
 print(os.path.join(root_folder,image))
 img = pil_loader(os.path.join(root_folder,image))

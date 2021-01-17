@@ -11,6 +11,9 @@ def do_fixmatch(data_t_unl,F1,G,thresh,criterion_pseudo):
     prob_weak_aug = F.softmax(pred_weak_aug,dim=1)
     mask_loss = prob_weak_aug.max(1)[0]>thresh
     pseudo_labels = pred_weak_aug.max(axis=1)[1]
+    #try:
     loss_pseudo_unl = torch.mean(mask_loss.int() * criterion_pseudo(pred_strong_aug,pseudo_labels))
     loss_pseudo_unl.backward(retain_graph=True)
+    #except:
+    #pass
     return pseudo_labels, mask_loss

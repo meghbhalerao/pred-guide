@@ -127,8 +127,8 @@ lr = args.lr
 G.cuda()
 F1.cuda()
 
-#G = nn.DataParallel(G, device_ids=[0, 1])
-#F1 = nn.DataParallel(F1, device_ids=[0, 1])
+G = nn.DataParallel(G, device_ids=[0,1])
+F1 = nn.DataParallel(F1, device_ids=[0,1])
 
 if os.path.exists(args.checkpath) == False:
     os.mkdir(args.checkpath)
@@ -172,7 +172,7 @@ def train():
     num_target = len(feat_dict_target.names)
     num_source = len(feat_dict_source.names)
 
-    feat_dict_source.sample_weights = torch.tensor(np.ones(num_source)).cuda()
+    feat_dict_source.sample_weights = torch.tensor(np.ones(num_source)).cpu()
     label_bank = edict({"names": feat_dict_target.names, "labels": np.zeros(num_target,dtype=int)-1})
 
     all_step = args.steps
@@ -190,7 +190,6 @@ def train():
     per_cls_acc = np.array([1 for _ in range(len(class_list))]) # Just defining for sake of clarity and debugging
     source_strong_near_loader = None
     for step in range(all_step):
-
         source_strong_near_loader = None
 
         optimizer_g = inv_lr_scheduler(param_lr_g, optimizer_g, step, init_lr=args.lr)
@@ -238,29 +237,26 @@ def train():
 
         update_label_bank(label_bank, data_t_unl, pseudo_labels, mask_loss)
 
+
         #if step >=0 and step % 250 == 0 and step<=3500:
-        if step>=0:
-            if step % 1500 == 0:
-                print("here")
+        if step>=1000:
+            if step % 1000 == 0:
                 poor_class_list = list(np.argsort(per_cls_acc))[0:125]
-                print(per_cls_acc)
-                print(poor_class_list)
+                print("Per Class Accuracy Calculated According to the Labelled Target examples is: ", per_cls_acc)
+                print("Top k classes which perform poorly are: ", poor_class_list)
 
                 classwise_near = do_source_weighting(target_loader_misc,feat_dict_source,G,K_farthest_source,per_class_accuracy = per_cls_acc, weight=1, aug = 2, only_for_poor=True, poor_class_list=poor_class_list,weighing_mode='N')
 
                 do_source_weighting(target_loader_misc,feat_dict_source, G, K_farthest_source, per_class_accuracy = per_cls_acc, weight=1, aug = 2, only_for_poor=True, poor_class_list=poor_class_list,weighing_mode='F')
 
                 print("Assigned Classwise weights to source")
-                print(len(classwise_near.names))
-                print(len(classwise_near.labels))
 
                 #source_strong_near_loader = make_st_aug_loader(args,classwise_near)
 
-            feat_disc_t = do_lab_target_loss(G,F1,data_t,im_data_t, gt_labels_t, criterion_lab_target)
+                criterion,criterion_pseudo, criterion_lab_target, criterion_strong_source = update_loss_functions(label_bank, class_list, beta=0.99)
 
-            update_loss_functions(criterion,criterion_pseudo,criterion_lab_target,criterion_strong_source)
-
-
+        if step>=7000:
+            do_lab_target_loss(G,F1,data_t,im_data_t, gt_labels_t, criterion_lab_target)
 
         #output = G(data)
         output = f_batch_source
@@ -269,10 +265,16 @@ def train():
         if step>0:
             names_batch = list(data_s[2])
             idx = [feat_dict_source.names.index(name) for name in names_batch] 
-            weights_source = feat_dict_source.sample_weights[idx]
+            weights_source = feat_dict_source.sample_weights[idx].cuda()
+            #try:
             loss = torch.mean(weights_source * criterion(out1, target))
+            #except:
+            #pass
         else:
+            #try:
             loss = torch.mean(criterion(out1, target))
+            #except:
+            #pass
 
         if not args.method == 'S+T':
             output = G(im_data_tu)
@@ -283,14 +285,16 @@ def train():
                 optimizer_g.step()
             elif args.method == 'MME':
                 loss_t = adentropy(F1, output, args.lamda)
-                print(loss_t)
                 loss_t.backward(retain_graph=True)
                 #optimizer_f.step()
                 #optimizer_g.step()
             else:
                 raise ValueError('Method cannot be recognized.')
-
+            #try: 
             loss.backward()
+            #except:
+            #pass
+
             optimizer_g.step()
             optimizer_f.step()
             zero_grad_all()

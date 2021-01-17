@@ -48,7 +48,7 @@ def update_label_bank(label_bank, data, pseudo_labels, mask_loss):
     names_batch = data[2]
     names_batch = list(names_batch)
     names_batch_confident = []
-    names_batch_unconfident = []
+    #names_batch_unconfident = []
     pseudo_labels_confident = []
     # Use only names with confidence greater than 0.9
     mask_loss_list = list(mask_loss.cpu().detach().numpy().astype(int))
@@ -184,7 +184,7 @@ def do_method_bank(feat_dict_source, feat_dict_target, feat_dict_combined, momen
     k_neighbors, labels_k_neighbors = get_kNN(sim_distribution, feat_dict_combined, K)    
     #mask_loss_uncertain = (prob_weak_aug.max(1)[0]<thresh) & (prob_weak_aug.max(1)[0]>0.7)
     mask_loss_uncertain = prob_weak_aug.max(1)[0]>thresh
-    knn_majvot_pseudo_labels = get_majority_vote(k_neighbors,feat_dict_combined, K, F1, mask_loss_uncertain, len(target_loader_unl.dataset))
+    knn_majvot_pseu7labels = get_majority_vote(k_neighbors,feat_dict_combined, K, F1, mask_loss_uncertain, len(target_loader_unl.dataset))
     #loss_pseudo_unl_knn = torch.mean(mask_loss
     # _uncertain.int() * criterion_pseudo(pred_strong_aug, knn_majvot_pseudo_labels))
     if backprop:

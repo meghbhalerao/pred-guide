@@ -1,0 +1,33 @@
+Dataset multi Source real Target sketch Labeled num perclass 3 Network resnet34
+126 classes in this dataset
+Unlabelled Target Dataset Size:  23826
+Labelled Target Dataset Size:  378
+Misc. Labelled Target Dataset Size:  378
+Bank keys - Target:  dict_keys(['feat_vec', 'labels', 'names', 'domain_identifier']) Source:  dict_keys(['feat_vec', 'labels', 'names', 'domain_identifier'])
+Num  - Target:  23826 Source:  70358
+S real T sketch Train Ep: 0 lr0.01 	 Loss Classification: 5.021972 Loss T 0.470262 Method MME
+
+Traceback (most recent call last):
+  File "main_classwise.py", line 412, in <module>
+    train()
+  File "main_classwise.py", line 280, in train
+    output = G(im_data_tu)
+  File "/home/megh/anaconda3/envs/ssal/lib/python3.7/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/megh/projects/domain-adaptation/SSAL/model/resnet.py", line 189, in forward
+    x = self.layer3(x)
+  File "/home/megh/anaconda3/envs/ssal/lib/python3.7/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/megh/anaconda3/envs/ssal/lib/python3.7/site-packages/torch/nn/modules/container.py", line 117, in forward
+    input = module(input)
+  File "/home/megh/anaconda3/envs/ssal/lib/python3.7/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/megh/projects/domain-adaptation/SSAL/model/resnet.py", line 77, in forward
+    out = self.bn1(out)
+  File "/home/megh/anaconda3/envs/ssal/lib/python3.7/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/megh/anaconda3/envs/ssal/lib/python3.7/site-packages/torch/nn/modules/batchnorm.py", line 136, in forward
+    self.weight, self.bias, bn_training, exponential_average_factor, self.eps)
+  File "/home/megh/anaconda3/envs/ssal/lib/python3.7/site-packages/torch/nn/functional.py", line 2058, in batch_norm
+    training, momentum, eps, torch.backends.cudnn.enabled
+RuntimeError: CUDA out of memory. Tried to allocate 20.00 MiB (GPU 0; 10.76 GiB total capacity; 4.16 GiB already allocated; 10.44 MiB free; 4.32 GiB reserved in total by PyTorch)
