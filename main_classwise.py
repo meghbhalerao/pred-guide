@@ -182,6 +182,7 @@ def train():
     len_train_source = len(source_loader)
     len_train_target = len(target_loader)
     len_train_target_semi = len(target_loader_unl)
+    print("Unlabeled Target Data Size:", len_train_target_semi)
     best_acc_val = 0
     counter = 0
     K = 3
@@ -239,7 +240,7 @@ def train():
 
 
         #if step >=0 and step % 250 == 0 and step<=3500:
-        if step>=0:
+        if step>=1500:
             if step % 1000 == 0:
                 poor_class_list = list(np.argsort(per_cls_acc))[0:125]
                 print("Per Class Accuracy Calculated According to the Labelled Target examples is: ", per_cls_acc)

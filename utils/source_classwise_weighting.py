@@ -50,6 +50,7 @@ def do_source_weighting(loader, feat_dict,G,K_farthest,per_class_accuracy = None
         idxs_label = [i for i, x in enumerate(feat_dict.labels) if x == img_label]
         feat_dict_label = make_feat_dict_from_idx(feat_dict,idxs_label)
         f_batch, sim_distribution = get_similarity_distribution(feat_dict_label,batch,G,i=aug)
+        
         if weighing_mode == 'F':
             k, labels_k, names_k = get_k_farthest_neighbors(sim_distribution,feat_dict_label,K_farthest)
         elif weighing_mode == 'N':
@@ -60,9 +61,9 @@ def do_source_weighting(loader, feat_dict,G,K_farthest,per_class_accuracy = None
         #print(type(per_class_accuracy))
         if per_class_accuracy is not None:
             if weighing_mode == 'N':
-                per_class_weights = 0.8 * (1 - 1/np.exp(per_class_accuracy))
-            elif weighing_mode == 'F':
                 per_class_weights = 1.2 * (1 + 1/np.exp(per_class_accuracy))
+            elif weighing_mode == 'F':
+                per_class_weights = 0.8 * (1 - 1/np.exp(per_class_accuracy))
         per_class_weights = torch.tensor(per_class_accuracy)
 
         #print(names_k)
