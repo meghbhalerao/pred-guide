@@ -154,7 +154,6 @@ def train():
     for param_group in optimizer_f.param_groups:
         param_lr_f.append(param_group["lr"])
 
-
     thresh = 0.9
     root_folder = "./data/%s"%(args.dataset)
     criterion = nn.CrossEntropyLoss(reduction='none').cuda()
@@ -162,6 +161,7 @@ def train():
     criterion_lab_target = nn.CrossEntropyLoss(reduction='mean').cuda()
     criterion_strong_source = nn.CrossEntropyLoss(reduction='mean').cuda()
     feat_dict_source, feat_dict_target, _ = load_bank(args)
+
 
     """
     if args.augmentation_policy == 'rand_augment':
@@ -252,8 +252,8 @@ def train():
                 print("Assigned Classwise weights to source")
 
                 #source_strong_near_loader = make_st_aug_loader(args,classwise_near)
-
-            #criterion,criterion_pseudo, criterion_lab_target, criterion_strong_source = update_loss_functions(label_bank, class_list, beta=0.99)
+        if step >=3500:
+            criterion,criterion_pseudo, criterion_lab_target, criterion_strong_source = update_loss_functions(label_bank, class_list, beta=0.99)
 
         if step>=7000:
             do_lab_target_loss(G,F1,data_t,im_data_t, gt_labels_t, criterion_lab_target)
@@ -262,7 +262,7 @@ def train():
         output = f_batch_source
         out1 = F1(output)
 
-        if step>0:
+        if step>=2000:
             names_batch = list(data_s[2])
             idx = [feat_dict_source.names.index(name) for name in names_batch] 
             weights_source = feat_dict_source.sample_weights[idx].cuda()

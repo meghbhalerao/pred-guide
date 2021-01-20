@@ -40,7 +40,6 @@ def get_kNN(sim_distribution, feat_dict, k = 1):
     return k_neighbors, labels_k_neighbors, names_k_neighbors
 
 def make_feat_dict_from_idx(feat_dict,idxs):
-    
     feat_dict_idx = edict({})
     feat_dict_idx.feat_vec = feat_dict.feat_vec[idxs]
     feat_dict_idx.labels = [feat_dict.labels[idx] for idx in idxs]
@@ -89,7 +88,7 @@ def do_source_weighting(loader, feat_dict, G, K_farthest,per_class_accuracy = No
                 per_class_weights = 1 * (1 + 1/np.exp(per_class_accuracy))
             elif weighing_mode == 'F':
                 per_class_weights = 1 * (1 - 1/np.exp(per_class_accuracy))
-        per_class_weights = torch.tensor(per_class_accuracy)
+        per_class_weights = torch.tensor(per_class_weights)
 
         #print(names_k)
         names_k = names_k[0] # 0 - since batch_size is 1 for 
