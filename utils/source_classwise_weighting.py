@@ -14,6 +14,18 @@ import torch.nn.functional as F
 import math 
 
 def get_kNN(sim_distribution, feat_dict, k = 1):
+    '''
+    Description: 
+    Gets the K nearest examples for every example in the incoming batch. 
+    Inputs:
+    1. sim_distribution - this is the list of cosine similarities for every example in the batch which is pre-calculated
+    2. feat_dict - dictionary which consists of the feature bank and corresponding metadata
+    3. k - the number of k nearest neighbors
+    Outputs:
+    1. k_neighbors - the repersentations of the k nearest neighbors
+    2. labels_k_neighbors - the predicted labels of the nearest neighbors
+    3. names_k_neighbors -  the names/paths of the images which correspond to the nearset neighbors
+    '''
     k_neighbors = torch.topk(torch.transpose(sim_distribution.cosines,0,1), k, dim = 1)
     idxs = k_neighbors[1]
     b_size = idxs.shape[0]
