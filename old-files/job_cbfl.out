@@ -6,101 +6,101 @@ Misc. Labelled Target Dataset Size:  378
 Bank keys - Target:  dict_keys(['feat_vec', 'labels', 'names', 'domain_identifier']) Source:  dict_keys(['feat_vec', 'labels', 'names', 'domain_identifier'])
 Num  - Target:  23826 Source:  70358
 Unlabeled Target Data Size: 496
-S real T sketch Train Ep: 0 lr0.01 	 Loss Classification: 5.126722 Loss T 0.471045 Method MME
+S real T sketch Train Ep: 0 lr0.01 	 Loss Classification: 4.881859 Loss T 0.470421 Method MME
 
-S real T sketch Train Ep: 100 lr0.009925650290240803 	 Loss Classification: 0.823025 Loss T 0.283632 Method MME
+S real T sketch Train Ep: 100 lr0.009925650290240803 	 Loss Classification: 1.724095 Loss T 0.293266 Method MME
 
-S real T sketch Train Ep: 200 lr0.009852577760521605 	 Loss Classification: 0.716537 Loss T 0.213504 Method MME
+S real T sketch Train Ep: 200 lr0.009852577760521605 	 Loss Classification: 1.262491 Loss T 0.217132 Method MME
 
-S real T sketch Train Ep: 300 lr0.009780748269686728 	 Loss Classification: 1.141014 Loss T 0.221066 Method MME
+S real T sketch Train Ep: 300 lr0.009780748269686728 	 Loss Classification: 0.614197 Loss T 0.189780 Method MME
 
-S real T sketch Train Ep: 400 lr0.009710128909124701 	 Loss Classification: 0.748322 Loss T 0.181413 Method MME
+S real T sketch Train Ep: 400 lr0.009710128909124701 	 Loss Classification: 0.432638 Loss T 0.193384 Method MME
 
-S real T sketch Train Ep: 500 lr0.00964068794694323 	 Loss Classification: 1.525377 Loss T 0.195337 Method MME
-
-
-Labeled Target set: Average loss: 2.5561, Accuracy: 462/1080 F1 (42.7778%)
+S real T sketch Train Ep: 500 lr0.00964068794694323 	 Loss Classification: 0.873568 Loss T 0.182733 Method MME
 
 
-Test set: Average loss: 2.5654, Accuracy: 10905/23808 F1 (45.8039%)
+Labeled Target set: Average loss: 2.7545, Accuracy: 445/1080 F1 (41.2037%)
 
 
-Val set: Average loss: 2.4507, Accuracy: 166/360 F1 (46.1111%)
+Test set: Average loss: 2.6225, Accuracy: 11029/23808 F1 (46.3248%)
 
-best acc test 45.803931  acc val 46.111111 acc labeled target 42.777778
+
+Val set: Average loss: 2.5137, Accuracy: 173/360 F1 (48.0556%)
+
+best acc test 46.324765  acc val 48.055556 acc labeled target 41.203704
 saving model...
-S real T sketch Train Ep: 600 lr0.00957239477517603 	 Loss Classification: 1.157886 Loss T 0.159732 Method MME
+S real T sketch Train Ep: 600 lr0.00957239477517603 	 Loss Classification: 0.675681 Loss T 0.151134 Method MME
 
-S real T sketch Train Ep: 700 lr0.009505219859830012 	 Loss Classification: 1.887696 Loss T 0.152467 Method MME
+S real T sketch Train Ep: 700 lr0.009505219859830012 	 Loss Classification: 0.752134 Loss T 0.160542 Method MME
 
-S real T sketch Train Ep: 800 lr0.009439134693595126 	 Loss Classification: 0.478454 Loss T 0.160791 Method MME
+S real T sketch Train Ep: 800 lr0.009439134693595126 	 Loss Classification: 0.534750 Loss T 0.167224 Method MME
 
-S real T sketch Train Ep: 900 lr0.009374111751051751 	 Loss Classification: 0.675350 Loss T 0.135443 Method MME
+S real T sketch Train Ep: 900 lr0.009374111751051751 	 Loss Classification: 0.972048 Loss T 0.152500 Method MME
 
-S real T sketch Train Ep: 1000 lr0.009310124446222227 	 Loss Classification: 0.674698 Loss T 0.138813 Method MME
-
-
-Labeled Target set: Average loss: 2.3601, Accuracy: 536/1080 F1 (49.6296%)
+S real T sketch Train Ep: 1000 lr0.009310124446222227 	 Loss Classification: 0.709184 Loss T 0.136045 Method MME
 
 
-Test set: Average loss: 2.3585, Accuracy: 12124/23808 F1 (50.9241%)
+Labeled Target set: Average loss: 2.4067, Accuracy: 539/1080 F1 (49.9074%)
 
 
-Val set: Average loss: 2.2767, Accuracy: 189/360 F1 (52.5000%)
+Test set: Average loss: 2.3686, Accuracy: 12367/23808 F1 (51.9447%)
 
-best acc test 50.924059  acc val 52.500000 acc labeled target 49.629630
+
+Val set: Average loss: 2.3081, Accuracy: 183/360 F1 (50.8333%)
+
+best acc test 51.944724  acc val 50.833333 acc labeled target 49.907407
 saving model...
-S real T sketch Train Ep: 1100 lr0.00924714709232377 	 Loss Classification: 0.853071 Loss T 0.151095 Method MME
+S real T sketch Train Ep: 1100 lr0.00924714709232377 	 Loss Classification: 0.574785 Loss T 0.133015 Method MME
 
-S real T sketch Train Ep: 1200 lr0.009185154863590003 	 Loss Classification: 0.748496 Loss T 0.122425 Method MME
+S real T sketch Train Ep: 1200 lr0.009185154863590003 	 Loss Classification: 0.695797 Loss T 0.161902 Method MME
 
-S real T sketch Train Ep: 1300 lr0.00912412375903735 	 Loss Classification: 0.472642 Loss T 0.108031 Method MME
+S real T sketch Train Ep: 1300 lr0.00912412375903735 	 Loss Classification: 0.713741 Loss T 0.143285 Method MME
 
-S real T sketch Train Ep: 1400 lr0.009064030568061049 	 Loss Classification: 0.559291 Loss T 0.096457 Method MME
+S real T sketch Train Ep: 1400 lr0.009064030568061049 	 Loss Classification: 0.710556 Loss T 0.118770 Method MME
 
-S real T sketch Train Ep: 1500 lr0.009004852837753237 	 Loss Classification: 0.384573 Loss T 0.127750 Method MME
-
-
-Labeled Target set: Average loss: 2.2573, Accuracy: 554/1080 F1 (51.2963%)
+S real T sketch Train Ep: 1500 lr0.009004852837753237 	 Loss Classification: 0.644811 Loss T 0.126623 Method MME
 
 
-Test set: Average loss: 2.2065, Accuracy: 13038/23808 F1 (54.7631%)
+Labeled Target set: Average loss: 2.2265, Accuracy: 562/1080 F1 (52.0370%)
 
 
-Val set: Average loss: 1.9786, Accuracy: 200/360 F1 (55.5556%)
+Test set: Average loss: 2.2716, Accuracy: 12979/23808 F1 (54.5153%)
 
-best acc test 54.763105  acc val 55.555556 acc labeled target 51.296296
+
+Val set: Average loss: 2.0233, Accuracy: 209/360 F1 (58.0556%)
+
+best acc test 54.515289  acc val 58.055556 acc labeled target 52.037037
 saving model...
-S real T sketch Train Ep: 1600 lr0.008946568841842816 	 Loss Classification: 0.230621 Loss T 0.150333 Method MME
+S real T sketch Train Ep: 1600 lr0.008946568841842816 	 Loss Classification: 1.413232 Loss T 0.157656 Method MME
 
-S real T sketch Train Ep: 1700 lr0.008889157551163433 	 Loss Classification: 1.044363 Loss T 0.127745 Method MME
+S real T sketch Train Ep: 1700 lr0.008889157551163433 	 Loss Classification: 0.724673 Loss T 0.125086 Method MME
 
-S real T sketch Train Ep: 1800 lr0.008832598605562044 	 Loss Classification: 0.612701 Loss T 0.131815 Method MME
+S real T sketch Train Ep: 1800 lr0.008832598605562044 	 Loss Classification: 0.618920 Loss T 0.084243 Method MME
 
-S real T sketch Train Ep: 1900 lr0.008776872287166303 	 Loss Classification: 0.593952 Loss T 0.108654 Method MME
+S real T sketch Train Ep: 1900 lr0.008776872287166303 	 Loss Classification: 0.559849 Loss T 0.111953 Method MME
 
-Per Class Accuracy Calculated According to the Labelled Target examples is:  [0.8888889  1.         0.8333333  0.33333334 0.6666667  0.
- 0.5555556  1.         0.6666667  0.11111111 1.         1.
- 0.         0.11111111 0.44444445 0.6666667  0.8888889  1.
- 0.33333334 0.         0.6666667  0.6666667  0.33333334 0.6666667
- 0.6666667  0.44444445 0.         0.6666667  0.6666667  0.44444445
- 0.44444445 0.33333334 0.33333334 0.7777778  0.44444445 0.22222222
- 0.6666667  0.         0.6666667  1.         0.33333334 0.5555556
- 0.22222222 0.44444445 0.5555556  1.         1.         0.6666667
- 0.6666667  1.         0.33333334 0.         1.         0.
- 0.8888889  0.5555556  1.         0.6666667  0.6666667  0.8888889
- 0.8333333  0.33333334 1.         0.33333334 0.6666667  0.5555556
- 0.11111111 0.33333334 0.         0.6666667  0.22222222 0.8333333
- 0.33333334 0.16666667 1.         0.         0.33333334 0.6666667
- 0.44444445 0.6666667  0.11111111 0.5555556  0.33333334 0.
- 1.         0.16666667 0.7777778  0.6666667  0.33333334 0.22222222
- 0.33333334 1.         0.5555556  0.6666667  1.         0.44444445
- 0.33333334 0.7777778  0.         0.22222222 1.         0.5555556
- 0.6666667  0.22222222 0.6666667  0.         0.33333334 0.5
- 0.         0.22222222 0.22222222 0.6666667  0.8888889  1.
- 0.44444445 0.8888889  0.         0.6666667  0.         0.33333334
- 0.5555556  0.7777778  0.7777778  0.         0.         1.        ]
-Top k classes which perform poorly are:  [53, 118, 75, 124, 83, 26, 116, 68, 19, 51, 12, 37, 123, 105, 98, 5, 108, 66, 13, 9, 80, 73, 85, 89, 99, 103, 42, 110, 109, 35, 70, 106, 72, 63, 76, 50, 40, 67, 82, 90, 3, 96, 119, 18, 22, 88, 61, 31, 32, 29, 78, 43, 30, 14, 114, 95, 25, 34, 107, 6, 41, 44, 101, 92, 65, 81, 55, 120, 15, 28, 21, 23, 87, 24, 111, 8, 58, 93, 20, 27, 48, 57, 64, 104, 4, 69, 47, 79, 117, 102, 38, 77, 36, 86, 122, 121, 97, 33, 2, 60, 71, 59, 112, 115, 54, 16, 0, 113, 62, 94, 1, 7, 10, 11, 17, 39, 100, 45, 49, 52, 56, 74, 84, 91, 46]
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [0.8888889  1.         0.6666667  0.33333334 0.44444445 0.
+ 0.5555556  0.6666667  0.44444445 0.         1.         1.
+ 0.6666667  0.         0.33333334 0.11111111 0.7777778  1.
+ 0.6666667  0.33333334 0.6666667  1.         0.5        0.44444445
+ 0.33333334 0.33333334 0.         0.6666667  0.5        0.16666667
+ 0.         0.44444445 0.6666667  0.22222222 0.5555556  0.22222222
+ 0.33333334 0.         1.         0.8888889  0.5        0.8888889
+ 0.11111111 0.7777778  0.33333334 0.44444445 0.8888889  0.6666667
+ 0.6666667  1.         0.44444445 0.5        1.         0.5555556
+ 0.22222222 0.44444445 0.7777778  1.         0.7777778  0.6666667
+ 1.         0.33333334 0.8888889  0.22222222 0.6666667  0.5
+ 0.11111111 0.6666667  0.22222222 0.44444445 0.         0.22222222
+ 0.16666667 0.8888889  0.8888889  0.         0.         0.44444445
+ 0.7777778  0.44444445 0.         0.5555556  0.22222222 1.
+ 0.8888889  0.33333334 0.8888889  0.6666667  0.         0.44444445
+ 0.33333334 0.8888889  0.6666667  0.7777778  1.         0.5555556
+ 0.5555556  0.6666667  0.33333334 0.         0.8333333  0.6666667
+ 0.6666667  0.6666667  0.6666667  0.         0.33333334 0.
+ 0.33333334 0.33333334 0.44444445 0.6666667  0.5555556  1.
+ 0.33333334 1.         0.22222222 0.6666667  0.         0.22222222
+ 0.5        0.6666667  0.7777778  0.         0.         1.        ]
+Top k classes which perform poorly are:  [118, 107, 70, 124, 80, 105, 88, 75, 37, 30, 26, 13, 76, 9, 5, 123, 99, 66, 42, 15, 29, 72, 33, 71, 63, 82, 35, 116, 68, 54, 119, 44, 109, 114, 85, 61, 98, 106, 36, 90, 25, 24, 19, 108, 14, 3, 77, 4, 110, 69, 55, 79, 50, 89, 45, 23, 31, 8, 120, 22, 28, 40, 65, 51, 53, 6, 81, 95, 112, 34, 96, 87, 97, 104, 103, 92, 102, 101, 32, 64, 59, 2, 7, 111, 48, 47, 121, 117, 67, 27, 20, 18, 12, 122, 78, 93, 43, 56, 58, 16, 100, 0, 62, 91, 39, 41, 73, 46, 84, 86, 74, 1, 10, 11, 17, 21, 38, 83, 94, 113, 49, 52, 57, 60, 115, 125]
 0
 1
 2
@@ -479,6 +479,22 @@ Top k classes which perform poorly are:  [53, 118, 75, 124, 83, 26, 116, 68, 19,
 375
 376
 377
+[W python_anomaly_mode.cpp:104] Warning: Error detected in MulBackward0. Traceback of forward call that caused the error:
+  File "main_classwise.py", line 412, in <module>
+    train()
+  File "main_classwise.py", line 270, in train
+    loss = torch.mean(weights_source * criterion(out1, target))
+  File "/home/megh/anaconda3/envs/ssal/lib/python3.7/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/megh/projects/domain-adaptation/SSAL/utils/loss.py", line 68, in forward
+    return focal_loss(F.cross_entropy(input, target, reduction='none', weight=self.weight), self.gamma)
+  File "/home/megh/projects/domain-adaptation/SSAL/utils/loss.py", line 57, in focal_loss
+    loss = (1 - p) ** gamma * input_values
+ (function _print_stack)
+/home/megh/projects/domain-adaptation/SSAL/utils/source_classwise_weighting.py:188: RuntimeWarning: divide by zero encountered in true_divide
+  per_cls_weights = (1.0 - beta) / np.array(effective_num)
+/home/megh/projects/domain-adaptation/SSAL/utils/source_classwise_weighting.py:189: RuntimeWarning: invalid value encountered in true_divide
+  per_cls_weights = per_cls_weights / np.sum(per_cls_weights) * len(class_num_list)
 0
 1
 2
@@ -858,49 +874,26 @@ Top k classes which perform poorly are:  [53, 118, 75, 124, 83, 26, 116, 68, 19,
 376
 377
 Assigned Classwise weights to source
-[ 36 193  40  31  50  40 109  99 144  61  58 245   6  16  69  68 166 259
-  18  22  53 105  85  44  27  60  26  66  74   3  22   5  33  18  27   4
-  15  14 114  99  96 151  20  34 112  67 109 222 144 243  81 111 111  70
-  78  95 107  82 128 194 148  23 133  90  82  40  54 129  24  98  39  62
-  97  83  43   2  22  93  70  90   5  42   3  14 152  61  82 152   6  31
- 111  88 100 133 136 166  61 122  18 201 322  57 188 234 169  87  49  43
-   1  32  55 130 276 203  70 261  30 284   3 107 243 270  80   8  17 241]
-S real T sketch Train Ep: 2000 lr0.008721959494934213 	 Loss Classification: 1.020455 Loss T 0.105362 Method MME
-
-
-Labeled Target set: Average loss: 2.5012, Accuracy: 537/1080 F1 (49.7222%)
-
-
-Test set: Average loss: 2.4975, Accuracy: 12343/23808 F1 (51.8439%)
-
-
-Val set: Average loss: 2.2257, Accuracy: 198/360 F1 (55.0000%)
-
-best acc test 54.763105  acc val 55.000000 acc labeled target 49.722222
-saving model...
-[W python_anomaly_mode.cpp:104] Warning: Error detected in PowBackward0. Traceback of forward call that caused the error:
-  File "main_classwise.py", line 413, in <module>
-    train()
-  File "main_classwise.py", line 235, in train
-    pseudo_labels, mask_loss = do_fixmatch(data_t_unl,F1,G,thresh,criterion_pseudo)
-  File "/home/megh/projects/domain-adaptation/SSAL/utils/fixmatch.py", line 15, in do_fixmatch
-    loss_pseudo_unl = torch.mean(mask_loss.int() * criterion_pseudo(pred_strong_aug,pseudo_labels))
-  File "/home/megh/anaconda3/envs/ssal/lib/python3.7/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
-    result = self.forward(*input, **kwargs)
-  File "/home/megh/projects/domain-adaptation/SSAL/utils/loss.py", line 68, in forward
-    return focal_loss(F.cross_entropy(input, target, reduction='none', weight=self.weight), self.gamma)
-  File "/home/megh/projects/domain-adaptation/SSAL/utils/loss.py", line 57, in focal_loss
-    loss = (1 - p) ** gamma * input_values
- (function _print_stack)
+Predicted Number of Examples per Class is (According to the pseudo labels):  [ 23 181  36  34  57  42  69  94 104  47  88 192   2  11  69  33 166 235
+  28  18  44  85  79  25  31  58  10  52  83   9  25   6  28   9  32   9
+  16   9 129 100  96 183  22  36 129  84 108 256 117 263  93 136  99  62
+  73 104 115  99 103 218 145  16 117  76  73  51  46 128  27 129  18  52
+  90  89  59   1  19 120  94  70   1  27   1  12 151  63  79 137   0  35
+ 107  89 121 105 133 188  80 143   2 186 315  49 177 193 143  61  35  45
+   0  42  42 148 283 226  76 255  37 308   3  92 239 248  98   4  13 197]
+CBFL per class weights: tensor([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., nan, 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., nan, 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0.], device='cuda:0')
 Traceback (most recent call last):
-  File "main_classwise.py", line 413, in <module>
+  File "main_classwise.py", line 412, in <module>
     train()
-  File "main_classwise.py", line 235, in train
-    pseudo_labels, mask_loss = do_fixmatch(data_t_unl,F1,G,thresh,criterion_pseudo)
-  File "/home/megh/projects/domain-adaptation/SSAL/utils/fixmatch.py", line 16, in do_fixmatch
-    loss_pseudo_unl.backward(retain_graph=True)
+  File "main_classwise.py", line 294, in train
+    loss.backward()
   File "/home/megh/anaconda3/envs/ssal/lib/python3.7/site-packages/torch/tensor.py", line 221, in backward
     torch.autograd.backward(self, gradient, retain_graph, create_graph)
   File "/home/megh/anaconda3/envs/ssal/lib/python3.7/site-packages/torch/autograd/__init__.py", line 132, in backward
     allow_unreachable=True)  # allow_unreachable flag
-RuntimeError: Function 'PowBackward0' returned nan values in its 0th output.
+RuntimeError: Function 'MulBackward0' returned nan values in its 0th output.
