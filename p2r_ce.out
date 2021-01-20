@@ -1,0 +1,23 @@
+Dataset multi Source painting Target real Labeled num perclass 3 Network resnet34
+126 classes in this dataset
+Unlabelled Target Dataset Size:  69980
+Labelled Target Dataset Size:  378
+Misc. Labelled Target Dataset Size:  378
+Bank keys - Target:  dict_keys(['feat_vec', 'labels', 'names', 'domain_identifier']) Source:  dict_keys(['feat_vec', 'labels', 'names', 'domain_identifier'])
+Num  - Target:  69980 Source:  31502
+Unlabeled Target Data Size: 1457
+S painting T real Train Ep: 0 lr0.01 	 Loss Classification: 4.898217 Loss T 0.472400 Method MME
+
+S painting T real Train Ep: 100 lr0.009925650290240803 	 Loss Classification: 2.385196 Loss T 0.299934 Method MME
+
+S painting T real Train Ep: 200 lr0.009852577760521605 	 Loss Classification: 1.831669 Loss T 0.204359 Method MME
+
+S painting T real Train Ep: 300 lr0.009780748269686728 	 Loss Classification: 1.273181 Loss T 0.118960 Method MME
+
+S painting T real Train Ep: 400 lr0.009710128909124701 	 Loss Classification: 1.989712 Loss T 0.134624 Method MME
+
+S painting T real Train Ep: 500 lr0.00964068794694323 	 Loss Classification: 2.461934 Loss T 0.173457 Method MME
+
+
+Labeled Target set: Average loss: 1.8665, Accuracy: 593/1080 F1 (54.9074%)
+

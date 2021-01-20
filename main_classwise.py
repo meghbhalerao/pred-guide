@@ -239,7 +239,7 @@ def train():
 
 
         #if step >=0 and step % 250 == 0 and step<=3500:
-        if step>=2000:
+        if step>=1500:
             if step % 1000 == 0:
                 poor_class_list = list(np.argsort(per_cls_acc))[0:126]
                 print("Per Class Accuracy Calculated According to the Labelled Target examples is: ", per_cls_acc)
@@ -253,7 +253,7 @@ def train():
 
                 #source_strong_near_loader = make_st_aug_loader(args,classwise_near)
 
-            criterion,criterion_pseudo, criterion_lab_target, criterion_strong_source = update_loss_functions(label_bank, class_list, beta=0.99)
+            #criterion,criterion_pseudo, criterion_lab_target, criterion_strong_source = update_loss_functions(label_bank, class_list, beta=0.99)
 
         if step>=7000:
             do_lab_target_loss(G,F1,data_t,im_data_t, gt_labels_t, criterion_lab_target)

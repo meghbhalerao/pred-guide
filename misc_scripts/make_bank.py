@@ -3,8 +3,8 @@ from __future__ import barry_as_FLUFL
 import torch
 import numpy as np
 import sys
-#sys.path.append("/home/megh/projects/domain-adaptation/SSAL/")
-sys.path.append("/cbica/home/bhaleram/comp_space/random/personal/others/SSAL/")
+sys.path.append("/home/megh/projects/domain-adaptation/SSAL/")
+#sys.path.append("/cbica/home/bhaleram/comp_space/random/personal/others/SSAL/")
 from loaders.data_list import Imagelists_VISDA, return_classlist
 from model.basenet import *
 from model.resnet import *
@@ -19,12 +19,12 @@ import copy
 # Defining return dataset function here
 net = "resnet34"
 root = '../data/multi/'
-domain = "real"
+domain = "painting"
 n_class = 126
 num = 3
 load_pretrained = False
-#image_list_target_unl = "../data/txt/multi/unlabeled_target_images_%s_%s.txt"%(domain,num)
-image_list_target_unl = "../data/txt/multi/labeled_source_images_%s.txt"%(domain)
+image_list_target_unl = "../data/txt/multi/unlabeled_target_images_%s_%s.txt"%(domain,num)
+#image_list_target_unl = "../data/txt/multi/labeled_source_images_%s.txt"%(domain)
 f = open(image_list_target_unl,"r")
 print(len([line for line in f]))
 ours = False
