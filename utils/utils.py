@@ -90,9 +90,13 @@ def update_label_bank(label_bank, data, pseudo_labels, mask_loss):
 
 def pairwise_distance(feat_bank, feat_batch):
     '''
-    feat_batch: batch_size x feat_dim
-    feat_bank : total_examples_num x feat_dim
-    output: total_examples x batch_size
+    Description: 
+    Calculates the pairwise euclidian distance between a batch of incoming features and a global feature bank. 
+    Inputs:
+    feat_batch - batch_size x feat_dim
+    feat_bank - total_examples_num x feat_dim
+    Outputs:
+    output - total_examples x batch_size
     '''
     batch_size = feat_batch.shape[0]
     total_examples_num = feat_bank.shape[0]
