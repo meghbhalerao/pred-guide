@@ -40,6 +40,7 @@ def get_kNN(sim_distribution, feat_dict, k = 1):
     return k_neighbors, labels_k_neighbors, names_k_neighbors
 
 def make_feat_dict_from_idx(feat_dict,idxs):
+    
     feat_dict_idx = edict({})
     feat_dict_idx.feat_vec = feat_dict.feat_vec[idxs]
     feat_dict_idx.labels = [feat_dict.labels[idx] for idx in idxs]
@@ -48,6 +49,18 @@ def make_feat_dict_from_idx(feat_dict,idxs):
     return feat_dict_idx
 
 def get_k_farthest_neighbors(sim_distribution,feat_dict,K_farthest):
+        '''
+        Description: 
+        Gets the K farthest examples for every example in the incoming batch. 
+        Inputs:
+        1. sim_distribution - this is the list of cosine similarities for every example in the batch which is pre-calculated
+        2. feat_dict - dictionary which consists of the feature bank and corresponding metadata
+        3. K_farthest - the number of k nearest neighbors
+        Outputs:
+        1. k_farthest - the repersentations of the k farthest neighbors
+        2. labels_k_farthest - the predicted labels of the farthest neighbors
+        3. names_k_farthest -  the names/paths of the images which correspond to the farthest neighbors
+        '''   
         sim_distribution.cosines = 1 - sim_distribution.cosines
         k_farthest, labels_k_farthest, names_k_farthest = get_kNN(sim_distribution, feat_dict, K_farthest)
         return k_farthest, labels_k_farthest, names_k_farthest
