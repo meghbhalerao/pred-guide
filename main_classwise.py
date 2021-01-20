@@ -83,14 +83,13 @@ parser.add_argument('--use_bank', type=int, default=1,
 
 torch.autograd.set_detect_anomaly(True) # Gradient anomaly detection is set true for debugging purposes
 args = parser.parse_args()
-print('Dataset %s Source %s Target %s Labeled num perclass %s Network %s' %
-      (args.dataset, args.source, args.target, args.num, args.net))
+print('Dataset %s Source %s Target %s Labeled num perclass %s Network %s' %(args.dataset, args.source, args.target, args.num, args.net))
 
 source_loader, target_loader, target_loader_misc, target_loader_unl, target_loader_val, target_loader_test, class_list = return_dataset_randaugment(args)    
 
 use_gpu = torch.cuda.is_available()
-# Seeding everything for removing non-deterministic components
-torch.cuda.manual_seed(args.seed)
+
+torch.cuda.manual_seed(args.seed) # Seeding everything for removing non-deterministic components
 
 if args.net == 'resnet34':
     G = resnet34()
@@ -127,8 +126,8 @@ lr = args.lr
 G.cuda()
 F1.cuda()
 
-#G = nn.DataParallel(G, device_ids=[0,1])
-#F1 = nn.DataParallel(F1, device_ids=[0,1])
+G = nn.DataParallel(G, device_ids=[0,1])
+F1 = nn.DataParallel(F1, device_ids=[0,1])
 
 if os.path.exists(args.checkpath) == False:
     os.mkdir(args.checkpath)
@@ -240,9 +239,9 @@ def train():
 
 
         #if step >=0 and step % 250 == 0 and step<=3500:
-        if step>=1500:
+        if step>=2000:
             if step % 1000 == 0:
-                poor_class_list = list(np.argsort(per_cls_acc))[0:125]
+                poor_class_list = list(np.argsort(per_cls_acc))[0:126]
                 print("Per Class Accuracy Calculated According to the Labelled Target examples is: ", per_cls_acc)
                 print("Top k classes which perform poorly are: ", poor_class_list)
 
@@ -254,7 +253,7 @@ def train():
 
                 #source_strong_near_loader = make_st_aug_loader(args,classwise_near)
 
-                criterion,criterion_pseudo, criterion_lab_target, criterion_strong_source = update_loss_functions(label_bank, class_list, beta=0.99)
+            criterion,criterion_pseudo, criterion_lab_target, criterion_strong_source = update_loss_functions(label_bank, class_list, beta=0.99)
 
         if step>=7000:
             do_lab_target_loss(G,F1,data_t,im_data_t, gt_labels_t, criterion_lab_target)
@@ -270,7 +269,7 @@ def train():
             #try:
             loss = torch.mean(weights_source * criterion(out1, target))
             #except:
-            #pass
+            pass
         else:
             #try:
             loss = torch.mean(criterion(out1, target))
@@ -282,8 +281,8 @@ def train():
             if args.method == 'ENT':
                 loss_t = entropy(F1, output, args.lamda)
                 loss_t.backward(retain_graph=True)
-                optimizer_f.step()
-                optimizer_g.step()
+                #optimizer_f.step()
+                #optimizer_g.step()
             elif args.method == 'MME':
                 loss_t = adentropy(F1, output, args.lamda)
                 loss_t.backward(retain_graph=True)

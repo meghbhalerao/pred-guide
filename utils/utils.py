@@ -33,6 +33,19 @@ def save_checkpoint(state, is_best, checkpoint='checkpoint',
         shutil.copyfile(filepath, os.path.join(checkpoint, 'model_best.pth.tar'))
 
 def update_features(feat_dict, data, G, momentum, source  = False):
+    '''
+    Description:
+    1. This function updates the feature bank using the reprsentations of the current batch
+    Inputs:
+    1. feat_dict - the bank of representations taken after the image has passed through G
+    2. data - the current batch
+    3. G - the feature extraction vector
+    4. momentum - the momentum with which we could use to update the feature bank
+    5. source [bool] - whether the batch passed is of the source or not the source
+    Outputs:
+    1. f_batch - the reprsentations of the batch, to save further computation
+    2. feat_dict - the updated feature dictionary
+    '''
     names_batch = data[2]
     if not source:
         img_batch = data[0][0].cuda()
@@ -45,6 +58,16 @@ def update_features(feat_dict, data, G, momentum, source  = False):
     return f_batch, feat_dict
 
 def update_label_bank(label_bank, data, pseudo_labels, mask_loss):
+    '''
+    Description:
+    This function continuously updates the label bank using the predicted labels of the current batch
+    Inputs: 
+    1. Label bank - which is 1D tensor of length as the number of target examples
+    2. data - which is the batch of the unlabeled target data
+    3. pseudo_labels - this is the pseudo label which is calculated for that batch of data
+    4. mask_loss - this gives the examples in the batch which are confident 
+    Output: None as of now, can be customized according to requirements
+    '''
     names_batch = data[2]
     names_batch = list(names_batch)
     names_batch_confident = []

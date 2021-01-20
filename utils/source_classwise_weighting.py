@@ -40,7 +40,7 @@ def get_k_farthest_neighbors(sim_distribution,feat_dict,K_farthest):
         k_farthest, labels_k_farthest, names_k_farthest = get_kNN(sim_distribution, feat_dict, K_farthest)
         return k_farthest, labels_k_farthest, names_k_farthest
 
-def do_source_weighting(loader, feat_dict,G,K_farthest,per_class_accuracy = None, weight=0.8,aug = 0, only_for_poor = False, poor_class_list = None, weighing_mode='F'):
+def do_source_weighting(loader, feat_dict, G, K_farthest,per_class_accuracy = None, weight=0.8, aug = 0, only_for_poor = False, poor_class_list = None, weighing_mode='F'):
     class_wise_examples = edict({"names":[],"labels":[]})
     n_examples = len(feat_dict.domain_identifier)
     for idx, batch in enumerate(loader):
@@ -50,7 +50,7 @@ def do_source_weighting(loader, feat_dict,G,K_farthest,per_class_accuracy = None
         idxs_label = [i for i, x in enumerate(feat_dict.labels) if x == img_label]
         feat_dict_label = make_feat_dict_from_idx(feat_dict,idxs_label)
         f_batch, sim_distribution = get_similarity_distribution(feat_dict_label,batch,G,i=aug)
-        
+
         if weighing_mode == 'F':
             k, labels_k, names_k = get_k_farthest_neighbors(sim_distribution,feat_dict_label,K_farthest)
         elif weighing_mode == 'N':
@@ -61,9 +61,9 @@ def do_source_weighting(loader, feat_dict,G,K_farthest,per_class_accuracy = None
         #print(type(per_class_accuracy))
         if per_class_accuracy is not None:
             if weighing_mode == 'N':
-                per_class_weights = 1.2 * (1 + 1/np.exp(per_class_accuracy))
+                per_class_weights = 1 * (1 + 1/np.exp(per_class_accuracy))
             elif weighing_mode == 'F':
-                per_class_weights = 0.8 * (1 - 1/np.exp(per_class_accuracy))
+                per_class_weights = 1 * (1 - 1/np.exp(per_class_accuracy))
         per_class_weights = torch.tensor(per_class_accuracy)
 
         #print(names_k)
@@ -158,15 +158,17 @@ def do_probability_weighing(G,D,source_loader,feat_dict):
         
 def update_loss_functions(label_bank, class_list,beta=0.99):
     class_num_list = get_per_class_examples(label_bank, class_list)
+    print("Predicted Number of Examples per Class is (According to the pseudo labels): ", class_num_list)
     effective_num = 1.0 - np.power(beta, class_num_list)
     per_cls_weights = (1.0 - beta) / np.array(effective_num)
     per_cls_weights = per_cls_weights / np.sum(per_cls_weights) * len(class_num_list)
     per_cls_weights = torch.FloatTensor(per_cls_weights).cuda()
+    
     criterion = CBFocalLoss(weight=per_cls_weights, gamma=0.5).cuda()
     criterion_pseudo = CBFocalLoss(weight=per_cls_weights, gamma=0.5).cuda()
     criterion_lab_target = CBFocalLoss(weight=per_cls_weights, gamma=0.5).cuda()
     criterion_strong_source = CBFocalLoss(weight=per_cls_weights, gamma=0.5).cuda()
-    print(class_num_list)
+    print("CBFL per class weights:", per_cls_weights)
     return criterion, criterion_pseudo, criterion_lab_target, criterion_strong_source
 
 """
