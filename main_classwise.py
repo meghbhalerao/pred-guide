@@ -224,7 +224,7 @@ def train():
             except:
                 source_strong_near_loader = iter(source_strong_near_loader)
             strong_logits = F1(G(im_near_source_strong))
-            loss_source_strong = criterion_strong_source(strong_logits,gt_near_source_strong)
+            loss_source_strong = criterion_strong_source(strong_logits, gt_near_source_strong)
             loss_source_strong.backward(retain_graph=True)
         
         zero_grad_all()
