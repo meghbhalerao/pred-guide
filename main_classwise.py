@@ -126,8 +126,8 @@ lr = args.lr
 G.cuda()
 F1.cuda()
 
-G = nn.DataParallel(G, device_ids=[0,1])
-F1 = nn.DataParallel(F1, device_ids=[0,1])
+#G = nn.DataParallel(G, device_ids=[0,1])
+#F1 = nn.DataParallel(F1, device_ids=[0,1])
 
 if os.path.exists(args.checkpath) == False:
     os.mkdir(args.checkpath)
@@ -188,6 +188,7 @@ def train():
     K_farthest_source = 5
     beta = 0.99
     per_cls_acc = np.array([1 for _ in range(len(class_list))]) # Just defining for sake of clarity and debugging
+    source_strong_near_loader = None
     for step in range(all_step):
         source_strong_near_loader = None
         optimizer_g = inv_lr_scheduler(param_lr_g, optimizer_g, step, init_lr=args.lr)
@@ -235,7 +236,6 @@ def train():
 
         update_label_bank(label_bank, data_t_unl, pseudo_labels, mask_loss)
 
-
         #if step >=0 and step % 250 == 0 and step<=3500:
         if step>=1500:
             if step % 1000 == 0:
@@ -250,8 +250,8 @@ def train():
                 print("Assigned Classwise weights to source")
 
                 #source_strong_near_loader = make_st_aug_loader(args,classwise_near)
-        #if step >=3500:
-        #    criterion,criterion_pseudo, criterion_lab_target, criterion_strong_source = update_loss_functions(label_bank, class_list, beta=0.99)
+        if step >=3500:
+            criterion,criterion_pseudo, criterion_lab_target, criterion_strong_source = update_loss_functions(label_bank, class_list, beta=0.99)
 
         if step>=7000:
             do_lab_target_loss(G,F1,data_t,im_data_t, gt_labels_t, criterion_lab_target)

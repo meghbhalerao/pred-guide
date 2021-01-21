@@ -85,9 +85,9 @@ def do_source_weighting(loader, feat_dict, G, K_farthest,per_class_accuracy = No
         #print(type(per_class_accuracy))
         if per_class_accuracy is not None:
             if weighing_mode == 'N':
-                per_class_weights = 1 * (1 + 1/np.exp(per_class_accuracy))
+                per_class_weights = 1.2 * (1 + 1/np.exp(per_class_accuracy))
             elif weighing_mode == 'F':
-                per_class_weights = 1 * (1 - 1/np.exp(per_class_accuracy))
+                per_class_weights = 0.8 * (1 - 1/np.exp(per_class_accuracy))
         per_class_weights = torch.tensor(per_class_weights)
 
         #print(names_k)
