@@ -139,7 +139,7 @@ def get_kNN(sim_distribution, feat_dict, k = 1):
     return k_neighbors, labels_k_neighbors
 
 def k_means(vectors, num_clusters): 
-    cluster_ids_x, cluster_centers = kmeans( X=vectors, num_clusters=num_clusters, distance='euclidean', device=torch.device('cuda:0'))
+    cluster_ids_x, cluster_centers = kmeans(X=vectors, num_clusters=num_clusters, distance='euclidean', device=torch.device('cuda:0'))
     return cluster_ids_x, cluster_centers
 
 def combine_dicts(feat_dict_target, feat_dict_source): # expects the easydict object
@@ -211,7 +211,7 @@ def do_method_bank(feat_dict_source, feat_dict_target, feat_dict_combined, momen
     k_neighbors, labels_k_neighbors = get_kNN(sim_distribution, feat_dict_combined, K)    
     #mask_loss_uncertain = (prob_weak_aug.max(1)[0]<thresh) & (prob_weak_aug.max(1)[0]>0.7)
     mask_loss_uncertain = prob_weak_aug.max(1)[0]>thresh
-    knn_majvot_pseu7labels = get_majority_vote(k_neighbors,feat_dict_combined, K, F1, mask_loss_uncertain, len(target_loader_unl.dataset))
+    knn_majvot_pseudo_labels = get_majority_vote(k_neighbors,feat_dict_combined, K, F1, mask_loss_uncertain, len(target_loader_unl.dataset))
     #loss_pseudo_unl_knn = torch.mean(mask_loss
     # _uncertain.int() * criterion_pseudo(pred_strong_aug, knn_majvot_pseudo_labels))
     if backprop:

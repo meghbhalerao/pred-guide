@@ -79,6 +79,8 @@ parser.add_argument('--uda', type=int, default=0,
                     help='use uda training for model training')
 parser.add_argument('--use_bank', type=int, default=1,
                     help='use feature bank method for experiments')
+parser.add_argument('--data_parallel', type=int, default=1,
+                    help='pytorch DataParallel for training')
 
 
 torch.autograd.set_detect_anomaly(True) # Gradient anomaly detection is set true for debugging purposes
@@ -126,8 +128,9 @@ lr = args.lr
 G.cuda()
 F1.cuda()
 
-#G = nn.DataParallel(G, device_ids=[0,1])
-#F1 = nn.DataParallel(F1, device_ids=[0,1])
+if args.data_parallel:
+    G = nn.DataParallel(G, device_ids=[0,1])
+    F1 = nn.DataParallel(F1, device_ids=[0,1])
 
 if os.path.exists(args.checkpath) == False:
     os.mkdir(args.checkpath)
@@ -250,8 +253,9 @@ def train():
                 print("Assigned Classwise weights to source")
 
                 #source_strong_near_loader = make_st_aug_loader(args,classwise_near)
-        if step >=3500:
-            criterion,criterion_pseudo, criterion_lab_target, criterion_strong_source = update_loss_functions(label_bank, class_list, beta=0.99)
+
+        #if step >=3500:
+                criterion,criterion_pseudo, criterion_lab_target, criterion_strong_source = update_loss_functions(args, label_bank, class_list, beta=0.99)
 
         if step>=7000:
             do_lab_target_loss(G,F1,data_t,im_data_t, gt_labels_t, criterion_lab_target)
