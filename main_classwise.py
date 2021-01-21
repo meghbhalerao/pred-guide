@@ -154,7 +154,7 @@ def train():
     for param_group in optimizer_f.param_groups:
         param_lr_f.append(param_group["lr"])
 
-    thresh = 0.9
+    thresh = 0.9 # can make this variable
     root_folder = "./data/%s"%(args.dataset)
     criterion = nn.CrossEntropyLoss(reduction='none').cuda()
     criterion_pseudo = nn.CrossEntropyLoss(reduction='none').cuda()
@@ -188,10 +188,8 @@ def train():
     K_farthest_source = 5
     beta = 0.99
     per_cls_acc = np.array([1 for _ in range(len(class_list))]) # Just defining for sake of clarity and debugging
-    source_strong_near_loader = None
     for step in range(all_step):
         source_strong_near_loader = None
-
         optimizer_g = inv_lr_scheduler(param_lr_g, optimizer_g, step, init_lr=args.lr)
         optimizer_f = inv_lr_scheduler(param_lr_f, optimizer_f, step, init_lr=args.lr)
 
@@ -252,8 +250,8 @@ def train():
                 print("Assigned Classwise weights to source")
 
                 #source_strong_near_loader = make_st_aug_loader(args,classwise_near)
-        if step >=3500:
-            criterion,criterion_pseudo, criterion_lab_target, criterion_strong_source = update_loss_functions(label_bank, class_list, beta=0.99)
+        #if step >=3500:
+        #    criterion,criterion_pseudo, criterion_lab_target, criterion_strong_source = update_loss_functions(label_bank, class_list, beta=0.99)
 
         if step>=7000:
             do_lab_target_loss(G,F1,data_t,im_data_t, gt_labels_t, criterion_lab_target)
