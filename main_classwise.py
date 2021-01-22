@@ -160,20 +160,21 @@ def train():
     thresh = 0.9 # can make this variable
     root_folder = "./data/%s"%(args.dataset)
 
-
+    
     criterion = nn.CrossEntropyLoss(reduction='none').cuda()
     criterion_pseudo = nn.CrossEntropyLoss(reduction='none').cuda()
     criterion_lab_target = nn.CrossEntropyLoss(reduction='mean').cuda()
     criterion_strong_source = nn.CrossEntropyLoss(reduction='mean').cuda()
-
-
-    feat_dict_source, feat_dict_target, _ = load_bank(args)
+    
     """
     criterion = FocalLoss(reduction='none').cuda()
     criterion_pseudo = FocalLoss(reduction='none').cuda()
     criterion_lab_target = FocalLoss(reduction='mean').cuda()
     criterion_strong_source = FocalLoss(reduction='mean').cuda()
     """
+
+    feat_dict_source, feat_dict_target, _ = load_bank(args)
+
     """
     if args.augmentation_policy == 'rand_augment':
         augmentation  = TransformFix(args.augmentation_policy,args.net,mean =[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
@@ -263,8 +264,8 @@ def train():
                 #source_strong_near_loader = make_st_aug_loader(args,classwise_near)
 
             #if step >=0:
-                #criterion,criterion_pseudo, criterion_lab_target, criterion_strong_source = update_loss_functions(args, label_bank, class_list, class_num_list = class_num_list_source, beta=0.99)
-                criterion,_, _, _ = update_loss_functions(args, label_bank, class_list, class_num_list = class_num_list_source, beta=0.99)
+                criterion,criterion_pseudo, criterion_lab_target, criterion_strong_source = update_loss_functions(args, label_bank, class_list, class_num_list = None, beta=0.99,gammma=0)
+                #criterion,_, _, _ = update_loss_functions(args, label_bank, class_list, class_num_list = class_num_list_source, beta=0.99)
 
         if step >=7000:
             do_lab_target_loss(G,F1,data_t,im_data_t, gt_labels_t, criterion_lab_target)
