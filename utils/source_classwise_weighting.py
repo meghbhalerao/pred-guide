@@ -143,13 +143,13 @@ def make_st_aug_loader(args,classwise,root_folder="./data/multi/"):
 def update_loss_functions(args,label_bank, class_list, class_num_list=None, beta=0.99):
     if class_num_list is None:
         class_num_list = get_per_class_examples(label_bank, class_list) + args.num
-    print("Predicted Number of Examples per Class is (According to the pseudo labels + labelled target examples): ", class_num_list)
+        print("Predicted Number of Examples per Class is (According to the pseudo labels + labelled target examples): ",class_num_list)
     effective_num = 1.0 - np.power(beta, class_num_list)
     per_cls_weights = (1.0 - beta) / np.array(effective_num)
     per_cls_weights = per_cls_weights / np.sum(per_cls_weights) * len(class_num_list)
     per_cls_weights = torch.FloatTensor(per_cls_weights).cuda()
     
-    criterion = CBFocalLoss(weight=per_cls_weights, gamma=0.5).cuda()
+    criterion = CBFocalLoss(weight=per_cls_weights, gamma=0.5, reduction='none').cuda()
     criterion_pseudo = CBFocalLoss(weight=per_cls_weights, gamma=0.5).cuda()
     criterion_lab_target = CBFocalLoss(weight=per_cls_weights, gamma=0.5).cuda()
     criterion_strong_source = CBFocalLoss(weight=per_cls_weights, gamma=0.5).cuda()
