@@ -152,7 +152,7 @@ def train():
     
     param_lr_g = []
     for param_group in optimizer_g.param_groups:
-        param_lr_g.append(param_group["lr"])
+        param_lr_g.append(param_group["lr"])2
     param_lr_f = []
     for param_group in optimizer_f.param_groups:
         param_lr_f.append(param_group["lr"])
@@ -257,7 +257,6 @@ def train():
         #if step >=3500:
                 criterion,criterion_pseudo, criterion_lab_target, criterion_strong_source = update_loss_functions(args, label_bank, class_list, beta=0.99)
 
-        if step>=7000:
             do_lab_target_loss(G,F1,data_t,im_data_t, gt_labels_t, criterion_lab_target)
 
         #output = G(data)
