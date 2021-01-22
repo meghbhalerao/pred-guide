@@ -87,7 +87,7 @@ torch.autograd.set_detect_anomaly(True) # Gradient anomaly detection is set true
 args = parser.parse_args()
 print('Dataset %s Source %s Target %s Labeled num perclass %s Network %s' %(args.dataset, args.source, args.target, args.num, args.net))
 
-source_loader, target_loader, target_loader_misc, target_loader_unl, target_loader_val, target_loader_test, class_list = return_dataset_randaugment(args)    
+source_loader, target_loader, target_loader_misc, target_loader_unl, target_loader_val, target_loader_test, class_num_list_source, class_list = return_dataset_randaugment(args)    
 
 use_gpu = torch.cuda.is_available()
 
@@ -152,20 +152,28 @@ def train():
     
     param_lr_g = []
     for param_group in optimizer_g.param_groups:
-        param_lr_g.append(param_group["lr"])2
+        param_lr_g.append(param_group["lr"])
     param_lr_f = []
     for param_group in optimizer_f.param_groups:
         param_lr_f.append(param_group["lr"])
 
     thresh = 0.9 # can make this variable
     root_folder = "./data/%s"%(args.dataset)
+
+
     criterion = nn.CrossEntropyLoss(reduction='none').cuda()
     criterion_pseudo = nn.CrossEntropyLoss(reduction='none').cuda()
     criterion_lab_target = nn.CrossEntropyLoss(reduction='mean').cuda()
     criterion_strong_source = nn.CrossEntropyLoss(reduction='mean').cuda()
+
+
     feat_dict_source, feat_dict_target, _ = load_bank(args)
-
-
+    """
+    criterion = FocalLoss(reduction='none').cuda()
+    criterion_pseudo = FocalLoss(reduction='none').cuda()
+    criterion_lab_target = FocalLoss(reduction='mean').cuda()
+    criterion_strong_source = FocalLoss(reduction='mean').cuda()
+    """
     """
     if args.augmentation_policy == 'rand_augment':
         augmentation  = TransformFix(args.augmentation_policy,args.net,mean =[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
@@ -254,8 +262,9 @@ def train():
 
                 #source_strong_near_loader = make_st_aug_loader(args,classwise_near)
 
-        #if step >=3500:
-                criterion,criterion_pseudo, criterion_lab_target, criterion_strong_source = update_loss_functions(args, label_bank, class_list, beta=0.99)
+            if step >=0:
+                #criterion,criterion_pseudo, criterion_lab_target, criterion_strong_source = update_loss_functions(args, label_bank, class_list, class_num_list = class_num_list_source, beta=0.99)
+                criterion,_, _, _ = update_loss_functions(args, label_bank, class_list, class_num_list = class_num_list_source, beta=0.99)
 
             do_lab_target_loss(G,F1,data_t,im_data_t, gt_labels_t, criterion_lab_target)
 

@@ -41,15 +41,19 @@ def adentropy(F1, feat, lamda, eta=1.0):
 
 
 class FocalLoss(nn.Module):
-    def __init__(self, alpha=1, gamma=2):
+    def __init__(self, alpha=1, gamma=2, reduction = 'none'):
         super(FocalLoss, self).__init__()
         self.alpha = alpha
         self.gamma = gamma
+        self.reduction = reduction
 
     def forward(self, inputs, targets):
-        ce_loss = F.cross_entropy(inputs, targets, reduction='none') # important to add reduction='none' to keep per-batch-item loss
+        ce_loss = F.cross_entropy(inputs, targets, reduction=self.reduction) # important to add reduction='none' to keep per-batch-item loss
         pt = torch.exp(-ce_loss)
-        focal_loss = (self.alpha * (1-pt)**self.gamma * ce_loss).mean() # mean over the batch
+        if self.reduction == 'mean':
+            focal_loss = (self.alpha * (1-pt)**self.gamma * ce_loss).mean() # mean over the batch
+        elif self.reduction == 'none':
+            focal_loss = (self.alpha * (1-pt)**self.gamma * ce_loss)
         return focal_loss
 
 def focal_loss(input_values, gamma):
