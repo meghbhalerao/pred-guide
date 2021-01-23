@@ -150,9 +150,9 @@ def update_loss_functions(args,label_bank, class_list, class_num_list=None, beta
     per_cls_weights = torch.FloatTensor(per_cls_weights).cuda()
     
     criterion = CBFocalLoss(weight=per_cls_weights, gamma=gamma, reduction='none').cuda()
-    criterion_pseudo = CBFocalLoss(weight=per_cls_weights, gamma=gamma).cuda()
-    criterion_lab_target = CBFocalLoss(weight=per_cls_weights, gamma=gamma).cuda()
-    criterion_strong_source = CBFocalLoss(weight=per_cls_weights, gamma=gamma).cuda()
+    criterion_pseudo = CBFocalLoss(weight=per_cls_weights, gamma=gamma, reduction='none').cuda()
+    criterion_lab_target = CBFocalLoss(weight=per_cls_weights, gamma=gamma,reduction='mean').cuda()
+    criterion_strong_source = CBFocalLoss(weight=per_cls_weights, gamma=gamma,reduction='mean').cuda()
     print("CBFL per class weights:", per_cls_weights)
     return criterion, criterion_pseudo, criterion_lab_target, criterion_strong_source
 

@@ -255,7 +255,7 @@ def train():
                 print("Per Class Accuracy Calculated According to the Labelled Target examples is: ", per_cls_acc)
                 print("Top k classes which perform poorly are: ", poor_class_list)
 
-                classwise_near = do_source_weighting(target_loader_misc,feat_dict_source,G,K_farthest_source,per_class_accuracy = per_cls_acc, weight=1, aug = 2, only_for_poor=True, poor_class_list=poor_class_list,weighing_mode='N')
+                classwise_near = do_source_weighting(target_loader_misc,feat_dict_source,G,K_farthest_source, per_class_accuracy = per_cls_acc, weight=1, aug = 2, only_for_poor=True, poor_class_list=poor_class_list,weighing_mode='N')
 
                 do_source_weighting(target_loader_misc,feat_dict_source, G, K_farthest_source, per_class_accuracy = per_cls_acc, weight=1, aug = 2, only_for_poor=True, poor_class_list=poor_class_list,weighing_mode='F')
 
@@ -263,9 +263,10 @@ def train():
 
                 #source_strong_near_loader = make_st_aug_loader(args,classwise_near)
 
-            #if step >=0:
-                criterion,criterion_pseudo, criterion_lab_target, criterion_strong_source = update_loss_functions(args, label_bank, class_list, class_num_list = None, beta=0.99,gammma=0)
-                #criterion,_, _, _ = update_loss_functions(args, label_bank, class_list, class_num_list = class_num_list_source, beta=0.99)
+        if step >=3500:
+            #criterion,criterion_pseudo, criterion_lab_target, criterion_strong_source = update_loss_functions(args,label_bank, class_list, class_num_list = class_num_list_source, beta=0.99, gamma=0)
+
+            criterion, _, _, _ = update_loss_functions(args, label_bank, class_list, class_num_list = class_num_list_source, beta=0.99)
 
         if step >=7000:
             do_lab_target_loss(G,F1,data_t,im_data_t, gt_labels_t, criterion_lab_target)
@@ -356,7 +357,6 @@ def train():
                     'optimizer_f' : optimizer_f.state_dict(),
                     'feat_dict_target': feat_dict_target
                     },os.path.join(args.checkpath,"%s_%s_%s_%d.ckpt.pth.tar"%(args.net,args.source,args.target,step)))
-
 
 def test(loader, mode='Test'):
     G.eval()
