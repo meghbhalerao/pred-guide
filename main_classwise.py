@@ -88,7 +88,6 @@ args = parser.parse_args()
 print('Dataset %s Source %s Target %s Labeled num perclass %s Network %s' %(args.dataset, args.source, args.target, args.num, args.net))
 
 source_loader, target_loader, target_loader_misc, target_loader_unl, target_loader_val, target_loader_test, class_num_list_source, class_list = return_dataset_randaugment(args)    
-
 use_gpu = torch.cuda.is_available()
 
 torch.cuda.manual_seed(args.seed) # Seeding everything for removing non-deterministic components
@@ -249,7 +248,7 @@ def train():
         update_label_bank(label_bank, data_t_unl, pseudo_labels, mask_loss)
 
         #if step >=0 and step % 250 == 0 and step<=3500:
-        if step>=1500:
+        if step>=2000:
             if step % 1000 == 0:
                 poor_class_list = list(np.argsort(per_cls_acc))[0:126]
                 print("Per Class Accuracy Calculated According to the Labelled Target examples is: ", per_cls_acc)
@@ -263,10 +262,10 @@ def train():
 
                 #source_strong_near_loader = make_st_aug_loader(args,classwise_near)
 
-        if step >=3500:
-            #criterion,criterion_pseudo, criterion_lab_target, criterion_strong_source = update_loss_functions(args,label_bank, class_list, class_num_list = class_num_list_source, beta=0.99, gamma=0)
+        if step >=0:
+            criterion,criterion_pseudo, criterion_lab_target, criterion_strong_source = update_loss_functions(args,label_bank, class_list, class_num_list_pseudo= None, class_num_list_source= class_num_list_source, beta=0.99, gamma=0)
 
-            criterion, _, _, _ = update_loss_functions(args, label_bank, class_list, class_num_list = class_num_list_source, beta=0.99)
+                #criterion, _, _, _ = update_loss_functions(args, label_bank, class_list, class_num_list = class_num_list_source, beta=0.99)
 
         if step >=7000:
             do_lab_target_loss(G,F1,data_t,im_data_t, gt_labels_t, criterion_lab_target)
