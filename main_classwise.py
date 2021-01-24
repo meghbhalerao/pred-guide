@@ -262,7 +262,7 @@ def train():
 
                 #source_strong_near_loader = make_st_aug_loader(args,classwise_near)
 
-        if step >=0:
+        if step >=3000:
             criterion,criterion_pseudo, criterion_lab_target, criterion_strong_source = update_loss_functions(args,label_bank, class_list, class_num_list_pseudo= None, class_num_list_source= class_num_list_source, beta=0.99, gamma=0)
 
                 #criterion, _, _, _ = update_loss_functions(args, label_bank, class_list, class_num_list = class_num_list_source, beta=0.99)

@@ -145,8 +145,11 @@ def update_loss_functions(args,label_bank, class_list, class_num_list_pseudo=Non
     if class_num_list_pseudo is None:
         class_num_list_pseudo = get_per_class_examples(label_bank, class_list) + args.num
         print("Pred num ex per class (pseudo labels + labelled target examples): ", class_num_list_pseudo)
-    
-    class_num_list =  class_num_list_pseudo + np.array(class_num_list_source)
+        
+    if class_num_list_source is not None:
+        class_num_list =  class_num_list_pseudo + np.array(class_num_list_source)
+    else:
+        class_num_list = class_num_list_pseudo
 
     effective_num = 1.0 - np.power(beta, class_num_list)
     per_cls_weights = (1.0 - beta) / np.array(effective_num)
