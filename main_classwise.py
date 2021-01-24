@@ -248,7 +248,7 @@ def train():
         update_label_bank(label_bank, data_t_unl, pseudo_labels, mask_loss)
 
         #if step >=0 and step % 250 == 0 and step<=3500:
-        if step>=2000:
+        if step>=0:
             if step % 1000 == 0:
                 poor_class_list = list(np.argsort(per_cls_acc))[0:126]
                 print("Per Class Accuracy Calculated According to the Labelled Target examples is: ", per_cls_acc)
@@ -259,11 +259,11 @@ def train():
                 do_source_weighting(target_loader_misc,feat_dict_source, G, K_farthest_source, per_class_accuracy = per_cls_acc, weight=1, aug = 2, only_for_poor=True, poor_class_list=poor_class_list,weighing_mode='F')
 
                 print("Assigned Classwise weights to source")
-
+                
                 #source_strong_near_loader = make_st_aug_loader(args,classwise_near)
 
-        if step >=3000:
-            criterion,criterion_pseudo, criterion_lab_target, criterion_strong_source = update_loss_functions(args,label_bank, class_list, class_num_list_pseudo= None, class_num_list_source= class_num_list_source, beta=0.99, gamma=0)
+        if step >=0:
+            criterion,criterion_pseudo, criterion_lab_target, criterion_strong_source = update_loss_functions(args,label_bank, class_list, class_num_list_pseudo = None, class_num_list_source = class_num_list_source, beta=0.99, gamma=0)
 
                 #criterion, _, _, _ = update_loss_functions(args, label_bank, class_list, class_num_list = class_num_list_source, beta=0.99)
 
@@ -287,6 +287,8 @@ def train():
             loss = torch.mean(criterion(out1, target))
             #except:
             #pass
+        
+        loss.backward(retain_graph=True)
 
         if not args.method == 'S+T':
             output = G(im_data_tu)
@@ -297,13 +299,13 @@ def train():
                 #optimizer_g.step()
             elif args.method == 'MME':
                 loss_t = adentropy(F1, output, args.lamda)
-                loss_t.backward(retain_graph=True)
+                loss_t.backward()#retain_graph=True)
                 #optimizer_f.step()
                 #optimizer_g.step()
             else:
                 raise ValueError('Method cannot be recognized.')
             #try: 
-            loss.backward()
+            #loss.backward()
             #except:
             #pass
 

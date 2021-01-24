@@ -90,7 +90,7 @@ def do_source_weighting(loader, feat_dict, G, K_farthest,per_class_accuracy = No
                 per_class_weights = 1 * (1 - gamma/np.exp(per_class_accuracy))
         
         per_class_weights = torch.tensor(per_class_weights)
-
+        print("Per cls weights according to the accuracy are: ", per_class_weights)
         #print(names_k)
         names_k = names_k[0] # 0 - since batch_size is 1 for 
         for name in names_k:
