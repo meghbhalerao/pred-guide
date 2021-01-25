@@ -267,7 +267,7 @@ def train():
 
                 #criterion, _, _, _ = update_loss_functions(args, label_bank, class_list, class_num_list = class_num_list_source, beta=0.99)
 
-        if step >=7500:
+        if step >=8000:
             do_lab_target_loss(G,F1,data_t,im_data_t, gt_labels_t, criterion_lab_target)
 
         #output = G(data)
