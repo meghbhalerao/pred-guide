@@ -248,7 +248,7 @@ def train():
         update_label_bank(label_bank, data_t_unl, pseudo_labels, mask_loss)
 
         #if step >=0 and step % 250 == 0 and step<=3500:
-        if step>=0:
+        if step>=2000:
             if step % 1000 == 0:
                 poor_class_list = list(np.argsort(per_cls_acc))[0:126]
                 print("Per Class Accuracy Calculated According to the Labelled Target examples is: ", per_cls_acc)
@@ -262,12 +262,12 @@ def train():
                 
                 #source_strong_near_loader = make_st_aug_loader(args,classwise_near)
 
-        if step >=0:
-            criterion,criterion_pseudo, criterion_lab_target, criterion_strong_source = update_loss_functions(args,label_bank, class_list, class_num_list_pseudo = None, class_num_list_source = class_num_list_source, beta=0.99, gamma=0)
+        if step >=5500:
+            criterion,criterion_pseudo, criterion_lab_target, criterion_strong_source = update_loss_functions(args,label_bank, class_list, class_num_list_pseudo = None, class_num_list_source = None, beta=0.99, gamma=0)
 
                 #criterion, _, _, _ = update_loss_functions(args, label_bank, class_list, class_num_list = class_num_list_source, beta=0.99)
 
-        if step >=7000:
+        if step >=7500:
             do_lab_target_loss(G,F1,data_t,im_data_t, gt_labels_t, criterion_lab_target)
 
         #output = G(data)
@@ -323,7 +323,7 @@ def train():
         
         if step % args.log_interval == 0:
             print(log_train)
-        if step % args.save_interval == 0 and step > 0:
+        if step % args.save_interval == 0 and step >= 0:
             if step % 2000 == 0:
                 #save_stats(F1, G, target_loader_unl, step, feat_dict_combined, data_t_unl, K, mask_loss_uncertain)
                 pass

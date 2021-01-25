@@ -274,7 +274,7 @@ def return_dataset_randaugment(args,txt_path='./data/txt/',root_path='./data/',b
         torch.utils.data.DataLoader(target_dataset,
                                     batch_size=min(bs, len(target_dataset)),
                                     num_workers=3,
-                                    shuffle=True, drop_last=True)
+                                    shuffle=True, drop_last=False)
                                     
     target_loader_misc = torch.utils.data.DataLoader(target_dataset, batch_size=1, num_workers=3, shuffle=False)
 

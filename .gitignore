@@ -23,6 +23,7 @@ target_rw_expts/
 tsne/ckpts/
 banks/
 misc_scipts/saved_matrices/
+old-files/
 # Some specific patterns
 *word2vec*
 .DS_Store
