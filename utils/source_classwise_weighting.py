@@ -64,7 +64,23 @@ def get_k_farthest_neighbors(sim_distribution,feat_dict,K_farthest):
         k_farthest, labels_k_farthest, names_k_farthest = get_kNN(sim_distribution, feat_dict, K_farthest)
         return k_farthest, labels_k_farthest, names_k_farthest
 
-def do_source_weighting(loader, feat_dict, G, K_farthest,per_class_accuracy = None, weight=0.8, aug = 0, gamma = 0.5, only_for_poor = False, poor_class_list = None, weighing_mode='F'):
+def do_source_weighting(loader, feat_dict, G, K_farthest,per_class_raw = None, weight=0.8, aug = 0, phi = 0.5, only_for_poor = False, poor_class_list = None, weighing_mode='F', weigh_using = 'pseudo_labels'):
+
+    if weigh_using == 'pseudo_labels':
+        min_raw = np.min(per_class_raw)
+        max_raw = np.max(per_class_raw)
+        per_class_raw = (per_class_raw - min_raw + 10^-5)/(max_raw - min_raw + 10^-5)
+    elif weigh_using == 'target_acc':
+        pass
+
+    if per_class_raw is not None:
+        if weighing_mode == 'N':
+            per_class_weights = 1 * (1 + phi/np.exp(per_class_raw))
+        elif weighing_mode == 'F':
+            per_class_weights = 1 * (1 - phi/np.exp(per_class_raw))
+    
+        per_class_weights = torch.tensor(per_class_weights)
+        print("Per cls weights according to the accuracy are: ", per_class_weights)
     class_wise_examples = edict({"names":[],"labels":[]})
     n_examples = len(feat_dict.domain_identifier)
     for idx, batch in enumerate(loader):
@@ -82,28 +98,19 @@ def do_source_weighting(loader, feat_dict, G, K_farthest,per_class_accuracy = No
             class_wise_examples.names.extend(names_k[0])
             class_wise_examples.labels.extend(labels_k_nearest[0])
 
-        #print(type(per_class_accuracy))
-        if per_class_accuracy is not None:
-            if weighing_mode == 'N':
-                per_class_weights = 1 * (1 + gamma/np.exp(per_class_accuracy))
-            elif weighing_mode == 'F':
-                per_class_weights = 1 * (1 - gamma/np.exp(per_class_accuracy))
-        
-        per_class_weights = torch.tensor(per_class_weights)
-        print("Per cls weights according to the accuracy are: ", per_class_weights)
         #print(names_k)
         names_k = names_k[0] # 0 - since batch_size is 1 for 
         for name in names_k:
             idx_to_weigh = feat_dict.names.index(name)
             if only_for_poor:
                 if img_label in poor_class_list:
-                    if per_class_accuracy is None:
+                    if per_class_raw is None:
                         feat_dict.sample_weights[idx_to_weigh] = weight
                     else:
                         feat_dict.sample_weights[idx_to_weigh] = per_class_weights[img_label]
 
             else:
-                if per_class_accuracy is None:
+                if per_class_raw is None:
                     feat_dict.sample_weights[idx_to_weigh] = weight  
                 else:
                     feat_dict.sample_weights[idx_to_weigh] = per_class_weights[img_label]

@@ -260,6 +260,7 @@ def return_dataset_randaugment(args,txt_path='./data/txt/',root_path='./data/',b
     target_dataset_unl = Imagelists_VISDA(image_set_file_unl, root=root, transform=TransformFix("randaugment", args.net, mean =[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]))
     target_dataset_test = Imagelists_VISDA(image_set_file_unl, root=root, transform=data_transforms['test'])
     class_list = return_classlist(image_set_file_s)
+    
     class_num_list_source = return_number_of_label_per_class(image_set_file_s, len(class_list))
 
     print("%d classes in this dataset" % len(class_list))

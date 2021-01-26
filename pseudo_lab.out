@@ -1,0 +1,79 @@
+Dataset multi Source real Target sketch Labeled num perclass 3 Network resnet34
+126 classes in this dataset
+Labelled Source Examples:  70358
+Unlabelled Target Dataset Size:  23826
+Labelled Target Dataset Size:  378
+Misc. Labelled Target Dataset Size:  378
+Bank keys - Target:  dict_keys(['feat_vec', 'labels', 'names', 'domain_identifier']) Source:  dict_keys(['feat_vec', 'labels', 'names', 'domain_identifier'])
+Num  - Target:  23826 Source:  70358
+Unlabeled Target Data Batches: 496
+S real T sketch Train Ep: 0 lr0.01 	 Loss Classification: 5.017997 Loss T 0.468903 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 4.9643, Accuracy: 13/1134 F1 (1.1464%)
+
+
+Test set: Average loss: 4.9613, Accuracy: 159/23808 F1 (0.6678%)
+
+
+Val set: Average loss: 4.9751, Accuracy: 8/360 F1 (2.2222%)
+
+best acc test 0.667843  acc val 2.222222 acc labeled target 1.146384
+saving model...
+S real T sketch Train Ep: 100 lr0.009925650290240803 	 Loss Classification: 1.465329 Loss T 0.274361 Method MME
+
+S real T sketch Train Ep: 200 lr0.009852577760521605 	 Loss Classification: 1.038387 Loss T 0.238215 Method MME
+
+S real T sketch Train Ep: 300 lr0.009780748269686728 	 Loss Classification: 1.196944 Loss T 0.190522 Method MME
+
+S real T sketch Train Ep: 400 lr0.009710128909124701 	 Loss Classification: 0.940834 Loss T 0.169081 Method MME
+
+S real T sketch Train Ep: 500 lr0.00964068794694323 	 Loss Classification: 0.479425 Loss T 0.169426 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 2.5216, Accuracy: 503/1134 F1 (44.3563%)
+
+
+Test set: Average loss: 2.4891, Accuracy: 11271/23808 F1 (47.3412%)
+
+
+Val set: Average loss: 2.3472, Accuracy: 175/360 F1 (48.6111%)
+
+best acc test 47.341230  acc val 48.611111 acc labeled target 44.356261
+saving model...
+S real T sketch Train Ep: 600 lr0.00957239477517603 	 Loss Classification: 0.775519 Loss T 0.189046 Method MME
+

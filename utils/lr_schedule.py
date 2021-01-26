@@ -18,7 +18,6 @@ def calc_coeff(iter_num, high=1.0, low=0.0, alpha=10.0, max_iter=10000.0):
                     (1.0 + np.exp(- alpha * iter_num / max_iter)) -
                     (high - low) + low)
 
-kbk
 
 def get_cosine_schedule_with_warmup(optimizer, num_warmup_steps, num_training_steps, num_cycles=7./16., last_epoch=-1):
     def _lr_lambda(current_step):

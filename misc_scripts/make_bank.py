@@ -19,9 +19,9 @@ import copy
 # Defining return dataset function here
 net = "resnet34"
 root = '../data/multi/'
-domain = "painting"
+domain = "real"
 n_class = 126
-num = 3
+num = 1
 load_pretrained = False
 image_list_target_unl = "../data/txt/multi/unlabeled_target_images_%s_%s.txt"%(domain,num)
 #image_list_target_unl = "../data/txt/multi/labeled_source_images_%s.txt"%(domain)

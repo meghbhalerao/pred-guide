@@ -79,9 +79,11 @@ parser.add_argument('--uda', type=int, default=0,
                     help='use uda training for model training')
 parser.add_argument('--use_bank', type=int, default=1,
                     help='use feature bank method for experiments')
+parser.add_argument('--use_cb', type=int, default=1,
+                    help='use class balancing method for experiments')
 parser.add_argument('--data_parallel', type=int, default=1,
                     help='pytorch DataParallel for training')
-
+parser.add_argument('--weigh_using', type=str, default='target_acc', choices=['target_acc', 'pseudo_labels'], help='What metric to weigh with')
 
 torch.autograd.set_detect_anomaly(True) # Gradient anomaly detection is set true for debugging purposes
 args = parser.parse_args()
@@ -141,6 +143,7 @@ def train():
     optimizer_g = optim.SGD(params, momentum=0.9, weight_decay=0.0005, nesterov=True)
     optimizer_f = optim.SGD(list(F1.parameters()), lr=1.0, momentum=0.9, weight_decay=0.0005, nesterov=True)
 
+    print("Labelled Source Examples: ", sum(class_num_list_source))
     print("Unlabelled Target Dataset Size: ",len(target_loader_unl.dataset))
     print("Labelled Target Dataset Size: ",len(target_loader.dataset))
     print("Misc. Labelled Target Dataset Size: ",len(target_loader_misc.dataset))
@@ -192,12 +195,15 @@ def train():
     len_train_source = len(source_loader)
     len_train_target = len(target_loader)
     len_train_target_semi = len(target_loader_unl)
-    print("Unlabeled Target Data Size:", len_train_target_semi)
+    print("Unlabeled Target Data Batches:", len_train_target_semi)
     best_acc_val = 0
     counter = 0
+    #### Some Hyperparameters #####
     K = 3
     K_farthest_source = 5
     beta = 0.99
+    weigh_using = args.weigh_using
+    #### Hyperparameters #######
     per_cls_acc = np.array([1 for _ in range(len(class_list))]) # Just defining for sake of clarity and debugging
     source_strong_near_loader = None
     for step in range(all_step):
@@ -253,17 +259,24 @@ def train():
                 poor_class_list = list(np.argsort(per_cls_acc))[0:126]
                 print("Per Class Accuracy Calculated According to the Labelled Target examples is: ", per_cls_acc)
                 print("Top k classes which perform poorly are: ", poor_class_list)
+                if weigh_using == 'pseudo_labels':
+                    class_num_list_pseudo = get_per_class_examples(label_bank, class_list) + args.num
+                    class_num_list_pseudo =  np.array(class_num_list_pseudo)
+                    raw_weights_to_pass = class_num_list_pseudo
+                elif weigh_using == 'target_acc':
+                    raw_weights_to_pass = per_cls_acc
 
-                classwise_near = do_source_weighting(target_loader_misc,feat_dict_source,G,K_farthest_source, per_class_accuracy = per_cls_acc, weight=1, aug = 2, only_for_poor=True, poor_class_list=poor_class_list,weighing_mode='N')
+                classwise_near = do_source_weighting(target_loader_misc,feat_dict_source,G,K_farthest_source, per_class_raw = raw_weights_to_pass, weight=1, aug = 2, phi = 0.5, only_for_poor=True, poor_class_list=poor_class_list,weighing_mode='N',weigh_using=weigh_using)
 
-                do_source_weighting(target_loader_misc,feat_dict_source, G, K_farthest_source, per_class_accuracy = per_cls_acc, weight=1, aug = 2, only_for_poor=True, poor_class_list=poor_class_list,weighing_mode='F')
+                do_source_weighting(target_loader_misc,feat_dict_source, G, K_farthest_source, per_class_raw = raw_weights_to_pass, weight=1, aug = 2, only_for_poor=True, poor_class_list=poor_class_list,weighing_mode='F',weigh_using=weigh_using)
 
                 print("Assigned Classwise weights to source")
                 
                 #source_strong_near_loader = make_st_aug_loader(args,classwise_near)
 
-        if step >=5500:
-            criterion,criterion_pseudo, criterion_lab_target, criterion_strong_source = update_loss_functions(args,label_bank, class_list, class_num_list_pseudo = None, class_num_list_source = None, beta=0.99, gamma=0)
+        if args.use_cb:
+            if step >=5500:
+                criterion,criterion_pseudo, criterion_lab_target, criterion_strong_source = update_loss_functions(args,label_bank, class_list, class_num_list_pseudo = None, class_num_list_source = class_num_list_source, beta=0.99, gamma=0)
 
                 #criterion, _, _, _ = update_loss_functions(args, label_bank, class_list, class_num_list = class_num_list_source, beta=0.99)
 
@@ -278,15 +291,9 @@ def train():
             names_batch = list(data_s[2])
             idx = [feat_dict_source.names.index(name) for name in names_batch] 
             weights_source = feat_dict_source.sample_weights[idx].cuda()
-            #try:
             loss = torch.mean(weights_source * criterion(out1, target))
-            #except:
-            pass
         else:
-            #try:
             loss = torch.mean(criterion(out1, target))
-            #except:
-            #pass
         
         loss.backward(retain_graph=True)
 
@@ -294,7 +301,7 @@ def train():
             output = G(im_data_tu)
             if args.method == 'ENT':
                 loss_t = entropy(F1, output, args.lamda)
-                loss_t.backward(retain_graph=True)
+                loss_t.backward()#retain_graph=True)
                 #optimizer_f.step()
                 #optimizer_g.step()
             elif args.method == 'MME':
@@ -304,10 +311,7 @@ def train():
                 #optimizer_g.step()
             else:
                 raise ValueError('Method cannot be recognized.')
-            #try: 
-            #loss.backward()
-            #except:
-            #pass
+
 
             optimizer_g.step()
             optimizer_f.step()
@@ -383,6 +387,7 @@ def test(loader, mode='Test'):
                 test_loss += criterion(output1, gt_labels_t) / len(loader)
 
             elif mode == "Labeled Target":
+                print(loader.batch_size)
                 im_data_t_weak, im_data_t_strong, im_data_t_standard = data_t[0][0].cuda(), data_t[0][1].cuda(), data_t[0][2].cuda()
                 gt_labels_t = data_t[1].cuda()
                 feat_weak, feat_strong, feat_standard = G(im_data_t_weak), G(im_data_t_strong), G(im_data_t_standard)
@@ -407,6 +412,7 @@ def test(loader, mode='Test'):
         weight = torch.ones([num_class,1]).cuda()
         per_cls_acc = torch.tensor(np.ones(num_class)).cuda()
     elif mode =='Labeled Target':
+        print(sum(sum(confusion_matrix)))
         np.save("cf_labeled_target.npy",confusion_matrix)
         per_cls_acc = per_class_accuracy(confusion_matrix)
         weight = per_cls_acc 
