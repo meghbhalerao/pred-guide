@@ -278,8 +278,6 @@ def train():
             if step >=5500:
                 criterion,criterion_pseudo, criterion_lab_target, criterion_strong_source = update_loss_functions(args,label_bank, class_list, class_num_list_pseudo = None, class_num_list_source = class_num_list_source, beta=0.99, gamma=0)
 
-                #criterion, _, _, _ = update_loss_functions(args, label_bank, class_list, class_num_list = class_num_list_source, beta=0.99)
-
         if step >=8000:
             do_lab_target_loss(G,F1,data_t,im_data_t, gt_labels_t, criterion_lab_target)
 
@@ -352,16 +350,17 @@ def train():
             F1.train()
             if args.save_check:
                 print('saving model...')
-                torch.save({
-                    'step': step,
-                    'arch': args.net,
-                    'G_state_dict': G.state_dict(),
-                    'F1_state_dict': F1.state_dict(),
-                    'best_acc_test': best_acc_test,
-                    'optimizer_g' : optimizer_g.state_dict(),
-                    'optimizer_f' : optimizer_f.state_dict(),
-                    'feat_dict_target': feat_dict_target
-                    },os.path.join(args.checkpath,"%s_%s_%s_%d.ckpt.pth.tar"%(args.net,args.source,args.target,step)))
+                is_best = True if counter==0 else False
+                save_mymodel(args, {
+                     'step': step,
+                     'arch': args.net,
+                     'G_state_dict': G.state_dict(),
+                     'F1_state_dict': F1.state_dict(),
+                     'best_acc_test': best_acc_test,
+                     'optimizer_g' : optimizer_g.state_dict(),
+                     'optimizer_f' : optimizer_f.state_dict(),
+                     }, is_best)        
+
 
 def test(loader, mode='Test'):
     G.eval()
@@ -385,7 +384,6 @@ def test(loader, mode='Test'):
                     confusion_matrix[t.long(), p.long()] += 1
                 correct += pred1.eq(gt_labels_t.data).cpu().sum()
                 test_loss += criterion(output1, gt_labels_t) / len(loader)
-
             elif mode == "Labeled Target":
                 print(loader.batch_size)
                 im_data_t_weak, im_data_t_strong, im_data_t_standard = data_t[0][0].cuda(), data_t[0][1].cuda(), data_t[0][2].cuda()

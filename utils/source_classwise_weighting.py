@@ -65,11 +65,10 @@ def get_k_farthest_neighbors(sim_distribution,feat_dict,K_farthest):
         return k_farthest, labels_k_farthest, names_k_farthest
 
 def do_source_weighting(loader, feat_dict, G, K_farthest,per_class_raw = None, weight=0.8, aug = 0, phi = 0.5, only_for_poor = False, poor_class_list = None, weighing_mode='F', weigh_using = 'pseudo_labels'):
-
     if weigh_using == 'pseudo_labels':
         min_raw = np.min(per_class_raw)
         max_raw = np.max(per_class_raw)
-        per_class_raw = (per_class_raw - min_raw + 10^-5)/(max_raw - min_raw + 10^-5)
+        per_class_raw = (per_class_raw - min_raw)/(max_raw - min_raw + 10^-5)
     elif weigh_using == 'target_acc':
         pass
 
