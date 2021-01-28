@@ -68,7 +68,7 @@ def do_source_weighting(loader, feat_dict, G, K_farthest,per_class_raw = None, w
     if weigh_using == 'pseudo_labels':
         min_raw = np.min(per_class_raw)
         max_raw = np.max(per_class_raw)
-        per_class_raw = (per_class_raw - min_raw)/(max_raw - min_raw + 10^-5)
+        per_class_raw = (per_class_raw - min_raw)/(max_raw - min_raw + 10**-5)
     elif weigh_using == 'target_acc':
         pass
 

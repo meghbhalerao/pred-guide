@@ -266,9 +266,9 @@ def train():
                 elif weigh_using == 'target_acc':
                     raw_weights_to_pass = per_cls_acc
 
-                classwise_near = do_source_weighting(target_loader_misc,feat_dict_source,G,K_farthest_source, per_class_raw = raw_weights_to_pass, weight=1, aug = 2, phi = 0.5, only_for_poor=True, poor_class_list=poor_class_list,weighing_mode='N',weigh_using=weigh_using)
+                _ = do_source_weighting(target_loader_misc,feat_dict_source, G, K_farthest_source, per_class_raw = raw_weights_to_pass, weight=1, aug = 2, phi = 0.5, only_for_poor=True, poor_class_list=poor_class_list, weighing_mode='N',weigh_using=weigh_using)
 
-                do_source_weighting(target_loader_misc,feat_dict_source, G, K_farthest_source, per_class_raw = raw_weights_to_pass, weight=1, aug = 2, only_for_poor=True, poor_class_list=poor_class_list,weighing_mode='F',weigh_using=weigh_using)
+                _ = do_source_weighting(target_loader_misc,feat_dict_source, G, K_farthest_source, per_class_raw = raw_weights_to_pass, weight=1, aug = 2, only_for_poor=True, poor_class_list=poor_class_list, weighing_mode='F', weigh_using=weigh_using)
 
                 print("Assigned Classwise weights to source")
                 
@@ -276,7 +276,7 @@ def train():
 
         if args.use_cb:
             if step >=5500:
-                criterion,criterion_pseudo, criterion_lab_target, criterion_strong_source = update_loss_functions(args,label_bank, class_list, class_num_list_pseudo = None, class_num_list_source = class_num_list_source, beta=0.99, gamma=0)
+                criterion, criterion_pseudo, criterion_lab_target, criterion_strong_source = update_loss_functions(args,label_bank, class_list, class_num_list_pseudo = None, class_num_list_source = class_num_list_source, beta=0.99, gamma=0)
 
         if step >=8000:
             do_lab_target_loss(G,F1,data_t,im_data_t, gt_labels_t, criterion_lab_target)
@@ -309,7 +309,6 @@ def train():
                 #optimizer_g.step()
             else:
                 raise ValueError('Method cannot be recognized.')
-
 
             optimizer_g.step()
             optimizer_f.step()
