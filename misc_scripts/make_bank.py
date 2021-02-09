@@ -3,6 +3,8 @@ from __future__ import barry_as_FLUFL
 import torch
 import numpy as np
 import sys
+
+from torch._C import Value
 sys.path.append("/home/megh/projects/domain-adaptation/SSAL/")
 #sys.path.append("/cbica/home/bhaleram/comp_space/random/personal/others/SSAL/")
 from loaders.data_list import Imagelists_VISDA, return_classlist
@@ -17,14 +19,20 @@ import pickle
 import copy 
 
 # Defining return dataset function here
-net = "resnet34"
+net = "alexnet"
 root = '../data/multi/'
-domain = "real"
+domain = "clipart"
+domain_identifier = "target"
 n_class = 126
 num = 1
 load_pretrained = False
-image_list_target_unl = "../data/txt/multi/unlabeled_target_images_%s_%s.txt"%(domain,num)
-#image_list_target_unl = "../data/txt/multi/labeled_source_images_%s.txt"%(domain)
+
+if domain_identifier == "target":
+    image_list_target_unl = "../data/txt/multi/unlabeled_target_images_%s_%s.txt"%(domain,num)
+elif domain_identifier == "source":
+    image_list_target_unl = "../data/txt/multi/labeled_source_images_%s.txt"%(domain)
+else:
+    raise ValueError("Please Enter Valid Domain Identifier!")
 f = open(image_list_target_unl,"r")
 print(len([line for line in f]))
 ours = False
@@ -139,7 +147,11 @@ print(len(labels))
 print(features.shape)
 print(len(name_list))
 print("Saving dictionary as pickle")
-filehandler = open("./resnet34_%s_%s.pkl"%(domain,str(num)), 'wb')
+if domain_identifier == "source":
+    filehandler = open("./%s_labelled_source_%s.pkl"%(net, domain),'wb')
+elif domain_identifier == "target":
+    filehandler = open("./%s_unlabelled_target_%s_%s.pkl"%(net, domain,str(num)), 'wb')
+
 pickle.dump(feat_dict, filehandler)
 
 

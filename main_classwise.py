@@ -2,6 +2,8 @@ from __future__ import print_function
 import argparse
 import os
 import sys
+
+from numpy.lib.ufunclike import _fix_and_maybe_deprecate_out_named_y
 from utils.fixmatch import do_fixmatch
 from utils.source_classwise_weighting import *
 import numpy as np
@@ -13,7 +15,7 @@ import torch.nn.functional as F
 import torch.optim as optim
 from torch.autograd import Variable
 from model.resnet import resnet34
-from model.basenet import AlexNetBase, Discriminator, VGGBase, Predictor, Predictor_deep
+from model.basenet import AlexNetBase, Discriminator, Predictor_deep_new, VGGBase, Predictor, Predictor_deep
 from utils.utils import *
 from utils.majority_voting import *
 from utils.confidence_knn import *
@@ -83,6 +85,7 @@ parser.add_argument('--use_cb', type=int, default=1,
                     help='use class balancing method for experiments')
 parser.add_argument('--data_parallel', type=int, default=1,
                     help='pytorch DataParallel for training')
+parser.add_argument('--use_new_features', type=int, default=1, help='use features just before grad reversal for resenet')
 parser.add_argument('--weigh_using', type=str, default='target_acc', choices=['target_acc', 'pseudo_labels'], help='What metric to weigh with')
 
 torch.autograd.set_detect_anomaly(True) # Gradient anomaly detection is set true for debugging purposes
@@ -120,6 +123,14 @@ else:
     F1 = Predictor(num_class=len(class_list), inc=inc, temp=args.T)
 weights_init(F1)
 
+if args.use_new_features:
+    if "resnet" in args.net:
+        print("Using the new feature vectors")
+        G = nn.Sequential(G,F1.fc1)
+        weights_init(list(G.children())[1])
+        F1 = Predictor_deep_new(num_class=len(class_list))
+        weights_init(F1)
+        
 if args.pretrained_ckpt is not None:
     ckpt = torch.load(args.pretrained_ckpt)
     G.load_state_dict(ckpt["G"])
@@ -223,9 +234,7 @@ def train():
                 data_iter_s_near_strong = iter(source_strong_near_loader)
             
         # Extracting the batches from the iteratable dataloader
-        data_t = next(data_iter_t)
-        data_t_unl = next(data_iter_t_unl)
-        data_s = next(data_iter_s)
+        data_t, data_t_unl, data_s  = next(data_iter_t), next(data_iter_t_unl), next(data_iter_s)
         im_data_s = data_s[0].cuda()
         gt_labels_s = data_s[1].cuda()
         im_data_t = data_t[0][0].cuda()
@@ -256,7 +265,7 @@ def train():
         #if step >=0 and step % 250 == 0 and step<=3500:
         if step>=2000:
             if step % 1000 == 0:
-                poor_class_list = list(np.argsort(per_cls_acc))[0:126]
+                poor_class_list = list(np.argsort(per_cls_acc))[0:len(class_list)]
                 print("Per Class Accuracy Calculated According to the Labelled Target examples is: ", per_cls_acc)
                 print("Top k classes which perform poorly are: ", poor_class_list)
                 if weigh_using == 'pseudo_labels':

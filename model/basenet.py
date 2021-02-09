@@ -152,4 +152,16 @@ class Discriminator_classwise(nn.Module):
         return x_out
 
 
-#reverse=False, eta=1.0,choose_class=0
+class Predictor_deep_new(nn.Module):
+    def __init__(self, num_class=64, temp=0.05):
+        super(Predictor_deep_new, self).__init__()
+        self.fc2 = nn.Linear(512, num_class, bias=False)
+        self.num_class = num_class
+        self.temp = temp
+
+    def forward(self, x, reverse=False, eta=0.1):
+        if reverse:
+            x = grad_reverse(x, eta)
+        x = F.normalize(x)
+        x_out = self.fc2(x) / self.temp
+        return x_out

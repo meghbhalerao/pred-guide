@@ -191,20 +191,22 @@ def save_stats(F1, G, loader, step, feat_dict_combined, batch, K, mask_loss_unce
     return 0
 
 def load_bank(args):
-    f = open("./banks/unlabelled_target_%s_%s.pkl"%(args.target,args.num), "rb")
+    f = open("./banks/%s_unlabelled_target_%s_%s.pkl"%(args.net,args.target,args.num), "rb")
     feat_dict_target = edict(pickle.load(f))
     feat_dict_target.feat_vec = feat_dict_target.feat_vec.cuda()
     num_target = len(feat_dict_target.names)
     domain = ["T" for i in range(num_target)]
     feat_dict_target.domain_identifier = domain
 
-    f = open("./banks/labelled_source_%s.pkl"%(args.source), "rb") # Loading the feature bank for the source samples
+    f = open("./banks/%s_labelled_source_%s.pkl"%(args.net,args.source), "rb") # Loading the feature bank for the source samples
     feat_dict_source = edict(pickle.load(f))
     feat_dict_source.feat_vec  = feat_dict_source.feat_vec.cuda() 
     num_source = len(feat_dict_source.names)
     domain = ["S" for i in range(num_source)]
     feat_dict_source.domain_identifier = domain
     # Concat the corresponsing components of the 2 dictionaries
+    #print(feat_dict_source.feat_vec.shape)
+    #print(feat_dict_target.feat_vec.shape)
     feat_dict_combined = edict({})
     feat_dict_combined  = combine_dicts(feat_dict_source, feat_dict_target)
 
