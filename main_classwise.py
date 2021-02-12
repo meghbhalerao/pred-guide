@@ -84,9 +84,11 @@ parser.add_argument('--use_cb', type=int, default=1,
                     help='use class balancing method for experiments')
 parser.add_argument('--data_parallel', type=int, default=1,
                     help='pytorch DataParallel for training')
+parser.add_argument('--num_to_weigh', type=int, default=5,
+                    help='Number of near/far samples to be weighed')
 parser.add_argument('--use_new_features', type=int, default=1, help='use features just before grad reversal for resenet')
 parser.add_argument('--weigh_using', type=str, default='target_acc', choices=['target_acc', 'pseudo_labels'], help='What metric to weigh with')
-
+parser.add_argument('--which_method', type=str, default='SEW', choices=['SEW', 'FM'], help='use SEW or SEW+FM')
 torch.autograd.set_detect_anomaly(True) # Gradient anomaly detection is set true for debugging purposes
 args = parser.parse_args()
 print('Dataset %s Source %s Target %s Labeled num perclass %s Network %s' %(args.dataset, args.source, args.target, args.num, args.net))
@@ -185,7 +187,7 @@ def train():
     criterion_strong_source = FocalLoss(reduction='mean').cuda()
     """
 
-    feat_dict_source, feat_dict_target, _ = load_bank(args)
+    feat_dict_source, feat_dict_target, _ = load_bank(args, mode = 'pkl')
 
     """
     if args.augmentation_policy == 'rand_augment':
@@ -210,7 +212,7 @@ def train():
     counter = 0
     #### Some Hyperparameters #####
     K = 3
-    K_farthest_source = 5
+    K_farthest_source = args.num_to_weigh
     beta = 0.99
     weigh_using = args.weigh_using
     #### Hyperparameters #######
@@ -273,13 +275,16 @@ def train():
                     raw_weights_to_pass = class_num_list_pseudo
                 elif weigh_using == 'target_acc':
                     raw_weights_to_pass = per_cls_acc
-
-                _ = do_source_weighting(target_loader_misc,feat_dict_source, G, K_farthest_source, per_class_raw = raw_weights_to_pass, weight=1, aug = 2, phi = 0.5, only_for_poor=True, poor_class_list=poor_class_list, weighing_mode='N',weigh_using=weigh_using)
-
-                _ = do_source_weighting(target_loader_misc,feat_dict_source, G, K_farthest_source, per_class_raw = raw_weights_to_pass, weight=1, aug = 2, only_for_poor=True, poor_class_list=poor_class_list, weighing_mode='F', weigh_using=weigh_using)
-
-                print("Assigned Classwise weights to source")
                 
+                if args.which_method == 'SEW':
+                    _ = do_source_weighting(target_loader_misc,feat_dict_source, G, K_farthest_source, per_class_raw = raw_weights_to_pass, weight=1, aug = 2, phi = 0.5, only_for_poor=True, poor_class_list=poor_class_list, weighing_mode='N',weigh_using=weigh_using)
+
+                    _ = do_source_weighting(target_loader_misc,feat_dict_source, G, K_farthest_source, per_class_raw = raw_weights_to_pass, weight=1, aug = 2, only_for_poor=True, poor_class_list=poor_class_list, weighing_mode='F', weigh_using=weigh_using)
+
+                    print("Assigned Classwise weights to source")
+                else:
+                    pass
+
                 #source_strong_near_loader = make_st_aug_loader(args,classwise_near)
 
         if args.use_cb:

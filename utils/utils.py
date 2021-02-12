@@ -190,25 +190,28 @@ def save_stats(F1, G, loader, step, feat_dict_combined, batch, K, mask_loss_unce
         f.write("\n")  
     return 0
 
-def load_bank(args):
-    f = open("./banks/%s_unlabelled_target_%s_%s.pkl"%(args.net,args.target,args.num), "rb")
-    feat_dict_target = edict(pickle.load(f))
-    feat_dict_target.feat_vec = feat_dict_target.feat_vec.cuda()
-    num_target = len(feat_dict_target.names)
-    domain = ["T" for i in range(num_target)]
-    feat_dict_target.domain_identifier = domain
+def load_bank(args,mode = 'pkl'):
+    if mode == 'pkl':
+        f = open("./banks/%s_unlabelled_target_%s_%s.pkl"%(args.net,args.target,args.num), "rb")
+        feat_dict_target = edict(pickle.load(f))
+        feat_dict_target.feat_vec = feat_dict_target.feat_vec.cuda()
+        num_target = len(feat_dict_target.names)
+        domain = ["T" for i in range(num_target)]
+        feat_dict_target.domain_identifier = domain
 
-    f = open("./banks/%s_labelled_source_%s.pkl"%(args.net,args.source), "rb") # Loading the feature bank for the source samples
-    feat_dict_source = edict(pickle.load(f))
-    feat_dict_source.feat_vec  = feat_dict_source.feat_vec.cuda() 
-    num_source = len(feat_dict_source.names)
-    domain = ["S" for i in range(num_source)]
-    feat_dict_source.domain_identifier = domain
-    # Concat the corresponsing components of the 2 dictionaries
-    #print(feat_dict_source.feat_vec.shape)
-    #print(feat_dict_target.feat_vec.shape)
-    feat_dict_combined = edict({})
-    feat_dict_combined  = combine_dicts(feat_dict_source, feat_dict_target)
+        f = open("./banks/%s_labelled_source_%s.pkl"%(args.net,args.source), "rb") # Loading the feature bank for the source samples
+        feat_dict_source = edict(pickle.load(f))
+        feat_dict_source.feat_vec  = feat_dict_source.feat_vec.cuda() 
+        num_source = len(feat_dict_source.names)
+        domain = ["S" for i in range(num_source)]
+        feat_dict_source.domain_identifier = domain
+        # Concat the corresponsing components of the 2 dictionaries
+        #print(feat_dict_source.feat_vec.shape)
+        #print(feat_dict_target.feat_vec.shape)
+        feat_dict_combined = edict({})
+        feat_dict_combined  = combine_dicts(feat_dict_source, feat_dict_target)
+    elif mode == 'random':
+        pass
 
     print("Bank keys - Target: ", feat_dict_target.keys(),"Source: ", feat_dict_source.keys())
     print("Num  - Target: ", len(feat_dict_target.names), "Source: ", len(feat_dict_source.names))
