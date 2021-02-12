@@ -2,7 +2,7 @@ import os
 import torch
 from torchvision import transforms
 from loaders.data_list import Imagelists_VISDA, Imagelists_VISDA_rot, return_classlist, return_number_of_label_per_class
-from augmentations.randaugment import RandAugmentMC
+from augmentations.randaugment import RandAugmentMC, RandAugmentPC
 from augmentations.ctaugment import CTAugment
 import numpy as np
 
@@ -197,7 +197,7 @@ class TransformFix(object):
             self.strong = transforms.Compose([
                 ResizeImage(256),
                 transforms.RandomHorizontalFlip(),
-                transforms.RandomCrop(size=self.crop_size, padding=int(self.crop_size*0.125),padding_mode='reflect'), RandAugmentMC(n=2, m=10)])
+                transforms.RandomCrop(size=self.crop_size, padding=int(self.crop_size*0.125),padding_mode='reflect'), RandAugmentPC(n=2, m=10)])
 
         self.standard = transforms.Compose([
             ResizeImage(256),

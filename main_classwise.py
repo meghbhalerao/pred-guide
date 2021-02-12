@@ -72,8 +72,7 @@ parser.add_argument('--early', action='store_false', default=True,
                     help='early stopping on validation or not')
 parser.add_argument('--pretrained_ckpt', type=str, default=None,
                     help='path to pretrained weights')
-parser.add_argument('--augmentation_policy', type=str, default='rand_augment', choices=['ours', 'rand_augment','ct_augment'],
-                    help='which augmentation starategy to use - essentially, which method to follow')
+parser.add_argument('--augmentation_policy', type=str, default='rand_augment', choices=['ours', 'rand_augment','ct_augment'], help='which augmentation starategy to use - essentially, which method to follow')
 parser.add_argument('--LR_scheduler', type=str, default='standard', choices=['standard', 'cosine'], help='Learning Rate scheduling policy')
 parser.add_argument('--adentropy', action='store_true', default=True,
                     help='Use entropy maximization or not')
