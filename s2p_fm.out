@@ -1,0 +1,34 @@
+Dataset multi Source sketch Target painting Labeled num perclass 3 Network resnet34
+126 classes in this dataset
+Labelled Source Examples:  24582
+Unlabelled Target Dataset Size:  31124
+Labelled Target Dataset Size:  378
+Misc. Labelled Target Dataset Size:  378
+Bank keys - Target:  dict_keys(['feat_vec', 'labels', 'names', 'domain_identifier']) Source:  dict_keys(['feat_vec', 'labels', 'names', 'domain_identifier'])
+Num  - Target:  31124 Source:  24582
+Unlabeled Target Data Batches: 648
+S sketch T painting Train Ep: 0 lr0.01 	 Loss Classification: 4.877624 Loss T 0.471092 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 4.9316, Accuracy: 13/1134 F1 (1.1464%)
+
+
+Test set: Average loss: 4.9393, Accuracy: 253/31104 F1 (0.8134%)
+
