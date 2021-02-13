@@ -32,3 +32,2235 @@ Labeled Target set: Average loss: 4.9316, Accuracy: 13/1134 F1 (1.1464%)
 
 Test set: Average loss: 4.9393, Accuracy: 253/31104 F1 (0.8134%)
 
+
+Val set: Average loss: 4.9433, Accuracy: 2/360 F1 (0.5556%)
+
+best acc test 0.813400  acc val 0.555556 acc labeled target 1.146384
+saving model...
+S sketch T painting Train Ep: 100 lr0.009925650290240803 	 Loss Classification: 2.465410 Loss T 0.328618 Method MME
+
+S sketch T painting Train Ep: 200 lr0.009852577760521605 	 Loss Classification: 2.106092 Loss T 0.223919 Method MME
+
+S sketch T painting Train Ep: 300 lr0.009780748269686728 	 Loss Classification: 2.035700 Loss T 0.212521 Method MME
+
+S sketch T painting Train Ep: 400 lr0.009710128909124701 	 Loss Classification: 1.729127 Loss T 0.183268 Method MME
+
+S sketch T painting Train Ep: 500 lr0.00964068794694323 	 Loss Classification: 1.226935 Loss T 0.139302 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 2.7647, Accuracy: 452/1134 F1 (39.8589%)
+
+
+Test set: Average loss: 2.1607, Accuracy: 16070/31104 F1 (51.6654%)
+
+
+Val set: Average loss: 2.3917, Accuracy: 168/360 F1 (46.6667%)
+
+best acc test 51.665381  acc val 46.666667 acc labeled target 39.858907
+saving model...
+S sketch T painting Train Ep: 600 lr0.00957239477517603 	 Loss Classification: 1.660072 Loss T 0.173334 Method MME
+
+S sketch T painting Train Ep: 700 lr0.009505219859830012 	 Loss Classification: 1.555767 Loss T 0.145424 Method MME
+
+S sketch T painting Train Ep: 800 lr0.009439134693595126 	 Loss Classification: 2.244194 Loss T 0.138851 Method MME
+
+S sketch T painting Train Ep: 900 lr0.009374111751051751 	 Loss Classification: 1.520371 Loss T 0.137990 Method MME
+
+S sketch T painting Train Ep: 1000 lr0.009310124446222227 	 Loss Classification: 1.743615 Loss T 0.154471 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 2.6281, Accuracy: 489/1134 F1 (43.1217%)
+
+
+Test set: Average loss: 1.9699, Accuracy: 17555/31104 F1 (56.4397%)
+
+
+Val set: Average loss: 2.2928, Accuracy: 177/360 F1 (49.1667%)
+
+best acc test 56.439686  acc val 49.166667 acc labeled target 43.121693
+saving model...
+S sketch T painting Train Ep: 1100 lr0.00924714709232377 	 Loss Classification: 1.032416 Loss T 0.148279 Method MME
+
+S sketch T painting Train Ep: 1200 lr0.009185154863590003 	 Loss Classification: 0.473349 Loss T 0.138968 Method MME
+
+S sketch T painting Train Ep: 1300 lr0.00912412375903735 	 Loss Classification: 1.429157 Loss T 0.124211 Method MME
+
+S sketch T painting Train Ep: 1400 lr0.009064030568061049 	 Loss Classification: 1.671779 Loss T 0.099777 Method MME
+
+S sketch T painting Train Ep: 1500 lr0.009004852837753237 	 Loss Classification: 0.684258 Loss T 0.138221 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 2.5711, Accuracy: 528/1134 F1 (46.5608%)
+
+
+Test set: Average loss: 2.0037, Accuracy: 18031/31104 F1 (57.9700%)
+
+
+Val set: Average loss: 2.0831, Accuracy: 188/360 F1 (52.2222%)
+
+best acc test 57.970036  acc val 52.222222 acc labeled target 46.560847
+saving model...
+S sketch T painting Train Ep: 1600 lr0.008946568841842816 	 Loss Classification: 1.237409 Loss T 0.106564 Method MME
+
+S sketch T painting Train Ep: 1700 lr0.008889157551163433 	 Loss Classification: 0.616241 Loss T 0.118315 Method MME
+
+S sketch T painting Train Ep: 1800 lr0.008832598605562044 	 Loss Classification: 0.502676 Loss T 0.136203 Method MME
+
+S sketch T painting Train Ep: 1900 lr0.008776872287166303 	 Loss Classification: 1.512124 Loss T 0.126803 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [0.8888889  0.6666667  0.33333334 0.33333334 0.33333334 0.11111111
+ 0.         0.33333334 0.         0.11111111 0.6666667  0.5555556
+ 0.11111111 0.44444445 0.33333334 0.44444445 0.44444445 0.6666667
+ 0.5555556  0.22222222 0.5555556  0.11111111 0.5555556  0.22222222
+ 0.5555556  0.33333334 0.22222222 0.         0.8888889  0.33333334
+ 0.33333334 0.         0.6666667  0.33333334 0.22222222 0.6666667
+ 0.         0.         0.5555556  0.8888889  0.6666667  0.
+ 0.44444445 0.33333334 0.33333334 0.44444445 0.33333334 0.6666667
+ 0.33333334 0.6666667  0.33333334 0.33333334 1.         0.6666667
+ 0.         0.         0.6666667  0.8888889  0.22222222 1.
+ 0.6666667  0.22222222 0.22222222 0.11111111 1.         0.44444445
+ 0.         0.11111111 0.11111111 0.6666667  0.33333334 0.5555556
+ 0.7777778  0.8888889  0.7777778  0.         1.         0.7777778
+ 0.44444445 0.8888889  0.22222222 1.         0.         0.
+ 0.6666667  0.44444445 0.         0.6666667  0.11111111 0.33333334
+ 0.33333334 0.         0.6666667  0.44444445 0.6666667  0.6666667
+ 0.11111111 1.         0.33333334 0.6666667  0.44444445 0.33333334
+ 0.5555556  1.         0.8888889  0.7777778  0.6666667  0.5555556
+ 0.         0.44444445 0.6666667  0.33333334 0.33333334 0.7777778
+ 0.33333334 1.         0.6666667  1.         0.         1.
+ 0.8888889  0.8888889  0.6666667  0.         0.7777778  1.        ]
+Top k classes which perform poorly are:  [27, 36, 37, 118, 123, 54, 75, 41, 83, 55, 86, 6, 91, 66, 31, 82, 108, 8, 96, 21, 12, 63, 9, 5, 67, 68, 88, 34, 62, 23, 19, 80, 58, 61, 26, 51, 50, 111, 48, 112, 46, 114, 44, 90, 70, 43, 101, 7, 98, 14, 29, 25, 33, 4, 3, 89, 2, 30, 65, 109, 13, 42, 15, 100, 93, 85, 45, 78, 16, 102, 71, 107, 38, 11, 24, 18, 20, 22, 32, 92, 94, 95, 110, 99, 17, 10, 1, 35, 69, 53, 87, 40, 47, 84, 49, 106, 56, 122, 60, 116, 105, 74, 72, 113, 77, 124, 121, 120, 0, 28, 39, 79, 73, 57, 104, 103, 52, 119, 117, 64, 115, 76, 81, 97, 59, 125]
+S sketch T painting Train Ep: 2000 lr0.008721959494934213 	 Loss Classification: 1.377876 Loss T 0.133628 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 2.5258, Accuracy: 556/1134 F1 (49.0300%)
+
+
+Test set: Average loss: 1.9316, Accuracy: 18875/31104 F1 (60.6835%)
+
+
+Val set: Average loss: 2.1709, Accuracy: 189/360 F1 (52.5000%)
+
+best acc test 60.683513  acc val 52.500000 acc labeled target 49.029982
+saving model...
+S sketch T painting Train Ep: 2100 lr0.008667841720414475 	 Loss Classification: 0.648836 Loss T 0.116664 Method MME
+
+S sketch T painting Train Ep: 2200 lr0.008614501024650454 	 Loss Classification: 0.557907 Loss T 0.107175 Method MME
+
+S sketch T painting Train Ep: 2300 lr0.008561920016164943 	 Loss Classification: 0.759353 Loss T 0.127073 Method MME
+
+S sketch T painting Train Ep: 2400 lr0.008510081829966844 	 Loss Classification: 1.023465 Loss T 0.107781 Method MME
+
+S sketch T painting Train Ep: 2500 lr0.008458970107524513 	 Loss Classification: 0.687178 Loss T 0.116969 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 2.7743, Accuracy: 539/1134 F1 (47.5309%)
+
+
+Test set: Average loss: 2.0328, Accuracy: 18798/31104 F1 (60.4360%)
+
+
+Val set: Average loss: 2.3630, Accuracy: 187/360 F1 (51.9444%)
+
+best acc test 60.683513  acc val 51.944444 acc labeled target 47.530864
+saving model...
+S sketch T painting Train Ep: 2600 lr0.008408568977653933 	 Loss Classification: 1.076496 Loss T 0.107649 Method MME
+
+S sketch T painting Train Ep: 2700 lr0.00835886303827305 	 Loss Classification: 0.823875 Loss T 0.089712 Method MME
+
+S sketch T painting Train Ep: 2800 lr0.008309837338976545 	 Loss Classification: 0.908039 Loss T 0.113818 Method MME
+
+S sketch T painting Train Ep: 2900 lr0.008261477364388068 	 Loss Classification: 0.922216 Loss T 0.114125 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [0.5555556  0.7777778  0.5555556  0.33333334 0.33333334 0.11111111
+ 0.22222222 0.         0.         0.33333334 0.7777778  0.5555556
+ 0.33333334 0.11111111 0.33333334 0.6666667  0.7777778  0.5555556
+ 0.5555556  0.11111111 0.6666667  0.33333334 0.6666667  0.33333334
+ 0.33333334 0.5555556  0.         0.         0.6666667  0.22222222
+ 0.5555556  0.         0.6666667  0.         0.22222222 0.
+ 0.         0.         0.5555556  0.6666667  0.6666667  0.11111111
+ 0.22222222 0.         0.44444445 0.44444445 0.5555556  0.6666667
+ 0.44444445 0.6666667  0.11111111 0.5555556  1.         0.6666667
+ 0.         0.         0.7777778  1.         0.44444445 0.5555556
+ 0.6666667  0.44444445 0.5555556  0.         0.8888889  0.5555556
+ 0.         0.44444445 0.5555556  0.6666667  0.33333334 0.6666667
+ 0.8888889  0.6666667  0.         0.33333334 0.8888889  0.22222222
+ 0.33333334 1.         0.22222222 1.         0.22222222 0.
+ 0.8888889  0.         0.         0.6666667  0.33333334 0.22222222
+ 0.22222222 0.44444445 0.5555556  0.6666667  0.6666667  0.6666667
+ 0.11111111 1.         0.44444445 0.8888889  0.8888889  0.22222222
+ 0.5555556  0.8888889  0.8888889  0.7777778  0.7777778  0.44444445
+ 0.         0.44444445 0.33333334 0.33333334 0.33333334 0.6666667
+ 0.6666667  1.         0.7777778  1.         0.         1.
+ 0.8888889  1.         0.8888889  0.         1.         1.        ]
+Top k classes which perform poorly are:  [66, 83, 54, 85, 86, 55, 43, 37, 36, 35, 33, 31, 27, 74, 108, 63, 26, 7, 123, 8, 118, 96, 19, 50, 41, 13, 5, 34, 42, 6, 77, 89, 90, 80, 101, 82, 29, 4, 3, 14, 9, 110, 112, 75, 111, 12, 24, 23, 21, 70, 88, 78, 58, 61, 91, 45, 44, 67, 98, 107, 109, 48, 92, 102, 68, 0, 62, 46, 38, 51, 30, 65, 11, 59, 2, 17, 18, 25, 15, 39, 22, 95, 94, 93, 20, 32, 40, 28, 47, 49, 113, 114, 69, 53, 60, 87, 73, 71, 105, 1, 106, 56, 116, 10, 16, 122, 120, 64, 103, 100, 99, 84, 72, 104, 76, 124, 121, 57, 119, 79, 115, 52, 81, 97, 117, 125]
+S sketch T painting Train Ep: 3000 lr0.008213769018249545 	 Loss Classification: 1.079991 Loss T 0.108992 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 2.6057, Accuracy: 553/1134 F1 (48.7654%)
+
+
+Test set: Average loss: 1.8875, Accuracy: 19400/31104 F1 (62.3714%)
+
+
+Val set: Average loss: 2.0539, Accuracy: 198/360 F1 (55.0000%)
+
+best acc test 62.371399  acc val 55.000000 acc labeled target 48.765432
+saving model...
+S sketch T painting Train Ep: 3100 lr0.008166698608209509 	 Loss Classification: 0.610572 Loss T 0.086282 Method MME
+
+S sketch T painting Train Ep: 3200 lr0.008120252831274708 	 Loss Classification: 0.418760 Loss T 0.097575 Method MME
+
+S sketch T painting Train Ep: 3300 lr0.008074418759891278 	 Loss Classification: 0.997677 Loss T 0.083567 Method MME
+
+S sketch T painting Train Ep: 3400 lr0.008029183828623731 	 Loss Classification: 1.630723 Loss T 0.081766 Method MME
+
+S sketch T painting Train Ep: 3500 lr0.007984535821401871 	 Loss Classification: 0.623729 Loss T 0.092497 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 2.6356, Accuracy: 562/1134 F1 (49.5591%)
+
+
+Test set: Average loss: 1.9469, Accuracy: 19570/31104 F1 (62.9180%)
+
+
+Val set: Average loss: 2.2397, Accuracy: 197/360 F1 (54.7222%)
+
+best acc test 62.371399  acc val 54.722222 acc labeled target 49.559083
+saving model...
+S sketch T painting Train Ep: 3600 lr0.007940462859307384 	 Loss Classification: 0.824372 Loss T 0.088904 Method MME
+
+S sketch T painting Train Ep: 3700 lr0.007896953388873518 	 Loss Classification: 0.988005 Loss T 0.100625 Method MME
+
+S sketch T painting Train Ep: 3800 lr0.007853996170872714 	 Loss Classification: 0.620566 Loss T 0.083979 Method MME
+
+S sketch T painting Train Ep: 3900 lr0.00781158026956848 	 Loss Classification: 0.270474 Loss T 0.074596 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [0.33333334 0.6666667  0.6666667  0.33333334 0.22222222 0.11111111
+ 0.33333334 0.11111111 0.         0.33333334 0.6666667  0.5555556
+ 0.         0.33333334 0.33333334 0.22222222 0.7777778  1.
+ 0.11111111 0.5555556  0.6666667  0.22222222 0.6666667  0.5555556
+ 0.7777778  0.44444445 0.22222222 0.         0.7777778  0.8888889
+ 0.5555556  0.         0.22222222 0.         0.11111111 0.
+ 0.         0.         0.5555556  0.5555556  0.7777778  0.22222222
+ 0.11111111 0.5555556  0.33333334 0.5555556  0.33333334 0.6666667
+ 0.11111111 0.5555556  0.22222222 0.22222222 1.         0.6666667
+ 0.         0.         0.6666667  1.         0.7777778  1.
+ 0.6666667  0.         0.22222222 0.11111111 0.8888889  0.5555556
+ 0.11111111 0.33333334 0.7777778  0.8888889  0.33333334 0.7777778
+ 0.7777778  0.6666667  0.22222222 0.44444445 1.         0.22222222
+ 0.7777778  1.         0.33333334 1.         0.         0.
+ 1.         0.33333334 0.         0.6666667  0.33333334 0.11111111
+ 0.         0.33333334 0.6666667  0.6666667  0.5555556  0.6666667
+ 0.11111111 1.         0.33333334 0.8888889  1.         0.6666667
+ 0.8888889  0.8888889  0.8888889  0.6666667  0.6666667  0.44444445
+ 0.5555556  0.22222222 0.8888889  0.33333334 0.33333334 0.6666667
+ 0.33333334 1.         0.8888889  1.         0.         1.
+ 0.7777778  1.         1.         0.         1.         0.8888889 ]
+Top k classes which perform poorly are:  [82, 27, 31, 90, 33, 35, 12, 36, 83, 37, 8, 61, 55, 54, 118, 123, 86, 63, 42, 34, 66, 48, 96, 5, 18, 7, 89, 51, 4, 41, 109, 21, 15, 62, 74, 77, 26, 50, 32, 91, 70, 98, 67, 111, 112, 80, 114, 88, 85, 0, 46, 13, 44, 3, 6, 9, 14, 25, 75, 107, 38, 11, 30, 23, 39, 108, 43, 19, 45, 49, 65, 94, 92, 93, 20, 47, 101, 105, 106, 10, 113, 2, 1, 95, 22, 87, 53, 56, 60, 73, 24, 120, 58, 40, 71, 72, 68, 16, 78, 28, 125, 29, 110, 104, 64, 102, 69, 99, 103, 116, 121, 117, 81, 122, 52, 119, 79, 97, 17, 57, 124, 84, 100, 76, 115, 59]
+S sketch T painting Train Ep: 4000 lr0.007769695042409123 	 Loss Classification: 0.653668 Loss T 0.066251 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 2.5832, Accuracy: 571/1134 F1 (50.3527%)
+
+
+Test set: Average loss: 1.9743, Accuracy: 19650/31104 F1 (63.1752%)
+
+
+Val set: Average loss: 2.2394, Accuracy: 190/360 F1 (52.7778%)
+
+best acc test 62.371399  acc val 52.777778 acc labeled target 50.352734
+saving model...
+S sketch T painting Train Ep: 4100 lr0.007728330130142108 	 Loss Classification: 0.305198 Loss T 0.081198 Method MME
+
+S sketch T painting Train Ep: 4200 lr0.007687475447329114 	 Loss Classification: 0.377402 Loss T 0.098884 Method MME
+
+S sketch T painting Train Ep: 4300 lr0.0076471211732427845 	 Loss Classification: 0.966371 Loss T 0.086479 Method MME
+
+S sketch T painting Train Ep: 4400 lr0.007607257743127307 	 Loss Classification: 1.418968 Loss T 0.092941 Method MME
+
+S sketch T painting Train Ep: 4500 lr0.007567875839805858 	 Loss Classification: 0.189420 Loss T 0.088412 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 2.6605, Accuracy: 570/1134 F1 (50.2645%)
+
+
+Test set: Average loss: 1.9653, Accuracy: 19685/31104 F1 (63.2877%)
+
+
+Val set: Average loss: 2.2872, Accuracy: 200/360 F1 (55.5556%)
+
+best acc test 63.287680  acc val 55.555556 acc labeled target 50.264550
+saving model...
+S sketch T painting Train Ep: 4600 lr0.007528966385618854 	 Loss Classification: 0.507413 Loss T 0.097953 Method MME
+
+S sketch T painting Train Ep: 4700 lr0.007490520534677821 	 Loss Classification: 1.246645 Loss T 0.061771 Method MME
+
+S sketch T painting Train Ep: 4800 lr0.007452529665420465 	 Loss Classification: 0.223733 Loss T 0.069826 Method MME
+
+S sketch T painting Train Ep: 4900 lr0.007414985373453289 	 Loss Classification: 0.665912 Loss T 0.066314 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [0.6666667  0.8888889  0.33333334 0.22222222 0.33333334 0.11111111
+ 0.22222222 0.22222222 0.         0.33333334 0.8888889  0.7777778
+ 0.         0.22222222 0.33333334 0.6666667  1.         0.7777778
+ 0.33333334 0.33333334 0.6666667  0.22222222 0.5555556  0.6666667
+ 0.33333334 0.5555556  0.         0.         0.8888889  0.5555556
+ 0.5555556  0.         0.44444445 0.         0.11111111 0.11111111
+ 0.22222222 0.         0.6666667  0.5555556  0.6666667  0.11111111
+ 0.         0.         0.6666667  0.44444445 0.5555556  0.8888889
+ 0.33333334 0.6666667  0.33333334 0.22222222 1.         0.6666667
+ 0.         0.         0.6666667  1.         0.44444445 1.
+ 0.6666667  0.33333334 0.6666667  0.44444445 1.         0.33333334
+ 0.         0.11111111 0.6666667  0.7777778  0.33333334 0.7777778
+ 1.         1.         0.         0.5555556  0.8888889  0.22222222
+ 0.33333334 1.         0.5555556  1.         0.         0.
+ 0.8888889  0.44444445 0.         0.6666667  0.33333334 0.33333334
+ 0.         0.33333334 0.6666667  0.8888889  0.6666667  0.6666667
+ 0.22222222 1.         0.33333334 0.5555556  1.         0.33333334
+ 0.5555556  1.         1.         0.6666667  0.6666667  0.5555556
+ 0.11111111 0.5555556  0.6666667  0.22222222 0.22222222 0.6666667
+ 0.44444445 0.8888889  1.         1.         0.11111111 1.
+ 0.33333334 1.         1.         0.22222222 1.         1.        ]
+Top k classes which perform poorly are:  [82, 55, 54, 66, 90, 43, 42, 37, 33, 31, 74, 27, 26, 83, 86, 8, 12, 108, 41, 67, 35, 34, 118, 5, 123, 13, 112, 7, 36, 96, 77, 3, 111, 51, 6, 21, 91, 65, 48, 98, 4, 2, 50, 101, 61, 70, 88, 14, 18, 9, 120, 89, 19, 24, 78, 45, 58, 114, 63, 32, 85, 75, 107, 99, 102, 22, 46, 80, 39, 25, 30, 29, 109, 94, 113, 110, 87, 106, 105, 95, 92, 0, 62, 60, 15, 49, 40, 23, 53, 56, 68, 20, 38, 44, 11, 17, 69, 71, 10, 28, 1, 115, 76, 84, 93, 47, 79, 116, 119, 121, 122, 16, 117, 104, 103, 52, 100, 97, 57, 59, 124, 64, 72, 73, 81, 125]
+S sketch T painting Train Ep: 5000 lr0.007377879464668811 	 Loss Classification: 0.507312 Loss T 0.076813 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 2.6799, Accuracy: 587/1134 F1 (51.7637%)
+
+
+Test set: Average loss: 1.9463, Accuracy: 20068/31104 F1 (64.5190%)
+
+
+Val set: Average loss: 2.2572, Accuracy: 199/360 F1 (55.2778%)
+
+best acc test 63.287680  acc val 55.277778 acc labeled target 51.763668
+saving model...
+S sketch T painting Train Ep: 5100 lr0.007341203948625087 	 Loss Classification: 0.423755 Loss T 0.078416 Method MME
+
+S sketch T painting Train Ep: 5200 lr0.007304951032175895 	 Loss Classification: 0.291146 Loss T 0.074437 Method MME
+
+S sketch T painting Train Ep: 5300 lr0.007269113113340497 	 Loss Classification: 0.294444 Loss T 0.073120 Method MME
+
+S sketch T painting Train Ep: 5400 lr0.007233682775402483 	 Loss Classification: 0.613534 Loss T 0.072369 Method MME
+
+S sketch T painting Train Ep: 5500 lr0.007198652781227704 	 Loss Classification: 0.389271 Loss T 0.062152 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 2.7212, Accuracy: 582/1134 F1 (51.3228%)
+
+
+Test set: Average loss: 1.9665, Accuracy: 20165/31104 F1 (64.8309%)
+
+
+Val set: Average loss: 2.3667, Accuracy: 204/360 F1 (56.6667%)
+
+best acc test 64.830890  acc val 56.666667 acc labeled target 51.322751
+saving model...
+S sketch T painting Train Ep: 5600 lr0.007164016067791809 	 Loss Classification: 0.720772 Loss T 0.081721 Method MME
+
+S sketch T painting Train Ep: 5700 lr0.0071297657409083726 	 Loss Classification: 0.440290 Loss T 0.062326 Method MME
+
+S sketch T painting Train Ep: 5800 lr0.0070958950701490225 	 Loss Classification: 0.493325 Loss T 0.060122 Method MME
+
+S sketch T painting Train Ep: 5900 lr0.007062397483947426 	 Loss Classification: 0.428865 Loss T 0.065951 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [0.5555556  0.8888889  0.44444445 0.22222222 0.6666667  0.11111111
+ 0.5555556  0.6666667  0.         0.33333334 0.7777778  0.5555556
+ 0.         0.5555556  0.22222222 0.33333334 0.8888889  0.7777778
+ 0.11111111 0.33333334 0.6666667  0.         0.6666667  0.5555556
+ 0.5555556  0.6666667  0.         0.         0.8888889  0.44444445
+ 0.33333334 0.         0.44444445 0.         0.22222222 0.
+ 0.11111111 0.         0.5555556  0.5555556  0.5555556  0.11111111
+ 0.         0.         0.6666667  0.11111111 0.33333334 0.6666667
+ 0.33333334 0.6666667  0.11111111 0.44444445 1.         0.6666667
+ 0.         0.         0.6666667  0.8888889  0.7777778  1.
+ 0.6666667  0.22222222 0.44444445 0.22222222 1.         0.6666667
+ 0.         0.33333334 1.         0.8888889  0.33333334 0.7777778
+ 1.         1.         0.11111111 0.5555556  0.8888889  0.44444445
+ 0.5555556  1.         0.33333334 1.         0.         0.
+ 1.         0.44444445 0.         0.6666667  0.33333334 0.5555556
+ 0.11111111 0.44444445 0.6666667  0.8888889  0.5555556  0.7777778
+ 0.11111111 1.         0.5555556  0.6666667  1.         0.33333334
+ 0.7777778  0.5555556  0.6666667  0.7777778  0.6666667  0.44444445
+ 0.         0.7777778  0.7777778  0.22222222 0.44444445 0.6666667
+ 0.22222222 1.         1.         1.         0.22222222 1.
+ 1.         0.8888889  1.         0.33333334 1.         1.        ]
+Top k classes which perform poorly are:  [31, 26, 33, 21, 35, 37, 86, 27, 43, 12, 108, 42, 54, 8, 82, 66, 55, 83, 90, 74, 96, 45, 18, 5, 50, 41, 36, 34, 61, 63, 3, 118, 114, 111, 14, 30, 123, 67, 70, 80, 48, 9, 46, 88, 101, 19, 15, 107, 32, 91, 2, 77, 62, 112, 29, 85, 51, 98, 94, 75, 103, 89, 78, 0, 23, 11, 13, 6, 24, 39, 40, 38, 92, 65, 60, 106, 104, 113, 99, 20, 22, 25, 87, 7, 4, 44, 47, 49, 56, 53, 102, 95, 105, 71, 109, 10, 110, 58, 17, 76, 16, 57, 121, 1, 93, 28, 69, 115, 122, 117, 120, 119, 116, 64, 97, 124, 84, 81, 79, 52, 73, 72, 68, 59, 100, 125]
+S sketch T painting Train Ep: 6000 lr0.007029266564879363 	 Loss Classification: 0.560999 Loss T 0.052182 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 2.6453, Accuracy: 598/1134 F1 (52.7337%)
+
+
+Test set: Average loss: 1.9866, Accuracy: 20135/31104 F1 (64.7344%)
+
+
+Val set: Average loss: 2.2782, Accuracy: 204/360 F1 (56.6667%)
+
+best acc test 64.734439  acc val 56.666667 acc labeled target 52.733686
+saving model...
+S sketch T painting Train Ep: 6100 lr0.006996496045111504 	 Loss Classification: 0.913289 Loss T 0.049356 Method MME
+
+S sketch T painting Train Ep: 6200 lr0.00696407980201184 	 Loss Classification: 0.239540 Loss T 0.061101 Method MME
+
+S sketch T painting Train Ep: 6300 lr0.006932011853915101 	 Loss Classification: 0.518572 Loss T 0.088106 Method MME
+
+S sketch T painting Train Ep: 6400 lr0.006900286356036734 	 Loss Classification: 0.187159 Loss T 0.065615 Method MME
+
+S sketch T painting Train Ep: 6500 lr0.006868897596529406 	 Loss Classification: 0.652971 Loss T 0.053628 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 2.8384, Accuracy: 576/1134 F1 (50.7937%)
+
+
+Test set: Average loss: 2.0408, Accuracy: 20155/31104 F1 (64.7987%)
+
+
+Val set: Average loss: 2.3264, Accuracy: 211/360 F1 (58.6111%)
+
+best acc test 64.798740  acc val 58.611111 acc labeled target 50.793651
+saving model...
+S sketch T painting Train Ep: 6600 lr0.006837839992676177 	 Loss Classification: 0.206651 Loss T 0.048284 Method MME
+
+S sketch T painting Train Ep: 6700 lr0.006807108087214876 	 Loss Classification: 0.436376 Loss T 0.054468 Method MME
+
+S sketch T painting Train Ep: 6800 lr0.006776696544788352 	 Loss Classification: 0.143318 Loss T 0.061393 Method MME
+
+S sketch T painting Train Ep: 6900 lr0.006746600148515609 	 Loss Classification: 0.317412 Loss T 0.060368 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [1.         0.7777778  0.33333334 0.22222222 0.8888889  0.22222222
+ 0.22222222 0.33333334 0.11111111 0.5555556  0.7777778  0.6666667
+ 0.         0.         0.33333334 0.33333334 0.6666667  1.
+ 0.33333334 0.5555556  0.5555556  0.33333334 0.6666667  0.22222222
+ 0.5555556  0.6666667  0.         0.         0.6666667  0.11111111
+ 0.6666667  0.         0.22222222 0.         0.         0.
+ 0.11111111 0.         0.7777778  0.8888889  0.6666667  0.22222222
+ 0.         0.         0.44444445 0.5555556  0.33333334 0.6666667
+ 0.33333334 0.6666667  0.11111111 0.22222222 1.         0.6666667
+ 0.         0.22222222 0.5555556  1.         0.5555556  1.
+ 0.6666667  0.33333334 0.5555556  0.11111111 1.         0.44444445
+ 0.         0.33333334 0.8888889  0.6666667  0.33333334 1.
+ 0.8888889  0.8888889  0.11111111 0.33333334 1.         0.44444445
+ 0.11111111 1.         0.22222222 1.         0.22222222 0.
+ 0.8888889  0.5555556  0.         0.6666667  0.33333334 0.6666667
+ 0.22222222 0.44444445 0.6666667  0.7777778  0.6666667  0.6666667
+ 0.22222222 1.         0.33333334 0.6666667  1.         0.22222222
+ 0.5555556  0.8888889  1.         0.5555556  0.6666667  0.6666667
+ 0.         0.5555556  0.6666667  0.33333334 0.22222222 0.6666667
+ 0.33333334 0.7777778  0.7777778  1.         0.6666667  1.
+ 0.6666667  1.         1.         0.44444445 1.         1.        ]
+Top k classes which perform poorly are:  [12, 27, 86, 42, 31, 33, 13, 26, 34, 43, 35, 37, 83, 66, 108, 54, 74, 8, 36, 50, 63, 78, 29, 32, 82, 55, 96, 23, 80, 112, 51, 101, 6, 5, 3, 90, 41, 46, 48, 75, 70, 67, 61, 88, 2, 7, 111, 14, 114, 15, 18, 98, 21, 123, 91, 44, 65, 77, 102, 105, 85, 62, 58, 9, 56, 45, 24, 109, 19, 20, 28, 25, 89, 22, 92, 94, 113, 87, 99, 16, 11, 106, 107, 95, 60, 110, 69, 30, 40, 118, 47, 49, 53, 120, 116, 10, 93, 115, 1, 38, 4, 103, 84, 72, 73, 39, 68, 121, 117, 122, 119, 0, 100, 97, 81, 79, 76, 71, 64, 124, 59, 57, 52, 17, 104, 125]
+S sketch T painting Train Ep: 7000 lr0.006716813796678979 	 Loss Classification: 0.208987 Loss T 0.058571 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 2.8572, Accuracy: 574/1134 F1 (50.6173%)
+
+
+Test set: Average loss: 2.0952, Accuracy: 20135/31104 F1 (64.7344%)
+
+
+Val set: Average loss: 2.5103, Accuracy: 208/360 F1 (57.7778%)
+
+best acc test 64.798740  acc val 57.777778 acc labeled target 50.617284
+saving model...
+S sketch T painting Train Ep: 7100 lr0.006687332499522798 	 Loss Classification: 0.481119 Loss T 0.070120 Method MME
+
+S sketch T painting Train Ep: 7200 lr0.006658151376159165 	 Loss Classification: 0.256040 Loss T 0.057102 Method MME
+
+S sketch T painting Train Ep: 7300 lr0.00662926565157663 	 Loss Classification: 0.522571 Loss T 0.069405 Method MME
+
+S sketch T painting Train Ep: 7400 lr0.006600670653747793 	 Loss Classification: 0.537310 Loss T 0.056866 Method MME
+
+S sketch T painting Train Ep: 7500 lr0.0065723618108320175 	 Loss Classification: 0.099411 Loss T 0.041515 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 2.6797, Accuracy: 604/1134 F1 (53.2628%)
+
+
+Test set: Average loss: 1.9551, Accuracy: 20623/31104 F1 (66.3034%)
+
+
+Val set: Average loss: 2.3020, Accuracy: 205/360 F1 (56.9444%)
+
+best acc test 64.798740  acc val 56.944444 acc labeled target 53.262787
+saving model...
+S sketch T painting Train Ep: 7600 lr0.006544334648469591 	 Loss Classification: 0.205945 Loss T 0.052916 Method MME
+
+S sketch T painting Train Ep: 7700 lr0.006516584787163857 	 Loss Classification: 0.875865 Loss T 0.061381 Method MME
+
+S sketch T painting Train Ep: 7800 lr0.006489107939747966 	 Loss Classification: 0.406524 Loss T 0.066083 Method MME
+
+S sketch T painting Train Ep: 7900 lr0.0064618999089330565 	 Loss Classification: 0.465162 Loss T 0.055424 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [1.         0.6666667  0.33333334 0.33333334 0.5555556  0.33333334
+ 0.33333334 0.6666667  0.11111111 0.44444445 0.8888889  0.6666667
+ 0.         0.33333334 0.33333334 0.5555556  0.8888889  0.8888889
+ 0.6666667  0.5555556  0.6666667  0.33333334 0.6666667  0.44444445
+ 0.5555556  0.5555556  0.11111111 0.         0.8888889  0.33333334
+ 0.6666667  0.         0.22222222 0.         0.         0.
+ 0.11111111 0.         0.7777778  0.8888889  0.6666667  0.33333334
+ 0.         0.22222222 0.5555556  0.5555556  0.6666667  0.6666667
+ 0.         0.6666667  0.11111111 0.22222222 0.8888889  0.6666667
+ 0.         0.         0.6666667  1.         0.6666667  1.
+ 0.6666667  0.22222222 0.22222222 0.22222222 1.         0.44444445
+ 0.         0.33333334 0.6666667  1.         0.33333334 1.
+ 0.8888889  1.         0.11111111 0.33333334 1.         0.5555556
+ 0.6666667  1.         0.33333334 1.         0.         0.
+ 0.8888889  0.7777778  0.         0.6666667  0.33333334 0.5555556
+ 0.22222222 0.44444445 0.6666667  1.         0.6666667  0.7777778
+ 0.33333334 1.         0.44444445 0.6666667  1.         0.33333334
+ 0.5555556  0.8888889  1.         0.44444445 0.6666667  0.5555556
+ 0.         0.7777778  0.7777778  0.33333334 0.5555556  0.6666667
+ 0.33333334 1.         0.8888889  1.         0.         0.8888889
+ 0.33333334 1.         1.         0.44444445 1.         0.8888889 ]
+Top k classes which perform poorly are:  [48, 118, 31, 33, 34, 35, 37, 42, 12, 55, 54, 27, 86, 83, 82, 108, 66, 74, 36, 50, 26, 8, 61, 51, 32, 90, 43, 63, 62, 29, 13, 96, 111, 67, 120, 70, 41, 114, 5, 6, 80, 3, 21, 101, 2, 88, 75, 14, 105, 65, 123, 91, 9, 98, 23, 45, 107, 19, 102, 4, 44, 77, 25, 15, 24, 89, 112, 94, 22, 20, 1, 30, 92, 78, 87, 99, 53, 46, 106, 40, 49, 11, 68, 7, 56, 113, 18, 47, 60, 58, 95, 38, 85, 109, 110, 119, 103, 116, 125, 10, 84, 16, 17, 28, 72, 39, 52, 93, 122, 121, 117, 115, 57, 59, 124, 64, 69, 71, 73, 76, 104, 79, 81, 100, 97, 0]
+S sketch T painting Train Ep: 8000 lr0.006434956584934828 	 Loss Classification: 0.338236 Loss T 0.068396 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 2.6626, Accuracy: 604/1134 F1 (53.2628%)
+
+
+Test set: Average loss: 2.0437, Accuracy: 20550/31104 F1 (66.0687%)
+
+
+Val set: Average loss: 2.3598, Accuracy: 209/360 F1 (58.0556%)
+
+best acc test 64.798740  acc val 58.055556 acc labeled target 53.262787
+saving model...
+S sketch T painting Train Ep: 8100 lr0.006408273943175546 	 Loss Classification: 0.407120 Loss T 0.043874 Method MME
+
+S sketch T painting Train Ep: 8200 lr0.006381848042058713 	 Loss Classification: 0.654491 Loss T 0.061437 Method MME
+
+S sketch T painting Train Ep: 8300 lr0.0063556750208137005 	 Loss Classification: 0.306677 Loss T 0.071318 Method MME
+
+S sketch T painting Train Ep: 8400 lr0.006329751097407787 	 Loss Classification: 0.309026 Loss T 0.059802 Method MME
+
+S sketch T painting Train Ep: 8500 lr0.0063040725665231365 	 Loss Classification: 0.321807 Loss T 0.059523 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.1617, Accuracy: 1091/1134 F1 (96.2081%)
+
+
+Test set: Average loss: 1.8188, Accuracy: 21314/31104 F1 (68.5249%)
+
+
+Val set: Average loss: 1.9698, Accuracy: 229/360 F1 (63.6111%)
+
+best acc test 68.524949  acc val 63.611111 acc labeled target 96.208113
+saving model...
+S sketch T painting Train Ep: 8600 lr0.006278635797596355 	 Loss Classification: 0.346430 Loss T 0.063387 Method MME
+
+S sketch T painting Train Ep: 8700 lr0.006253437232918371 	 Loss Classification: 0.574673 Loss T 0.065774 Method MME
+
+S sketch T painting Train Ep: 8800 lr0.0062284733857924735 	 Loss Classification: 0.176434 Loss T 0.036881 Method MME
+
+S sketch T painting Train Ep: 8900 lr0.006203740838748417 	 Loss Classification: 0.736534 Loss T 0.048570 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [0.8888889 1.        1.        1.        1.        1.        1.
+ 1.        0.7777778 1.        1.        0.8888889 1.        1.
+ 1.        1.        1.        1.        1.        1.        0.8888889
+ 1.        1.        0.7777778 1.        1.        1.        1.
+ 1.        0.8888889 1.        0.8888889 1.        1.        0.8888889
+ 1.        1.        0.8888889 1.        0.8888889 1.        1.
+ 1.        0.6666667 1.        1.        1.        1.        0.8888889
+ 0.8888889 1.        1.        1.        0.8888889 1.        1.
+ 1.        1.        0.8888889 1.        1.        1.        0.8888889
+ 1.        1.        1.        0.8888889 1.        0.8888889 0.8888889
+ 1.        1.        1.        1.        1.        0.7777778 0.7777778
+ 0.8888889 1.        1.        0.8888889 1.        0.7777778 1.
+ 1.        1.        1.        1.        0.7777778 0.8888889 0.7777778
+ 1.        0.8888889 1.        1.        1.        1.        0.8888889
+ 0.7777778 1.        1.        1.        1.        1.        0.8888889
+ 0.8888889 1.        1.        1.        1.        1.        1.
+ 1.        1.        0.8888889 1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.       ]
+Top k classes which perform poorly are:  [43, 76, 82, 88, 75, 90, 8, 23, 98, 49, 39, 37, 53, 58, 66, 48, 68, 0, 34, 77, 80, 89, 92, 97, 104, 105, 114, 69, 31, 62, 20, 11, 29, 121, 4, 5, 96, 95, 94, 93, 6, 91, 7, 9, 10, 87, 86, 85, 84, 83, 123, 81, 12, 99, 122, 100, 79, 120, 119, 118, 117, 116, 115, 1, 113, 112, 111, 110, 109, 108, 107, 106, 2, 3, 103, 102, 101, 30, 13, 14, 50, 21, 22, 47, 46, 45, 44, 24, 42, 51, 41, 25, 38, 26, 36, 35, 27, 33, 32, 28, 40, 78, 52, 55, 15, 74, 73, 72, 71, 70, 16, 17, 67, 54, 18, 64, 63, 124, 61, 60, 59, 19, 57, 56, 65, 125]
+S sketch T painting Train Ep: 9000 lr0.006179236241810624 	 Loss Classification: 0.271150 Loss T 0.053470 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.1218, Accuracy: 1103/1134 F1 (97.2663%)
+
+
+Test set: Average loss: 1.8305, Accuracy: 21442/31104 F1 (68.9365%)
+
+
+Val set: Average loss: 1.9918, Accuracy: 231/360 F1 (64.1667%)
+
+best acc test 68.936471  acc val 64.166667 acc labeled target 97.266314
+saving model...
+S sketch T painting Train Ep: 9100 lr0.006154956310818535 	 Loss Classification: 0.339767 Loss T 0.055387 Method MME
+
+S sketch T painting Train Ep: 9200 lr0.0061308978257973165 	 Loss Classification: 0.138481 Loss T 0.057396 Method MME
+
+S sketch T painting Train Ep: 9300 lr0.0061070576293771285 	 Loss Classification: 0.266620 Loss T 0.050949 Method MME
+
+S sketch T painting Train Ep: 9400 lr0.006083432625259276 	 Loss Classification: 0.193028 Loss T 0.031013 Method MME
+
+S sketch T painting Train Ep: 9500 lr0.006060019776727621 	 Loss Classification: 0.386061 Loss T 0.055087 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.1323, Accuracy: 1099/1134 F1 (96.9136%)
+
+
+Test set: Average loss: 1.8478, Accuracy: 21588/31104 F1 (69.4059%)
+
+
+Val set: Average loss: 1.9787, Accuracy: 232/360 F1 (64.4444%)
+
+best acc test 69.405864  acc val 64.444444 acc labeled target 96.913580
+saving model...
+S sketch T painting Train Ep: 9600 lr0.00603681610520369 	 Loss Classification: 0.785737 Loss T 0.050623 Method MME
+
+S sketch T painting Train Ep: 9700 lr0.0060138186888439825 	 Loss Classification: 0.282834 Loss T 0.066797 Method MME
+
+S sketch T painting Train Ep: 9800 lr0.005991024661178045 	 Loss Classification: 0.417430 Loss T 0.046051 Method MME
+
+S sketch T painting Train Ep: 9900 lr0.0059684312097859115 	 Loss Classification: 0.536231 Loss T 0.056086 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [1.        1.        1.        0.8888889 1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        0.8888889 1.        1.        1.        1.        1.
+ 1.        1.        1.        0.8888889 0.8888889 1.        1.
+ 0.8888889 0.8888889 1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        0.8888889
+ 1.        0.8888889 1.        1.        0.8888889 0.8888889 1.
+ 1.        1.        1.        1.        0.8888889 1.        1.
+ 1.        1.        1.        1.        0.8888889 0.8888889 1.
+ 1.        1.        1.        0.8888889 1.        1.        1.
+ 1.        0.8888889 0.8888889 1.        0.7777778 0.7777778 1.
+ 0.8888889 1.        1.        1.        1.        0.7777778 1.
+ 1.        0.8888889 1.        0.8888889 1.        1.        0.8888889
+ 0.7777778 1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        0.8888889 0.8888889 1.
+ 1.        1.        0.8888889 1.        1.        1.        1.
+ 1.        0.8888889 1.        1.        1.        0.8888889 0.8888889
+ 1.        1.        0.8888889 1.        1.        1.        1.       ]
+Top k classes which perform poorly are:  [82, 91, 74, 75, 41, 107, 90, 53, 103, 24, 25, 102, 71, 28, 29, 46, 87, 15, 47, 77, 43, 113, 60, 61, 117, 118, 121, 3, 72, 66, 85, 88, 0, 84, 83, 80, 79, 78, 76, 73, 86, 81, 96, 92, 123, 122, 120, 119, 116, 115, 114, 112, 111, 110, 109, 108, 106, 105, 104, 101, 100, 99, 98, 97, 95, 94, 93, 89, 70, 62, 68, 30, 27, 26, 23, 22, 21, 20, 19, 18, 17, 16, 31, 14, 12, 11, 10, 9, 8, 7, 6, 5, 4, 2, 1, 13, 32, 33, 34, 67, 65, 64, 63, 124, 59, 58, 57, 56, 55, 54, 52, 51, 50, 49, 48, 45, 44, 42, 40, 39, 38, 37, 36, 35, 69, 125]
+S sketch T painting Train Ep: 10000 lr0.005946035575013605 	 Loss Classification: 0.159127 Loss T 0.047962 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.1017, Accuracy: 1106/1134 F1 (97.5309%)
+
+
+Test set: Average loss: 1.9122, Accuracy: 21505/31104 F1 (69.1390%)
+
+
+Val set: Average loss: 2.0659, Accuracy: 225/360 F1 (62.5000%)
+
+best acc test 69.405864  acc val 62.500000 acc labeled target 97.530864
+saving model...
+S sketch T painting Train Ep: 10100 lr0.005923835048725393 	 Loss Classification: 0.430927 Loss T 0.051469 Method MME
+
+S sketch T painting Train Ep: 10200 lr0.005901826973091593 	 Loss Classification: 0.336859 Loss T 0.047865 Method MME
+
+S sketch T painting Train Ep: 10300 lr0.005880008739410735 	 Loss Classification: 0.094785 Loss T 0.054404 Method MME
+
+S sketch T painting Train Ep: 10400 lr0.005858377786964935 	 Loss Classification: 0.279744 Loss T 0.045453 Method MME
+
+S sketch T painting Train Ep: 10500 lr0.005836931601907399 	 Loss Classification: 0.105503 Loss T 0.029591 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.1151, Accuracy: 1101/1134 F1 (97.0900%)
+
+
+Test set: Average loss: 1.8326, Accuracy: 21866/31104 F1 (70.2996%)
+
+
+Val set: Average loss: 2.0096, Accuracy: 236/360 F1 (65.5556%)
+
+best acc test 70.299640  acc val 65.555556 acc labeled target 97.089947
+saving model...
+S sketch T painting Train Ep: 10600 lr0.005815667716181004 	 Loss Classification: 0.439405 Loss T 0.044592 Method MME
+
+S sketch T painting Train Ep: 10700 lr0.005794583706466925 	 Loss Classification: 0.190498 Loss T 0.039270 Method MME
+
+S sketch T painting Train Ep: 10800 lr0.005773677193162352 	 Loss Classification: 0.232748 Loss T 0.037967 Method MME
+
+S sketch T painting Train Ep: 10900 lr0.005752945839386346 	 Loss Classification: 0.132732 Loss T 0.052846 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [1.        1.        1.        0.7777778 1.        0.8888889 1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        0.8888889 1.        1.        1.        0.8888889 1.
+ 1.        0.8888889 1.        1.        1.        1.        0.8888889
+ 1.        0.8888889 0.8888889 0.8888889 1.        1.        1.
+ 1.        1.        1.        1.        0.8888889 1.        0.8888889
+ 0.8888889 1.        1.        1.        1.        0.8888889 0.8888889
+ 1.        1.        1.        1.        1.        1.        0.8888889
+ 1.        1.        1.        0.8888889 1.        1.        0.8888889
+ 1.        1.        1.        0.8888889 1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.8888889 1.        0.7777778 1.        1.        0.8888889 0.8888889
+ 0.8888889 0.8888889 1.        0.8888889 1.        0.8888889 1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        0.8888889 1.        1.        0.8888889
+ 1.        1.        1.        1.        0.8888889 1.        1.
+ 1.        1.        1.        0.8888889 0.8888889 1.        1.       ]
+Top k classes which perform poorly are:  [3, 79, 62, 22, 83, 55, 84, 85, 27, 29, 30, 31, 87, 89, 48, 47, 39, 41, 108, 82, 66, 123, 122, 5, 19, 116, 42, 15, 111, 59, 77, 78, 86, 76, 75, 80, 74, 88, 73, 90, 91, 92, 81, 98, 94, 121, 120, 119, 118, 117, 115, 114, 113, 112, 110, 109, 93, 107, 105, 104, 103, 102, 101, 100, 99, 72, 97, 96, 95, 106, 71, 0, 69, 32, 28, 26, 25, 24, 23, 21, 20, 18, 17, 16, 14, 13, 12, 11, 10, 9, 8, 7, 6, 4, 2, 1, 33, 34, 35, 36, 68, 67, 65, 64, 63, 124, 61, 60, 58, 57, 56, 70, 54, 52, 51, 50, 49, 46, 45, 44, 43, 40, 38, 37, 53, 125]
+S sketch T painting Train Ep: 11000 lr0.005732387350012933 	 Loss Classification: 0.317184 Loss T 0.056279 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.1476, Accuracy: 1095/1134 F1 (96.5608%)
+
+
+Test set: Average loss: 1.9037, Accuracy: 21647/31104 F1 (69.5956%)
+
+
+Val set: Average loss: 1.9924, Accuracy: 231/360 F1 (64.1667%)
+
+best acc test 70.299640  acc val 64.166667 acc labeled target 96.560847
+saving model...
+S sketch T painting Train Ep: 11100 lr0.005711999470730565 	 Loss Classification: 0.244262 Loss T 0.052522 Method MME
+
+S sketch T painting Train Ep: 11200 lr0.005691779987127103 	 Loss Classification: 0.687135 Loss T 0.032995 Method MME
+
+S sketch T painting Train Ep: 11300 lr0.005671726723799515 	 Loss Classification: 0.238941 Loss T 0.048053 Method MME
+
+S sketch T painting Train Ep: 11400 lr0.005651837543487509 	 Loss Classification: 0.229828 Loss T 0.066704 Method MME
+
+S sketch T painting Train Ep: 11500 lr0.005632110346230358 	 Loss Classification: 0.102616 Loss T 0.039419 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.1069, Accuracy: 1101/1134 F1 (97.0900%)
+
+
+Test set: Average loss: 1.8787, Accuracy: 21853/31104 F1 (70.2578%)
+
+
+Val set: Average loss: 2.0318, Accuracy: 232/360 F1 (64.4444%)
+
+best acc test 70.299640  acc val 64.444444 acc labeled target 97.089947
+saving model...
+S sketch T painting Train Ep: 11600 lr0.005612543068546177 	 Loss Classification: 0.306692 Loss T 0.047996 Method MME
+
+S sketch T painting Train Ep: 11700 lr0.005593133682632953 	 Loss Classification: 0.076633 Loss T 0.047522 Method MME
+
+S sketch T painting Train Ep: 11800 lr0.005573880195590681 	 Loss Classification: 0.131760 Loss T 0.059110 Method MME
+
+S sketch T painting Train Ep: 11900 lr0.0055547806486639095 	 Loss Classification: 0.079819 Loss T 0.048530 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        0.7777778 1.
+ 1.        1.        0.7777778 1.        1.        1.        1.
+ 1.        1.        0.8888889 1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        0.8888889
+ 1.        0.8888889 0.8888889 1.        1.        1.        0.7777778
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        0.8888889 1.        1.        1.        0.8888889 1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        0.8888889 1.        1.
+ 0.7777778 1.        0.8888889 1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        0.8888889 0.8888889
+ 1.        0.8888889 0.8888889 1.        0.8888889 1.        0.8888889
+ 0.8888889 1.        1.        0.8888889 1.        0.7777778 1.
+ 1.        1.        1.        0.8888889 1.        0.7777778 1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.7777778 1.        1.        1.        1.        1.        1.
+ 0.8888889 1.        1.        1.        0.8888889 1.        1.       ]
+Top k classes which perform poorly are:  [70, 96, 16, 112, 41, 103, 12, 94, 101, 34, 36, 37, 91, 90, 86, 85, 83, 82, 50, 54, 72, 88, 23, 67, 123, 119, 105, 84, 118, 120, 81, 80, 79, 121, 78, 77, 76, 75, 74, 73, 122, 71, 69, 117, 104, 116, 115, 102, 106, 100, 99, 98, 97, 107, 95, 87, 68, 93, 109, 110, 92, 111, 113, 114, 89, 108, 0, 62, 65, 28, 27, 26, 25, 24, 22, 21, 20, 19, 18, 17, 15, 14, 13, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 29, 30, 31, 32, 64, 63, 124, 61, 60, 59, 58, 57, 56, 55, 53, 52, 66, 51, 48, 47, 46, 45, 44, 43, 42, 40, 39, 38, 35, 33, 49, 125]
+S sketch T painting Train Ep: 12000 lr0.005535833116504121 	 Loss Classification: 0.067630 Loss T 0.041357 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.1222, Accuracy: 1102/1134 F1 (97.1781%)
+
+
+Test set: Average loss: 1.8867, Accuracy: 21945/31104 F1 (70.5536%)
+
+
+Val set: Average loss: 2.1460, Accuracy: 228/360 F1 (63.3333%)
+
+best acc test 70.299640  acc val 63.333333 acc labeled target 97.178131
+saving model...
+S sketch T painting Train Ep: 12100 lr0.00551703570645129 	 Loss Classification: 0.099765 Loss T 0.034720 Method MME
+
+S sketch T painting Train Ep: 12200 lr0.005498386557834078 	 Loss Classification: 0.342388 Loss T 0.041902 Method MME
+
+S sketch T painting Train Ep: 12300 lr0.00547988384128807 	 Loss Classification: 0.217126 Loss T 0.057055 Method MME
+
+S sketch T painting Train Ep: 12400 lr0.005461525758091539 	 Loss Classification: 0.123818 Loss T 0.059776 Method MME
+
+S sketch T painting Train Ep: 12500 lr0.005443310539518174 	 Loss Classification: 0.134101 Loss T 0.034844 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0771, Accuracy: 1112/1134 F1 (98.0600%)
+
+
+Test set: Average loss: 1.8909, Accuracy: 21982/31104 F1 (70.6726%)
+
+
+Val set: Average loss: 2.0225, Accuracy: 237/360 F1 (65.8333%)
+
+best acc test 70.672582  acc val 65.833333 acc labeled target 98.059965
+saving model...
+S sketch T painting Train Ep: 12600 lr0.005425236446206295 	 Loss Classification: 0.266510 Loss T 0.054273 Method MME
+
+S sketch T painting Train Ep: 12700 lr0.005407301767544059 	 Loss Classification: 0.074902 Loss T 0.039489 Method MME
+
+S sketch T painting Train Ep: 12800 lr0.005389504821070177 	 Loss Classification: 0.073201 Loss T 0.056527 Method MME
+
+S sketch T painting Train Ep: 12900 lr0.005371843951889677 	 Loss Classification: 0.088859 Loss T 0.049042 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [0.8888889 1.        1.        1.        1.        0.8888889 1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.8888889 1.        1.        1.        1.        1.        1.
+ 1.        0.7777778 1.        1.        0.8888889 1.        1.
+ 1.        1.        1.        1.        0.8888889 1.        0.8888889
+ 1.        1.        1.        1.        1.        1.        0.8888889
+ 1.        0.8888889 1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.8888889 1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        0.8888889 0.8888889 1.        0.8888889 0.7777778
+ 1.        1.        0.8888889 0.8888889 1.        1.        1.
+ 0.8888889 1.        1.        0.8888889 1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        0.8888889 1.        1.        1.
+ 1.        1.        0.8888889 1.        1.        1.        1.       ]
+Top k classes which perform poorly are:  [90, 29, 93, 94, 89, 32, 41, 98, 87, 86, 101, 21, 48, 39, 0, 50, 63, 121, 5, 115, 69, 70, 88, 71, 72, 73, 79, 85, 84, 83, 75, 76, 82, 77, 81, 80, 78, 74, 95, 92, 123, 122, 120, 119, 118, 117, 116, 114, 113, 112, 111, 110, 109, 108, 107, 106, 105, 104, 103, 102, 100, 99, 97, 96, 68, 91, 67, 62, 65, 27, 26, 25, 24, 23, 22, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 4, 3, 2, 1, 28, 30, 31, 33, 64, 124, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 66, 51, 47, 46, 45, 44, 43, 42, 40, 38, 37, 36, 35, 34, 49, 125]
+S sketch T painting Train Ep: 13000 lr0.0053543175321042955 	 Loss Classification: 0.242191 Loss T 0.044191 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0812, Accuracy: 1111/1134 F1 (97.9718%)
+
+
+Test set: Average loss: 1.8854, Accuracy: 22004/31104 F1 (70.7433%)
+
+
+Val set: Average loss: 2.1210, Accuracy: 238/360 F1 (66.1111%)
+
+best acc test 70.743313  acc val 66.111111 acc labeled target 97.971781
+saving model...
+S sketch T painting Train Ep: 13100 lr0.005336923960257046 	 Loss Classification: 0.199263 Loss T 0.041019 Method MME
+
+S sketch T painting Train Ep: 13200 lr0.0053196616607905645 	 Loss Classification: 0.146251 Loss T 0.054343 Method MME
+
+S sketch T painting Train Ep: 13300 lr0.0053025290835188275 	 Loss Classification: 0.089258 Loss T 0.043530 Method MME
+
+S sketch T painting Train Ep: 13400 lr0.005285524703111859 	 Loss Classification: 0.139905 Loss T 0.040907 Method MME
+
+S sketch T painting Train Ep: 13500 lr0.005268647018593052 	 Loss Classification: 0.189344 Loss T 0.056418 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0983, Accuracy: 1103/1134 F1 (97.2663%)
+
+
+Test set: Average loss: 1.9253, Accuracy: 22007/31104 F1 (70.7530%)
+
+
+Val set: Average loss: 2.0617, Accuracy: 242/360 F1 (67.2222%)
+
+best acc test 70.752958  acc val 67.222222 acc labeled target 97.266314
+saving model...
+S sketch T painting Train Ep: 13600 lr0.005251894552848747 	 Loss Classification: 0.106451 Loss T 0.020141 Method MME
+
+S sketch T painting Train Ep: 13700 lr0.005235265852149712 	 Loss Classification: 0.319033 Loss T 0.032979 Method MME
+
+S sketch T painting Train Ep: 13800 lr0.005218759485684187 	 Loss Classification: 0.037586 Loss T 0.030049 Method MME
+
+S sketch T painting Train Ep: 13900 lr0.005202374045102174 	 Loss Classification: 0.271782 Loss T 0.031245 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [1.        1.        1.        0.8888889 1.        0.8888889 1.
+ 1.        1.        1.        0.8888889 1.        0.8888889 1.
+ 0.8888889 1.        1.        0.8888889 1.        1.        1.
+ 1.        0.8888889 0.8888889 1.        1.        1.        0.7777778
+ 1.        1.        1.        1.        1.        0.8888889 1.
+ 1.        1.        1.        0.8888889 1.        1.        1.
+ 1.        1.        0.8888889 0.8888889 1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        0.8888889 1.
+ 0.8888889 1.        1.        0.7777778 0.8888889 1.        1.
+ 1.        1.        0.8888889 1.        1.        0.8888889 1.
+ 1.        0.8888889 1.        0.8888889 1.        0.8888889 0.8888889
+ 1.        1.        0.8888889 0.8888889 1.        1.        1.
+ 0.8888889 1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        0.8888889 1.        0.8888889 1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        0.8888889
+ 1.        1.        1.        1.        1.        1.        1.       ]
+Top k classes which perform poorly are:  [66, 27, 101, 33, 87, 83, 23, 22, 82, 44, 80, 72, 17, 78, 103, 14, 12, 91, 10, 63, 118, 75, 38, 5, 3, 67, 45, 61, 86, 0, 89, 90, 81, 85, 84, 79, 77, 76, 74, 73, 88, 92, 99, 94, 123, 122, 121, 120, 119, 117, 116, 115, 114, 113, 112, 111, 110, 109, 108, 107, 106, 105, 104, 102, 100, 98, 97, 96, 95, 93, 71, 62, 69, 32, 31, 30, 29, 28, 26, 25, 24, 21, 20, 19, 18, 16, 15, 13, 11, 9, 8, 7, 6, 4, 2, 1, 34, 35, 36, 37, 68, 65, 64, 124, 60, 59, 58, 57, 56, 55, 54, 70, 53, 51, 50, 49, 48, 47, 46, 43, 42, 41, 40, 39, 52, 125]
+S sketch T painting Train Ep: 14000 lr0.005186108144070652 	 Loss Classification: 0.255386 Loss T 0.036197 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.1311, Accuracy: 1100/1134 F1 (97.0018%)
+
+
+Test set: Average loss: 1.9640, Accuracy: 21966/31104 F1 (70.6211%)
+
+
+Val set: Average loss: 2.1343, Accuracy: 236/360 F1 (65.5556%)
+
+best acc test 70.752958  acc val 65.555556 acc labeled target 97.001764
+saving model...
+S sketch T painting Train Ep: 14100 lr0.005169960417839403 	 Loss Classification: 0.151876 Loss T 0.039675 Method MME
+
+S sketch T painting Train Ep: 14200 lr0.005153929522817161 	 Loss Classification: 0.228959 Loss T 0.047670 Method MME
+
+S sketch T painting Train Ep: 14300 lr0.005138014136157799 	 Loss Classification: 0.236166 Loss T 0.031352 Method MME
+
+S sketch T painting Train Ep: 14400 lr0.005122212955356274 	 Loss Classification: 0.051263 Loss T 0.045676 Method MME
+
+S sketch T painting Train Ep: 14500 lr0.005106524697854057 	 Loss Classification: 0.167363 Loss T 0.040786 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.1216, Accuracy: 1100/1134 F1 (97.0018%)
+
+
+Test set: Average loss: 1.9559, Accuracy: 22011/31104 F1 (70.7658%)
+
+
+Val set: Average loss: 2.1522, Accuracy: 231/360 F1 (64.1667%)
+
+best acc test 70.752958  acc val 64.166667 acc labeled target 97.001764
+saving model...
+S sketch T painting Train Ep: 14600 lr0.005090948100653781 	 Loss Classification: 0.294954 Loss T 0.054172 Method MME
+
+S sketch T painting Train Ep: 14700 lr0.0050754819199428855 	 Loss Classification: 0.134512 Loss T 0.046033 Method MME
+
+S sketch T painting Train Ep: 14800 lr0.005060124930725974 	 Loss Classification: 0.283163 Loss T 0.048231 Method MME
+
+S sketch T painting Train Ep: 14900 lr0.00504487592646567 	 Loss Classification: 0.307047 Loss T 0.052270 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [1.        1.        1.        0.8888889 0.8888889 1.        1.
+ 1.        1.        0.7777778 1.        0.8888889 0.8888889 1.
+ 1.        0.8888889 1.        1.        1.        1.        1.
+ 1.        1.        0.7777778 1.        0.8888889 1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        0.8888889 1.        0.8888889
+ 1.        0.7777778 1.        0.8888889 1.        0.8888889 1.
+ 1.        1.        0.8888889 1.        1.        0.8888889 1.
+ 0.7777778 1.        1.        1.        1.        1.        1.
+ 1.        1.        0.8888889 1.        0.8888889 1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.8888889 1.        1.        1.        1.        0.8888889 0.8888889
+ 1.        1.        0.8888889 0.8888889 1.        1.        1.
+ 0.7777778 1.        1.        1.        0.8888889 0.8888889 1.
+ 0.8888889 1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        0.8888889 1.        0.8888889
+ 1.        1.        1.        1.        1.        1.        1.       ]
+Top k classes which perform poorly are:  [56, 91, 23, 43, 9, 83, 54, 25, 86, 51, 87, 98, 45, 96, 95, 39, 47, 82, 41, 15, 67, 3, 116, 12, 4, 11, 77, 118, 65, 80, 74, 75, 90, 88, 89, 81, 85, 78, 84, 79, 76, 0, 97, 93, 123, 122, 121, 120, 119, 117, 115, 114, 113, 112, 111, 110, 109, 108, 107, 106, 105, 104, 103, 102, 101, 100, 99, 73, 94, 92, 72, 62, 70, 31, 30, 29, 28, 27, 26, 24, 22, 21, 20, 19, 18, 17, 16, 14, 13, 10, 8, 7, 6, 5, 2, 1, 32, 33, 34, 35, 69, 68, 66, 64, 63, 124, 61, 60, 59, 58, 57, 71, 55, 52, 50, 49, 48, 46, 44, 42, 40, 38, 37, 36, 53, 125]
+S sketch T painting Train Ep: 15000 lr0.005029733718731741 	 Loss Classification: 0.043005 Loss T 0.032230 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0836, Accuracy: 1113/1134 F1 (98.1481%)
+
+
+Test set: Average loss: 1.8880, Accuracy: 22130/31104 F1 (71.1484%)
+
+
+Val set: Average loss: 2.0710, Accuracy: 243/360 F1 (67.5000%)
+
+best acc test 71.148405  acc val 67.500000 acc labeled target 98.148148
+saving model...
+S sketch T painting Train Ep: 15100 lr0.005014697136858264 	 Loss Classification: 0.287762 Loss T 0.052274 Method MME
+
+S sketch T painting Train Ep: 15200 lr0.004999765027608607 	 Loss Classification: 0.169118 Loss T 0.040773 Method MME
+
+S sketch T painting Train Ep: 15300 lr0.004984936254848047 	 Loss Classification: 0.131053 Loss T 0.020485 Method MME
+
+S sketch T painting Train Ep: 15400 lr0.004970209699223787 	 Loss Classification: 0.072463 Loss T 0.041831 Method MME
+
+S sketch T painting Train Ep: 15500 lr0.0049555842578521995 	 Loss Classification: 0.066640 Loss T 0.031332 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.1273, Accuracy: 1101/1134 F1 (97.0900%)
+
+
+Test set: Average loss: 1.9386, Accuracy: 22151/31104 F1 (71.2159%)
+
+
+Val set: Average loss: 2.0344, Accuracy: 238/360 F1 (66.1111%)
+
+best acc test 71.148405  acc val 66.111111 acc labeled target 97.089947
+saving model...
+S sketch T painting Train Ep: 15600 lr0.004941058844013093 	 Loss Classification: 0.179145 Loss T 0.031717 Method MME
+
+S sketch T painting Train Ep: 15700 lr0.004926632386850831 	 Loss Classification: 0.036354 Loss T 0.024790 Method MME
+
+S sketch T painting Train Ep: 15800 lr0.004912303831082109 	 Loss Classification: 0.403330 Loss T 0.031558 Method MME
+
+S sketch T painting Train Ep: 15900 lr0.004898072136710217 	 Loss Classification: 0.086058 Loss T 0.042275 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [0.8888889 1.        0.8888889 1.        1.        1.        1.
+ 1.        0.8888889 1.        1.        1.        1.        0.8888889
+ 1.        1.        1.        1.        0.8888889 0.8888889 1.
+ 0.8888889 1.        1.        1.        0.8888889 1.        1.
+ 1.        0.8888889 1.        1.        1.        0.8888889 1.
+ 0.8888889 0.8888889 1.        1.        1.        0.8888889 1.
+ 1.        1.        1.        0.8888889 1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        0.8888889 0.8888889 0.8888889
+ 1.        1.        1.        0.8888889 0.8888889 1.        0.8888889
+ 1.        1.        1.        1.        1.        1.        0.8888889
+ 0.8888889 1.        1.        1.        1.        1.        0.7777778
+ 1.        1.        0.8888889 1.        1.        1.        0.8888889
+ 0.8888889 0.8888889 1.        1.        1.        1.        1.
+ 0.8888889 1.        1.        0.8888889 1.        1.        1.
+ 1.        1.        0.8888889 0.8888889 1.        1.        1.
+ 0.8888889 1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.       ]
+Top k classes which perform poorly are:  [83, 0, 33, 35, 36, 40, 45, 60, 61, 66, 67, 69, 76, 77, 86, 90, 91, 92, 98, 101, 107, 108, 112, 29, 25, 62, 8, 13, 18, 2, 21, 19, 5, 97, 96, 95, 94, 93, 6, 7, 26, 89, 88, 87, 9, 85, 84, 10, 82, 81, 80, 99, 100, 102, 79, 123, 122, 121, 120, 119, 118, 117, 116, 115, 4, 114, 1, 111, 110, 109, 3, 106, 105, 104, 103, 113, 78, 75, 12, 49, 48, 47, 46, 44, 43, 42, 41, 39, 50, 38, 20, 34, 22, 32, 31, 30, 23, 28, 27, 37, 51, 52, 53, 24, 74, 73, 72, 71, 70, 68, 14, 15, 65, 64, 63, 124, 16, 17, 59, 58, 57, 56, 55, 54, 11, 125]
+S sketch T painting Train Ep: 16000 lr0.004883936278745637 	 Loss Classification: 0.124691 Loss T 0.035176 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.1228, Accuracy: 1098/1134 F1 (96.8254%)
+
+
+Test set: Average loss: 1.9515, Accuracy: 22205/31104 F1 (71.3895%)
+
+
+Val set: Average loss: 2.0993, Accuracy: 237/360 F1 (65.8333%)
+
+best acc test 71.148405  acc val 65.833333 acc labeled target 96.825397
+saving model...
+S sketch T painting Train Ep: 16100 lr0.004869895246932789 	 Loss Classification: 0.438718 Loss T 0.040831 Method MME
+
+S sketch T painting Train Ep: 16200 lr0.004855948045482784 	 Loss Classification: 0.069818 Loss T 0.049432 Method MME
+
+S sketch T painting Train Ep: 16300 lr0.004842093692812012 	 Loss Classification: 0.083939 Loss T 0.050748 Method MME
+
+S sketch T painting Train Ep: 16400 lr0.004828331221286437 	 Loss Classification: 0.078619 Loss T 0.049899 Method MME
+
+S sketch T painting Train Ep: 16500 lr0.004814659676971443 	 Loss Classification: 0.395893 Loss T 0.031933 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.1220, Accuracy: 1100/1134 F1 (97.0018%)
+
+
+Test set: Average loss: 1.9667, Accuracy: 22199/31104 F1 (71.3702%)
+
+
+Val set: Average loss: 2.0581, Accuracy: 241/360 F1 (66.9444%)
+
+best acc test 71.148405  acc val 66.944444 acc labeled target 97.001764
+saving model...
+S sketch T painting Train Ep: 16600 lr0.004801078119387078 	 Loss Classification: 0.293458 Loss T 0.033372 Method MME
+
+S sketch T painting Train Ep: 16700 lr0.004787585621268585 	 Loss Classification: 0.190150 Loss T 0.043414 Method MME
+
+S sketch T painting Train Ep: 16800 lr0.0047741812683320655 	 Loss Classification: 0.034754 Loss T 0.039847 Method MME
+
+S sketch T painting Train Ep: 16900 lr0.004760864159045157 	 Loss Classification: 0.286485 Loss T 0.027600 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [1.        1.        1.        0.7777778 1.        1.        1.
+ 1.        0.8888889 1.        1.        1.        0.8888889 1.
+ 1.        0.8888889 1.        0.8888889 1.        1.        1.
+ 1.        1.        1.        0.8888889 1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.8888889 1.        0.8888889 1.        1.        1.        0.8888889
+ 0.8888889 1.        1.        1.        0.8888889 1.        1.
+ 1.        0.8888889 1.        1.        1.        0.8888889 0.8888889
+ 1.        1.        1.        1.        1.        1.        0.8888889
+ 0.8888889 1.        1.        0.7777778 1.        1.        0.8888889
+ 1.        0.8888889 1.        1.        0.8888889 1.        1.
+ 1.        1.        1.        0.8888889 1.        1.        0.8888889
+ 1.        1.        0.8888889 0.8888889 1.        0.8888889 1.
+ 1.        1.        1.        1.        0.8888889 1.        1.
+ 0.8888889 1.        0.8888889 0.8888889 1.        1.        1.
+ 1.        1.        1.        1.        0.8888889 1.        1.
+ 1.        1.        1.        1.        0.8888889 1.        0.8888889
+ 1.        1.        1.        1.        1.        1.        1.       ]
+Top k classes which perform poorly are:  [66, 3, 62, 100, 98, 69, 95, 37, 41, 42, 89, 46, 87, 86, 50, 83, 54, 55, 80, 63, 74, 101, 24, 35, 71, 12, 8, 118, 15, 109, 17, 116, 72, 85, 84, 73, 123, 122, 119, 121, 81, 120, 117, 79, 78, 77, 76, 75, 82, 107, 106, 105, 104, 103, 102, 108, 99, 110, 97, 115, 96, 112, 94, 93, 92, 113, 91, 90, 114, 111, 88, 0, 68, 29, 28, 27, 26, 25, 23, 22, 21, 20, 19, 18, 16, 14, 13, 11, 10, 9, 7, 6, 5, 4, 2, 1, 30, 31, 32, 33, 67, 65, 64, 124, 61, 60, 59, 58, 57, 56, 53, 70, 52, 49, 48, 47, 45, 44, 43, 40, 39, 38, 36, 34, 51, 125]
+S sketch T painting Train Ep: 17000 lr0.0047476334044026 	 Loss Classification: 0.068260 Loss T 0.042055 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.1086, Accuracy: 1105/1134 F1 (97.4427%)
+
+
+Test set: Average loss: 1.9315, Accuracy: 22285/31104 F1 (71.6467%)
+
+
+Val set: Average loss: 2.0371, Accuracy: 243/360 F1 (67.5000%)
+
+best acc test 71.646734  acc val 67.500000 acc labeled target 97.442681
+saving model...
+S sketch T painting Train Ep: 17100 lr0.004734488127706559 	 Loss Classification: 0.185750 Loss T 0.028039 Method MME
+
+S sketch T painting Train Ep: 17200 lr0.004721427464351597 	 Loss Classification: 0.065147 Loss T 0.047994 Method MME
+
+S sketch T painting Train Ep: 17300 lr0.004708450561614184 	 Loss Classification: 0.032612 Loss T 0.039029 Method MME
+
+S sketch T painting Train Ep: 17400 lr0.004695556578446619 	 Loss Classification: 0.032798 Loss T 0.029424 Method MME
+
+S sketch T painting Train Ep: 17500 lr0.004682744685275263 	 Loss Classification: 0.167418 Loss T 0.051442 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.1118, Accuracy: 1105/1134 F1 (97.4427%)
+
+
+Test set: Average loss: 1.9100, Accuracy: 22368/31104 F1 (71.9136%)
+
+
+Val set: Average loss: 2.0838, Accuracy: 243/360 F1 (67.5000%)
+
+best acc test 71.913580  acc val 67.500000 acc labeled target 97.442681
+saving model...
+S sketch T painting Train Ep: 17600 lr0.004670014063802979 	 Loss Classification: 0.058718 Loss T 0.047646 Method MME
+
+S sketch T painting Train Ep: 17700 lr0.004657363906815676 	 Loss Classification: 0.224820 Loss T 0.031208 Method MME
+
+S sketch T painting Train Ep: 17800 lr0.004644793417992855 	 Loss Classification: 0.022179 Loss T 0.046712 Method MME
+
+S sketch T painting Train Ep: 17900 lr0.004632301811722062 	 Loss Classification: 0.076147 Loss T 0.028440 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [1.        0.8888889 1.        0.8888889 1.        0.8888889 1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        0.8888889 1.        1.        1.        1.        1.
+ 1.        1.        0.8888889 1.        1.        1.        1.
+ 1.        0.7777778 1.        0.8888889 1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        0.8888889
+ 1.        1.        1.        0.8888889 1.        1.        1.
+ 1.        0.8888889 1.        1.        1.        1.        1.
+ 0.8888889 1.        1.        0.8888889 1.        0.7777778 1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        0.7777778 1.
+ 1.        1.        1.        0.8888889 1.        0.8888889 1.
+ 0.8888889 1.        0.8888889 0.8888889 1.        0.8888889 1.
+ 0.8888889 1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        0.8888889 1.
+ 1.        1.        1.        0.8888889 0.8888889 1.        1.
+ 1.        1.        1.        1.        0.8888889 1.        1.
+ 1.        1.        1.        1.        0.8888889 1.        1.       ]
+Top k classes which perform poorly are:  [61, 29, 75, 109, 80, 23, 82, 103, 50, 84, 31, 86, 87, 45, 89, 108, 41, 91, 15, 1, 59, 123, 3, 116, 56, 5, 79, 90, 88, 71, 73, 72, 74, 83, 76, 81, 77, 78, 85, 0, 97, 93, 122, 121, 120, 119, 118, 117, 115, 114, 113, 112, 111, 110, 107, 106, 105, 104, 102, 101, 100, 99, 98, 70, 96, 95, 94, 92, 69, 62, 67, 30, 28, 27, 26, 25, 24, 22, 21, 20, 19, 18, 32, 17, 14, 13, 12, 11, 10, 9, 8, 7, 6, 4, 2, 16, 33, 34, 35, 66, 65, 64, 63, 124, 60, 58, 57, 55, 54, 53, 52, 51, 49, 48, 47, 46, 44, 43, 42, 40, 39, 38, 37, 36, 68, 125]
+S sketch T painting Train Ep: 18000 lr0.004619888312917149 	 Loss Classification: 0.114564 Loss T 0.032931 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0893, Accuracy: 1111/1134 F1 (97.9718%)
+
+
+Test set: Average loss: 1.9374, Accuracy: 22323/31104 F1 (71.7689%)
+
+
+Val set: Average loss: 2.0708, Accuracy: 240/360 F1 (66.6667%)
+
+best acc test 71.913580  acc val 66.666667 acc labeled target 97.971781
+saving model...
+S sketch T painting Train Ep: 18100 lr0.00460755215684026 	 Loss Classification: 0.033867 Loss T 0.040466 Method MME
+
+S sketch T painting Train Ep: 18200 lr0.00459529258892745 	 Loss Classification: 0.222734 Loss T 0.034525 Method MME
+
+S sketch T painting Train Ep: 18300 lr0.004583108864617844 	 Loss Classification: 0.019901 Loss T 0.046380 Method MME
+
+S sketch T painting Train Ep: 18400 lr0.0045710002491862545 	 Loss Classification: 0.110868 Loss T 0.031108 Method MME
+
+S sketch T painting Train Ep: 18500 lr0.0045589660175791875 	 Loss Classification: 0.040797 Loss T 0.036993 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0998, Accuracy: 1111/1134 F1 (97.9718%)
+
+
+Test set: Average loss: 1.9397, Accuracy: 22411/31104 F1 (72.0518%)
+
+
+Val set: Average loss: 2.0642, Accuracy: 245/360 F1 (68.0556%)
+
+best acc test 72.051826  acc val 68.055556 acc labeled target 97.971781
+saving model...
+S sketch T painting Train Ep: 18600 lr0.004547005454254138 	 Loss Classification: 0.067933 Loss T 0.032783 Method MME
+
+S sketch T painting Train Ep: 18700 lr0.004535117853022106 	 Loss Classification: 0.023883 Loss T 0.037438 Method MME
+
+S sketch T painting Train Ep: 18800 lr0.004523302516893268 	 Loss Classification: 0.268294 Loss T 0.031328 Method MME
+
+S sketch T painting Train Ep: 18900 lr0.004511558757925708 	 Loss Classification: 0.125477 Loss T 0.059575 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [1.        1.        1.        0.8888889 1.        1.        1.
+ 0.8888889 0.8888889 0.8888889 1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        0.8888889 0.8888889 1.        1.
+ 1.        0.8888889 1.        0.8888889 1.        1.        1.
+ 1.        0.8888889 1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.8888889 1.        1.        1.        0.8888889 1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        0.8888889 1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        0.8888889 1.
+ 1.        1.        0.8888889 1.        1.        1.        0.8888889
+ 1.        0.8888889 0.8888889 1.        1.        0.8888889 1.
+ 1.        1.        1.        1.        1.        0.8888889 1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.8888889 1.        1.        1.        1.        1.        1.
+ 1.        1.        0.8888889 0.8888889 1.        1.        1.
+ 1.        1.        0.8888889 1.        1.        1.        1.       ]
+Top k classes which perform poorly are:  [115, 24, 105, 83, 85, 53, 29, 86, 79, 31, 114, 25, 49, 75, 89, 9, 8, 7, 36, 121, 3, 96, 65, 87, 90, 88, 0, 81, 82, 91, 80, 78, 77, 76, 74, 73, 72, 71, 84, 92, 99, 94, 123, 122, 120, 119, 118, 117, 116, 113, 112, 111, 110, 93, 109, 107, 106, 104, 103, 102, 101, 100, 70, 98, 97, 95, 108, 69, 62, 67, 33, 32, 30, 28, 27, 26, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 6, 5, 4, 2, 1, 34, 68, 35, 38, 66, 64, 63, 124, 61, 60, 59, 58, 57, 56, 55, 54, 52, 51, 50, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 37, 125]
+S sketch T painting Train Ep: 19000 lr0.004499885897077159 	 Loss Classification: 0.184710 Loss T 0.026353 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.1058, Accuracy: 1103/1134 F1 (97.2663%)
+
+
+Test set: Average loss: 2.0171, Accuracy: 22318/31104 F1 (71.7528%)
+
+
+Val set: Average loss: 2.0954, Accuracy: 244/360 F1 (67.7778%)
+
+best acc test 72.051826  acc val 67.777778 acc labeled target 97.266314
+saving model...
+S sketch T painting Train Ep: 19100 lr0.004488283264059669 	 Loss Classification: 0.035435 Loss T 0.026821 Method MME
+
+S sketch T painting Train Ep: 19200 lr0.004476750197197131 	 Loss Classification: 0.180198 Loss T 0.031299 Method MME
+
+S sketch T painting Train Ep: 19300 lr0.004465286043285614 	 Loss Classification: 0.042369 Loss T 0.054056 Method MME
+
+S sketch T painting Train Ep: 19400 lr0.004453890157456425 	 Loss Classification: 0.061077 Loss T 0.035877 Method MME
+
+S sketch T painting Train Ep: 19500 lr0.004442561903041838 	 Loss Classification: 0.031082 Loss T 0.034066 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.1004, Accuracy: 1099/1134 F1 (96.9136%)
+
+
+Test set: Average loss: 1.9867, Accuracy: 22418/31104 F1 (72.0743%)
+
+
+Val set: Average loss: 1.9977, Accuracy: 247/360 F1 (68.6111%)
+
+best acc test 72.074331  acc val 68.611111 acc labeled target 96.913580
+saving model...
+S sketch T painting Train Ep: 19600 lr0.004431300651443432 	 Loss Classification: 0.061154 Loss T 0.039307 Method MME
+
+S sketch T painting Train Ep: 19700 lr0.004420105782002992 	 Loss Classification: 0.377872 Loss T 0.028874 Method MME
+
+S sketch T painting Train Ep: 19800 lr0.004408976681875879 	 Loss Classification: 0.183091 Loss T 0.025842 Method MME
+
+S sketch T painting Train Ep: 19900 lr0.004397912745906863 	 Loss Classification: 0.294387 Loss T 0.019761 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [1.        1.        0.8888889 1.        1.        0.8888889 0.8888889
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        0.8888889 1.        1.        1.        0.8888889
+ 1.        1.        0.8888889 1.        0.8888889 1.        0.8888889
+ 1.        1.        1.        0.8888889 1.        1.        1.
+ 0.8888889 0.7777778 1.        1.        1.        1.        0.8888889
+ 0.8888889 1.        0.8888889 1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        0.8888889 1.
+ 1.        0.8888889 1.        1.        1.        1.        0.8888889
+ 1.        1.        0.8888889 1.        1.        0.8888889 1.
+ 1.        0.8888889 0.8888889 0.8888889 1.        1.        1.
+ 1.        1.        0.8888889 1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        0.8888889 1.
+ 1.        1.        1.        0.8888889 1.        0.7777778 1.
+ 1.        1.        1.        1.        1.        1.        0.8888889
+ 0.8888889 1.        0.8888889 1.        1.        1.        0.8888889
+ 1.        1.        0.7777778 1.        0.8888889 1.        1.       ]
+Top k classes which perform poorly are:  [121, 36, 103, 35, 79, 44, 23, 25, 27, 101, 20, 86, 69, 96, 41, 42, 31, 78, 80, 111, 61, 118, 75, 72, 5, 64, 123, 114, 112, 16, 2, 6, 89, 90, 88, 87, 74, 85, 84, 83, 82, 76, 81, 77, 73, 91, 0, 93, 122, 120, 119, 117, 116, 115, 113, 110, 109, 108, 107, 106, 105, 104, 102, 100, 99, 98, 97, 95, 94, 92, 71, 62, 68, 32, 30, 29, 28, 26, 24, 22, 21, 19, 18, 17, 15, 14, 13, 12, 11, 10, 9, 8, 7, 4, 3, 1, 33, 34, 37, 38, 67, 66, 65, 63, 124, 60, 59, 58, 57, 56, 55, 70, 54, 52, 51, 50, 49, 48, 47, 46, 45, 43, 40, 39, 53, 125]
+S sketch T painting Train Ep: 20000 lr0.004386913376508308 	 Loss Classification: 0.017865 Loss T 0.027580 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.1141, Accuracy: 1102/1134 F1 (97.1781%)
+
+
+Test set: Average loss: 1.9382, Accuracy: 22551/31104 F1 (72.5019%)
+
+
+Val set: Average loss: 1.9703, Accuracy: 248/360 F1 (68.8889%)
+
+best acc test 72.501929  acc val 68.888889 acc labeled target 97.178131
+saving model...
+S sketch T painting Train Ep: 20100 lr0.004375977983540715 	 Loss Classification: 0.086473 Loss T 0.027429 Method MME
+
+S sketch T painting Train Ep: 20200 lr0.004365105984195512 	 Loss Classification: 0.057066 Loss T 0.020318 Method MME
+
+S sketch T painting Train Ep: 20300 lr0.004354296802880095 	 Loss Classification: 0.052676 Loss T 0.046533 Method MME
+
+S sketch T painting Train Ep: 20400 lr0.004343549871105023 	 Loss Classification: 0.040020 Loss T 0.020122 Method MME
+
+S sketch T painting Train Ep: 20500 lr0.0043328646273733526 	 Loss Classification: 0.084117 Loss T 0.032241 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0725, Accuracy: 1116/1134 F1 (98.4127%)
+
+
+Test set: Average loss: 2.0261, Accuracy: 22375/31104 F1 (71.9361%)
+
+
+Val set: Average loss: 2.2455, Accuracy: 240/360 F1 (66.6667%)
+
+best acc test 72.501929  acc val 66.666667 acc labeled target 98.412698
+saving model...
+S sketch T painting Train Ep: 20600 lr0.00432224051707205 	 Loss Classification: 0.320965 Loss T 0.035182 Method MME
+
+S sketch T painting Train Ep: 20700 lr0.0043116769923654385 	 Loss Classification: 0.133582 Loss T 0.023643 Method MME
+
+S sketch T painting Train Ep: 20800 lr0.004301173512090631 	 Loss Classification: 0.038496 Loss T 0.028294 Method MME
+
+S sketch T painting Train Ep: 20900 lr0.004290729541654919 	 Loss Classification: 0.158117 Loss T 0.027164 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [1.        1.        1.        0.8888889 1.        0.8888889 1.
+ 1.        0.8888889 0.7777778 1.        1.        1.        0.8888889
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        0.8888889 0.8888889 1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        0.8888889 1.        0.8888889 1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        0.8888889 1.        1.        1.
+ 1.        1.        1.        1.        0.8888889 1.        1.
+ 1.        1.        1.        0.8888889 1.        1.        0.8888889
+ 1.        1.        1.        1.        1.        0.8888889 1.
+ 1.        0.8888889 1.        0.8888889 1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        0.8888889 1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.       ]
+Top k classes which perform poorly are:  [9, 66, 92, 89, 45, 47, 24, 23, 83, 114, 13, 80, 5, 3, 8, 94, 74, 78, 69, 91, 90, 70, 88, 87, 86, 77, 71, 75, 72, 84, 73, 82, 81, 93, 79, 85, 76, 0, 96, 123, 122, 121, 120, 119, 118, 117, 116, 115, 113, 112, 111, 95, 110, 108, 107, 106, 105, 104, 103, 102, 101, 100, 99, 68, 97, 109, 98, 62, 65, 32, 31, 30, 29, 28, 27, 26, 25, 22, 21, 20, 19, 18, 17, 16, 15, 14, 12, 11, 10, 7, 6, 4, 2, 1, 33, 34, 35, 36, 64, 63, 124, 61, 60, 59, 58, 57, 56, 55, 54, 53, 67, 52, 50, 49, 48, 46, 44, 43, 42, 41, 40, 39, 38, 37, 51, 125]
+S sketch T painting Train Ep: 21000 lr0.0042803445529350555 	 Loss Classification: 0.077511 Loss T 0.026811 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0764, Accuracy: 1111/1134 F1 (97.9718%)
+
+
+Test set: Average loss: 1.9782, Accuracy: 22444/31104 F1 (72.1579%)
+
+
+Val set: Average loss: 1.9635, Accuracy: 251/360 F1 (69.7222%)
+
+best acc test 72.157922  acc val 69.722222 acc labeled target 97.971781
+saving model...
+S sketch T painting Train Ep: 21100 lr0.0042700180241784045 	 Loss Classification: 0.410041 Loss T 0.032376 Method MME
+
+S sketch T painting Train Ep: 21200 lr0.004259749439905917 	 Loss Classification: 0.095011 Loss T 0.050261 Method MME
+
+S sketch T painting Train Ep: 21300 lr0.004249538290816886 	 Loss Classification: 0.082975 Loss T 0.032775 Method MME
+
+S sketch T painting Train Ep: 21400 lr0.004239384073695442 	 Loss Classification: 0.013863 Loss T 0.032940 Method MME
+
+S sketch T painting Train Ep: 21500 lr0.004229286291318768 	 Loss Classification: 0.030991 Loss T 0.033698 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0720, Accuracy: 1116/1134 F1 (98.4127%)
+
+
+Test set: Average loss: 1.9655, Accuracy: 22469/31104 F1 (72.2383%)
+
+
+Val set: Average loss: 2.0262, Accuracy: 247/360 F1 (68.6111%)
+
+best acc test 72.157922  acc val 68.611111 acc labeled target 98.412698
+saving model...
+S sketch T painting Train Ep: 21600 lr0.004219244452366975 	 Loss Classification: 0.099721 Loss T 0.015298 Method MME
+
+S sketch T painting Train Ep: 21700 lr0.004209258071334615 	 Loss Classification: 0.291057 Loss T 0.029170 Method MME
+
+S sketch T painting Train Ep: 21800 lr0.004199326668443797 	 Loss Classification: 0.119525 Loss T 0.017370 Method MME
+
+S sketch T painting Train Ep: 21900 lr0.004189449769558871 	 Loss Classification: 0.049001 Loss T 0.032288 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [1.        1.        1.        1.        0.8888889 0.8888889 1.
+ 1.        0.8888889 1.        1.        1.        1.        0.7777778
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        0.8888889 1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        0.8888889 1.        0.8888889 0.8888889
+ 1.        1.        1.        1.        0.8888889 1.        1.
+ 1.        1.        1.        0.7777778 1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        0.8888889
+ 1.        1.        0.8888889 0.8888889 0.8888889 1.        1.
+ 0.8888889 1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        0.8888889 1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.       ]
+Top k classes which perform poorly are:  [66, 13, 91, 88, 87, 86, 83, 23, 108, 54, 55, 52, 8, 4, 60, 5, 76, 69, 90, 89, 70, 71, 85, 84, 72, 75, 81, 80, 79, 78, 92, 77, 73, 74, 82, 93, 0, 95, 123, 122, 121, 120, 119, 118, 117, 116, 115, 114, 113, 112, 111, 110, 109, 107, 106, 105, 104, 103, 102, 101, 100, 99, 98, 97, 68, 94, 96, 62, 65, 30, 29, 28, 27, 26, 25, 24, 22, 21, 20, 19, 18, 17, 16, 15, 14, 12, 11, 10, 9, 7, 6, 3, 2, 1, 31, 32, 33, 34, 64, 63, 124, 61, 59, 58, 57, 56, 53, 51, 50, 49, 67, 48, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 47, 125]
+S sketch T painting Train Ep: 22000 lr0.004179626906102638 	 Loss Classification: 0.013825 Loss T 0.028486 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0811, Accuracy: 1105/1134 F1 (97.4427%)
+
+
+Test set: Average loss: 1.9790, Accuracy: 22453/31104 F1 (72.1869%)
+
+
+Val set: Average loss: 2.0680, Accuracy: 250/360 F1 (69.4444%)
+
+best acc test 72.157922  acc val 69.444444 acc labeled target 97.442681
+saving model...
+S sketch T painting Train Ep: 22100 lr0.004169857614974071 	 Loss Classification: 0.079089 Loss T 0.021579 Method MME
+
+S sketch T painting Train Ep: 22200 lr0.004160141438467499 	 Loss Classification: 0.346920 Loss T 0.045013 Method MME
+
+S sketch T painting Train Ep: 22300 lr0.004150477924193236 	 Loss Classification: 0.038990 Loss T 0.019483 Method MME
+
+S sketch T painting Train Ep: 22400 lr0.00414086662499961 	 Loss Classification: 0.017834 Loss T 0.012040 Method MME
+
+S sketch T painting Train Ep: 22500 lr0.004131307098896385 	 Loss Classification: 0.019675 Loss T 0.038344 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0942, Accuracy: 1108/1134 F1 (97.7072%)
+
+
+Test set: Average loss: 2.0197, Accuracy: 22452/31104 F1 (72.1836%)
+
+
+Val set: Average loss: 1.9470, Accuracy: 249/360 F1 (69.1667%)
+
+best acc test 72.157922  acc val 69.166667 acc labeled target 97.707231
+saving model...
+S sketch T painting Train Ep: 22600 lr0.0041217989089795196 	 Loss Classification: 0.277072 Loss T 0.033661 Method MME
+
+S sketch T painting Train Ep: 22700 lr0.004112341623357265 	 Loss Classification: 0.031697 Loss T 0.033089 Method MME
+
+S sketch T painting Train Ep: 22800 lr0.004102934815077543 	 Loss Classification: 0.109778 Loss T 0.029742 Method MME
+
+S sketch T painting Train Ep: 22900 lr0.004093578062056604 	 Loss Classification: 0.211815 Loss T 0.026271 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [1.        1.        1.        1.        0.8888889 1.        1.
+ 1.        1.        1.        0.8888889 1.        1.        1.
+ 1.        1.        0.8888889 1.        0.8888889 1.        1.
+ 1.        0.8888889 1.        1.        1.        1.        1.
+ 1.        0.8888889 1.        0.8888889 1.        1.        1.
+ 1.        1.        1.        1.        1.        0.8888889 0.8888889
+ 0.8888889 1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        0.8888889 1.        1.        1.
+ 0.8888889 1.        1.        1.        0.8888889 1.        1.
+ 0.8888889 1.        1.        0.8888889 1.        1.        0.8888889
+ 1.        1.        1.        0.7777778 1.        1.        1.
+ 1.        1.        1.        1.        1.        0.8888889 1.
+ 1.        1.        1.        1.        1.        0.8888889 1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.7777778 0.8888889 1.        1.        1.        1.        1.
+ 0.8888889 0.8888889 1.        0.8888889 1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.       ]
+Top k classes which perform poorly are:  [80, 105, 42, 89, 96, 67, 31, 29, 106, 22, 40, 18, 16, 112, 41, 76, 70, 115, 10, 59, 4, 113, 73, 63, 77, 91, 90, 71, 72, 88, 87, 85, 84, 83, 82, 74, 75, 81, 79, 78, 86, 0, 97, 93, 123, 122, 121, 120, 119, 118, 117, 116, 114, 111, 110, 109, 108, 107, 104, 103, 102, 101, 100, 99, 98, 95, 94, 92, 69, 62, 66, 30, 28, 27, 26, 25, 24, 23, 21, 20, 19, 17, 32, 15, 13, 12, 11, 9, 8, 7, 6, 5, 3, 2, 1, 14, 33, 34, 35, 65, 64, 124, 61, 60, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 39, 38, 37, 36, 68, 125]
+S sketch T painting Train Ep: 23000 lr0.00408427094700893 	 Loss Classification: 0.017395 Loss T 0.025111 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0699, Accuracy: 1111/1134 F1 (97.9718%)
+
+
+Test set: Average loss: 2.0046, Accuracy: 22513/31104 F1 (72.3798%)
+
+
+Val set: Average loss: 2.0321, Accuracy: 248/360 F1 (68.8889%)
+
+best acc test 72.157922  acc val 68.888889 acc labeled target 97.971781
+saving model...
+S sketch T painting Train Ep: 23100 lr0.004075013057378346 	 Loss Classification: 0.196940 Loss T 0.036272 Method MME
+
+S sketch T painting Train Ep: 23200 lr0.004065803985270331 	 Loss Classification: 0.050988 Loss T 0.023351 Method MME
+
+S sketch T painting Train Ep: 23300 lr0.004056643327385506 	 Loss Classification: 0.061820 Loss T 0.019343 Method MME
+
+S sketch T painting Train Ep: 23400 lr0.004047530684954247 	 Loss Classification: 0.086965 Loss T 0.036558 Method MME
+
+S sketch T painting Train Ep: 23500 lr0.0040384656636724406 	 Loss Classification: 0.089305 Loss T 0.043153 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0755, Accuracy: 1111/1134 F1 (97.9718%)
+
+
+Test set: Average loss: 2.0347, Accuracy: 22500/31104 F1 (72.3380%)
+
+
+Val set: Average loss: 2.1736, Accuracy: 246/360 F1 (68.3333%)
+
+best acc test 72.157922  acc val 68.333333 acc labeled target 97.971781
+saving model...
+S sketch T painting Train Ep: 23600 lr0.004029447873638333 	 Loss Classification: 0.028316 Loss T 0.029560 Method MME
+

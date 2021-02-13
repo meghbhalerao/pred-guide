@@ -2002,3 +2002,2207 @@ S real T clipart Train Ep: 20700 lr0.0043116769923654385 	 Loss Classification: 
 
 S real T clipart Train Ep: 20800 lr0.004301173512090631 	 Loss Classification: 0.031826 Loss T 0.029472 Method MME
 
+S real T clipart Train Ep: 20900 lr0.004290729541654919 	 Loss Classification: 0.143409 Loss T 0.020249 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [1.        1.        1.        0.8888889 1.        0.8888889 1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        0.8888889 1.
+ 0.8888889 1.        1.        1.        1.        1.        0.8888889
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        0.8888889 1.        1.        1.
+ 1.        1.        1.        1.        1.        0.6666667 0.8888889
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        0.8888889 1.
+ 0.6666667 1.        1.        0.8888889 1.        1.        1.
+ 1.        1.        0.8888889 1.        0.8888889 1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.8888889 1.        1.        1.        0.8888889 1.        1.
+ 1.        1.        1.        1.        0.8888889 0.6666667 1.
+ 0.8888889 1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.8888889 1.        1.        1.        1.        1.        0.8888889]
+Top k classes which perform poorly are:  [47, 63, 103, 125, 95, 66, 27, 102, 48, 105, 21, 38, 19, 91, 74, 72, 61, 119, 5, 3, 90, 89, 88, 69, 70, 87, 86, 85, 84, 76, 83, 73, 82, 81, 80, 79, 78, 77, 75, 71, 96, 93, 123, 122, 121, 120, 118, 117, 116, 115, 114, 113, 112, 92, 111, 109, 108, 107, 106, 104, 101, 100, 99, 98, 97, 94, 110, 68, 0, 65, 30, 29, 28, 26, 25, 24, 23, 22, 20, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 4, 2, 1, 31, 67, 32, 34, 64, 124, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 46, 45, 44, 43, 42, 41, 40, 39, 37, 36, 35, 33, 62]
+Assigned Classwise weights to source
+S real T clipart Train Ep: 21000 lr0.0042803445529350555 	 Loss Classification: 0.222994 Loss T 0.020631 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.1025, Accuracy: 1104/1134 F1 (97.3545%)
+
+
+Test set: Average loss: 1.5737, Accuracy: 14268/18312 F1 (77.9161%)
+
+
+Val set: Average loss: 1.6626, Accuracy: 267/360 F1 (74.1667%)
+
+best acc test 77.648536  acc val 74.166667 acc labeled target 97.354497
+saving model...
+S real T clipart Train Ep: 21100 lr0.0042700180241784045 	 Loss Classification: 0.545622 Loss T 0.018265 Method MME
+
+S real T clipart Train Ep: 21200 lr0.004259749439905917 	 Loss Classification: 0.166964 Loss T 0.020414 Method MME
+
+S real T clipart Train Ep: 21300 lr0.004249538290816886 	 Loss Classification: 0.191437 Loss T 0.031229 Method MME
+
+S real T clipart Train Ep: 21400 lr0.004239384073695442 	 Loss Classification: 0.488063 Loss T 0.017440 Method MME
+
+S real T clipart Train Ep: 21500 lr0.004229286291318768 	 Loss Classification: 0.511962 Loss T 0.024884 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.1043, Accuracy: 1099/1134 F1 (96.9136%)
+
+
+Test set: Average loss: 1.5235, Accuracy: 14354/18312 F1 (78.3858%)
+
+
+Val set: Average loss: 1.4512, Accuracy: 275/360 F1 (76.3889%)
+
+best acc test 78.385758  acc val 76.388889 acc labeled target 96.913580
+saving model...
+S real T clipart Train Ep: 21600 lr0.004219244452366975 	 Loss Classification: 0.439587 Loss T 0.019384 Method MME
+
+S real T clipart Train Ep: 21700 lr0.004209258071334615 	 Loss Classification: 0.442615 Loss T 0.013530 Method MME
+
+S real T clipart Train Ep: 21800 lr0.004199326668443797 	 Loss Classification: 0.148866 Loss T 0.027601 Method MME
+
+S real T clipart Train Ep: 21900 lr0.004189449769558871 	 Loss Classification: 0.224053 Loss T 0.026829 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [1.        1.        1.        1.        1.        1.        1.
+ 1.        0.8888889 0.8888889 0.8888889 1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        0.8888889 1.        1.
+ 1.        1.        1.        1.        1.        0.8888889 1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        0.6666667 0.8888889
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.6666667 1.        1.        1.        1.        1.        0.8888889
+ 1.        1.        0.7777778 0.8888889 1.        0.8888889 1.
+ 1.        1.        1.        1.        1.        1.        0.8888889
+ 1.        0.8888889 0.8888889 1.        0.7777778 0.8888889 1.
+ 0.8888889 1.        1.        0.8888889 1.        0.8888889 1.
+ 1.        1.        0.8888889 1.        1.        0.6666667 1.
+ 1.        0.8888889 1.        1.        1.        0.8888889 1.
+ 1.        1.        0.8888889 1.        1.        1.        1.
+ 0.8888889 1.        1.        1.        1.        0.8888889 1.       ]
+Top k classes which perform poorly are:  [63, 103, 47, 88, 72, 33, 106, 25, 48, 83, 89, 85, 96, 86, 94, 100, 110, 91, 9, 69, 124, 75, 114, 119, 73, 10, 8, 87, 70, 71, 78, 77, 74, 82, 81, 80, 76, 84, 79, 0, 92, 123, 122, 121, 120, 118, 117, 116, 115, 113, 112, 111, 90, 109, 107, 105, 104, 102, 101, 99, 98, 97, 68, 95, 93, 108, 67, 62, 65, 29, 28, 27, 26, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 7, 6, 5, 4, 3, 2, 1, 30, 31, 32, 34, 64, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 66, 50, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 49, 125]
+Assigned Classwise weights to source
+S real T clipart Train Ep: 22000 lr0.004179626906102638 	 Loss Classification: 0.345443 Loss T 0.038091 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0636, Accuracy: 1110/1134 F1 (97.8836%)
+
+
+Test set: Average loss: 1.5590, Accuracy: 14363/18312 F1 (78.4349%)
+
+
+Val set: Average loss: 1.6007, Accuracy: 271/360 F1 (75.2778%)
+
+best acc test 78.385758  acc val 75.277778 acc labeled target 97.883598
+saving model...
+S real T clipart Train Ep: 22100 lr0.004169857614974071 	 Loss Classification: 0.120993 Loss T 0.012204 Method MME
+
+S real T clipart Train Ep: 22200 lr0.004160141438467499 	 Loss Classification: 0.146351 Loss T 0.010305 Method MME
+
+S real T clipart Train Ep: 22300 lr0.004150477924193236 	 Loss Classification: 0.053218 Loss T 0.015939 Method MME
+
+S real T clipart Train Ep: 22400 lr0.00414086662499961 	 Loss Classification: 0.384619 Loss T 0.031438 Method MME
+
+S real T clipart Train Ep: 22500 lr0.004131307098896385 	 Loss Classification: 0.060906 Loss T 0.015396 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0695, Accuracy: 1110/1134 F1 (97.8836%)
+
+
+Test set: Average loss: 1.4981, Accuracy: 14354/18312 F1 (78.3858%)
+
+
+Val set: Average loss: 1.6021, Accuracy: 272/360 F1 (75.5556%)
+
+best acc test 78.385758  acc val 75.555556 acc labeled target 97.883598
+saving model...
+S real T clipart Train Ep: 22600 lr0.0041217989089795196 	 Loss Classification: 0.017402 Loss T 0.014188 Method MME
+
+S real T clipart Train Ep: 22700 lr0.004112341623357265 	 Loss Classification: 0.148669 Loss T 0.015942 Method MME
+
+S real T clipart Train Ep: 22800 lr0.004102934815077543 	 Loss Classification: 0.050093 Loss T 0.017900 Method MME
+
+S real T clipart Train Ep: 22900 lr0.004093578062056604 	 Loss Classification: 0.282187 Loss T 0.014785 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        0.8888889
+ 1.        1.        1.        0.8888889 1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        0.8888889
+ 1.        1.        1.        1.        1.        1.        0.8888889
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        0.8888889 0.8888889
+ 1.        1.        1.        1.        1.        0.8888889 1.
+ 1.        0.8888889 1.        1.        1.        1.        1.
+ 0.6666667 1.        1.        1.        1.        1.        1.
+ 0.6666667 1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        0.8888889 1.        1.        1.        1.
+ 0.6666667 0.8888889 1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        0.6666667 1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        0.8888889 1.
+ 0.8888889 1.        1.        1.        1.        1.        1.       ]
+Top k classes which perform poorly are:  [103, 63, 70, 91, 48, 17, 27, 54, 13, 47, 92, 117, 119, 34, 57, 86, 87, 85, 88, 89, 84, 90, 83, 82, 0, 80, 78, 77, 76, 75, 74, 73, 72, 71, 69, 81, 79, 94, 68, 123, 122, 121, 120, 118, 116, 115, 114, 113, 112, 111, 110, 93, 109, 107, 106, 105, 104, 102, 101, 100, 99, 98, 97, 96, 95, 108, 67, 62, 65, 28, 26, 25, 24, 23, 22, 21, 20, 19, 18, 16, 15, 14, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 29, 30, 31, 32, 64, 124, 61, 60, 59, 58, 56, 55, 53, 52, 51, 50, 66, 49, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 33, 46, 125]
+Assigned Classwise weights to source
+S real T clipart Train Ep: 23000 lr0.00408427094700893 	 Loss Classification: 0.188253 Loss T 0.023326 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0763, Accuracy: 1109/1134 F1 (97.7954%)
+
+
+Test set: Average loss: 1.5984, Accuracy: 14344/18312 F1 (78.3311%)
+
+
+Val set: Average loss: 1.6711, Accuracy: 270/360 F1 (75.0000%)
+
+best acc test 78.385758  acc val 75.000000 acc labeled target 97.795414
+saving model...
+S real T clipart Train Ep: 23100 lr0.004075013057378346 	 Loss Classification: 0.579520 Loss T 0.013857 Method MME
+
+S real T clipart Train Ep: 23200 lr0.004065803985270331 	 Loss Classification: 0.422766 Loss T 0.018866 Method MME
+
+S real T clipart Train Ep: 23300 lr0.004056643327385506 	 Loss Classification: 0.241139 Loss T 0.027605 Method MME
+
+S real T clipart Train Ep: 23400 lr0.004047530684954247 	 Loss Classification: 0.321557 Loss T 0.013906 Method MME
+
+S real T clipart Train Ep: 23500 lr0.0040384656636724406 	 Loss Classification: 0.043704 Loss T 0.033068 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0664, Accuracy: 1112/1134 F1 (98.0600%)
+
+
+Test set: Average loss: 1.5947, Accuracy: 14303/18312 F1 (78.1073%)
+
+
+Val set: Average loss: 1.5171, Accuracy: 274/360 F1 (76.1111%)
+
+best acc test 78.385758  acc val 76.111111 acc labeled target 98.059965
+saving model...
+S real T clipart Train Ep: 23600 lr0.004029447873638333 	 Loss Classification: 0.273675 Loss T 0.013058 Method MME
+
+S real T clipart Train Ep: 23700 lr0.00402047692929045 	 Loss Classification: 0.154171 Loss T 0.034833 Method MME
+
+S real T clipart Train Ep: 23800 lr0.004011552449346588 	 Loss Classification: 0.096822 Loss T 0.018494 Method MME
+
+S real T clipart Train Ep: 23900 lr0.004002674056743821 	 Loss Classification: 0.036848 Loss T 0.015451 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        0.7777778 1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        0.8888889 1.
+ 1.        1.        1.        1.        0.8888889 1.        0.8888889
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        0.8888889 0.6666667 1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        0.8888889 1.
+ 0.6666667 1.        1.        1.        1.        1.        0.8888889
+ 0.8888889 1.        1.        1.        1.        1.        1.
+ 1.        1.        0.8888889 1.        1.        0.8888889 1.
+ 1.        1.        0.8888889 1.        1.        1.        1.
+ 0.7777778 1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        0.8888889 1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        0.8888889 1.        1.        1.        1.       ]
+Top k classes which perform poorly are:  [63, 47, 91, 9, 32, 26, 86, 46, 106, 82, 79, 34, 69, 121, 61, 70, 76, 92, 90, 89, 88, 87, 85, 84, 83, 71, 72, 73, 93, 80, 74, 78, 77, 75, 81, 0, 68, 123, 122, 120, 119, 118, 117, 116, 115, 114, 113, 112, 111, 110, 109, 108, 107, 105, 104, 103, 102, 101, 100, 99, 98, 97, 96, 95, 94, 67, 62, 65, 28, 27, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 29, 15, 13, 12, 11, 10, 8, 7, 6, 5, 4, 3, 2, 1, 14, 66, 30, 33, 64, 124, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 31, 50, 48, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 49, 125]
+Assigned Classwise weights to source
+S real T clipart Train Ep: 24000 lr0.0039938413785795416 	 Loss Classification: 0.193350 Loss T 0.018808 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0777, Accuracy: 1107/1134 F1 (97.6190%)
+
+
+Test set: Average loss: 1.6241, Accuracy: 14360/18312 F1 (78.4185%)
+
+
+Val set: Average loss: 1.6430, Accuracy: 271/360 F1 (75.2778%)
+
+best acc test 78.385758  acc val 75.277778 acc labeled target 97.619048
+saving model...
+S real T clipart Train Ep: 24100 lr0.003985054046053481 	 Loss Classification: 0.129326 Loss T 0.023737 Method MME
+
+S real T clipart Train Ep: 24200 lr0.003976311694410721 	 Loss Classification: 0.079576 Loss T 0.021800 Method MME
+
+S real T clipart Train Ep: 24300 lr0.00396761396288564 	 Loss Classification: 0.190741 Loss T 0.021134 Method MME
+
+S real T clipart Train Ep: 24400 lr0.003958960494646819 	 Loss Classification: 0.083946 Loss T 0.020443 Method MME
+
+S real T clipart Train Ep: 24500 lr0.0039503509367428465 	 Loss Classification: 0.035445 Loss T 0.019805 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.1043, Accuracy: 1104/1134 F1 (97.3545%)
+
+
+Test set: Average loss: 1.6105, Accuracy: 14330/18312 F1 (78.2547%)
+
+
+Val set: Average loss: 1.6394, Accuracy: 269/360 F1 (74.7222%)
+
+best acc test 78.385758  acc val 74.722222 acc labeled target 97.354497
+saving model...
+S real T clipart Train Ep: 24600 lr0.00394178494004904 	 Loss Classification: 0.166470 Loss T 0.022792 Method MME
+
+S real T clipart Train Ep: 24700 lr0.003933262159215038 	 Loss Classification: 0.145491 Loss T 0.025659 Method MME
+
+S real T clipart Train Ep: 24800 lr0.00392478225261327 	 Loss Classification: 0.337939 Loss T 0.025693 Method MME
+
+S real T clipart Train Ep: 24900 lr0.003916344882288264 	 Loss Classification: 0.192406 Loss T 0.018067 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [1.        1.        1.        1.        0.8888889 1.        1.
+ 1.        1.        1.        1.        1.        0.8888889 1.
+ 1.        1.        1.        1.        1.        0.8888889 1.
+ 1.        1.        1.        1.        1.        1.        0.8888889
+ 1.        0.8888889 1.        1.        1.        1.        0.7777778
+ 1.        0.8888889 1.        1.        1.        0.8888889 1.
+ 1.        1.        0.8888889 1.        1.        0.6666667 1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.6666667 1.        1.        0.8888889 1.        1.        1.
+ 1.        1.        1.        0.8888889 0.8888889 1.        1.
+ 1.        1.        1.        1.        1.        0.8888889 1.
+ 1.        1.        0.8888889 1.        1.        1.        1.
+ 0.8888889 1.        1.        1.        1.        0.8888889 1.
+ 1.        1.        1.        1.        1.        0.6666667 0.8888889
+ 1.        0.8888889 1.        1.        1.        1.        0.8888889
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.8888889 1.        1.        1.        1.        1.        1.       ]
+Top k classes which perform poorly are:  [63, 47, 103, 34, 96, 36, 66, 44, 29, 27, 86, 104, 106, 91, 82, 19, 74, 4, 119, 73, 111, 40, 12, 84, 90, 70, 89, 71, 81, 72, 88, 87, 78, 83, 75, 85, 76, 77, 79, 80, 0, 93, 123, 122, 121, 120, 118, 117, 116, 115, 114, 113, 112, 92, 110, 108, 107, 105, 102, 101, 100, 99, 98, 97, 95, 94, 109, 69, 62, 67, 30, 28, 26, 25, 24, 23, 22, 21, 20, 18, 17, 16, 15, 14, 13, 11, 10, 9, 8, 7, 6, 5, 3, 2, 1, 31, 68, 32, 35, 65, 64, 124, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 46, 45, 43, 42, 41, 39, 38, 37, 33, 125]
+Assigned Classwise weights to source
+S real T clipart Train Ep: 25000 lr0.003907949713906802 	 Loss Classification: 0.153976 Loss T 0.017862 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0766, Accuracy: 1107/1134 F1 (97.6190%)
+
+
+Test set: Average loss: 1.6345, Accuracy: 14363/18312 F1 (78.4349%)
+
+
+Val set: Average loss: 1.7065, Accuracy: 268/360 F1 (74.4444%)
+
+best acc test 78.385758  acc val 74.444444 acc labeled target 97.619048
+saving model...
+S real T clipart Train Ep: 25100 lr0.003899596416708869 	 Loss Classification: 0.034329 Loss T 0.016894 Method MME
+
+S real T clipart Train Ep: 25200 lr0.0038912846634594346 	 Loss Classification: 0.340358 Loss T 0.009734 Method MME
+
+S real T clipart Train Ep: 25300 lr0.0038830141304009892 	 Loss Classification: 0.049344 Loss T 0.024551 Method MME
+
+S real T clipart Train Ep: 25400 lr0.003874784497206876 	 Loss Classification: 0.211479 Loss T 0.024356 Method MME
+
+S real T clipart Train Ep: 25500 lr0.003866595446935362 	 Loss Classification: 0.091443 Loss T 0.013010 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0808, Accuracy: 1109/1134 F1 (97.7954%)
+
+
+Test set: Average loss: 1.6320, Accuracy: 14388/18312 F1 (78.5714%)
+
+
+Val set: Average loss: 1.5934, Accuracy: 276/360 F1 (76.6667%)
+
+best acc test 78.571429  acc val 76.666667 acc labeled target 97.795414
+saving model...
+S real T clipart Train Ep: 25600 lr0.003858446665984465 	 Loss Classification: 0.074562 Loss T 0.019366 Method MME
+
+S real T clipart Train Ep: 25700 lr0.0038503378440474917 	 Loss Classification: 0.022691 Loss T 0.016209 Method MME
+
+S real T clipart Train Ep: 25800 lr0.003842268674069313 	 Loss Classification: 0.069639 Loss T 0.026147 Method MME
+
+S real T clipart Train Ep: 25900 lr0.0038342388522033147 	 Loss Classification: 0.100187 Loss T 0.014553 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [1.        1.        1.        0.8888889 1.        1.        1.
+ 1.        0.6666667 1.        0.8888889 1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        0.8888889 1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        0.8888889
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        0.6666667 1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        0.8888889 1.        0.8888889 1.        1.        1.
+ 0.6666667 1.        1.        1.        0.8888889 1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.8888889 1.        1.        1.        1.        1.        1.
+ 1.        1.        0.8888889 1.        1.        1.        1.
+ 0.6666667 1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        0.8888889 1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        0.8888889 1.        1.        1.        1.        1.
+ 0.8888889 1.        1.        1.        1.        0.8888889 1.       ]
+Top k classes which perform poorly are:  [91, 63, 47, 8, 34, 86, 102, 23, 113, 57, 59, 67, 77, 3, 124, 119, 10, 69, 89, 88, 87, 70, 85, 84, 83, 73, 80, 79, 78, 90, 76, 75, 74, 71, 72, 81, 82, 0, 93, 123, 122, 121, 120, 118, 117, 116, 115, 114, 112, 111, 110, 109, 108, 107, 106, 105, 104, 103, 101, 100, 99, 98, 97, 96, 68, 94, 92, 95, 62, 65, 29, 28, 27, 26, 25, 24, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 9, 7, 6, 5, 4, 2, 1, 30, 66, 31, 33, 64, 61, 60, 58, 56, 55, 54, 53, 52, 51, 50, 49, 48, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 32, 125]
+Assigned Classwise weights to source
+S real T clipart Train Ep: 26000 lr0.0038262480777690546 	 Loss Classification: 0.599565 Loss T 0.012954 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0758, Accuracy: 1107/1134 F1 (97.6190%)
+
+
+Test set: Average loss: 1.6225, Accuracy: 14367/18312 F1 (78.4567%)
+
+
+Val set: Average loss: 1.8222, Accuracy: 269/360 F1 (74.7222%)
+
+best acc test 78.571429  acc val 74.722222 acc labeled target 97.619048
+saving model...
+S real T clipart Train Ep: 26100 lr0.0038182960532105875 	 Loss Classification: 0.140018 Loss T 0.022750 Method MME
+
+S real T clipart Train Ep: 26200 lr0.0038103824840554513 	 Loss Classification: 0.035679 Loss T 0.013825 Method MME
+
+S real T clipart Train Ep: 26300 lr0.0038025070788743048 	 Loss Classification: 0.075531 Loss T 0.014801 Method MME
+
+S real T clipart Train Ep: 26400 lr0.003794669549241204 	 Loss Classification: 0.185578 Loss T 0.011552 Method MME
+
+S real T clipart Train Ep: 26500 lr0.0037868696096944997 	 Loss Classification: 0.136557 Loss T 0.006815 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0321, Accuracy: 1121/1134 F1 (98.8536%)
+
+
+Test set: Average loss: 1.6423, Accuracy: 14383/18312 F1 (78.5441%)
+
+
+Val set: Average loss: 1.7623, Accuracy: 272/360 F1 (75.5556%)
+
+best acc test 78.571429  acc val 75.555556 acc labeled target 98.853616
+saving model...
+S real T clipart Train Ep: 26600 lr0.00377910697769836 	 Loss Classification: 0.099069 Loss T 0.010996 Method MME
+
+S real T clipart Train Ep: 26700 lr0.0037713813736048834 	 Loss Classification: 0.075250 Loss T 0.025336 Method MME
+
+S real T clipart Train Ep: 26800 lr0.0037636925206168117 	 Loss Classification: 0.213528 Loss T 0.016864 Method MME
+
+S real T clipart Train Ep: 26900 lr0.0037560401447508216 	 Loss Classification: 0.117552 Loss T 0.026875 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        0.8888889 1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.6666667 1.        0.8888889 1.        1.        1.        1.
+ 0.8888889 1.        1.        1.        1.        1.        1.
+ 1.        1.        0.8888889 1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.6666667 1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        0.6666667 1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.       ]
+Top k classes which perform poorly are:  [63, 103, 91, 9, 70, 79, 65, 89, 87, 81, 90, 85, 84, 83, 82, 88, 86, 78, 92, 77, 76, 75, 74, 73, 72, 71, 69, 68, 67, 66, 80, 93, 0, 95, 123, 122, 121, 120, 119, 118, 117, 116, 115, 114, 113, 112, 111, 110, 109, 108, 107, 106, 105, 104, 102, 101, 100, 99, 98, 97, 96, 64, 94, 62, 61, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 8, 7, 6, 5, 4, 3, 2, 1, 29, 30, 31, 32, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 124, 47, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 46, 125]
+Assigned Classwise weights to source
+S real T clipart Train Ep: 27000 lr0.003748423974801389 	 Loss Classification: 0.281278 Loss T 0.016144 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0533, Accuracy: 1111/1134 F1 (97.9718%)
+
+
+Test set: Average loss: 1.6684, Accuracy: 14395/18312 F1 (78.6097%)
+
+
+Val set: Average loss: 1.7251, Accuracy: 275/360 F1 (76.3889%)
+
+best acc test 78.571429  acc val 76.388889 acc labeled target 97.971781
+saving model...
+S real T clipart Train Ep: 27100 lr0.003740843742305213 	 Loss Classification: 0.172008 Loss T 0.005679 Method MME
+
+S real T clipart Train Ep: 27200 lr0.0037332991815061845 	 Loss Classification: 0.170576 Loss T 0.006793 Method MME
+
+S real T clipart Train Ep: 27300 lr0.003725790029320905 	 Loss Classification: 0.287574 Loss T 0.013125 Method MME
+
+S real T clipart Train Ep: 27400 lr0.0037183160253047272 	 Loss Classification: 0.366433 Loss T 0.010319 Method MME
+
+S real T clipart Train Ep: 27500 lr0.003710876911618321 	 Loss Classification: 0.301359 Loss T 0.017621 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0660, Accuracy: 1112/1134 F1 (98.0600%)
+
+
+Test set: Average loss: 1.6650, Accuracy: 14384/18312 F1 (78.5496%)
+
+
+Val set: Average loss: 1.7427, Accuracy: 275/360 F1 (76.3889%)
+
+best acc test 78.571429  acc val 76.388889 acc labeled target 98.059965
+saving model...
+S real T clipart Train Ep: 27600 lr0.0037034724329947483 	 Loss Classification: 0.129145 Loss T 0.014172 Method MME
+
+S real T clipart Train Ep: 27700 lr0.0036961023367070435 	 Loss Classification: 0.130853 Loss T 0.016667 Method MME
+
+S real T clipart Train Ep: 27800 lr0.003688766372536283 	 Loss Classification: 0.324628 Loss T 0.017816 Method MME
+
+S real T clipart Train Ep: 27900 lr0.0036814642927401444 	 Loss Classification: 0.086293 Loss T 0.015796 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        0.8888889 1.        1.        1.        1.
+ 1.        0.8888889 1.        1.        0.8888889 1.        0.8888889
+ 0.8888889 0.8888889 1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        0.8888889 1.        1.
+ 1.        1.        1.        1.        1.        1.        0.8888889
+ 1.        1.        1.        1.        1.        0.5555556 1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.8888889 1.        1.        1.        1.        1.        1.
+ 1.        1.        0.8888889 1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.7777778 1.        1.        0.8888889 1.        1.        1.
+ 1.        1.        1.        1.        1.        0.6666667 1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        0.8888889 1.        1.        1.        1.        1.
+ 1.        1.        1.        0.8888889 1.        1.        1.       ]
+Top k classes which perform poorly are:  [47, 103, 91, 18, 41, 32, 22, 21, 20, 15, 113, 94, 122, 9, 63, 72, 76, 70, 90, 89, 88, 87, 86, 71, 85, 84, 83, 73, 74, 75, 82, 92, 81, 80, 79, 78, 77, 0, 98, 95, 123, 121, 120, 119, 118, 117, 116, 115, 114, 112, 111, 110, 109, 108, 107, 106, 105, 104, 102, 101, 100, 99, 69, 97, 96, 93, 68, 62, 66, 31, 30, 29, 28, 27, 26, 25, 24, 23, 19, 17, 16, 14, 13, 12, 11, 10, 8, 7, 6, 5, 4, 3, 2, 1, 33, 34, 35, 36, 65, 64, 124, 61, 60, 59, 58, 57, 56, 55, 54, 53, 67, 52, 50, 49, 48, 46, 45, 44, 43, 42, 40, 39, 38, 37, 51, 125]
+Assigned Classwise weights to source
+S real T clipart Train Ep: 28000 lr0.003674195852021934 	 Loss Classification: 0.285188 Loss T 0.009839 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0554, Accuracy: 1115/1134 F1 (98.3245%)
+
+
+Test set: Average loss: 1.6748, Accuracy: 14394/18312 F1 (78.6042%)
+
+
+Val set: Average loss: 1.6492, Accuracy: 273/360 F1 (75.8333%)
+
+best acc test 78.571429  acc val 75.833333 acc labeled target 98.324515
+saving model...
+S real T clipart Train Ep: 28100 lr0.0036669608075000928 	 Loss Classification: 0.128781 Loss T 0.021227 Method MME
+
+S real T clipart Train Ep: 28200 lr0.00365975891867815 	 Loss Classification: 0.282752 Loss T 0.009571 Method MME
+
+S real T clipart Train Ep: 28300 lr0.003652589947415138 	 Loss Classification: 0.162031 Loss T 0.022626 Method MME
+
+S real T clipart Train Ep: 28400 lr0.0036454536578964408 	 Loss Classification: 0.098679 Loss T 0.010631 Method MME
+
+S real T clipart Train Ep: 28500 lr0.0036383498166050877 	 Loss Classification: 0.031910 Loss T 0.013933 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0751, Accuracy: 1108/1134 F1 (97.7072%)
+
+
+Test set: Average loss: 1.6703, Accuracy: 14396/18312 F1 (78.6151%)
+
+
+Val set: Average loss: 1.8027, Accuracy: 272/360 F1 (75.5556%)
+
+best acc test 78.571429  acc val 75.555556 acc labeled target 97.707231
+saving model...
+S real T clipart Train Ep: 28600 lr0.0036312781922934662 	 Loss Classification: 0.294129 Loss T 0.009595 Method MME
+
+S real T clipart Train Ep: 28700 lr0.003624238555955462 	 Loss Classification: 0.336295 Loss T 0.015454 Method MME
+
+S real T clipart Train Ep: 28800 lr0.003617230680799007 	 Loss Classification: 0.102241 Loss T 0.019396 Method MME
+
+S real T clipart Train Ep: 28900 lr0.0036102543422190363 	 Loss Classification: 0.016115 Loss T 0.016548 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        0.8888889 1.        1.        1.        1.        1.
+ 1.        0.8888889 1.        1.        1.        1.        1.
+ 0.8888889 0.8888889 1.        0.8888889 1.        1.        0.8888889
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        0.8888889 0.8888889 1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        0.7777778 1.
+ 0.7777778 1.        1.        1.        0.8888889 1.        1.
+ 0.8888889 0.8888889 0.8888889 1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        0.7777778 1.        1.        1.        1.
+ 0.5555556 1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        0.6666667 1.
+ 1.        1.        1.        1.        0.8888889 1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.       ]
+Top k classes which perform poorly are:  [91, 103, 63, 61, 86, 67, 46, 109, 15, 28, 47, 29, 31, 72, 71, 70, 34, 22, 87, 89, 90, 85, 88, 82, 83, 81, 80, 79, 78, 77, 76, 75, 74, 73, 69, 84, 92, 0, 94, 123, 122, 121, 120, 119, 118, 117, 116, 115, 114, 113, 112, 111, 110, 108, 107, 106, 105, 104, 102, 101, 100, 99, 98, 97, 68, 95, 93, 96, 62, 65, 27, 26, 25, 24, 23, 21, 20, 19, 18, 17, 16, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 30, 66, 32, 35, 64, 124, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 33, 125]
+Assigned Classwise weights to source
+S real T clipart Train Ep: 29000 lr0.003603309317770844 	 Loss Classification: 0.377195 Loss T 0.023723 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0950, Accuracy: 1101/1134 F1 (97.0900%)
+
+
+Test set: Average loss: 1.7327, Accuracy: 14406/18312 F1 (78.6697%)
+
+
+Val set: Average loss: 1.9107, Accuracy: 271/360 F1 (75.2778%)
+
+best acc test 78.571429  acc val 75.277778 acc labeled target 97.089947
+saving model...
+S real T clipart Train Ep: 29100 lr0.0035963953871438275 	 Loss Classification: 0.040334 Loss T 0.019050 Method MME
+
+S real T clipart Train Ep: 29200 lr0.0035895123321356215 	 Loss Classification: 0.137818 Loss T 0.005783 Method MME
+
+S real T clipart Train Ep: 29300 lr0.003582659936626608 	 Loss Classification: 0.148587 Loss T 0.009804 Method MME
+
+S real T clipart Train Ep: 29400 lr0.0035758379865547998 	 Loss Classification: 0.395570 Loss T 0.010067 Method MME
+
+S real T clipart Train Ep: 29500 lr0.0035690462698910875 	 Loss Classification: 0.062270 Loss T 0.011793 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0770, Accuracy: 1110/1134 F1 (97.8836%)
+
+
+Test set: Average loss: 1.6923, Accuracy: 14423/18312 F1 (78.7626%)
+
+
+Val set: Average loss: 1.7153, Accuracy: 275/360 F1 (76.3889%)
+
+best acc test 78.571429  acc val 76.388889 acc labeled target 97.883598
+saving model...
+S real T clipart Train Ep: 29600 lr0.0035622845766148485 	 Loss Classification: 0.252275 Loss T 0.024895 Method MME
+
+S real T clipart Train Ep: 29700 lr0.0035555526986899093 	 Loss Classification: 0.063315 Loss T 0.017726 Method MME
+
+S real T clipart Train Ep: 29800 lr0.0035488504300408524 	 Loss Classification: 0.146796 Loss T 0.020266 Method MME
+
+S real T clipart Train Ep: 29900 lr0.0035421775665296674 	 Loss Classification: 0.183395 Loss T 0.017289 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [1.        1.        0.8888889 1.        1.        0.8888889 1.
+ 1.        1.        1.        0.8888889 1.        0.8888889 1.
+ 1.        1.        1.        1.        0.8888889 1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.8888889 1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.8888889 1.        1.        0.8888889 1.        0.8888889 1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.8888889 1.        1.        1.        1.        1.        1.
+ 0.7777778 1.        1.        1.        1.        1.        1.
+ 0.8888889 1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        0.7777778 1.        0.8888889 1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.7777778 1.        1.        1.        1.        1.        1.
+ 0.8888889 1.        1.        1.        1.        0.6666667 1.
+ 1.        1.        1.        1.        1.        0.8888889 1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.8888889 1.        1.        1.        1.        1.        1.       ]
+Top k classes which perform poorly are:  [103, 91, 63, 80, 42, 98, 45, 28, 47, 82, 110, 56, 18, 70, 2, 10, 5, 119, 12, 76, 89, 88, 87, 71, 86, 72, 85, 83, 73, 81, 74, 90, 79, 78, 75, 77, 84, 0, 97, 93, 123, 122, 121, 120, 118, 117, 116, 115, 114, 113, 112, 111, 92, 109, 107, 106, 105, 104, 102, 101, 100, 99, 69, 96, 95, 94, 108, 68, 62, 66, 31, 30, 29, 27, 26, 25, 24, 23, 22, 21, 20, 19, 17, 16, 15, 14, 13, 11, 9, 8, 7, 6, 4, 3, 1, 32, 67, 33, 35, 65, 64, 124, 61, 60, 59, 58, 57, 55, 54, 53, 52, 51, 50, 49, 48, 46, 44, 43, 41, 40, 39, 38, 37, 36, 34, 125]
+Assigned Classwise weights to source
+S real T clipart Train Ep: 30000 lr0.003535533905932738 	 Loss Classification: 0.031420 Loss T 0.038081 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0691, Accuracy: 1111/1134 F1 (97.9718%)
+
+
+Test set: Average loss: 1.7378, Accuracy: 14406/18312 F1 (78.6697%)
+
+
+Val set: Average loss: 1.8768, Accuracy: 274/360 F1 (76.1111%)
+
+best acc test 78.571429  acc val 76.111111 acc labeled target 97.971781
+saving model...
+S real T clipart Train Ep: 30100 lr0.0035289192479181558 	 Loss Classification: 0.050244 Loss T 0.010555 Method MME
+
+S real T clipart Train Ep: 30200 lr0.003522333394023364 	 Loss Classification: 0.072541 Loss T 0.008442 Method MME
+
+S real T clipart Train Ep: 30300 lr0.0035157761476331158 	 Loss Classification: 0.088865 Loss T 0.010169 Method MME
+
+S real T clipart Train Ep: 30400 lr0.003509247313957748 	 Loss Classification: 0.407733 Loss T 0.013992 Method MME
+
+S real T clipart Train Ep: 30500 lr0.003502746700011762 	 Loss Classification: 0.102578 Loss T 0.021469 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0777, Accuracy: 1107/1134 F1 (97.6190%)
+
+
+Test set: Average loss: 1.7114, Accuracy: 14428/18312 F1 (78.7899%)
+
+
+Val set: Average loss: 1.7903, Accuracy: 274/360 F1 (76.1111%)
+
+best acc test 78.571429  acc val 76.111111 acc labeled target 97.619048
+saving model...
+S real T clipart Train Ep: 30600 lr0.003496274114592713 	 Loss Classification: 0.143813 Loss T 0.007972 Method MME
+
+S real T clipart Train Ep: 30700 lr0.0034898293682603908 	 Loss Classification: 0.226611 Loss T 0.021228 Method MME
+
+S real T clipart Train Ep: 30800 lr0.0034834122733162975 	 Loss Classification: 0.243513 Loss T 0.011157 Method MME
+
+S real T clipart Train Ep: 30900 lr0.0034770226437834152 	 Loss Classification: 0.159804 Loss T 0.017609 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        0.8888889 0.8888889 1.
+ 1.        1.        1.        1.        0.8888889 0.8888889 0.8888889
+ 1.        0.7777778 1.        0.8888889 1.        1.        1.
+ 1.        1.        0.8888889 1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        0.6666667 1.
+ 1.        1.        0.8888889 0.8888889 1.        1.        1.
+ 1.        0.8888889 1.        1.        1.        1.        1.
+ 0.8888889 1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        0.8888889 1.        1.
+ 0.6666667 1.        1.        0.8888889 1.        1.        1.
+ 1.        1.        1.        1.        1.        0.5555556 1.
+ 1.        1.        1.        0.8888889 1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        0.8888889]
+Top k classes which perform poorly are:  [103, 91, 47, 29, 125, 88, 31, 27, 26, 25, 37, 18, 51, 108, 52, 19, 94, 57, 63, 92, 71, 90, 89, 72, 73, 87, 86, 81, 75, 76, 77, 78, 85, 84, 83, 79, 80, 82, 74, 97, 95, 123, 122, 121, 120, 119, 118, 117, 116, 115, 114, 113, 112, 93, 111, 109, 107, 106, 105, 104, 102, 101, 100, 99, 98, 70, 96, 110, 69, 0, 67, 30, 28, 24, 23, 22, 21, 20, 17, 16, 15, 14, 32, 13, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 12, 33, 34, 35, 66, 65, 64, 124, 61, 60, 59, 58, 56, 55, 54, 53, 50, 49, 48, 46, 45, 44, 43, 42, 41, 40, 39, 38, 36, 68, 62]
+Assigned Classwise weights to source
+S real T clipart Train Ep: 31000 lr0.003470660295386255 	 Loss Classification: 0.148311 Loss T 0.012678 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0731, Accuracy: 1110/1134 F1 (97.8836%)
+
+
+Test set: Average loss: 1.7408, Accuracy: 14440/18312 F1 (78.8554%)
+
+
+Val set: Average loss: 1.7758, Accuracy: 274/360 F1 (76.1111%)
+
+best acc test 78.571429  acc val 76.111111 acc labeled target 97.883598
+saving model...
+S real T clipart Train Ep: 31100 lr0.0034643250455311855 	 Loss Classification: 0.140654 Loss T 0.012806 Method MME
+
+S real T clipart Train Ep: 31200 lr0.0034580167132870383 	 Loss Classification: 0.038056 Loss T 0.008788 Method MME
+
+S real T clipart Train Ep: 31300 lr0.00345173511936598 	 Loss Classification: 0.240548 Loss T 0.012279 Method MME
+
+S real T clipart Train Ep: 31400 lr0.0034454800861046533 	 Loss Classification: 0.218279 Loss T 0.006881 Method MME
+
+S real T clipart Train Ep: 31500 lr0.003439251437445577 	 Loss Classification: 0.212071 Loss T 0.011403 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0699, Accuracy: 1111/1134 F1 (97.9718%)
+
+
+Test set: Average loss: 1.7639, Accuracy: 14436/18312 F1 (78.8335%)
+
+
+Val set: Average loss: 1.7258, Accuracy: 273/360 F1 (75.8333%)
+
+best acc test 78.571429  acc val 75.833333 acc labeled target 97.971781
+saving model...
+S real T clipart Train Ep: 31600 lr0.0034330489989188046 	 Loss Classification: 0.050824 Loss T 0.007672 Method MME
+
+S real T clipart Train Ep: 31700 lr0.0034268725976238346 	 Loss Classification: 0.200187 Loss T 0.004400 Method MME
+
+S real T clipart Train Ep: 31800 lr0.003420722062211772 	 Loss Classification: 0.142787 Loss T 0.015819 Method MME
+
+S real T clipart Train Ep: 31900 lr0.0034145972228677326 	 Loss Classification: 0.097316 Loss T 0.007355 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        0.8888889 1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.8888889 0.8888889 1.        1.        0.8888889 1.        1.
+ 1.        1.        1.        1.        1.        1.        0.8888889
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        0.6666667 1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.7777778 1.        1.        1.        1.        1.        0.8888889
+ 1.        1.        1.        1.        0.8888889 1.        0.8888889
+ 1.        1.        0.8888889 0.8888889 1.        1.        0.8888889
+ 1.        1.        1.        1.        1.        0.8888889 1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        0.6666667 1.
+ 0.8888889 1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        0.8888889 1.        1.
+ 1.        1.        1.        1.        1.        0.8888889 1.       ]
+Top k classes which perform poorly are:  [47, 103, 63, 76, 83, 22, 21, 105, 34, 80, 79, 25, 74, 9, 116, 89, 69, 124, 86, 85, 88, 84, 90, 91, 87, 0, 81, 78, 77, 75, 73, 72, 71, 70, 82, 92, 96, 94, 123, 122, 121, 120, 119, 118, 117, 115, 114, 113, 112, 111, 93, 110, 108, 107, 106, 104, 102, 101, 100, 99, 98, 97, 68, 95, 109, 67, 62, 65, 30, 29, 28, 27, 26, 24, 23, 20, 19, 18, 17, 16, 31, 15, 13, 12, 11, 10, 8, 7, 6, 5, 4, 3, 2, 1, 14, 66, 32, 35, 64, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 33, 50, 48, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 49, 125]
+Assigned Classwise weights to source
+S real T clipart Train Ep: 32000 lr0.0034084979112934868 	 Loss Classification: 0.016202 Loss T 0.011531 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0563, Accuracy: 1112/1134 F1 (98.0600%)
+
+
+Test set: Average loss: 1.7933, Accuracy: 14424/18312 F1 (78.7680%)
+
+
+Val set: Average loss: 1.8378, Accuracy: 272/360 F1 (75.5556%)
+
+best acc test 78.571429  acc val 75.555556 acc labeled target 98.059965
+saving model...
+S real T clipart Train Ep: 32100 lr0.003402423960690348 	 Loss Classification: 0.071756 Loss T 0.014420 Method MME
+
+S real T clipart Train Ep: 32200 lr0.0033963752057422827 	 Loss Classification: 0.029958 Loss T 0.010916 Method MME
+
+S real T clipart Train Ep: 32300 lr0.003390351482599261 	 Loss Classification: 0.099612 Loss T 0.008617 Method MME
+
+S real T clipart Train Ep: 32400 lr0.003384352628860824 	 Loss Classification: 0.014750 Loss T 0.006976 Method MME
+
+S real T clipart Train Ep: 32500 lr0.003378378483559883 	 Loss Classification: 0.178019 Loss T 0.015872 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0441, Accuracy: 1117/1134 F1 (98.5009%)
+
+
+Test set: Average loss: 1.7717, Accuracy: 14442/18312 F1 (78.8663%)
+
+
+Val set: Average loss: 1.8608, Accuracy: 275/360 F1 (76.3889%)
+
+best acc test 78.571429  acc val 76.388889 acc labeled target 98.500882
+saving model...
+S real T clipart Train Ep: 32600 lr0.0033724288871467283 	 Loss Classification: 0.079185 Loss T 0.019747 Method MME
+
+S real T clipart Train Ep: 32700 lr0.003366503681473259 	 Loss Classification: 0.086204 Loss T 0.020582 Method MME
+
+S real T clipart Train Ep: 32800 lr0.0033606027097774233 	 Loss Classification: 0.035993 Loss T 0.010652 Method MME
+
+S real T clipart Train Ep: 32900 lr0.003354725816667868 	 Loss Classification: 0.150957 Loss T 0.011175 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [1.        1.        1.        1.        0.8888889 1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        0.8888889 1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        0.6666667 0.8888889
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.6666667 1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        0.8888889
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.6666667 1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        0.8888889 1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.8888889 1.        1.        1.        1.        1.        0.8888889
+ 1.        1.        1.        1.        1.        1.        0.8888889]
+Top k classes which perform poorly are:  [91, 63, 47, 30, 101, 83, 48, 112, 125, 118, 4, 72, 66, 89, 67, 88, 87, 86, 85, 84, 68, 82, 81, 80, 69, 70, 90, 78, 77, 76, 75, 74, 73, 71, 79, 94, 93, 123, 122, 121, 120, 119, 117, 116, 115, 114, 113, 111, 110, 92, 109, 107, 106, 105, 104, 103, 102, 100, 99, 98, 97, 96, 95, 108, 65, 0, 124, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 28, 15, 13, 12, 11, 10, 9, 8, 7, 6, 5, 3, 2, 1, 14, 29, 31, 32, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 64, 62]
+Assigned Classwise weights to source
+S real T clipart Train Ep: 33000 lr0.00334887284810879 	 Loss Classification: 0.075655 Loss T 0.012669 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0750, Accuracy: 1109/1134 F1 (97.7954%)
+
+
+Test set: Average loss: 1.7565, Accuracy: 14441/18312 F1 (78.8609%)
+
+
+Val set: Average loss: 1.7580, Accuracy: 276/360 F1 (76.6667%)
+
+best acc test 78.860856  acc val 76.666667 acc labeled target 97.795414
+saving model...
+S real T clipart Train Ep: 33100 lr0.003343043651404997 	 Loss Classification: 0.340864 Loss T 0.006649 Method MME
+
+S real T clipart Train Ep: 33200 lr0.0033372380751871583 	 Loss Classification: 0.162666 Loss T 0.012734 Method MME
+
+S real T clipart Train Ep: 33300 lr0.0033314559693972583 	 Loss Classification: 0.019239 Loss T 0.009900 Method MME
+
+S real T clipart Train Ep: 33400 lr0.0033256971852742394 	 Loss Classification: 0.147270 Loss T 0.012738 Method MME
+
+S real T clipart Train Ep: 33500 lr0.0033199615753398367 	 Loss Classification: 0.034680 Loss T 0.006014 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0710, Accuracy: 1112/1134 F1 (98.0600%)
+
+
+Test set: Average loss: 1.8099, Accuracy: 14450/18312 F1 (78.9100%)
+
+
+Val set: Average loss: 1.9680, Accuracy: 273/360 F1 (75.8333%)
+
+best acc test 78.860856  acc val 75.833333 acc labeled target 98.059965
+saving model...
+S real T clipart Train Ep: 33600 lr0.0033142489933845978 	 Loss Classification: 0.066617 Loss T 0.014526 Method MME
+
+S real T clipart Train Ep: 33700 lr0.0033085592944540883 	 Loss Classification: 0.045912 Loss T 0.012793 Method MME
+
+S real T clipart Train Ep: 33800 lr0.003302892334835276 	 Loss Classification: 0.050032 Loss T 0.007198 Method MME
+
+S real T clipart Train Ep: 33900 lr0.003297247972043097 	 Loss Classification: 0.020101 Loss T 0.009345 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [1.        1.        1.        1.        1.        1.        1.
+ 1.        0.8888889 1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        0.8888889 1.        1.        1.
+ 1.        1.        1.        1.        0.8888889 1.        1.
+ 0.8888889 1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.5555556 1.        1.        1.        1.        1.        1.
+ 0.8888889 1.        1.        1.        1.        1.        0.8888889
+ 1.        1.        1.        0.7777778 1.        1.        1.
+ 1.        1.        0.8888889 1.        1.        1.        1.
+ 0.6666667 1.        1.        1.        1.        1.        0.8888889
+ 1.        1.        1.        1.        1.        0.6666667 1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        0.7777778
+ 1.        1.        1.        1.        1.        1.        1.       ]
+Top k classes which perform poorly are:  [63, 91, 103, 118, 80, 70, 31, 8, 97, 39, 76, 86, 42, 66, 89, 88, 87, 85, 67, 84, 82, 69, 81, 90, 79, 78, 77, 75, 74, 73, 72, 71, 68, 83, 0, 94, 93, 123, 122, 121, 120, 119, 117, 116, 115, 114, 113, 112, 111, 92, 110, 108, 107, 106, 105, 104, 102, 101, 100, 99, 98, 96, 95, 109, 65, 62, 124, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 28, 15, 13, 12, 11, 10, 9, 7, 6, 5, 4, 3, 2, 1, 14, 29, 30, 32, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 41, 40, 38, 37, 36, 35, 34, 33, 64, 125]
+Assigned Classwise weights to source
+S real T clipart Train Ep: 34000 lr0.0032916260648071937 	 Loss Classification: 0.142077 Loss T 0.006397 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0714, Accuracy: 1109/1134 F1 (97.7954%)
+
+
+Test set: Average loss: 1.8445, Accuracy: 14427/18312 F1 (78.7844%)
+
+
+Val set: Average loss: 1.9489, Accuracy: 272/360 F1 (75.5556%)
+
+best acc test 78.860856  acc val 75.555556 acc labeled target 97.795414
+saving model...
+S real T clipart Train Ep: 34100 lr0.0032860264730588296 	 Loss Classification: 0.030117 Loss T 0.003461 Method MME
+
+S real T clipart Train Ep: 34200 lr0.003280449057917969 	 Loss Classification: 0.231521 Loss T 0.016366 Method MME
+
+S real T clipart Train Ep: 34300 lr0.0032748936816805302 	 Loss Classification: 0.183138 Loss T 0.009078 Method MME
+
+S real T clipart Train Ep: 34400 lr0.0032693602078058027 	 Loss Classification: 0.122614 Loss T 0.002755 Method MME
+
+S real T clipart Train Ep: 34500 lr0.0032638485009040203 	 Loss Classification: 0.136302 Loss T 0.003932 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0651, Accuracy: 1110/1134 F1 (97.8836%)
+
+
+Test set: Average loss: 1.8045, Accuracy: 14454/18312 F1 (78.9318%)
+
+
+Val set: Average loss: 1.8969, Accuracy: 271/360 F1 (75.2778%)
+
+best acc test 78.860856  acc val 75.277778 acc labeled target 97.883598
+saving model...
+S real T clipart Train Ep: 34600 lr0.0032583584267241073 	 Loss Classification: 0.056083 Loss T 0.016035 Method MME
+
+S real T clipart Train Ep: 34700 lr0.0032528898521415684 	 Loss Classification: 0.100215 Loss T 0.007551 Method MME
+
+S real T clipart Train Ep: 34800 lr0.0032474426451465444 	 Loss Classification: 0.009190 Loss T 0.009429 Method MME
+
+S real T clipart Train Ep: 34900 lr0.0032420166748320153 	 Loss Classification: 0.157526 Loss T 0.009594 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [1.        1.        1.        1.        1.        1.        0.8888889
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        0.8888889
+ 1.        0.7777778 0.7777778 1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        0.8888889 0.6666667 0.8888889
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.8888889 1.        1.        1.        1.        1.        1.
+ 0.6666667 1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        0.8888889 0.8888889 1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        0.5555556 1.
+ 1.        0.8888889 1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        0.8888889 0.8888889]
+Top k classes which perform poorly are:  [103, 47, 63, 30, 29, 27, 106, 48, 46, 56, 125, 74, 124, 6, 75, 87, 89, 86, 85, 84, 83, 90, 88, 82, 81, 80, 79, 78, 77, 76, 73, 72, 71, 70, 91, 92, 95, 94, 123, 122, 121, 120, 119, 118, 117, 116, 115, 114, 113, 112, 111, 110, 109, 108, 107, 105, 104, 102, 101, 100, 99, 98, 97, 96, 69, 93, 68, 0, 66, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 5, 4, 3, 2, 1, 28, 31, 32, 33, 65, 64, 61, 60, 59, 58, 57, 55, 54, 53, 52, 51, 67, 50, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 49, 62]
+Assigned Classwise weights to source
+S real T clipart Train Ep: 35000 lr0.0032366118113821563 	 Loss Classification: 0.272841 Loss T 0.013067 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0512, Accuracy: 1114/1134 F1 (98.2363%)
+
+
+Test set: Average loss: 1.8527, Accuracy: 14457/18312 F1 (78.9482%)
+
+
+Val set: Average loss: 1.9152, Accuracy: 274/360 F1 (76.1111%)
+
+best acc test 78.860856  acc val 76.111111 acc labeled target 98.236332
+saving model...
+S real T clipart Train Ep: 35100 lr0.0032312279260608436 	 Loss Classification: 0.049933 Loss T 0.023730 Method MME
+
+S real T clipart Train Ep: 35200 lr0.0032258648912003012 	 Loss Classification: 0.012374 Loss T 0.020059 Method MME
+
+S real T clipart Train Ep: 35300 lr0.003220522580189901 	 Loss Classification: 0.043314 Loss T 0.013539 Method MME
+
+S real T clipart Train Ep: 35400 lr0.0032152008674650925 	 Loss Classification: 0.158286 Loss T 0.018483 Method MME
+
+S real T clipart Train Ep: 35500 lr0.0032098996284964853 	 Loss Classification: 0.141891 Loss T 0.018616 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0541, Accuracy: 1114/1134 F1 (98.2363%)
+
+
+Test set: Average loss: 1.8291, Accuracy: 14470/18312 F1 (79.0192%)
+
+
+Val set: Average loss: 1.9015, Accuracy: 272/360 F1 (75.5556%)
+
+best acc test 78.860856  acc val 75.555556 acc labeled target 98.236332
+saving model...
+S real T clipart Train Ep: 35600 lr0.0032046187397790603 	 Loss Classification: 0.181818 Loss T 0.026312 Method MME
+
+S real T clipart Train Ep: 35700 lr0.0031993580788215194 	 Loss Classification: 0.106457 Loss T 0.010976 Method MME
+
+S real T clipart Train Ep: 35800 lr0.0031941175241357693 	 Loss Classification: 0.051272 Loss T 0.006235 Method MME
+
+S real T clipart Train Ep: 35900 lr0.0031888969552265386 	 Loss Classification: 0.193034 Loss T 0.001290 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [1.        1.        1.        0.8888889 1.        1.        1.
+ 1.        1.        0.8888889 1.        1.        0.8888889 1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        0.8888889 0.8888889 1.        1.
+ 1.        0.8888889 1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        0.6666667 1.
+ 1.        0.8888889 1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.6666667 1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        0.6666667 1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.8888889 0.8888889 0.8888889 1.        1.        1.        0.8888889]
+Top k classes which perform poorly are:  [47, 91, 103, 125, 3, 121, 120, 119, 24, 25, 9, 50, 29, 12, 86, 85, 87, 88, 89, 90, 84, 83, 80, 81, 79, 78, 77, 76, 75, 74, 73, 72, 71, 70, 69, 82, 92, 98, 94, 123, 122, 118, 117, 116, 115, 114, 113, 112, 111, 110, 109, 108, 107, 106, 105, 104, 102, 101, 100, 99, 68, 97, 96, 95, 93, 67, 0, 65, 32, 31, 30, 28, 27, 26, 23, 22, 21, 20, 19, 18, 33, 17, 15, 14, 13, 11, 10, 8, 7, 6, 5, 4, 2, 1, 16, 66, 34, 36, 64, 63, 124, 61, 60, 59, 58, 57, 56, 55, 54, 53, 35, 52, 49, 48, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 51, 62]
+Assigned Classwise weights to source
+S real T clipart Train Ep: 36000 lr0.00318369625258112 	 Loss Classification: 0.047438 Loss T 0.007855 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0658, Accuracy: 1113/1134 F1 (98.1481%)
+
+
+Test set: Average loss: 1.8880, Accuracy: 14444/18312 F1 (78.8772%)
+
+
+Val set: Average loss: 1.8670, Accuracy: 270/360 F1 (75.0000%)
+
+best acc test 78.860856  acc val 75.000000 acc labeled target 98.148148
+saving model...
+S real T clipart Train Ep: 36100 lr0.0031785152976592465 	 Loss Classification: 0.018638 Loss T 0.020427 Method MME
+
+S real T clipart Train Ep: 36200 lr0.0031733539728830895 	 Loss Classification: 0.040284 Loss T 0.009302 Method MME
+
+S real T clipart Train Ep: 36300 lr0.003168212161627382 	 Loss Classification: 0.034269 Loss T 0.025729 Method MME
+
+S real T clipart Train Ep: 36400 lr0.0031630897482096652 	 Loss Classification: 0.121204 Loss T 0.014044 Method MME
+
+S real T clipart Train Ep: 36500 lr0.0031579866178806544 	 Loss Classification: 0.040802 Loss T 0.016188 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0529, Accuracy: 1110/1134 F1 (97.8836%)
+
+
+Test set: Average loss: 1.8094, Accuracy: 14478/18312 F1 (79.0629%)
+
+
+Val set: Average loss: 1.8757, Accuracy: 273/360 F1 (75.8333%)
+
+best acc test 78.860856  acc val 75.833333 acc labeled target 97.883598
+saving model...
+S real T clipart Train Ep: 36600 lr0.003152902656814724 	 Loss Classification: 0.023476 Loss T 0.008924 Method MME
+
+S real T clipart Train Ep: 36700 lr0.003147837752100511 	 Loss Classification: 0.068846 Loss T 0.011352 Method MME
+
+S real T clipart Train Ep: 36800 lr0.003142791791731634 	 Loss Classification: 0.232708 Loss T 0.015701 Method MME
+
+S real T clipart Train Ep: 36900 lr0.0031377646645975228 	 Loss Classification: 0.187184 Loss T 0.019889 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        0.8888889 0.8888889
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.8888889 1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        0.8888889 1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        0.6666667 1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.6666667 0.8888889 1.        1.        1.        1.        0.8888889
+ 0.8888889 1.        0.8888889 1.        1.        0.8888889 1.
+ 1.        1.        1.        1.        1.        0.8888889 1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.7777778 1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        0.8888889 1.
+ 1.        0.8888889 0.8888889 1.        1.        1.        1.
+ 1.        0.8888889 1.        1.        1.        1.        1.
+ 0.8888889 1.        0.8888889 1.        1.        1.        1.       ]
+Top k classes which perform poorly are:  [63, 47, 91, 64, 82, 103, 21, 106, 107, 75, 13, 12, 32, 72, 70, 69, 119, 113, 121, 73, 89, 88, 87, 67, 86, 85, 84, 83, 81, 80, 79, 71, 90, 77, 76, 74, 68, 78, 0, 93, 123, 122, 120, 118, 117, 116, 115, 114, 112, 111, 110, 92, 109, 105, 104, 102, 101, 100, 99, 98, 97, 96, 95, 94, 108, 66, 62, 124, 29, 28, 27, 26, 25, 24, 23, 22, 20, 19, 18, 17, 30, 16, 14, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 15, 65, 31, 34, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 33, 49, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 48, 125]
+Assigned Classwise weights to source
+S real T clipart Train Ep: 37000 lr0.003132756260474365 	 Loss Classification: 0.091433 Loss T 0.002124 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0676, Accuracy: 1107/1134 F1 (97.6190%)
+
+
+Test set: Average loss: 1.8724, Accuracy: 14448/18312 F1 (78.8991%)
+
+
+Val set: Average loss: 1.9341, Accuracy: 271/360 F1 (75.2778%)
+
+best acc test 78.860856  acc val 75.277778 acc labeled target 97.619048
+saving model...
+S real T clipart Train Ep: 37100 lr0.0031277664700161607 	 Loss Classification: 0.038255 Loss T 0.017996 Method MME
+
+S real T clipart Train Ep: 37200 lr0.003122795184745882 	 Loss Classification: 0.109398 Loss T 0.012060 Method MME
+
+S real T clipart Train Ep: 37300 lr0.003117842297046751 	 Loss Classification: 0.029144 Loss T 0.006161 Method MME
+
+S real T clipart Train Ep: 37400 lr0.0031129077001536103 	 Loss Classification: 0.016263 Loss T 0.010431 Method MME
+
+S real T clipart Train Ep: 37500 lr0.00310799128814441 	 Loss Classification: 0.088419 Loss T 0.010597 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0725, Accuracy: 1108/1134 F1 (97.7072%)
+
+
+Test set: Average loss: 1.8849, Accuracy: 14455/18312 F1 (78.9373%)
+
+
+Val set: Average loss: 1.8254, Accuracy: 274/360 F1 (76.1111%)
+
+best acc test 78.860856  acc val 76.111111 acc labeled target 97.707231
+saving model...
+S real T clipart Train Ep: 37600 lr0.0031030929559317877 	 Loss Classification: 0.062691 Loss T 0.001955 Method MME
+
+S real T clipart Train Ep: 37700 lr0.003098212599254758 	 Loss Classification: 0.245802 Loss T 0.010994 Method MME
+
+S real T clipart Train Ep: 37800 lr0.003093350114670496 	 Loss Classification: 0.036707 Loss T 0.015193 Method MME
+
+S real T clipart Train Ep: 37900 lr0.003088505399546223 	 Loss Classification: 0.018197 Loss T 0.010042 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [1.        1.        1.        1.        1.        1.        1.
+ 0.8888889 0.8888889 1.        1.        1.        0.8888889 1.
+ 1.        1.        0.8888889 0.8888889 1.        0.8888889 1.
+ 1.        1.        1.        1.        1.        1.        0.8888889
+ 1.        0.8888889 1.        1.        1.        0.8888889 1.
+ 1.        1.        1.        1.        1.        1.        0.8888889
+ 1.        1.        0.8888889 1.        0.8888889 0.6666667 1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        0.8888889 1.        1.        1.        1.        1.
+ 0.6666667 1.        1.        1.        1.        1.        1.
+ 0.8888889 1.        1.        1.        1.        1.        0.8888889
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        0.6666667 1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.8888889 1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        0.8888889]
+Top k classes which perform poorly are:  [63, 47, 103, 125, 76, 57, 46, 44, 41, 33, 29, 27, 19, 17, 16, 70, 7, 12, 8, 112, 113, 119, 120, 89, 88, 87, 86, 85, 84, 83, 81, 121, 80, 79, 78, 77, 122, 123, 75, 74, 73, 72, 82, 90, 92, 91, 114, 111, 110, 109, 108, 107, 106, 105, 104, 115, 118, 116, 102, 101, 100, 71, 98, 97, 96, 95, 94, 93, 117, 99, 0, 68, 32, 31, 30, 28, 26, 25, 24, 23, 22, 21, 20, 34, 18, 14, 13, 11, 10, 9, 6, 5, 4, 3, 2, 1, 15, 69, 35, 37, 67, 66, 65, 64, 124, 61, 60, 59, 58, 56, 55, 36, 54, 52, 51, 50, 49, 48, 45, 43, 42, 40, 39, 38, 53, 62]
+Assigned Classwise weights to source
+S real T clipart Train Ep: 38000 lr0.0030836783520511884 	 Loss Classification: 0.071550 Loss T 0.004364 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0669, Accuracy: 1113/1134 F1 (98.1481%)
+
+
+Test set: Average loss: 1.8780, Accuracy: 14453/18312 F1 (78.9264%)
+
+
+Val set: Average loss: 1.9909, Accuracy: 273/360 F1 (75.8333%)
+
+best acc test 78.860856  acc val 75.833333 acc labeled target 98.148148
+saving model...
+S real T clipart Train Ep: 38100 lr0.0030788688711487463 	 Loss Classification: 0.175890 Loss T 0.010224 Method MME
+
+S real T clipart Train Ep: 38200 lr0.0030740768565885295 	 Loss Classification: 0.222078 Loss T 0.003942 Method MME
+
+S real T clipart Train Ep: 38300 lr0.0030693022088987133 	 Loss Classification: 0.007572 Loss T 0.004849 Method MME
+
+S real T clipart Train Ep: 38400 lr0.0030645448293783735 	 Loss Classification: 0.020783 Loss T 0.010735 Method MME
+
+S real T clipart Train Ep: 38500 lr0.0030598046200899344 	 Loss Classification: 0.077242 Loss T 0.015724 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0848, Accuracy: 1108/1134 F1 (97.7072%)
+
+
+Test set: Average loss: 1.8682, Accuracy: 14466/18312 F1 (78.9974%)
+
+
+Val set: Average loss: 2.0109, Accuracy: 273/360 F1 (75.8333%)
+
+best acc test 78.860856  acc val 75.833333 acc labeled target 97.707231
+saving model...
+S real T clipart Train Ep: 38600 lr0.0030550814838517073 	 Loss Classification: 0.023103 Loss T 0.008297 Method MME
+
+S real T clipart Train Ep: 38700 lr0.0030503753242305132 	 Loss Classification: 0.061533 Loss T 0.024527 Method MME
+
+S real T clipart Train Ep: 38800 lr0.003045686045534399 	 Loss Classification: 0.459440 Loss T 0.010221 Method MME
+
+S real T clipart Train Ep: 38900 lr0.003041013552805431 	 Loss Classification: 0.016722 Loss T 0.012421 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [1.        1.        1.        1.        1.        0.8888889 0.8888889
+ 1.        0.8888889 1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        0.8888889 1.        0.8888889 1.
+ 1.        1.        1.        1.        1.        0.8888889 1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        0.8888889 1.        0.8888889 0.7777778
+ 1.        1.        1.        1.        1.        1.        0.8888889
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.7777778 1.        1.        0.8888889 1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.6666667 1.        1.        1.        0.8888889 1.        1.
+ 1.        1.        1.        0.8888889 1.        0.6666667 1.
+ 0.8888889 1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        0.8888889 1.        1.        0.7777778
+ 1.        1.        1.        1.        1.        1.        1.       ]
+Top k classes which perform poorly are:  [91, 103, 63, 48, 118, 95, 66, 45, 47, 101, 26, 24, 105, 55, 33, 115, 5, 8, 6, 78, 89, 88, 70, 87, 71, 86, 72, 85, 73, 74, 75, 84, 83, 82, 90, 80, 79, 76, 77, 81, 0, 93, 123, 122, 121, 120, 119, 117, 116, 114, 113, 112, 111, 92, 110, 108, 107, 106, 104, 102, 100, 99, 98, 97, 96, 94, 109, 69, 62, 67, 30, 29, 28, 27, 25, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 7, 4, 3, 2, 1, 31, 68, 32, 35, 65, 64, 124, 61, 60, 59, 58, 57, 56, 54, 53, 52, 51, 50, 49, 46, 44, 43, 42, 41, 40, 39, 38, 37, 36, 34, 125]
+Assigned Classwise weights to source
+S real T clipart Train Ep: 39000 lr0.003036357751812582 	 Loss Classification: 0.051508 Loss T 0.011233 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0857, Accuracy: 1109/1134 F1 (97.7954%)
+
+
+Test set: Average loss: 1.9037, Accuracy: 14470/18312 F1 (79.0192%)
+
+
+Val set: Average loss: 2.1060, Accuracy: 271/360 F1 (75.2778%)
+
+best acc test 78.860856  acc val 75.277778 acc labeled target 97.795414
+saving model...
+S real T clipart Train Ep: 39100 lr0.0030317185490446956 	 Loss Classification: 0.155434 Loss T 0.019586 Method MME
+
+S real T clipart Train Ep: 39200 lr0.0030270958517035324 	 Loss Classification: 0.171705 Loss T 0.006595 Method MME
+
+S real T clipart Train Ep: 39300 lr0.003022489567696903 	 Loss Classification: 0.104854 Loss T 0.004476 Method MME
+
+S real T clipart Train Ep: 39400 lr0.0030178996056318755 	 Loss Classification: 0.103251 Loss T 0.006512 Method MME
+
+S real T clipart Train Ep: 39500 lr0.0030133258748080622 	 Loss Classification: 0.021989 Loss T 0.010250 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0918, Accuracy: 1105/1134 F1 (97.4427%)
+
+
+Test set: Average loss: 1.8639, Accuracy: 14482/18312 F1 (79.0848%)
+
+
+Val set: Average loss: 1.8655, Accuracy: 276/360 F1 (76.6667%)
+
+best acc test 79.084753  acc val 76.666667 acc labeled target 97.442681
+saving model...
+S real T clipart Train Ep: 39600 lr0.0030087682852109887 	 Loss Classification: 0.206984 Loss T 0.005672 Method MME
+
+S real T clipart Train Ep: 39700 lr0.0030042267475055367 	 Loss Classification: 0.029018 Loss T 0.011895 Method MME
+
+S real T clipart Train Ep: 39800 lr0.0029997011730294593 	 Loss Classification: 0.105111 Loss T 0.010139 Method MME
+
+S real T clipart Train Ep: 39900 lr0.0029951914737869757 	 Loss Classification: 0.084289 Loss T 0.009864 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [0.8888889 1.        0.8888889 1.        1.        1.        1.
+ 0.8888889 0.8888889 1.        1.        1.        0.8888889 1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        0.8888889
+ 0.8888889 1.        0.8888889 0.8888889 1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        0.6666667 0.8888889
+ 1.        1.        1.        1.        1.        1.        0.8888889
+ 1.        1.        0.8888889 1.        1.        1.        1.
+ 0.6666667 1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        0.8888889 1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.6666667 1.        1.        1.        1.        1.        0.8888889
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        0.8888889 1.
+ 1.        0.8888889 1.        1.        1.        1.        0.7777778
+ 0.8888889 1.        1.        1.        1.        0.8888889 1.       ]
+Top k classes which perform poorly are:  [91, 47, 63, 118, 97, 31, 30, 48, 28, 27, 55, 110, 58, 113, 0, 8, 12, 124, 2, 74, 119, 7, 89, 88, 72, 87, 86, 73, 76, 85, 84, 83, 82, 81, 80, 90, 75, 78, 77, 79, 98, 93, 123, 122, 121, 120, 117, 116, 115, 114, 112, 111, 109, 108, 107, 106, 105, 104, 103, 102, 101, 100, 99, 71, 96, 95, 94, 92, 70, 62, 68, 32, 29, 26, 25, 24, 23, 22, 21, 20, 19, 18, 33, 17, 15, 14, 13, 11, 10, 9, 6, 5, 4, 3, 1, 16, 34, 35, 36, 67, 66, 65, 64, 61, 60, 59, 57, 56, 54, 53, 52, 51, 50, 49, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 69, 125]
+Assigned Classwise weights to source
+S real T clipart Train Ep: 40000 lr0.0029906975624424408 	 Loss Classification: 0.066232 Loss T 0.006270 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0904, Accuracy: 1106/1134 F1 (97.5309%)
+
+
+Test set: Average loss: 1.8959, Accuracy: 14490/18312 F1 (79.1284%)
+
+
+Val set: Average loss: 1.9229, Accuracy: 276/360 F1 (76.6667%)
+
+best acc test 79.128440  acc val 76.666667 acc labeled target 97.530864
+saving model...
+S real T clipart Train Ep: 40100 lr0.0029862193523140824 	 Loss Classification: 0.089009 Loss T 0.011194 Method MME
+
+S real T clipart Train Ep: 40200 lr0.0029817567573678107 	 Loss Classification: 0.180070 Loss T 0.013357 Method MME
+
+S real T clipart Train Ep: 40300 lr0.0029773096922111057 	 Loss Classification: 0.175959 Loss T 0.005578 Method MME
+
+S real T clipart Train Ep: 40400 lr0.0029728780720869657 	 Loss Classification: 0.072597 Loss T 0.006086 Method MME
+
+S real T clipart Train Ep: 40500 lr0.002968461812867928 	 Loss Classification: 0.101493 Loss T 0.005061 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0703, Accuracy: 1109/1134 F1 (97.7954%)
+
+
+Test set: Average loss: 1.8911, Accuracy: 14475/18312 F1 (79.0465%)
+
+
+Val set: Average loss: 1.9014, Accuracy: 278/360 F1 (77.2222%)
+
+best acc test 79.046527  acc val 77.222222 acc labeled target 97.795414
+saving model...
+S real T clipart Train Ep: 40600 lr0.0029640608310501576 	 Loss Classification: 0.187031 Loss T 0.009168 Method MME
+
+S real T clipart Train Ep: 40700 lr0.002959675043747607 	 Loss Classification: 0.205489 Loss T 0.002383 Method MME
+
+S real T clipart Train Ep: 40800 lr0.0029553043686862315 	 Loss Classification: 0.019300 Loss T 0.009082 Method MME
+
+S real T clipart Train Ep: 40900 lr0.0029509487241982826 	 Loss Classification: 0.071440 Loss T 0.008298 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [1.        1.        0.8888889 1.        1.        0.7777778 1.
+ 1.        1.        1.        1.        1.        1.        0.8888889
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        0.8888889 1.        1.        0.8888889 1.
+ 1.        1.        0.8888889 1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        0.8888889 1.        1.        0.6666667 1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.8888889 0.8888889 1.        0.8888889 1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.6666667 1.        0.7777778 1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        0.6666667 1.
+ 1.        1.        0.8888889 1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        0.8888889
+ 1.        1.        1.        1.        1.        1.        0.8888889]
+Top k classes which perform poorly are:  [91, 103, 47, 93, 5, 30, 44, 26, 23, 107, 13, 125, 2, 70, 71, 118, 73, 77, 69, 90, 89, 88, 87, 86, 72, 85, 84, 74, 83, 92, 81, 80, 79, 78, 75, 76, 82, 98, 95, 123, 122, 121, 120, 119, 117, 116, 115, 114, 113, 112, 111, 110, 109, 108, 106, 105, 104, 102, 101, 100, 99, 68, 97, 96, 94, 67, 0, 65, 32, 31, 29, 28, 27, 25, 24, 22, 21, 20, 19, 18, 33, 17, 15, 14, 12, 11, 10, 9, 8, 7, 6, 4, 3, 1, 16, 66, 34, 36, 64, 63, 124, 61, 60, 59, 58, 57, 56, 55, 54, 53, 35, 52, 50, 49, 48, 46, 45, 43, 42, 41, 40, 39, 38, 37, 51, 62]
+Assigned Classwise weights to source
+S real T clipart Train Ep: 41000 lr0.0029466080292166567 	 Loss Classification: 0.125487 Loss T 0.006727 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0623, Accuracy: 1114/1134 F1 (98.2363%)
+
+
+Test set: Average loss: 1.8924, Accuracy: 14495/18312 F1 (79.1557%)
+
+
+Val set: Average loss: 2.0119, Accuracy: 276/360 F1 (76.6667%)
+
+best acc test 79.046527  acc val 76.666667 acc labeled target 98.236332
+saving model...
+S real T clipart Train Ep: 41100 lr0.0029422822032693125 	 Loss Classification: 0.217069 Loss T 0.013491 Method MME
+
+S real T clipart Train Ep: 41200 lr0.002937971166473745 	 Loss Classification: 0.143417 Loss T 0.010387 Method MME
+
+S real T clipart Train Ep: 41300 lr0.0029336748395315305 	 Loss Classification: 0.074362 Loss T 0.007724 Method MME
+
+S real T clipart Train Ep: 41400 lr0.002929393143722923 	 Loss Classification: 0.126345 Loss T 0.011623 Method MME
+
+S real T clipart Train Ep: 41500 lr0.002925126000901522 	 Loss Classification: 0.106793 Loss T 0.015197 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0414, Accuracy: 1117/1134 F1 (98.5009%)
+
+
+Test set: Average loss: 1.9428, Accuracy: 14470/18312 F1 (79.0192%)
+
+
+Val set: Average loss: 2.0361, Accuracy: 268/360 F1 (74.4444%)
+
+best acc test 79.046527  acc val 74.444444 acc labeled target 98.500882
+saving model...
+S real T clipart Train Ep: 41600 lr0.0029208733334889847 	 Loss Classification: 0.102497 Loss T 0.005284 Method MME
+
+S real T clipart Train Ep: 41700 lr0.0029166350644698118 	 Loss Classification: 0.213611 Loss T 0.007658 Method MME
+
+S real T clipart Train Ep: 41800 lr0.002912411117386185 	 Loss Classification: 0.032233 Loss T 0.016227 Method MME
+
+S real T clipart Train Ep: 41900 lr0.0029082014163328584 	 Loss Classification: 0.024759 Loss T 0.010878 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        0.8888889 1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        0.8888889 1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        0.6666667 1.
+ 1.        1.        0.8888889 1.        1.        1.        1.
+ 1.        1.        0.8888889 1.        1.        1.        1.
+ 0.6666667 1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        0.8888889 1.        1.        1.        1.        1.
+ 0.8888889 1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        0.6666667 1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        0.8888889
+ 1.        1.        1.        1.        1.        0.8888889 1.       ]
+Top k classes which perform poorly are:  [47, 63, 103, 124, 78, 51, 118, 58, 26, 84, 12, 82, 83, 0, 86, 87, 88, 89, 81, 85, 77, 79, 90, 76, 75, 74, 73, 72, 71, 70, 69, 68, 80, 91, 94, 93, 123, 122, 121, 120, 119, 117, 116, 115, 114, 113, 112, 111, 110, 92, 109, 107, 106, 105, 104, 102, 101, 100, 99, 98, 97, 96, 95, 67, 108, 66, 62, 64, 28, 27, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 29, 15, 13, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 14, 65, 30, 32, 61, 60, 59, 57, 56, 55, 54, 53, 52, 50, 49, 48, 31, 46, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 45, 125]
+Assigned Classwise weights to source
+S real T clipart Train Ep: 42000 lr0.0029040058859521123 	 Loss Classification: 0.027513 Loss T 0.002640 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0475, Accuracy: 1112/1134 F1 (98.0600%)
+
+
+Test set: Average loss: 1.9313, Accuracy: 14487/18312 F1 (79.1121%)
+
+
+Val set: Average loss: 1.8870, Accuracy: 277/360 F1 (76.9444%)
+
+best acc test 79.046527  acc val 76.944444 acc labeled target 98.059965
+saving model...
+S real T clipart Train Ep: 42100 lr0.002899824451428758 	 Loss Classification: 0.108639 Loss T 0.022845 Method MME
+
+S real T clipart Train Ep: 42200 lr0.002895657038485203 	 Loss Classification: 0.342345 Loss T 0.010824 Method MME
+
+S real T clipart Train Ep: 42300 lr0.0028915035733765655 	 Loss Classification: 0.042717 Loss T 0.008093 Method MME
+
+S real T clipart Train Ep: 42400 lr0.0028873639828858417 	 Loss Classification: 0.255959 Loss T 0.010276 Method MME
+
+S real T clipart Train Ep: 42500 lr0.0028832381943191343 	 Loss Classification: 0.208696 Loss T 0.005383 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0645, Accuracy: 1113/1134 F1 (98.1481%)
+
+
+Test set: Average loss: 1.9016, Accuracy: 14485/18312 F1 (79.1011%)
+
+
+Val set: Average loss: 2.0446, Accuracy: 272/360 F1 (75.5556%)
+
+best acc test 79.046527  acc val 75.555556 acc labeled target 98.148148
+saving model...
+S real T clipart Train Ep: 42600 lr0.002879126135500922 	 Loss Classification: 0.063346 Loss T 0.003144 Method MME
+
+S real T clipart Train Ep: 42700 lr0.00287502773476939 	 Loss Classification: 0.065552 Loss T 0.012087 Method MME
+
+S real T clipart Train Ep: 42800 lr0.0028709429209718045 	 Loss Classification: 0.293798 Loss T 0.010887 Method MME
+
+S real T clipart Train Ep: 42900 lr0.0028668716234599434 	 Loss Classification: 0.084151 Loss T 0.001561 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        0.8888889 1.        1.        0.8888889
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        0.8888889 1.        1.        1.
+ 0.8888889 1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        0.6666667 0.8888889
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        0.8888889
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.5555556 1.        1.        0.8888889 1.        1.        1.
+ 1.        1.        0.8888889 1.        1.        0.5555556 1.
+ 0.8888889 1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        0.8888889 1.        1.        1.        1.        1.       ]
+Top k classes which perform poorly are:  [91, 103, 47, 35, 48, 13, 76, 100, 10, 120, 31, 94, 105, 87, 88, 89, 85, 84, 83, 90, 86, 0, 80, 79, 78, 77, 75, 74, 73, 72, 71, 70, 69, 68, 82, 81, 95, 93, 123, 122, 121, 119, 118, 117, 116, 115, 114, 113, 112, 111, 110, 109, 108, 107, 106, 104, 102, 101, 99, 98, 97, 96, 67, 92, 66, 62, 64, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 29, 16, 14, 12, 11, 9, 8, 7, 6, 5, 4, 3, 2, 1, 15, 30, 32, 33, 63, 124, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 34, 65, 125]
+Assigned Classwise weights to source
+S real T clipart Train Ep: 43000 lr0.0028628137720855718 	 Loss Classification: 0.261934 Loss T 0.007778 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0657, Accuracy: 1111/1134 F1 (97.9718%)
+
+
+Test set: Average loss: 1.9481, Accuracy: 14473/18312 F1 (79.0356%)
+
+
+Val set: Average loss: 2.0575, Accuracy: 273/360 F1 (75.8333%)
+
+best acc test 79.046527  acc val 75.833333 acc labeled target 97.971781
+saving model...
+S real T clipart Train Ep: 43100 lr0.002858769297195967 	 Loss Classification: 0.101536 Loss T 0.002686 Method MME
+
+S real T clipart Train Ep: 43200 lr0.0028547381296294984 	 Loss Classification: 0.048130 Loss T 0.014193 Method MME
+
+S real T clipart Train Ep: 43300 lr0.0028507202007112434 	 Loss Classification: 0.119788 Loss T 0.004012 Method MME
+
+S real T clipart Train Ep: 43400 lr0.002846715442248662 	 Loss Classification: 0.179326 Loss T 0.006552 Method MME
+
+S real T clipart Train Ep: 43500 lr0.00284272378652731 	 Loss Classification: 0.150065 Loss T 0.011750 Method MME
+
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+24
+tensor(1134.)
+
+Labeled Target set: Average loss: 0.0775, Accuracy: 1107/1134 F1 (97.6190%)
+
+
+Test set: Average loss: 1.9401, Accuracy: 14467/18312 F1 (79.0028%)
+
+
+Val set: Average loss: 2.0624, Accuracy: 273/360 F1 (75.8333%)
+
+best acc test 79.046527  acc val 75.833333 acc labeled target 97.619048
+saving model...
+S real T clipart Train Ep: 43600 lr0.002838745166306603 	 Loss Classification: 0.079411 Loss T 0.006482 Method MME
+
