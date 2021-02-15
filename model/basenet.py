@@ -137,6 +137,7 @@ class Discriminator(nn.Module):
         x_out = self.fc3_1(x)
         return x_out
 
+
 class Discriminator_classwise(nn.Module):
     def __init__(self, inc=4096, num_class=126):
         super(Discriminator_classwise, self).__init__()

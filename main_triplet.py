@@ -179,20 +179,8 @@ def train():
     criterion_pseudo = nn.CrossEntropyLoss(reduction='none').cuda()
     criterion_lab_target = nn.CrossEntropyLoss(reduction='mean').cuda()
     criterion_strong_source = nn.CrossEntropyLoss(reduction='mean').cuda()
-    
-    """
-    criterion = FocalLoss(reduction='none').cuda()
-    criterion_pseudo = FocalLoss(reduction='none').cuda()
-    criterion_lab_target = FocalLoss(reduction='mean').cuda()
-    criterion_strong_source = FocalLoss(reduction='mean').cuda()
-    """
 
     feat_dict_source, feat_dict_target, _ = load_bank(args, mode = 'pkl')
-
-    """
-    if args.augmentation_policy == 'rand_augment':
-        augmentation  = TransformFix(args.augmentation_policy,args.net,mean =[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
-    """
 
     num_target = len(feat_dict_target.names)
     num_source = len(feat_dict_source.names)
@@ -303,6 +291,7 @@ def train():
             idx = [feat_dict_source.names.index(name) for name in names_batch] 
             weights_source = feat_dict_source.sample_weights[idx].cuda()
             loss = torch.mean(weights_source * criterion(out1, target))
+            prototype_reg(args,F)
         else:
             loss = torch.mean(criterion(out1, target))
         
@@ -341,9 +330,9 @@ def train():
             if step % 2000 == 0:
                 #save_stats(F1, G, target_loader_unl, step, feat_dict_combined, data_t_unl, K, mask_loss_uncertain)
                 pass
-            _, acc_labeled_target, _, per_cls_acc = test(target_loader, mode = 'Labeled Target')
-            _, acc_test,_,_ = test(target_loader_test, mode = 'Test')
-            _, acc_val, _, _ = test(target_loader_val, mode = 'Val')
+            _, acc_labeled_target, _, per_cls_acc, confusion_matrix = test(target_loader, mode = 'Labeled Target')
+            _, acc_test,_,_ ,_= test(target_loader_test, mode = 'Test')
+            _, acc_val, _, _, _ = test(target_loader_val, mode = 'Val')
 
             G.train()
             F1.train()
@@ -418,7 +407,6 @@ def test(loader, mode='Test'):
                 test_loss += criterion(output1_weak, gt_labels_t)/(3*len(loader))  + criterion(output1_strong, gt_labels_t)/(3*len(loader)) + criterion(output1_standard, gt_labels_t)/(3*len(loader)) 
                 per_cls_acc = per_class_accuracy(confusion_matrix)
 
-
     if not mode == 'Labeled Target':
         np.save("cf_unlabeled_target.npy",confusion_matrix)
         weight = torch.ones([num_class,1]).cuda()
@@ -430,7 +418,7 @@ def test(loader, mode='Test'):
         weight = per_cls_acc 
         weight = (weight>0.5).int()*1.5 + (weight<0.5).int()*0.5
     print('\n{} set: Average loss: {:.4f}, Accuracy: {}/{} F1 ({:.4f}%)\n'.format(mode, test_loss,correct,size,100.*correct/size))
-    return test_loss.data,100.*float(correct)/size, weight, per_cls_acc.cpu().numpy()
+    return test_loss.data,100.*float(correct)/size, weight, per_cls_acc.cpu().numpy(), confusion_matrix
 
 def per_class_accuracy(confusion_matrix):
     num_class, _ = confusion_matrix.shape
