@@ -170,7 +170,6 @@ def update_loss_functions(args,label_bank, class_list, class_num_list_pseudo=Non
     return criterion, criterion_pseudo, criterion_lab_target, criterion_strong_source
     
 
-
 """
 print(os.path.join(root_folder,image))
 img = pil_loader(os.path.join(root_folder,image))

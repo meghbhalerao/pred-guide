@@ -53,8 +53,7 @@ parser.add_argument('--seed', type=int, default=1, metavar='S',
 parser.add_argument('--log-interval', type=int, default=100, metavar='N',
                     help='how many batches to wait before logging '
                          'training status')
-parser.add_argument('--save_interval', type=int, default=500, metavar='N',
-                    help='how many batches to wait before saving a model')
+parser.add_argument('--save_interval', type=int, default=500, metavar='N', help='how many batches to wait before saving a model')
 parser.add_argument('--net', type=str, default='alexnet',
                     help='which network to use')
 parser.add_argument('--source', type=str, default='real',
@@ -98,6 +97,7 @@ source_loader, target_loader, target_loader_misc, target_loader_unl, target_load
 use_gpu = torch.cuda.is_available()
 
 torch.cuda.manual_seed(args.seed) # Seeding everything for removing non-deterministic components
+torch.utils.backcompat.broadcast_warning.enabled = True
 
 if args.net == 'resnet34':
     G = resnet34()
@@ -238,8 +238,6 @@ def train():
 
         update_label_bank(label_bank, data_t_unl, pseudo_labels, mask_loss)
 
-
-
         #if step >=0 and step % 250 == 0 and step<=3500:
         if step>=2000:
             if step % 1000 == 0:
@@ -273,12 +271,13 @@ def train():
         output = f_batch_source
         out1 = F1(output)
 
-        if step>=2000 and step<=8000:
+        if step>=0 and step<=8000:
             names_batch = list(data_s[2])
             idx = [feat_dict_source.names.index(name) for name in names_batch] 
             weights_source = feat_dict_source.sample_weights[idx].cuda()
             loss = torch.mean(weights_source * criterion(out1, target))
-            prototype_reg(args,G,F1,confusion_matrix,distance="cosine")
+
+            regularizer_semantic_2(args, F1, confusion_matrix)
         else:
             loss = torch.mean(criterion(out1, target))
         
@@ -318,6 +317,7 @@ def train():
                 #save_stats(F1, G, target_loader_unl, step, feat_dict_combined, data_t_unl, K, mask_loss_uncertain)
                 pass
             _, acc_labeled_target, _, per_cls_acc, confusion_matrix = test(target_loader, mode = 'Labeled Target')
+            confusion_matrix = get_per_class_weight_matrix(confusion_matrix)
             _, acc_test,_,_ ,_= test(target_loader_test, mode = 'Test')
             _, acc_val, _, _, _ = test(target_loader_val, mode = 'Val')
 
