@@ -1,3 +1,7 @@
+import torch 
+import numpy as np
+import torch.nn.functional as F
+
 def get_per_class_weight_matrix(confusion_matrix):
     num_class, _ = confusion_matrix.shape
     per_class_weight_matrix = []
@@ -8,7 +12,6 @@ def get_per_class_weight_matrix(confusion_matrix):
         per_class_weight_matrix.append(per_class_weight_list)
     per_class_weight_matrix = np.array(per_class_weight_matrix)
     return per_class_weight_matrix
-
 
 def prototype_reg(args,G,F1,confusion_matrix,distance="euclid"):
     if args.net == "resnet34":
@@ -41,7 +44,6 @@ def upper_triangle(matrix):
     
 def regularizer_semantic(W,embedding):
     W = F.normalize(W, dim=1)
-    #embedding = torch.from_numpy(np.load('semantics/glove/glove_features.npy')).cuda()
     mc = W.shape[0]
     w_expand1 = W.unsqueeze(0)
     w_expand2 = W.unsqueeze(1)
@@ -54,6 +56,4 @@ def regularizer_semantic(W,embedding):
     residuals = upper_triangle((w_norm_upper - mu - dist)**2)
     rw = 2.0 / (mc**2 - mc) * torch.sum(residuals)
     return rw
-
-def reg_2()
 

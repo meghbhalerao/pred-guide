@@ -24,6 +24,7 @@ from utils.return_dataset import return_dataset, return_dataset_randaugment, Tra
 from utils.loss import *
 from augmentations.augmentation_ours import *
 import pickle
+from utils.regularizers import * 
 from easydict import EasyDict as edict
 
 # Training settings
