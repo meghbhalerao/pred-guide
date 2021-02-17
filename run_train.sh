@@ -7,7 +7,9 @@
 
 #CUDA_VISIBLE_DEVICES=0,1 python main_match_majvot.py --method MME --dataset multi --source real --target sketch --num 3 --net resnet34 --augmentation_policy rand_augment --save_check
 
-CUDA_VISIBLE_DEVICES=1 python main_classwise.py --method MME --dataset multi --source real --target painting --num 3 --net resnet34 --augmentation_policy rand_augment --which_method FM --uda 1 --use_bank 1 --use_cb 0 --use_new_features 0 --patience 5 --data_parallel 0 --weigh_using target_acc --num_to_weigh 5 --save_check
+#CUDA_VISIBLE_DEVICES=0,1 python main_triplet.py --method MME --dataset multi --source real --target sketch --num 3 --net resnet34 --augmentation_policy rand_augment --which_method SEW --uda 1 --use_bank 1 --use_cb 0 --use_new_features 0 --patience 5 --data_parallel 1 --weigh_using target_acc --num_to_weigh 5 --save_check
+
+CUDA_VISIBLE_DEVICES=0,1 python main_classwise.py --method MME --dataset multi --source real --target painting --num 3 --net resnet34 --augmentation_policy rand_augment --which_method SEW --uda 1 --use_bank 1 --use_cb 0 --use_new_features 0 --patience 5 --data_parallel 1 --weigh_using target_acc --num_to_weigh 5 --save_check
 
 #CUDA_VISIBLE_DEVICES=0,1 python main_match_knn_analysis.py --method MME --dataset multi --source real --target sketch --num 3 --net resnet34 --augmentation_policy rand_augment --save_check
 

@@ -205,9 +205,9 @@ def train():
     weigh_using = args.weigh_using
     #### Hyperparameters #######
     per_cls_acc = np.array([1 for _ in range(len(class_list))]) # Just defining for sake of clarity and debugging
-    source_strong_near_loader = None
+
+    confusion_matrix = np.load("./cf_labeled_target.npy") # Loading a sample cf for debugging purposes
     for step in range(all_step):
-        source_strong_near_loader = None
         optimizer_g = inv_lr_scheduler(param_lr_g, optimizer_g, step, init_lr=args.lr)
         optimizer_f = inv_lr_scheduler(param_lr_f, optimizer_f, step, init_lr=args.lr)
 
@@ -218,9 +218,6 @@ def train():
             data_iter_t_unl = iter(target_loader_unl)
         if step % len_train_source == 0:
             data_iter_s = iter(source_loader)
-        if source_strong_near_loader is not None:
-            if step % len(source_strong_near_loader) == 0:
-                data_iter_s_near_strong = iter(source_strong_near_loader)
             
         # Extracting the batches from the iteratable dataloader
         data_t, data_t_unl, data_s  = next(data_iter_t), next(data_iter_t_unl), next(data_iter_s)
@@ -229,18 +226,7 @@ def train():
         im_data_t = data_t[0][0].cuda()
         gt_labels_t = data_t[1].cuda()
         im_data_tu = data_t_unl[0][2].cuda()
-        gt_labels_tu = data_t_unl[1].cuda()
 
-        if source_strong_near_loader is not None:
-            try:
-                im_near_source_strong = next(source_strong_near_loader)[0][1].cuda()
-                gt_near_source_strong = next(source_strong_near_loader)[1].cuda()
-            except:
-                source_strong_near_loader = iter(source_strong_near_loader)
-            strong_logits = F1(G(im_near_source_strong))
-            loss_source_strong = criterion_strong_source(strong_logits, gt_near_source_strong)
-            loss_source_strong.backward(retain_graph=True)
-        
         zero_grad_all()
         data = im_data_s
         target = gt_labels_s
@@ -250,6 +236,8 @@ def train():
         f_batch_source, feat_dict_source = update_features(feat_dict_source, data_s, G, 0, source = True)
 
         update_label_bank(label_bank, data_t_unl, pseudo_labels, mask_loss)
+
+
 
         #if step >=0 and step % 250 == 0 and step<=3500:
         if step>=2000:
@@ -273,8 +261,6 @@ def train():
                 else:
                     pass
 
-                #source_strong_near_loader = make_st_aug_loader(args,classwise_near)
-
         if args.use_cb:
             if step >=5500:
                 criterion, criterion_pseudo, criterion_lab_target, criterion_strong_source = update_loss_functions(args,label_bank, class_list, class_num_list_pseudo = None, class_num_list_source = class_num_list_source, beta=0.99, gamma=0)
@@ -291,7 +277,7 @@ def train():
             idx = [feat_dict_source.names.index(name) for name in names_batch] 
             weights_source = feat_dict_source.sample_weights[idx].cuda()
             loss = torch.mean(weights_source * criterion(out1, target))
-            prototype_reg(args,F)
+            prototype_reg(args,G,F1,confusion_matrix,distance="cosine")
         else:
             loss = torch.mean(criterion(out1, target))
         

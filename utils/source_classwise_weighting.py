@@ -169,35 +169,8 @@ def update_loss_functions(args,label_bank, class_list, class_num_list_pseudo=Non
     print("CBFL per zclass weights:", per_cls_weights)
     return criterion, criterion_pseudo, criterion_lab_target, criterion_strong_source
     
-def get_per_class_weight_matrix(confusion_matrix):
-    num_class, _ = confusion_matrix.shape
-    per_class_weight_matrix = []
-    for i in range(num_class):
-        per_class_weight_list = []
-        for j in range(num_class):
-            per_class_weight_list.append(confusion_matrix[i,j]/sum(confusion_matrix[i,:]))
-        per_class_weight_matrix.append(per_class_weight_list)
-    per_class_weight_matrix = np.array(per_class_weight_matrix)
-    return per_class_weight_matrix
 
-def prototype_reg(args,G,F1,confusion_matrix,mode="euclid"):
-    if args.net == "resnet34":
-        P = F1.fc2.cpu()
-    elif args.net == "alexnet":
-        P = F1.fc.cpu()
-    P = F.normalize(P,dim=1)
-    per_class_weight_matrix = get_per_class_weight_matrix(confusion_matrix)
-    loss_reg = 0
-    n_class, n_class = confusion_matrix.shape
-    for anchor_class in range(n_class):
-        class_weight = per_class_accuracy[anchor_class]
-        for class_ in range(n_class):
-            if mode == "euclid":
-                loss_reg  = loss_reg + torch.sum(torch.pow(P[anchor_class,:] - P[class_,:],2),dim=1)
-            elif mode == "cosine":
-                loss_reg = loss_reg + torch.dot(P[anchor_class,:],P[class_,:],dim = 0)        
-    loss_reg.backward()
-    pass
+
 """
 print(os.path.join(root_folder,image))
 img = pil_loader(os.path.join(root_folder,image))
