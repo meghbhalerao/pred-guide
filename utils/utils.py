@@ -221,7 +221,7 @@ def load_bank(args,mode = 'pkl'):
 def do_method_bank(feat_dict_source, feat_dict_target, feat_dict_combined, momentum, data_t_unl, data_s, prob_weak_aug, thresh, K, pred_strong_aug, criterion_pseudo, target_loader_unl, G, F1, backprop = True):
     f_batch_target, feat_dict_target  = update_features(feat_dict_target, data_t_unl, G, momentum)
     f_batch_target = f_batch_target.detach()
-
+    
     f_batch_source, feat_dict_source  = update_features(feat_dict_source, data_s, G, momentum, source = True)
     f_batch_source = f_batch_source.detach()
     # Get max of similarity distribution to check which element or label is it closest to in these vectors

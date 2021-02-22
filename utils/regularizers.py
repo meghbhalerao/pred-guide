@@ -49,8 +49,7 @@ def prototype_reg(args,G,F1,confusion_matrix,distance="euclid"):
     loss_reg.backward()
     pass
 
-
-def regularizer_semantic_2(args, F1,confusion_matrix):
+def regularizer_semantic_2(args, F1,confusion_matrix,lmd=100):
     if args.net == "resnet34":
         W = F1.fc2.weight
     elif args.net == "alexnet":
@@ -62,17 +61,13 @@ def regularizer_semantic_2(args, F1,confusion_matrix):
     wx = (w_expand2 - w_expand1)**2
     w_norm_mat = torch.sum((w_expand2 - w_expand1)**2, dim=-1)
     w_norm_upper = upper_triangle(w_norm_mat)
-    # Normalize W here
-    W_normalized = F.normalize(W,dim=1)    
-    similarity = torch.mm(W_normalized, torch.transpose(W_normalized,0,1))
     similarity = torch.tensor(confusion_matrix).cuda()
     similarity_symm = (torch.transpose(similarity,0,1) + similarity)/2
     dist = upper_triangle(similarity_symm)
-    print(dist)
     mu = 2.0 / (mc**2 - mc) * torch.sum(w_norm_upper)
     residuals = upper_triangle((w_norm_upper - mu - dist)**2)
     rw = 2.0 / (mc**2 - mc) * torch.sum(residuals)
-    return rw
+    return lmd * rw
 
 def regularizer_semantic(W,embedding):
     W = F.normalize(W, dim=1)
@@ -86,7 +81,6 @@ def regularizer_semantic(W,embedding):
     dist = upper_triangle(similarity).clamp(min=0)
     mu = 2.0 / (mc**2 - mc) * torch.sum(w_norm_upper)
     residuals = upper_triangle((w_norm_upper - mu - dist)**2)
-    print(residuals)
     rw = 2.0 / (mc**2 - mc) * torch.sum(residuals)
     return rw
 

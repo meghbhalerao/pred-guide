@@ -173,13 +173,10 @@ def train():
         param_lr_f.append(param_group["lr"])
 
     thresh = 0.9 # can make this variable
-    root_folder = "./data/%s"%(args.dataset)
-
     
     criterion = nn.CrossEntropyLoss(reduction='none').cuda()
     criterion_pseudo = nn.CrossEntropyLoss(reduction='none').cuda()
     criterion_lab_target = nn.CrossEntropyLoss(reduction='mean').cuda()
-    criterion_strong_source = nn.CrossEntropyLoss(reduction='mean').cuda()
 
     feat_dict_source, feat_dict_target, _ = load_bank(args, mode = 'pkl')
 
@@ -276,8 +273,9 @@ def train():
             idx = [feat_dict_source.names.index(name) for name in names_batch] 
             weights_source = feat_dict_source.sample_weights[idx].cuda()
             loss = torch.mean(weights_source * criterion(out1, target))
-
-            regularizer_semantic_2(args, F1, confusion_matrix)
+            reg_loss = regularizer_semantic_2(args, F1, confusion_matrix)
+            reg_loss.backward()
+            print(reg_loss)
         else:
             loss = torch.mean(criterion(out1, target))
         
