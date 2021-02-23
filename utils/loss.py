@@ -74,7 +74,7 @@ class CBFocalLoss(nn.Module):
 
 
 class LDAMLoss(nn.Module):
-    
+
     def __init__(self, cls_num_list, max_m=0.5, weight=None, s=30):
         super(LDAMLoss, self).__init__()
         m_list = 1.0 / np.sqrt(np.sqrt(cls_num_list))
@@ -96,3 +96,55 @@ class LDAMLoss(nn.Module):
     
         output = torch.where(index, x_m, x)
         return F.cross_entropy(self.s*output, target, weight=self.weight)
+
+
+class LDAMLoss_misclassification(nn.Module):
+
+    def __init__(self, cls_num_list, max_m=0.5, weight=None, s=30):
+        super(LDAMLoss, self).__init__()
+        m_list = 1.0 / np.sqrt(np.sqrt(cls_num_list))
+        m_list = m_list * (max_m / np.max(m_list))
+        m_list = torch.cuda.FloatTensor(m_list)
+        self.m_list = m_list
+        assert s > 0
+        self.s = s
+        self.weight = weight
+
+    def forward(self, x, target):
+        index = torch.zeros_like(x, dtype=torch.uint8)
+        index.scatter_(1, target.data.view(-1, 1), 1)
+        
+        index_float = index.type(torch.cuda.FloatTensor)
+        batch_m = torch.matmul(self.m_list[None, :], index_float.transpose(0,1))
+        batch_m = batch_m.view((-1, 1))
+        x_m = x - batch_m
+    
+        output = torch.where(index, x_m, x)
+        return F.cross_entropy(self.s*output, target, weight=self.weight)
+
+
+def update_loss_functions(args,label_bank, class_list, class_num_list_pseudo=None, class_num_list_source = None, beta=0.99,gamma=0):
+    if class_num_list_pseudo is None:
+        class_num_list_pseudo = get_per_class_examples(label_bank, class_list) + args.num
+        print("Pred num ex per class (pseudo labels + labelled target examples): ", class_num_list_pseudo)
+        
+    if class_num_list_source is not None:
+        class_num_list =  class_num_list_pseudo + np.array(class_num_list_source)
+    else:
+        class_num_list = class_num_list_pseudo
+
+    effective_num = 1.0 - np.power(beta, class_num_list)
+    per_cls_weights = (1.0 - beta) / np.array(effective_num)
+    per_cls_weights = per_cls_weights / np.sum(per_cls_weights) * len(class_num_list)
+    per_cls_weights = torch.FloatTensor(per_cls_weights).cuda()
+    
+    criterion = CBFocalLoss(weight=per_cls_weights, gamma=gamma, reduction='none').cuda()
+    criterion_pseudo = CBFocalLoss(weight=per_cls_weights, gamma=gamma, reduction='none').cuda()
+    criterion_lab_target = CBFocalLoss(weight=per_cls_weights, gamma=gamma,reduction='mean').cuda()
+    criterion_strong_source = CBFocalLoss(weight=per_cls_weights, gamma=gamma,reduction='mean').cuda()
+    print("CBFL per zclass weights:", per_cls_weights)
+    return criterion, criterion_pseudo, criterion_lab_target, criterion_strong_source
+
+
+def update_labeled_loss(criterion_labeled_target):
+    pass

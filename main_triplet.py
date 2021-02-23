@@ -177,7 +177,7 @@ def train():
     criterion = nn.CrossEntropyLoss(reduction='none').cuda()
     criterion_pseudo = nn.CrossEntropyLoss(reduction='none').cuda()
     criterion_lab_target = nn.CrossEntropyLoss(reduction='mean').cuda()
-
+    
     feat_dict_source, feat_dict_target, _ = load_bank(args, mode = 'pkl')
 
     num_target = len(feat_dict_target.names)
@@ -257,10 +257,6 @@ def train():
                 else:
                     pass
 
-        if args.use_cb:
-            if step >=5500:
-                criterion, criterion_pseudo, criterion_lab_target, criterion_strong_source = update_loss_functions(args,label_bank, class_list, class_num_list_pseudo = None, class_num_list_source = class_num_list_source, beta=0.99, gamma=0)
-
         if step >=8000:
             do_lab_target_loss(G,F1,data_t,im_data_t, gt_labels_t, criterion_lab_target)
 
@@ -315,6 +311,7 @@ def train():
                 #save_stats(F1, G, target_loader_unl, step, feat_dict_combined, data_t_unl, K, mask_loss_uncertain)
                 pass
             _, acc_labeled_target, _, per_cls_acc, confusion_matrix = test(target_loader, mode = 'Labeled Target')
+            criterion_labeled_target = update_labeled_loss(criterion_lab_target)
             confusion_matrix = get_per_class_weight_matrix(confusion_matrix)
             _, acc_test,_,_ ,_= test(target_loader_test, mode = 'Test')
             _, acc_val, _, _, _ = test(target_loader_val, mode = 'Val')
