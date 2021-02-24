@@ -100,11 +100,33 @@ class LDAMLoss(nn.Module):
         return F.cross_entropy(self.s*output, target, weight=self.weight)
 
 
+def update_loss_functions(args,label_bank, class_list, class_num_list_pseudo=None, class_num_list_source = None, beta=0.99,gamma=0):
+    if class_num_list_pseudo is None:
+        class_num_list_pseudo = get_per_class_examples(label_bank, class_list) + args.num
+        print("Pred num ex per class (pseudo labels + labelled target examples): ", class_num_list_pseudo)
+        
+    if class_num_list_source is not None:
+        class_num_list =  class_num_list_pseudo + np.array(class_num_list_source)
+    else:
+        class_num_list = class_num_list_pseudo
+
+    effective_num = 1.0 - np.power(beta, class_num_list)
+    per_cls_weights = (1.0 - beta) / np.array(effective_num)
+    per_cls_weights = per_cls_weights / np.sum(per_cls_weights) * len(class_num_list)
+    per_cls_weights = torch.FloatTensor(per_cls_weights).cuda()
+    
+    criterion = CBFocalLoss(weight=per_cls_weights, gamma=gamma, reduction='none').cuda()
+    criterion_pseudo = CBFocalLoss(weight=per_cls_weights, gamma=gamma, reduction='none').cuda()
+    criterion_lab_target = CBFocalLoss(weight=per_cls_weights, gamma=gamma,reduction='mean').cuda()
+    criterion_strong_source = CBFocalLoss(weight=per_cls_weights, gamma=gamma,reduction='mean').cuda()
+    print("CBFL per class weights:", per_cls_weights)
+    return criterion, criterion_pseudo, criterion_lab_target, criterion_strong_source
+
+
 class LDAMLoss_misclassification(nn.Module):
 
-    def __init__(self, cls_num_list, max_m=0.5, weight=None, s=30):
-        super(LDAMLoss, self).__init__()
-        m_list = 1.0 / np.sqrt(np.sqrt(cls_num_list))
+    def __init__(self, m_list, max_m=0.5, weight=None, s=30):
+        super(LDAMLoss_misclassification, self).__init__()
         m_list = m_list * (max_m / np.max(m_list))
         m_list = torch.cuda.FloatTensor(m_list)
         self.m_list = m_list
@@ -125,28 +147,12 @@ class LDAMLoss_misclassification(nn.Module):
         return F.cross_entropy(self.s*output, target, weight=self.weight)
 
 
-def update_loss_functions(args,label_bank, class_list, class_num_list_pseudo=None, class_num_list_source = None, beta=0.99,gamma=0):
-    if class_num_list_pseudo is None:
-        class_num_list_pseudo = get_per_class_examples(label_bank, class_list) + args.num
-        print("Pred num ex per class (pseudo labels + labelled target examples): ", class_num_list_pseudo)
-        
-    if class_num_list_source is not None:
-        class_num_list =  class_num_list_pseudo + np.array(class_num_list_source)
-    else:
-        class_num_list = class_num_list_pseudo
-
-    effective_num = 1.0 - np.power(beta, class_num_list)
-    per_cls_weights = (1.0 - beta) / np.array(effective_num)
-    per_cls_weights = per_cls_weights / np.sum(per_cls_weights) * len(class_num_list)
-    per_cls_weights = torch.FloatTensor(per_cls_weights).cuda()
-    
-    criterion = CBFocalLoss(weight=per_cls_weights, gamma=gamma, reduction='none').cuda()
-    criterion_pseudo = CBFocalLoss(weight=per_cls_weights, gamma=gamma, reduction='none').cuda()
-    criterion_lab_target = CBFocalLoss(weight=per_cls_weights, gamma=gamma,reduction='mean').cuda()
-    criterion_strong_source = CBFocalLoss(weight=per_cls_weights, gamma=gamma,reduction='mean').cuda()
-    print("CBFL per zclass weights:", per_cls_weights)
-    return criterion, criterion_pseudo, criterion_lab_target, criterion_strong_source
-
-
-def update_labeled_loss(criterion_labeled_target):
-    pass
+def update_labeled_loss(criterion_labeled_target,confusion_matrix):
+    n_class, _ = confusion_matrix.shape
+    m_list = []
+    for i in range(n_class): 
+        m_list.append(sum(confusion_matrix[i,:]) - confusion_matrix[i,i])
+    m_list = np.array(m_list)
+    criterion_labeled_target = LDAMLoss_misclassification(m_list)
+    print("m_list is: \n",m_list)
+    return criterion_labeled_target

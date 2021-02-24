@@ -269,9 +269,9 @@ def train():
             idx = [feat_dict_source.names.index(name) for name in names_batch] 
             weights_source = feat_dict_source.sample_weights[idx].cuda()
             loss = torch.mean(weights_source * criterion(out1, target))
-            reg_loss = regularizer_semantic_2(args, F1, confusion_matrix)
-            reg_loss.backward()
-            print(reg_loss)
+            #reg_loss = regularizer_semantic_2(args, F1, confusion_matrix)
+            #reg_loss.backward()
+            #print(reg_loss)
         else:
             loss = torch.mean(criterion(out1, target))
         
@@ -311,7 +311,8 @@ def train():
                 #save_stats(F1, G, target_loader_unl, step, feat_dict_combined, data_t_unl, K, mask_loss_uncertain)
                 pass
             _, acc_labeled_target, _, per_cls_acc, confusion_matrix = test(target_loader, mode = 'Labeled Target')
-            criterion_labeled_target = update_labeled_loss(criterion_lab_target)
+            criterion_lab_target = update_labeled_loss(criterion_lab_target,confusion_matrix)
+            print(criterion_lab_target)
             confusion_matrix = get_per_class_weight_matrix(confusion_matrix)
             _, acc_test,_,_ ,_= test(target_loader_test, mode = 'Test')
             _, acc_val, _, _, _ = test(target_loader_val, mode = 'Val')
