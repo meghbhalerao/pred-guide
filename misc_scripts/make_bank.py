@@ -20,17 +20,18 @@ import copy
 
 # Defining return dataset function here
 net = "alexnet"
-root = '../data/multi/'
-domain = "clipart"
-domain_identifier = "target"
-n_class = 126
-num = 1
+dataset_name = "office_home"
+root = '../data/%s/'%(dataset_name)
+domain = "Clipart"
+domain_identifier = "source"
+n_class = 65
+num = 3
 load_pretrained = False
 
 if domain_identifier == "target":
-    image_list_target_unl = "../data/txt/multi/unlabeled_target_images_%s_%s.txt"%(domain,num)
+    image_list_target_unl = "../data/txt/%s/unlabeled_target_images_%s_%s.txt"%(dataset_name,domain,num)
 elif domain_identifier == "source":
-    image_list_target_unl = "../data/txt/multi/labeled_source_images_%s.txt"%(domain)
+    image_list_target_unl = "../data/txt/%s/labeled_source_images_%s.txt"%(dataset_name,domain)
 else:
     raise ValueError("Please Enter Valid Domain Identifier!")
 f = open(image_list_target_unl,"r")

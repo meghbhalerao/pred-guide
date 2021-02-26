@@ -23,6 +23,8 @@ target_rw_expts/
 tsne/ckpts/
 banks/
 misc_scipts/saved_matrices/
+paper-logs/
+misc_scripts/
 old-files/
 # Some specific patterns
 *word2vec*
