@@ -294,8 +294,6 @@ def return_dataset_randaugment(args,txt_path='./data/txt/',root_path='./data/',b
                                     shuffle=True, drop_last=True)
     return source_loader, target_loader, target_loader_misc, target_loader_unl, target_loader_val, target_loader_test, class_num_list_source, class_list
 
-
-
 """    
 elif self.aug_policy == "ct_augment":
     self.strong = transforms.Compose([

@@ -89,6 +89,11 @@ parser.add_argument('--num_to_weigh', type=int, default=5,
 parser.add_argument('--use_new_features', type=int, default=1, help='use features just before grad reversal for resenet')
 parser.add_argument('--weigh_using', type=str, default='target_acc', choices=['target_acc', 'pseudo_labels'], help='What metric to weigh with')
 parser.add_argument('--which_method', type=str, default='SEW', choices=['SEW', 'FM'], help='use SEW or SEW+FM')
+parser.add_argument('--label_target_iteration', type=int, default=8000, metavar='N',
+                    help='when to being in the labled target examples')
+
+
+
 torch.autograd.set_detect_anomaly(True) # Gradient anomaly detection is set true for debugging purposes
 args = parser.parse_args()
 print('Dataset %s Source %s Target %s Labeled num perclass %s Network %s' %(args.dataset, args.source, args.target, args.num, args.net))
@@ -214,6 +219,10 @@ def train():
     K = 3
     K_farthest_source = args.num_to_weigh
     beta = 0.99
+    if args.dataset == 'multi':
+        phi = 0.5
+    elif args.dataset == 'office_home':
+        phi = 0.5
     weigh_using = args.weigh_using
     #### Hyperparameters #######
     per_cls_acc = np.array([1 for _ in range(len(class_list))]) # Just defining for sake of clarity and debugging
@@ -256,12 +265,12 @@ def train():
         zero_grad_all()
         data = im_data_s
         target = gt_labels_s
-        
-        pseudo_labels, mask_loss = do_fixmatch(data_t_unl,F1,G,thresh,criterion_pseudo)
+        if not args.which_method == "MME_Only":
+            pseudo_labels, mask_loss = do_fixmatch(data_t_unl,F1,G,thresh,criterion_pseudo)
         
         f_batch_source, feat_dict_source = update_features(feat_dict_source, data_s, G, 0, source = True)
-
-        update_label_bank(label_bank, data_t_unl, pseudo_labels, mask_loss)
+        if not args.which_method == "MME_Only":
+            update_label_bank(label_bank, data_t_unl, pseudo_labels, mask_loss)
 
         #if step >=0 and step % 250 == 0 and step<=3500:
         if step>=2000:
@@ -277,35 +286,36 @@ def train():
                     raw_weights_to_pass = per_cls_acc
                 
                 if args.which_method == 'SEW':
-                    _ = do_source_weighting(target_loader_misc,feat_dict_source, G, K_farthest_source, per_class_raw = raw_weights_to_pass, weight=1, aug = 2, phi = 0.5, only_for_poor=True, poor_class_list=poor_class_list, weighing_mode='N',weigh_using=weigh_using)
+                    _ = do_source_weighting(target_loader_misc,feat_dict_source, G, K_farthest_source, per_class_raw = raw_weights_to_pass, weight=1, aug = 2, phi = phi, only_for_poor=True, poor_class_list=poor_class_list, weighing_mode='N',weigh_using=weigh_using)
 
-                    _ = do_source_weighting(target_loader_misc,feat_dict_source, G, K_farthest_source, per_class_raw = raw_weights_to_pass, weight=1, aug = 2, phi = 0.5, only_for_poor=True, poor_class_list=poor_class_list, weighing_mode='F', weigh_using=weigh_using)
+                    _ = do_source_weighting(target_loader_misc,feat_dict_source, G, K_farthest_source, per_class_raw = raw_weights_to_pass, weight=1, aug = 2, phi = phi, only_for_poor=True, poor_class_list=poor_class_list, weighing_mode='F', weigh_using=weigh_using)
 
                     print("Assigned Classwise weights to source")
                 else:
                     pass
 
-                #source_strong_near_loader = make_st_aug_loader(args,classwise_near)
-
         if args.use_cb:
             if step >=5500:
                 criterion, criterion_pseudo, criterion_lab_target, criterion_strong_source = update_loss_functions(args,label_bank, class_list, class_num_list_pseudo = None, class_num_list_source = class_num_list_source, beta=0.99, gamma=0)
 
-        if step >=8000:
+        if step >=args.label_target_iteration:
             do_lab_target_loss(G,F1,data_t,im_data_t, gt_labels_t, criterion_lab_target)
 
         #output = G(data)
         output = f_batch_source
         out1 = F1(output)
 
-        if step>=2000 and step<=8000:
-            names_batch = list(data_s[2])
-            idx = [feat_dict_source.names.index(name) for name in names_batch] 
-            weights_source = feat_dict_source.sample_weights[idx].cuda()
-            loss = torch.mean(weights_source * criterion(out1, target))
-        else:
+        if args.which_method == "SEW":
+            if step>=2000:# and step<=8000:
+                names_batch = list(data_s[2])
+                idx = [feat_dict_source.names.index(name) for name in names_batch] 
+                weights_source = feat_dict_source.sample_weights[idx].cuda()
+                loss = torch.mean(weights_source * criterion(out1, target))
+            else:
+                loss = torch.mean(criterion(out1, target))
+        elif args.which_method == "FM":
             loss = torch.mean(criterion(out1, target))
-        
+
         loss.backward(retain_graph=True)
 
         if not args.method == 'S+T':

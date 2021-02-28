@@ -13,6 +13,7 @@ freezed_models/
 save_model_ssda/
 record/
 data/multi/
+data/office_home/
 entropy_weight_files/
 attributes/
 expts/

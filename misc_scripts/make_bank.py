@@ -22,10 +22,10 @@ import copy
 net = "alexnet"
 dataset_name = "office_home"
 root = '../data/%s/'%(dataset_name)
-domain = "Clipart"
-domain_identifier = "source"
+domain = "Art"
+domain_identifier = "target"
 n_class = 65
-num = 3
+num = 1
 load_pretrained = False
 
 if domain_identifier == "target":

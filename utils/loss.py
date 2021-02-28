@@ -5,6 +5,7 @@ from torch.autograd import Function
 import torch.nn as nn
 from utils.utils import * 
 from utils.return_dataset import * 
+import sys
 
 class GradReverse(Function):
     def __init__(self, lambd):
@@ -125,7 +126,7 @@ def update_loss_functions(args,label_bank, class_list, class_num_list_pseudo=Non
 
 class LDAMLoss_misclassification(nn.Module):
 
-    def __init__(self, m_list, max_m=0.5, weight=None, s=30):
+    def __init__(self, m_list, max_m=0.5, weight=None, s=1):
         super(LDAMLoss_misclassification, self).__init__()
         m_list = m_list * (max_m / np.max(m_list))
         m_list = torch.cuda.FloatTensor(m_list)
@@ -136,15 +137,18 @@ class LDAMLoss_misclassification(nn.Module):
 
     def forward(self, x, target):
         index = torch.zeros_like(x, dtype=torch.uint8)
-        index.scatter_(1, target.data.view(-1, 1), 1)
-        
+        index.scatter_(1, target.data.view(-1, 1), 1) # makes a one hot vector from the target vector
+
         index_float = index.type(torch.cuda.FloatTensor)
         batch_m = torch.matmul(self.m_list[None, :], index_float.transpose(0,1))
         batch_m = batch_m.view((-1, 1))
         x_m = x - batch_m
-    
         output = torch.where(index, x_m, x)
-        return F.cross_entropy(self.s*output, target, weight=self.weight)
+        loss_ldam = F.cross_entropy(self.s*output, target, weight=self.weight)
+        loss_ce = F.cross_entropy(x, target, weight=self.weight)
+        print("LDAM Loss is: ",loss_ldam.item())
+        print("CE Loss is: ", loss_ce.item())
+        return loss_ldam
 
 
 def update_labeled_loss(criterion_labeled_target,confusion_matrix):
