@@ -192,8 +192,20 @@ def train():
     criterion_pseudo = nn.CrossEntropyLoss(reduction='none').cuda()
     criterion_lab_target = nn.CrossEntropyLoss(reduction='mean').cuda()
     criterion_strong_source = nn.CrossEntropyLoss(reduction='mean').cuda()
+    
+    """
+    criterion = FocalLoss(reduction='none').cuda()
+    criterion_pseudo = FocalLoss(reduction='none').cuda()
+    criterion_lab_target = FocalLoss(reduction='mean').cuda()
+    criterion_strong_source = FocalLoss(reduction='mean').cuda()
+    """
 
     feat_dict_source, feat_dict_target, _ = load_bank(args, mode = 'pkl')
+
+    """
+    if args.augmentation_policy == 'rand_augment':
+        augmentation  = TransformFix(args.augmentation_policy,args.net,mean =[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+    """
 
     num_target = len(feat_dict_target.names)
     num_source = len(feat_dict_source.names)
@@ -221,8 +233,9 @@ def train():
     weigh_using = args.weigh_using
     #### Hyperparameters #######
     per_cls_acc = np.array([1 for _ in range(len(class_list))]) # Just defining for sake of clarity and debugging
-
+    source_strong_near_loader = None
     for step in range(all_step):
+        source_strong_near_loader = None
         optimizer_g = inv_lr_scheduler(param_lr_g, optimizer_g, step, init_lr=args.lr)
         optimizer_f = inv_lr_scheduler(param_lr_f, optimizer_f, step, init_lr=args.lr)
 
@@ -233,6 +246,9 @@ def train():
             data_iter_t_unl = iter(target_loader_unl)
         if step % len_train_source == 0:
             data_iter_s = iter(source_loader)
+        if source_strong_near_loader is not None:
+            if step % len(source_strong_near_loader) == 0:
+                data_iter_s_near_strong = iter(source_strong_near_loader)
             
         # Extracting the batches from the iteratable dataloader
         data_t, data_t_unl, data_s  = next(data_iter_t), next(data_iter_t_unl), next(data_iter_s)
@@ -242,6 +258,16 @@ def train():
         gt_labels_t = data_t[1].cuda()
         im_data_tu = data_t_unl[0][2].cuda()
         gt_labels_tu = data_t_unl[1].cuda()
+
+        if source_strong_near_loader is not None:
+            try:
+                im_near_source_strong = next(source_strong_near_loader)[0][1].cuda()
+                gt_near_source_strong = next(source_strong_near_loader)[1].cuda()
+            except:
+                source_strong_near_loader = iter(source_strong_near_loader)
+            strong_logits = F1(G(im_near_source_strong))
+            loss_source_strong = criterion_strong_source(strong_logits, gt_near_source_strong)
+            loss_source_strong.backward(retain_graph=True)
         
         zero_grad_all()
         data = im_data_s

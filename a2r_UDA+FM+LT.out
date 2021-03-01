@@ -1,0 +1,170 @@
+Dataset office_home Source Art Target Real Labeled num perclass 3 Network alexnet
+65 classes in this dataset
+Labelled Source Examples:  2427
+Unlabelled Target Dataset Size:  4162
+Labelled Target Dataset Size:  195
+Misc. Labelled Target Dataset Size:  195
+Bank keys - Target:  dict_keys(['feat_vec', 'labels', 'names', 'domain_identifier']) Source:  dict_keys(['feat_vec', 'labels', 'names', 'domain_identifier'])
+Num  - Target:  4162 Source:  2427
+Unlabeled Target Data Batches: 65
+S Art T Real Train Ep: 0 lr0.01 	 Loss Classification: 4.181506 Loss T 0.415783 Method MME
+
+32
+32
+32
+32
+32
+32
+32
+tensor(585.)
+
+Labeled Target set: Average loss: 4.1258, Accuracy: 33/585 F1 (5.6410%)
+
+
+Test set: Average loss: 4.1421, Accuracy: 208/4160 F1 (5.0000%)
+
+
+Val set: Average loss: 4.1191, Accuracy: 14/192 F1 (7.2917%)
+
+Patience Reset, Counter is: 0
+best acc test 5.000000  acc val 7.291667 acc labeled target 5.641026
+saving model...
+S Art T Real Train Ep: 100 lr0.009925650290240803 	 Loss Classification: 1.600467 Loss T 0.180869 Method MME
+
+S Art T Real Train Ep: 200 lr0.009852577760521605 	 Loss Classification: 0.802282 Loss T 0.160468 Method MME
+
+S Art T Real Train Ep: 300 lr0.009780748269686728 	 Loss Classification: 0.285475 Loss T 0.132010 Method MME
+
+S Art T Real Train Ep: 400 lr0.009710128909124701 	 Loss Classification: 0.255787 Loss T 0.114429 Method MME
+
+S Art T Real Train Ep: 500 lr0.00964068794694323 	 Loss Classification: 0.225103 Loss T 0.113905 Method MME
+
+32
+32
+32
+32
+32
+32
+32
+tensor(585.)
+
+Labeled Target set: Average loss: 0.1332, Accuracy: 562/585 F1 (96.0684%)
+
+
+Test set: Average loss: 1.7447, Accuracy: 2421/4160 F1 (58.1971%)
+
+
+Val set: Average loss: 1.6964, Accuracy: 113/192 F1 (58.8542%)
+
+Patience Reset, Counter is: 0
+best acc test 58.197115  acc val 58.854167 acc labeled target 96.068376
+saving model...
+S Art T Real Train Ep: 600 lr0.00957239477517603 	 Loss Classification: 0.128013 Loss T 0.108162 Method MME
+
+S Art T Real Train Ep: 700 lr0.009505219859830012 	 Loss Classification: 0.088536 Loss T 0.084530 Method MME
+
+S Art T Real Train Ep: 800 lr0.009439134693595126 	 Loss Classification: 0.209257 Loss T 0.095418 Method MME
+
+S Art T Real Train Ep: 900 lr0.009374111751051751 	 Loss Classification: 0.084300 Loss T 0.071906 Method MME
+
+S Art T Real Train Ep: 1000 lr0.009310124446222227 	 Loss Classification: 0.064629 Loss T 0.077853 Method MME
+
+32
+32
+32
+32
+32
+32
+32
+tensor(585.)
+
+Labeled Target set: Average loss: 0.1479, Accuracy: 557/585 F1 (95.2137%)
+
+
+Test set: Average loss: 1.9865, Accuracy: 2500/4160 F1 (60.0962%)
+
+
+Val set: Average loss: 1.9386, Accuracy: 112/192 F1 (58.3333%)
+
+Patience getting saturated, current counter is:  0
+best acc test 58.197115  acc val 58.333333 acc labeled target 95.213675
+saving model...
+S Art T Real Train Ep: 1100 lr0.00924714709232377 	 Loss Classification: 0.081766 Loss T 0.060952 Method MME
+
+S Art T Real Train Ep: 1200 lr0.009185154863590003 	 Loss Classification: 0.110372 Loss T 0.062505 Method MME
+
+S Art T Real Train Ep: 1300 lr0.00912412375903735 	 Loss Classification: 0.015075 Loss T 0.052973 Method MME
+
+S Art T Real Train Ep: 1400 lr0.009064030568061049 	 Loss Classification: 0.075028 Loss T 0.062641 Method MME
+
+S Art T Real Train Ep: 1500 lr0.009004852837753237 	 Loss Classification: 0.036184 Loss T 0.062979 Method MME
+
+32
+32
+32
+32
+32
+32
+32
+tensor(585.)
+
+Labeled Target set: Average loss: 0.1200, Accuracy: 560/585 F1 (95.7265%)
+
+
+Test set: Average loss: 2.2031, Accuracy: 2490/4160 F1 (59.8558%)
+
+
+Val set: Average loss: 2.0775, Accuracy: 114/192 F1 (59.3750%)
+
+Patience Reset, Counter is: 1
+best acc test 59.855769  acc val 59.375000 acc labeled target 95.726496
+saving model...
+S Art T Real Train Ep: 1600 lr0.008946568841842816 	 Loss Classification: 0.139520 Loss T 0.063081 Method MME
+
+S Art T Real Train Ep: 1700 lr0.008889157551163433 	 Loss Classification: 0.201145 Loss T 0.046068 Method MME
+
+S Art T Real Train Ep: 1800 lr0.008832598605562044 	 Loss Classification: 0.031931 Loss T 0.040811 Method MME
+
+S Art T Real Train Ep: 1900 lr0.008776872287166303 	 Loss Classification: 0.066164 Loss T 0.058822 Method MME
+
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [1.        1.        1.        1.        1.        0.8888889 1.
+ 1.        1.        0.8888889 1.        1.        0.8888889 0.8888889
+ 1.        0.7777778 0.8888889 1.        1.        0.8888889 0.8888889
+ 1.        0.8888889 1.        1.        1.        1.        1.
+ 0.8888889 1.        1.        1.        1.        1.        1.
+ 1.        0.8888889 0.8888889 1.        0.8888889 1.        1.
+ 0.8888889 1.        0.8888889 1.        1.        0.8888889 1.
+ 1.        1.        1.        0.8888889 0.8888889 1.        1.
+ 1.        1.        0.8888889 1.        0.7777778 0.8888889 1.
+ 0.8888889 0.8888889]
+Top k classes which perform poorly are:  [60, 15, 64, 39, 63, 42, 44, 28, 47, 22, 20, 19, 36, 52, 16, 37, 13, 12, 9, 61, 5, 53, 58, 62, 40, 41, 59, 43, 46, 57, 48, 49, 56, 50, 55, 54, 45, 51, 0, 35, 1, 2, 3, 4, 6, 7, 8, 10, 11, 14, 17, 18, 21, 23, 24, 25, 26, 27, 29, 30, 31, 33, 34, 38, 32]
+S Art T Real Train Ep: 2000 lr0.008721959494934213 	 Loss Classification: 0.042902 Loss T 0.051388 Method MME
+
+32
+32
+32
+32
+32
+32
+32
+tensor(585.)
+
+Labeled Target set: Average loss: 0.1410, Accuracy: 561/585 F1 (95.8974%)
+
+
+Test set: Average loss: 2.3557, Accuracy: 2534/4160 F1 (60.9135%)
+
+
+Val set: Average loss: 2.0773, Accuracy: 117/192 F1 (60.9375%)
+
+Patience Reset, Counter is: 0
+best acc test 60.913462  acc val 60.937500 acc labeled target 95.897436
+saving model...
+S Art T Real Train Ep: 2100 lr0.008667841720414475 	 Loss Classification: 0.079670 Loss T 0.044211 Method MME
+
+S Art T Real Train Ep: 2200 lr0.008614501024650454 	 Loss Classification: 0.079822 Loss T 0.046332 Method MME
+
+S Art T Real Train Ep: 2300 lr0.008561920016164943 	 Loss Classification: 0.048498 Loss T 0.042165 Method MME
+
+S Art T Real Train Ep: 2400 lr0.008510081829966844 	 Loss Classification: 0.053080 Loss T 0.041313 Method MME
+
