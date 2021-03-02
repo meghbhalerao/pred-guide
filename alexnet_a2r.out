@@ -4068,3 +4068,3058 @@ tensor(585.)
 
 Labeled Target set: Average loss: 0.1502, Accuracy: 564/585 F1 (96.4103%)
 
+
+Test set: Average loss: 2.8411, Accuracy: 2399/4160 F1 (57.6683%)
+
+
+Val set: Average loss: 2.6041, Accuracy: 109/192 F1 (56.7708%)
+
+Patience getting saturated, current counter is:  0
+best acc test 57.668269  acc val 56.770833 acc labeled target 96.410256
+saving model...
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+S Art T Real Train Ep: 3600 lr0.007940462859307384 	 Loss Classification: 0.025826 Loss T 0.047651 Method MME
+
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+S Art T Real Train Ep: 3700 lr0.007896953388873518 	 Loss Classification: 0.022056 Loss T 0.037664 Method MME
+
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+S Art T Real Train Ep: 3800 lr0.007853996170872714 	 Loss Classification: 0.042594 Loss T 0.036336 Method MME
+
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+S Art T Real Train Ep: 3900 lr0.00781158026956848 	 Loss Classification: 0.018944 Loss T 0.021513 Method MME
+
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [1.        0.8888889 1.        1.        1.        0.8888889 1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        0.8888889
+ 0.7777778 1.        0.8888889 1.        1.        0.8888889 1.
+ 1.        1.        1.        1.        1.        0.8888889 1.
+ 0.7777778 1.        1.        1.        1.        0.8888889 0.8888889
+ 1.        1.        1.        0.8888889 1.        1.        1.
+ 0.8888889 0.8888889 0.8888889 1.        1.        1.        1.
+ 1.        1.        0.7777778 1.        1.        0.8888889 0.8888889
+ 0.8888889 1.       ]
+Top k classes which perform poorly are:  [35, 58, 21, 20, 23, 49, 50, 51, 26, 40, 41, 63, 5, 33, 61, 62, 1, 45, 38, 42, 43, 44, 39, 0, 47, 37, 52, 53, 54, 55, 56, 57, 59, 60, 46, 48, 32, 34, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 22, 24, 25, 27, 28, 29, 30, 31, 36, 64]
+Per cls weights according to the accuracy are:  tensor([1.1839, 1.2056, 1.1839, 1.1839, 1.1839, 1.2056, 1.1839, 1.1839, 1.1839,
+        1.1839, 1.1839, 1.1839, 1.1839, 1.1839, 1.1839, 1.1839, 1.1839, 1.1839,
+        1.1839, 1.1839, 1.2056, 1.2297, 1.1839, 1.2056, 1.1839, 1.1839, 1.2056,
+        1.1839, 1.1839, 1.1839, 1.1839, 1.1839, 1.1839, 1.2056, 1.1839, 1.2297,
+        1.1839, 1.1839, 1.1839, 1.1839, 1.2056, 1.2056, 1.1839, 1.1839, 1.1839,
+        1.2056, 1.1839, 1.1839, 1.1839, 1.2056, 1.2056, 1.2056, 1.1839, 1.1839,
+        1.1839, 1.1839, 1.1839, 1.1839, 1.2297, 1.1839, 1.1839, 1.2056, 1.2056,
+        1.2056, 1.1839])
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+Per cls weights according to the accuracy are:  tensor([0.8161, 0.7944, 0.8161, 0.8161, 0.8161, 0.7944, 0.8161, 0.8161, 0.8161,
+        0.8161, 0.8161, 0.8161, 0.8161, 0.8161, 0.8161, 0.8161, 0.8161, 0.8161,
+        0.8161, 0.8161, 0.7944, 0.7703, 0.8161, 0.7944, 0.8161, 0.8161, 0.7944,
+        0.8161, 0.8161, 0.8161, 0.8161, 0.8161, 0.8161, 0.7944, 0.8161, 0.7703,
+        0.8161, 0.8161, 0.8161, 0.8161, 0.7944, 0.7944, 0.8161, 0.8161, 0.8161,
+        0.7944, 0.8161, 0.8161, 0.8161, 0.7944, 0.7944, 0.7944, 0.8161, 0.8161,
+        0.8161, 0.8161, 0.8161, 0.8161, 0.7703, 0.8161, 0.8161, 0.7944, 0.7944,
+        0.7944, 0.8161])
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+Assigned Classwise weights to source
+doing non-weighted CE loss
+S Art T Real Train Ep: 4000 lr0.007769695042409123 	 Loss Classification: 0.044365 Loss T 0.030819 Method MME
+
+32
+32
+32
+32
+32
+32
+32
+tensor(585.)
+
+Labeled Target set: Average loss: 0.1268, Accuracy: 562/585 F1 (96.0684%)
+
+
+Test set: Average loss: 2.9487, Accuracy: 2429/4160 F1 (58.3894%)
+
+
+Val set: Average loss: 3.0252, Accuracy: 110/192 F1 (57.2917%)
+
+Patience getting saturated, current counter is:  1
+best acc test 57.668269  acc val 57.291667 acc labeled target 96.068376
+saving model...
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+S Art T Real Train Ep: 4100 lr0.007728330130142108 	 Loss Classification: 0.041069 Loss T 0.027902 Method MME
+
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+S Art T Real Train Ep: 4200 lr0.007687475447329114 	 Loss Classification: 0.032771 Loss T 0.027005 Method MME
+
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+S Art T Real Train Ep: 4300 lr0.0076471211732427845 	 Loss Classification: 0.031430 Loss T 0.016433 Method MME
+
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+S Art T Real Train Ep: 4400 lr0.007607257743127307 	 Loss Classification: 0.090922 Loss T 0.033591 Method MME
+
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+S Art T Real Train Ep: 4500 lr0.007567875839805858 	 Loss Classification: 0.009303 Loss T 0.024934 Method MME
+
+32
+32
+32
+32
+32
+32
+32
+tensor(585.)
+
+Labeled Target set: Average loss: 0.0988, Accuracy: 568/585 F1 (97.0940%)
+
+
+Test set: Average loss: 3.1206, Accuracy: 2426/4160 F1 (58.3173%)
+
+
+Val set: Average loss: 2.9849, Accuracy: 111/192 F1 (57.8125%)
+
+Patience getting saturated, current counter is:  2
+best acc test 57.668269  acc val 57.812500 acc labeled target 97.094017
+saving model...
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+S Art T Real Train Ep: 4600 lr0.007528966385618854 	 Loss Classification: 0.136210 Loss T 0.028859 Method MME
+
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+S Art T Real Train Ep: 4700 lr0.007490520534677821 	 Loss Classification: 0.022486 Loss T 0.022512 Method MME
+
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+S Art T Real Train Ep: 4800 lr0.007452529665420465 	 Loss Classification: 0.018674 Loss T 0.025878 Method MME
+
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+S Art T Real Train Ep: 4900 lr0.007414985373453289 	 Loss Classification: 0.018835 Loss T 0.018362 Method MME
+
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        0.7777778 1.        0.8888889
+ 1.        0.8888889 1.        1.        1.        1.        0.8888889
+ 1.        1.        1.        0.8888889 1.        1.        1.
+ 1.        1.        1.        0.8888889 1.        0.8888889 1.
+ 0.8888889 1.        1.        0.8888889 0.8888889 1.        0.8888889
+ 1.        1.        1.        1.        1.        0.8888889 1.
+ 1.        1.        1.        0.8888889 1.        1.        1.
+ 0.8888889 1.        0.8888889 0.8888889 1.        1.        1.
+ 1.        1.       ]
+Top k classes which perform poorly are:  [11, 35, 47, 24, 15, 13, 52, 20, 41, 56, 38, 58, 59, 31, 33, 39, 40, 42, 43, 37, 44, 45, 0, 48, 36, 50, 51, 53, 54, 55, 57, 60, 61, 62, 46, 49, 32, 63, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14, 16, 17, 18, 19, 21, 22, 23, 25, 26, 27, 28, 29, 30, 34, 64]
+Per cls weights according to the accuracy are:  tensor([1.1839, 1.1839, 1.1839, 1.1839, 1.1839, 1.1839, 1.1839, 1.1839, 1.1839,
+        1.1839, 1.1839, 1.2297, 1.1839, 1.2056, 1.1839, 1.2056, 1.1839, 1.1839,
+        1.1839, 1.1839, 1.2056, 1.1839, 1.1839, 1.1839, 1.2056, 1.1839, 1.1839,
+        1.1839, 1.1839, 1.1839, 1.1839, 1.2056, 1.1839, 1.2056, 1.1839, 1.2056,
+        1.1839, 1.1839, 1.2056, 1.2056, 1.1839, 1.2056, 1.1839, 1.1839, 1.1839,
+        1.1839, 1.1839, 1.2056, 1.1839, 1.1839, 1.1839, 1.1839, 1.2056, 1.1839,
+        1.1839, 1.1839, 1.2056, 1.1839, 1.2056, 1.2056, 1.1839, 1.1839, 1.1839,
+        1.1839, 1.1839])
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+Per cls weights according to the accuracy are:  tensor([0.8161, 0.8161, 0.8161, 0.8161, 0.8161, 0.8161, 0.8161, 0.8161, 0.8161,
+        0.8161, 0.8161, 0.7703, 0.8161, 0.7944, 0.8161, 0.7944, 0.8161, 0.8161,
+        0.8161, 0.8161, 0.7944, 0.8161, 0.8161, 0.8161, 0.7944, 0.8161, 0.8161,
+        0.8161, 0.8161, 0.8161, 0.8161, 0.7944, 0.8161, 0.7944, 0.8161, 0.7944,
+        0.8161, 0.8161, 0.7944, 0.7944, 0.8161, 0.7944, 0.8161, 0.8161, 0.8161,
+        0.8161, 0.8161, 0.7944, 0.8161, 0.8161, 0.8161, 0.8161, 0.7944, 0.8161,
+        0.8161, 0.8161, 0.7944, 0.8161, 0.7944, 0.7944, 0.8161, 0.8161, 0.8161,
+        0.8161, 0.8161])
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+Assigned Classwise weights to source
+doing non-weighted CE loss
+S Art T Real Train Ep: 5000 lr0.007377879464668811 	 Loss Classification: 0.063235 Loss T 0.015580 Method MME
+
+32
+32
+32
+32
+32
+32
+32
+tensor(585.)
+
+Labeled Target set: Average loss: 0.1107, Accuracy: 567/585 F1 (96.9231%)
+
+
+Test set: Average loss: 3.2727, Accuracy: 2454/4160 F1 (58.9904%)
+
+
+Val set: Average loss: 3.1737, Accuracy: 110/192 F1 (57.2917%)
+
+Patience getting saturated, current counter is:  3
+best acc test 57.668269  acc val 57.291667 acc labeled target 96.923077
+saving model...
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+S Art T Real Train Ep: 5100 lr0.007341203948625087 	 Loss Classification: 0.015057 Loss T 0.025186 Method MME
+
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+S Art T Real Train Ep: 5200 lr0.007304951032175895 	 Loss Classification: 0.073097 Loss T 0.022585 Method MME
+
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+S Art T Real Train Ep: 5300 lr0.007269113113340497 	 Loss Classification: 0.067549 Loss T 0.021963 Method MME
+
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+S Art T Real Train Ep: 5400 lr0.007233682775402483 	 Loss Classification: 0.072331 Loss T 0.013724 Method MME
+
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+S Art T Real Train Ep: 5500 lr0.007198652781227704 	 Loss Classification: 0.028344 Loss T 0.015883 Method MME
+
+32
+32
+32
+32
+32
+32
+32
+tensor(585.)
+
+Labeled Target set: Average loss: 0.1374, Accuracy: 560/585 F1 (95.7265%)
+
+
+Test set: Average loss: 3.3592, Accuracy: 2470/4160 F1 (59.3750%)
+
+
+Val set: Average loss: 3.2433, Accuracy: 115/192 F1 (59.8958%)
+
+Patience Reset, Counter is: 4
+best acc test 59.375000  acc val 59.895833 acc labeled target 95.726496
+saving model...
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+run_train.sh: line 28:  4542 Killed                  CUDA_VISIBLE_DEVICES=0,1 python main_classwise.py --method MME --dataset office_home --source Art --target Real --num 3 --net alexnet --augmentation_policy rand_augment --which_method SEW --uda 1 --use_bank 1 --use_cb 0 --use_new_features 0 --patience 10 --data_parallel 0 --weigh_using target_acc --num_to_weigh 1 --label_target_iteration 2500 --save_check

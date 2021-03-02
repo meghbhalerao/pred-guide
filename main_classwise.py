@@ -2,7 +2,7 @@ from __future__ import print_function
 import argparse
 import os
 import sys
-
+import time
 from numpy.lib.ufunclike import _fix_and_maybe_deprecate_out_named_y
 from utils.fixmatch import do_fixmatch
 from utils.source_classwise_weighting import *
@@ -191,7 +191,6 @@ def train():
     criterion = nn.CrossEntropyLoss(reduction='none').cuda()
     criterion_pseudo = nn.CrossEntropyLoss(reduction='none').cuda()
     criterion_lab_target = nn.CrossEntropyLoss(reduction='mean').cuda()
-    criterion_strong_source = nn.CrossEntropyLoss(reduction='mean').cuda()
 
     feat_dict_source, feat_dict_target, _ = load_bank(args, mode = 'pkl')
 
@@ -217,7 +216,7 @@ def train():
     if args.dataset == 'multi':
         phi = 0.5
     elif args.dataset == 'office_home':
-        phi = 0.1
+        phi = 0.2
     weigh_using = args.weigh_using
     #### Hyperparameters #######
     per_cls_acc = np.array([1 for _ in range(len(class_list))]) # Just defining for sake of clarity and debugging
@@ -233,7 +232,7 @@ def train():
             data_iter_t_unl = iter(target_loader_unl)
         if step % len_train_source == 0:
             data_iter_s = iter(source_loader)
-            
+
         # Extracting the batches from the iteratable dataloader
         data_t, data_t_unl, data_s  = next(data_iter_t), next(data_iter_t_unl), next(data_iter_s)
         im_data_s = data_s[0].cuda()
@@ -254,8 +253,8 @@ def train():
             update_label_bank(label_bank, data_t_unl, pseudo_labels, mask_loss)
 
         #if step >=0 and step % 250 == 0 and step<=3500:
-        if step>=2000:
-            if step % 1000 == 0:
+        if step>=args.SEW_iteration:
+            if step % args.SEW_interval == 0:
                 poor_class_list = list(np.argsort(per_cls_acc))[0:len(class_list)]
                 print("Per Class Accuracy Calculated According to the Labelled Target examples is: ", per_cls_acc)
                 print("Top k classes which perform poorly are: ", poor_class_list)
@@ -284,11 +283,12 @@ def train():
         out1 = F1(output)
 
         if args.which_method == "SEW":
-            if step>=2000  and step<=args.label_target_iteration:
+            if step>=args.SEW_iteration and step<=args.label_target_iteration:
                 names_batch = list(data_s[2])
                 idx = [feat_dict_source.names.index(name) for name in names_batch] 
                 weights_source = feat_dict_source.sample_weights[idx].cuda()
                 loss = torch.mean(weights_source * criterion(out1, target))
+                print("Doing Weighted source loss")
             else:
                 loss = torch.mean(criterion(out1, target))
                 print("doing non-weighted CE loss")

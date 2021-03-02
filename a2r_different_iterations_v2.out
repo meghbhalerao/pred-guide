@@ -1,0 +1,1128 @@
+Dataset office_home Source Art Target Real Labeled num perclass 3 Network alexnet
+65 classes in this dataset
+Labelled Source Examples:  2427
+Unlabelled Target Dataset Size:  4162
+Labelled Target Dataset Size:  195
+Misc. Labelled Target Dataset Size:  195
+Bank keys - Target:  dict_keys(['feat_vec', 'labels', 'names', 'domain_identifier']) Source:  dict_keys(['feat_vec', 'labels', 'names', 'domain_identifier'])
+Num  - Target:  4162 Source:  2427
+Unlabeled Target Data Batches: 65
+doing non-weighted CE loss
+S Art T Real Train Ep: 0 lr0.01 	 Loss Classification: 4.212643 Loss T 0.415772 Method MME
+
+32
+32
+32
+32
+32
+32
+32
+tensor(585.)
+
+Labeled Target set: Average loss: 4.2053, Accuracy: 6/585 F1 (1.0256%)
+
+
+Test set: Average loss: 4.1788, Accuracy: 79/4160 F1 (1.8990%)
+
+
+Val set: Average loss: 4.1764, Accuracy: 2/192 F1 (1.0417%)
+
+Patience Reset, Counter is: 0
+best acc test 1.899038  acc val 1.041667 acc labeled target 1.025641
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+32
+32
+32
+32
+32
+32
+32
+tensor(585.)
+
+Labeled Target set: Average loss: 2.7772, Accuracy: 197/585 F1 (33.6752%)
+
+
+Test set: Average loss: 2.2421, Accuracy: 1800/4160 F1 (43.2692%)
+
+
+Val set: Average loss: 2.2586, Accuracy: 83/192 F1 (43.2292%)
+
+Patience Reset, Counter is: 0
+best acc test 43.269231  acc val 43.229167 acc labeled target 33.675214
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+S Art T Real Train Ep: 100 lr0.009925650290240803 	 Loss Classification: 1.629067 Loss T 0.255976 Method MME
+
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+32
+32
+32
+32
+32
+32
+32
+tensor(585.)
+
+Labeled Target set: Average loss: 2.2493, Accuracy: 229/585 F1 (39.1453%)
+
+
+Test set: Average loss: 1.9569, Accuracy: 1970/4160 F1 (47.3558%)
+
+
+Val set: Average loss: 1.9094, Accuracy: 96/192 F1 (50.0000%)
+
+Patience Reset, Counter is: 0
+best acc test 47.355769  acc val 50.000000 acc labeled target 39.145299
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+S Art T Real Train Ep: 200 lr0.009852577760521605 	 Loss Classification: 1.109228 Loss T 0.218979 Method MME
+
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+32
+32
+32
+32
+32
+32
+32
+tensor(585.)
+
+Labeled Target set: Average loss: 2.3869, Accuracy: 241/585 F1 (41.1966%)
+
+
+Test set: Average loss: 1.8836, Accuracy: 2040/4160 F1 (49.0385%)
+
+
+Val set: Average loss: 1.8113, Accuracy: 99/192 F1 (51.5625%)
+
+Patience Reset, Counter is: 0
+best acc test 49.038462  acc val 51.562500 acc labeled target 41.196581
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+S Art T Real Train Ep: 300 lr0.009780748269686728 	 Loss Classification: 0.662849 Loss T 0.177766 Method MME
+
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+32
+32
+32
+32
+32
+32
+32
+tensor(585.)
+
+Labeled Target set: Average loss: 2.3710, Accuracy: 245/585 F1 (41.8803%)
+
+
+Test set: Average loss: 1.9420, Accuracy: 2024/4160 F1 (48.6538%)
+
+
+Val set: Average loss: 1.8479, Accuracy: 93/192 F1 (48.4375%)
+
+Patience getting saturated, current counter is:  0
+best acc test 49.038462  acc val 48.437500 acc labeled target 41.880342
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+S Art T Real Train Ep: 400 lr0.009710128909124701 	 Loss Classification: 0.342704 Loss T 0.147478 Method MME
+
+32
+32
+32
+32
+32
+32
+32
+tensor(585.)
+
+Labeled Target set: Average loss: 2.0706, Accuracy: 251/585 F1 (42.9060%)
+
+
+Test set: Average loss: 1.9050, Accuracy: 2107/4160 F1 (50.6490%)
+
+
+Val set: Average loss: 1.9317, Accuracy: 91/192 F1 (47.3958%)
+
+Patience getting saturated, current counter is:  1
+best acc test 49.038462  acc val 47.395833 acc labeled target 42.905983
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+32
+32
+32
+32
+32
+32
+32
+tensor(585.)
+
+Labeled Target set: Average loss: 2.1593, Accuracy: 251/585 F1 (42.9060%)
+
+
+Test set: Average loss: 1.9973, Accuracy: 2100/4160 F1 (50.4808%)
+
+
+Val set: Average loss: 1.9712, Accuracy: 100/192 F1 (52.0833%)
+
+Patience Reset, Counter is: 2
+best acc test 50.480769  acc val 52.083333 acc labeled target 42.905983
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+S Art T Real Train Ep: 500 lr0.00964068794694323 	 Loss Classification: 0.227347 Loss T 0.172464 Method MME
+
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+32
+32
+32
+32
+32
+32
+32
+tensor(585.)
+
+Labeled Target set: Average loss: 2.3916, Accuracy: 245/585 F1 (41.8803%)
+
+
+Test set: Average loss: 2.0599, Accuracy: 2101/4160 F1 (50.5048%)
+
+
+Val set: Average loss: 1.9973, Accuracy: 97/192 F1 (50.5208%)
+
+Patience getting saturated, current counter is:  0
+best acc test 50.480769  acc val 50.520833 acc labeled target 41.880342
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+S Art T Real Train Ep: 600 lr0.00957239477517603 	 Loss Classification: 0.162053 Loss T 0.121824 Method MME
+
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+32
+32
+32
+32
+32
+32
+32
+tensor(585.)
+
+Labeled Target set: Average loss: 2.2681, Accuracy: 237/585 F1 (40.5128%)
+
+
+Test set: Average loss: 2.0420, Accuracy: 2157/4160 F1 (51.8510%)
+
+
+Val set: Average loss: 2.0200, Accuracy: 103/192 F1 (53.6458%)
+
+Patience Reset, Counter is: 1
+best acc test 51.850962  acc val 53.645833 acc labeled target 40.512821
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+S Art T Real Train Ep: 700 lr0.009505219859830012 	 Loss Classification: 0.221711 Loss T 0.101544 Method MME
+
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+32
+32
+32
+32
+32
+32
+32
+tensor(585.)
+
+Labeled Target set: Average loss: 2.8315, Accuracy: 240/585 F1 (41.0256%)
+
+
+Test set: Average loss: 2.1979, Accuracy: 2106/4160 F1 (50.6250%)
+
+
+Val set: Average loss: 2.1514, Accuracy: 98/192 F1 (51.0417%)
+
+Patience getting saturated, current counter is:  0
+best acc test 51.850962  acc val 51.041667 acc labeled target 41.025641
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+S Art T Real Train Ep: 800 lr0.009439134693595126 	 Loss Classification: 0.268124 Loss T 0.106241 Method MME
+
+32
+32
+32
+32
+32
+32
+32
+tensor(585.)
+
+Labeled Target set: Average loss: 2.7306, Accuracy: 231/585 F1 (39.4872%)
+
+
+Test set: Average loss: 2.2283, Accuracy: 2112/4160 F1 (50.7692%)
+
+
+Val set: Average loss: 2.2523, Accuracy: 94/192 F1 (48.9583%)
+
+Patience getting saturated, current counter is:  1
+best acc test 51.850962  acc val 48.958333 acc labeled target 39.487179
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+doing non-weighted CE loss
+32
+32
+32
+32
+32
+32
+32
+tensor(585.)
+
+Labeled Target set: Average loss: 2.7670, Accuracy: 232/585 F1 (39.6581%)
+

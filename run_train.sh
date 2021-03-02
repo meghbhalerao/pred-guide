@@ -7,7 +7,7 @@
 
 #CUDA_VISIBLE_DEVICES=0,1 python main_match_majvot.py --method MME --dataset multi --source real --target sketch --num 3 --net resnet34 --augmentation_policy rand_augment --save_check
 
-CUDA_VISIBLE_DEVICES=1 python main_classwise.py \
+CUDA_VISIBLE_DEVICES=0 python main_classwise.py \
 --method MME \
 --dataset office_home \
 --source Art \
@@ -23,6 +23,7 @@ CUDA_VISIBLE_DEVICES=1 python main_classwise.py \
 --data_parallel 0  \
 --weigh_using target_acc \
 --num_to_weigh 1 \
+--save_interval 80
 --label_target_iteration 1000 \
 --SEW_iteration 280 \
 --SEW_interval 140 \
