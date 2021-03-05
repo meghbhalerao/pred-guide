@@ -8,6 +8,7 @@ import torch.nn.functional as F
 from easydict import EasyDict as edict
 import numpy as np
 from kmeans_pytorch import kmeans
+from torch.optim import optimizer
 from utils.majority_voting import *
 import pickle 
 from utils.majority_voting import *
@@ -44,6 +45,16 @@ def save_mymodel(args, state, is_best):
                 return
         else:
             shutil.copyfile(filename, bestfilename) 
+
+def save_model_iteration(G, F1, step, args, optimizer_g, optimizer_f):
+    checkpoint_name = str(args.net + "_" + args.source + "_" + args.target + "_" + args.which_method + "_" + str(step) + ".ckpt.pth.tar")
+    checkpoint_path = os.path.join(args.checkpath,checkpoint_name)
+    checkpoint_dict = {"G_state_dict": G.state_dict(),
+                      "F1_state_dict": F1.state_dict(),
+                      "optimizer_g": optimizer_g.state_dict(),
+                      "optimizer_f": optimizer_f.state_dict()}
+    torch.save(checkpoint_dict, checkpoint_path)
+
 
 
 def update_features(feat_dict, data, G, momentum, source  = False):

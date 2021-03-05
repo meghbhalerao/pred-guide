@@ -49,7 +49,7 @@ parser.add_argument('--checkpath', type=str, default='./save_model_ssda',
                     help='dir to save checkpoint')
 parser.add_argument('--seed', type=int, default=1, metavar='S',
                     help='random seed (default: 1)')
-parser.add_argument('--log-interval', type=int, default=100, metavar='N',
+parser.add_argument('--log_interval', type=int, default=100, metavar='N',
                     help='how many batches to wait before logging '
                          'training status')
 parser.add_argument('--save_interval', type=int, default=500, metavar='N',
@@ -86,10 +86,12 @@ parser.add_argument('--data_parallel', type=int, default=1,
                     help='pytorch DataParallel for training')
 parser.add_argument('--num_to_weigh', type=int, default=5,
                     help='Number of near/far samples to be weighed')
+
 parser.add_argument('--use_new_features', type=int, default=1, help='use features just before grad reversal for resenet')
 parser.add_argument('--weigh_using', type=str, default='target_acc', choices=['target_acc', 'pseudo_labels'], help='What metric to weigh with')
 parser.add_argument('--which_method', type=str, default='SEW', choices=['SEW', 'FM','MME_Only'], help='use SEW or SEW+FM')
 parser.add_argument('--thresh', type=float, default=0.9, metavar='MLT', help='confidence threshold for consistency regularization')
+parser.add_argument('--phi', type=float, default=0.5, metavar='MLT', help='hyperparameter in source example weighing')
 
 parser.add_argument('--label_target_iteration', type=int, default=8000, metavar='N',
                     help='when to being in the labled target examples')
@@ -172,7 +174,8 @@ def train():
     print("Unlabelled Target Dataset Size: ",len(target_loader_unl.dataset))
     print("Labelled Target Dataset Size: ",len(target_loader.dataset))
     print("Misc. Labelled Target Dataset Size: ",len(target_loader_misc.dataset))
-
+    print("Confidence Threshold for Consistency Reg is: ", args.thresh)
+    print("Phi value in Source example weighing is: ", args.phi)
     def zero_grad_all():
         optimizer_g.zero_grad()
         optimizer_f.zero_grad()
@@ -214,9 +217,9 @@ def train():
     K = 3
     K_farthest_source = args.num_to_weigh
     if args.dataset == 'multi':
-        phi = 0.5
+        phi = args.phi
     elif args.dataset == 'office_home':
-        phi = 0.2
+        phi = args.phi
     weigh_using = args.weigh_using
     #### Hyperparameters #######
     per_cls_acc = np.array([1 for _ in range(len(class_list))]) # Just defining for sake of clarity and debugging
@@ -277,13 +280,14 @@ def train():
 
         if step >=args.label_target_iteration:
             do_lab_target_loss(G,F1,data_t,im_data_t, gt_labels_t, criterion_lab_target)
+            print("Including the labeled target examples")
 
         #output = G(data)
         output = f_batch_source
         out1 = F1(output)
 
         if args.which_method == "SEW":
-            if step>=args.SEW_iteration and step<=args.label_target_iteration:
+            if step>=args.SEW_iteration:# and step<=args.label_target_iteration:
                 names_batch = list(data_s[2])
                 idx = [feat_dict_source.names.index(name) for name in names_batch] 
                 weights_source = feat_dict_source.sample_weights[idx].cuda()
@@ -362,7 +366,9 @@ def train():
                      'best_acc_test': best_acc_test,
                      'optimizer_g' : optimizer_g.state_dict(),
                      'optimizer_f' : optimizer_f.state_dict(),
-                     }, is_best)        
+                     }, is_best)     
+
+                save_model_iteration(G,F1,step,args,optimizer_g,optimizer_f)   
 
 
 def test(loader, mode='Test'):
