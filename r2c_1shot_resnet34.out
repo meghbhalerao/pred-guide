@@ -64437,3 +64437,999 @@ Per cls weights according to the accuracy are:  tensor([1.1839, 1.1839, 1.1839, 
         1.2567, 1.1839, 1.1839, 1.1839, 1.1839, 1.1839, 1.1839, 1.1839, 1.1839,
         1.1839, 1.1839, 1.1839, 1.1839, 1.1839, 1.1839, 1.1839, 1.1839, 1.1839,
         1.1839, 1.2567, 1.1839, 1.1839, 1.1839, 1.1839, 1.1839, 1.1839, 1.1839])
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+Per cls weights according to the accuracy are:  tensor([0.8161, 0.8161, 0.8161, 0.8161, 0.8161, 0.8161, 0.8161, 0.8161, 0.8161,
+        0.8161, 0.8161, 0.8161, 0.8161, 0.7433, 0.8161, 0.8161, 0.8161, 0.8161,
+        0.8161, 0.8161, 0.8161, 0.8161, 0.8161, 0.7433, 0.8161, 0.8161, 0.8161,
+        0.8161, 0.8161, 0.8161, 0.7433, 0.8161, 0.8161, 0.8161, 0.8161, 0.8161,
+        0.7433, 0.8161, 0.8161, 0.8161, 0.8161, 0.8161, 0.8161, 0.7433, 0.8161,
+        0.8161, 0.7433, 0.7433, 0.7433, 0.8161, 0.8161, 0.8161, 0.8161, 0.8161,
+        0.7433, 0.8161, 0.8161, 0.8161, 0.8161, 0.8161, 0.8161, 0.7433, 0.8161,
+        0.8161, 0.8161, 0.8161, 0.8161, 0.8161, 0.8161, 0.8161, 0.8161, 0.8161,
+        0.8161, 0.8161, 0.8161, 0.8161, 0.8161, 0.8161, 0.8161, 0.8161, 0.8161,
+        0.8161, 0.8161, 0.8161, 0.8161, 0.8161, 0.8161, 0.7433, 0.8161, 0.8161,
+        0.8161, 0.8161, 0.8161, 0.8161, 0.8161, 0.8161, 0.8161, 0.8161, 0.8161,
+        0.7433, 0.8161, 0.8161, 0.8161, 0.8161, 0.8161, 0.8161, 0.8161, 0.8161,
+        0.8161, 0.8161, 0.8161, 0.8161, 0.8161, 0.8161, 0.8161, 0.8161, 0.8161,
+        0.8161, 0.7433, 0.8161, 0.8161, 0.8161, 0.8161, 0.8161, 0.8161, 0.8161])
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+Assigned Classwise weights to source
+Including the labeled target examples
+Doing Weighted source loss
+S real T clipart Train Ep: 31000 lr0.003470660295386255 	 Loss Classification: 0.307108 Loss T 0.046770 Method MME
+
+32
+32
+32
+32
+tensor(378.)
+
+Labeled Target set: Average loss: 0.1672, Accuracy: 361/378 F1 (95.5026%)
+
+
+Test set: Average loss: 3.3296, Accuracy: 10111/18560 F1 (54.4774%)
+
+
+Val set: Average loss: 3.3021, Accuracy: 181/352 F1 (51.4205%)
+
+Patience getting saturated, current counter is:  6
+best acc test 54.008621  acc val 51.420455 acc labeled target 95.502646
+saving model...
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+S real T clipart Train Ep: 31100 lr0.0034643250455311855 	 Loss Classification: 0.461494 Loss T 0.033045 Method MME
+
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+S real T clipart Train Ep: 31200 lr0.0034580167132870383 	 Loss Classification: 0.104542 Loss T 0.042105 Method MME
+
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+S real T clipart Train Ep: 31300 lr0.00345173511936598 	 Loss Classification: 0.497559 Loss T 0.048539 Method MME
+
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss
+Including the labeled target examples
+Doing Weighted source loss

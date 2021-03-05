@@ -34,5 +34,7 @@ old-files/
 *.py.*
 *.npy
 *pkl
+*pickle
+tsne/*pickle
 *pth
 *pth*

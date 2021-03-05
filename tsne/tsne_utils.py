@@ -20,12 +20,17 @@ def plot_tsne_figure(features,feat_dict):
     set_near_fathest(feat_dict) # finds the near and far samples from the labeled target to the source and changes the tag indicator accordingly
     for idx in range(data_length):
         print(idx)
-        if feat_dict.tag_global == 's':
+        if feat_dict.tag_global[idx] == 's':
             plt.scatter(x[idx],y[idx],color='blue')
-        elif feat_dict.tag_global == 'u' and feat_dict.is_correct_label == 1:
+        elif feat_dict.tag_global[idx] == 'u' and feat_dict.is_correct_label == 1:
             plt.scatter(x[idx],y[idx],color='green')
-        elif feat_dict.tag_global == 'u' and feat_dict.is_correct_label == 0:
+        elif feat_dict.tag_global[idx] == 'u' and feat_dict.is_correct_label == 0:
             plt.scatter(x[idx],y[idx],color='red')  
+        elif feat_dict.tag_global[idx] == 'n':
+            plt.scatter(x[idx],y[idx], color='navy')
+        elif feat_dict.tatag_global[idx] == 'f':
+            plt.scatter(x[idx],y[idx], color = 'lightblue')
+        
     plt.show()
 
 def set_near_fathest(feat_dict):
