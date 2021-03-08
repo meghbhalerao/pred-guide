@@ -147,8 +147,6 @@ def make_st_aug_loader(args,classwise,root_folder="./data/multi/"):
     print(len(source_strong_near_loader))
     return iter(source_strong_near_loader)
         
-
-
 """
 print(os.path.join(root_folder,image))
 img = pil_loader(os.path.join(root_folder,image))

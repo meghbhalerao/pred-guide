@@ -76,18 +76,18 @@ parser.add_argument('--augmentation_policy', type=str, default='rand_augment', c
 parser.add_argument('--LR_scheduler', type=str, default='standard', choices=['standard', 'cosine'], help='Learning Rate scheduling policy')
 parser.add_argument('--adentropy', action='store_true', default=True,
                     help='Use entropy maximization or not')
-parser.add_argument('--uda', type=int, default=0,
+parser.add_argument('--uda', type=int, default=1,
                     help='use uda training for model training')
 parser.add_argument('--use_bank', type=int, default=1,
                     help='use feature bank method for experiments')
-parser.add_argument('--use_cb', type=int, default=1,
+parser.add_argument('--use_cb', type=int, default=0,
                     help='use class balancing method for experiments')
 parser.add_argument('--data_parallel', type=int, default=1,
                     help='pytorch DataParallel for training')
 parser.add_argument('--num_to_weigh', type=int, default=5,
                     help='Number of near/far samples to be weighed')
 
-parser.add_argument('--use_new_features', type=int, default=1, help='use features just before grad reversal for resenet')
+parser.add_argument('--use_new_features', type=int, default=0, help='use features just before grad reversal for resenet')
 parser.add_argument('--weigh_using', type=str, default='target_acc', choices=['target_acc', 'pseudo_labels'], help='What metric to weigh with')
 parser.add_argument('--which_method', type=str, default='SEW', choices=['SEW', 'FM','MME_Only'], help='use SEW or SEW+FM')
 parser.add_argument('--thresh', type=float, default=0.9, metavar='MLT', help='confidence threshold for consistency regularization')
@@ -267,11 +267,13 @@ def train():
                     raw_weights_to_pass = class_num_list_pseudo
                 elif weigh_using == 'target_acc':
                     raw_weights_to_pass = per_cls_acc
-                
-                if args.which_method == 'SEW':
-                    _ = do_source_weighting(target_loader_misc,feat_dict_source, G, K_farthest_source, per_class_raw = raw_weights_to_pass, weight=1, aug = 2, phi = phi, only_for_poor=True, poor_class_list=poor_class_list, weighing_mode='N',weigh_using=weigh_using)
+                elif weigh_using == 'constant':
+                    raw_weights_to_pass = None
 
-                    _ = do_source_weighting(target_loader_misc,feat_dict_source, G, K_farthest_source, per_class_raw = raw_weights_to_pass, weight=1, aug = 2, phi = phi, only_for_poor=True, poor_class_list=poor_class_list, weighing_mode='F', weigh_using=weigh_using)
+                if args.which_method == 'SEW':
+                    _ = do_source_weighting(target_loader_misc,feat_dict_source, G, K_farthest_source, per_class_raw = raw_weights_to_pass, weight=1.5, aug = 2, phi = phi, only_for_poor=True, poor_class_list=poor_class_list, weighing_mode='N',weigh_using=weigh_using)
+
+                    _ = do_source_weighting(target_loader_misc,feat_dict_source, G, K_farthest_source, per_class_raw = raw_weights_to_pass, weight=0.5, aug = 2, phi = phi, only_for_poor=True, poor_class_list=poor_class_list, weighing_mode='F', weigh_using=weigh_using)
 
                     print("Assigned Classwise weights to source")
                 else:
