@@ -64,7 +64,7 @@ def get_k_farthest_neighbors(sim_distribution,feat_dict,K_farthest):
         k_farthest, labels_k_farthest, names_k_farthest = get_kNN(sim_distribution, feat_dict, K_farthest)
         return k_farthest, labels_k_farthest, names_k_farthest
 
-def do_source_weighting(loader, feat_dict, G, K_farthest,per_class_raw = None, weight=0.8, aug = 0, phi = 0.2, only_for_poor = False, poor_class_list = None, weighing_mode='F', weigh_using = 'pseudo_labels'):
+def do_source_weighting(args, step, loader, feat_dict, G, F1, K_farthest,per_class_raw = None, weight=0.8, aug = 0, phi = 0.2, only_for_poor = False, poor_class_list = None, weighing_mode='F', weigh_using = 'pseudo_labels'):
     if weigh_using == 'pseudo_labels':
         min_raw = np.min(per_class_raw)
         max_raw = np.max(per_class_raw)
@@ -82,6 +82,7 @@ def do_source_weighting(loader, feat_dict, G, K_farthest,per_class_raw = None, w
         print("Per cls weights according to the accuracy are: ", per_class_weights)
     class_wise_examples = edict({"names":[],"labels":[]})
     n_examples = len(feat_dict.domain_identifier)
+
     for idx, batch in enumerate(loader):
         #img_vec = G(batch[0][aug])
         print(idx)
@@ -113,8 +114,53 @@ def do_source_weighting(loader, feat_dict, G, K_farthest,per_class_raw = None, w
                     feat_dict.sample_weights[idx_to_weigh] = weight  
                 else:
                     feat_dict.sample_weights[idx_to_weigh] = per_class_weights[img_label]
-        #break
+    
     return class_wise_examples        
+
+def do_make_csv(args,step,K):
+    f = open("./csvs/%s_%s_%s_%s.csv"%(args.net, args.source, args.target, str(step)),"w")
+    f.write("LT-Path,")
+    for i in range(K):
+        f.write('N' + str(i) + ",")
+    for i in range(K):
+        f.write('F' + str(i) + ",")
+    f.write("Prediction\n")
+
+
+def do_write_csv(loader, feat_dict, G, F1, args, step, K_farthest):
+    f = open("./csvs/%s_%s_%s_%s.csv"%(args.net, args.source, args.target, str(step)),"a")
+    for idx, batch in enumerate(loader):
+        #img_vec = G(batch[0][aug])
+        print(idx)
+        img_label = batch[1]
+        idxs_label = [i for i, x in enumerate(feat_dict.labels) if x == img_label]
+        feat_dict_label = make_feat_dict_from_idx(feat_dict,idxs_label)
+        
+        _ , sim_distribution = get_similarity_distribution(feat_dict_label,batch,G,i=0)
+        k, labels_k, names_k_far = get_k_farthest_neighbors(sim_distribution,feat_dict_label,K_farthest)
+
+        _ , sim_distribution = get_similarity_distribution(feat_dict_label,batch,G,i=0)
+        k_nearest, labels_k_nearest, names_k_near = get_kNN(sim_distribution,feat_dict_label,K_farthest)   
+        names_k_near = names_k_near[0] # 0 - since batch_size is 1 for 
+        f.write(batch[2][0] + ",")
+        names_k_far = names_k_far[0]
+        for name in names_k_near:    
+            f.write(name + ",")
+        for name in names_k_far:
+            f.write(name + ",")
+        print(names_k_far,names_k_near)
+        G.eval()
+        F1.eval()
+        pred_label = F1(G(batch[0][0].cuda())).data.max(1)[1].cpu().data.item()
+        gt_label = batch[1].cpu().data.item()
+        print(pred_label,gt_label)
+        f.write(str(int(pred_label==gt_label)))
+        f.write("\n")
+        F1.train()
+        G.train()
+    pass
+
+
 
 def do_lab_target_loss(G,F1,data_t,im_data_t, gt_labels_t, criterion_lab_target):
     #for i in range(len(data_t[0])):

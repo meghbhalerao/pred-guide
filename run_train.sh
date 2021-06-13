@@ -7,15 +7,15 @@
 
 #CUDA_VISIBLE_DEVICES=0,1 python main_match_majvot.py --method MME --dataset multi --source real --target sketch --num 3 --net resnet34 --augmentation_policy rand_augment --save_check
 
-CUDA_VISIBLE_DEVICES=0 python main_classwise.py \
+CUDA_VISIBLE_DEVICES=1 python main_classwise.py \
 --method MME \
 --dataset multi \
 --source real \
---target painting \
+--target sketch \
 --num 3 \
 --net resnet34 \
---which_method FM \
---patience 5 \
+--which_method SEW \
+--patience 10 \
 --data_parallel 0 \
 --weigh_using target_acc \
 --num_to_weigh 2 \

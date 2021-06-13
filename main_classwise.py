@@ -4,6 +4,7 @@ import os
 import sys
 import time
 from numpy.lib.ufunclike import _fix_and_maybe_deprecate_out_named_y
+from torchvision.models import resnet
 from utils.fixmatch import do_fixmatch
 from utils.source_classwise_weighting import *
 import numpy as np
@@ -14,7 +15,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 from torch.autograd import Variable
-from model.resnet import resnet34
+from model.resnet import resnet34, resnet50
 from model.basenet import AlexNetBase, Discriminator, Predictor_deep_new, VGGBase, Predictor, Predictor_deep
 from utils.utils import *
 from utils.majority_voting import *
@@ -61,7 +62,7 @@ parser.add_argument('--source', type=str, default='real',
 parser.add_argument('--target', type=str, default='sketch',
                     help='target domain')
 parser.add_argument('--dataset', type=str, default='multi',
-                    choices=['multi', 'office', 'office_home'],
+                    choices=['multi', 'office', 'office_home','FER'],
                     help='the name of dataset')
 parser.add_argument('--num', type=int, default=3,
                     help='number of labeled examples in the target')
@@ -88,7 +89,7 @@ parser.add_argument('--num_to_weigh', type=int, default=5,
                     help='Number of near/far samples to be weighed')
 
 parser.add_argument('--use_new_features', type=int, default=0, help='use features just before grad reversal for resenet')
-parser.add_argument('--weigh_using', type=str, default='target_acc', choices=['target_acc', 'pseudo_labels'], help='What metric to weigh with')
+parser.add_argument('--weigh_using', type=str, default='target_acc', choices=['target_acc', 'pseudo_labels','constant'], help='What metric to weigh with')
 parser.add_argument('--which_method', type=str, default='SEW', choices=['SEW', 'FM','MME_Only'], help='use SEW or SEW+FM')
 parser.add_argument('--thresh', type=float, default=0.9, metavar='MLT', help='confidence threshold for consistency regularization')
 parser.add_argument('--phi', type=float, default=0.5, metavar='MLT', help='hyperparameter in source example weighing')
@@ -115,6 +116,9 @@ torch.cuda.manual_seed(args.seed) # Seeding everything for removing non-determin
 
 if args.net == 'resnet34':
     G = resnet34()
+    inc = 512
+elif args.net == 'resnet50':
+    G = resnet50()
     inc = 512
 elif args.net == "alexnet":
     G = AlexNetBase()
@@ -194,14 +198,17 @@ def train():
     criterion = nn.CrossEntropyLoss(reduction='none').cuda()
     criterion_pseudo = nn.CrossEntropyLoss(reduction='none').cuda()
     criterion_lab_target = nn.CrossEntropyLoss(reduction='mean').cuda()
+    if args.which_method == 'MME_Only':
+        pass
+    elif args.which_method == 'SEW':
+        feat_dict_source, feat_dict_target, _ = load_bank(args, mode = 'pkl')
 
-    feat_dict_source, feat_dict_target, _ = load_bank(args, mode = 'pkl')
+    if not args.which_method == 'MME_Only':
+        num_target = len(feat_dict_target.names)
+        num_source = len(feat_dict_source.names)
 
-    num_target = len(feat_dict_target.names)
-    num_source = len(feat_dict_source.names)
-
-    feat_dict_source.sample_weights = torch.tensor(np.ones(num_source)).cpu()
-    label_bank = edict({"names": feat_dict_target.names, "labels": np.zeros(num_target,dtype=int)-1})
+        feat_dict_source.sample_weights = torch.tensor(np.ones(num_source)).cpu()
+        label_bank = edict({"names": feat_dict_target.names, "labels": np.zeros(num_target,dtype=int)-1})
 
     all_step = args.steps
     data_iter_s = iter(source_loader)
@@ -214,6 +221,7 @@ def train():
     best_acc_val = 0
     counter = 0
     #### Some Hyperparameters #####
+
     K = 3
     K_farthest_source = args.num_to_weigh
     if args.dataset == 'multi':
@@ -250,9 +258,7 @@ def train():
         target = gt_labels_s
         if not args.which_method == "MME_Only":
             pseudo_labels, mask_loss = do_fixmatch(data_t_unl,F1,G,thresh,criterion_pseudo)
-        
-        f_batch_source, feat_dict_source = update_features(feat_dict_source, data_s, G, 0, source = True)
-        if not args.which_method == "MME_Only":
+            f_batch_source, feat_dict_source = update_features(feat_dict_source, data_s, G, 0.1, source = True)
             update_label_bank(label_bank, data_t_unl, pseudo_labels, mask_loss)
 
         #if step >=0 and step % 250 == 0 and step<=3500:
@@ -271,11 +277,15 @@ def train():
                     raw_weights_to_pass = None
 
                 if args.which_method == 'SEW':
-                    _ = do_source_weighting(target_loader_misc,feat_dict_source, G, K_farthest_source, per_class_raw = raw_weights_to_pass, weight=1.5, aug = 2, phi = phi, only_for_poor=True, poor_class_list=poor_class_list, weighing_mode='N',weigh_using=weigh_using)
+                    #do_make_csv(args, step, K_farthest_source) # making csv for near and far examples here
+                    
+                    # do_write_csv(target_loader_misc, feat_dict_source, G, F1, args, step, K_farthest_source)
 
-                    _ = do_source_weighting(target_loader_misc,feat_dict_source, G, K_farthest_source, per_class_raw = raw_weights_to_pass, weight=0.5, aug = 2, phi = phi, only_for_poor=True, poor_class_list=poor_class_list, weighing_mode='F', weigh_using=weigh_using)
+                    _ = do_source_weighting(args, step, target_loader_misc,feat_dict_source, G, F1, K_farthest_source, per_class_raw = raw_weights_to_pass, weight=1.5, aug = 2, phi = phi, only_for_poor=True, poor_class_list=poor_class_list, weighing_mode='N',weigh_using=weigh_using)
 
-                    print("Assigned Classwise weights to source")
+                    _ = do_source_weighting(args, step, target_loader_misc,feat_dict_source, G, F1, K_farthest_source, per_class_raw = raw_weights_to_pass, weight=0.5, aug = 2, phi = phi, only_for_poor=True, poor_class_list=poor_class_list, weighing_mode='F', weigh_using=weigh_using)
+
+                    print("Assigned Classwise weights≈ to source")
                 else:
                     pass
 
@@ -284,12 +294,15 @@ def train():
             do_lab_target_loss(G,F1,data_t,im_data_t, gt_labels_t, criterion_lab_target)
             print("Including the labeled target examples")
 
-        #output = G(data)
-        output = f_batch_source
+
+        if not args.which_method == "MME_Only":
+            output = f_batch_source
+        elif args.which_method == "MME_Only":
+            output = G(data)
         out1 = F1(output)
 
         if args.which_method == "SEW":
-            if step>=args.SEW_iteration:# and step<=args.label_target_iteration:
+            if step>=args.SEW_iteration: # and step<=args.label_target_iteration:
                 names_batch = list(data_s[2])
                 idx = [feat_dict_source.names.index(name) for name in names_batch] 
                 weights_source = feat_dict_source.sample_weights[idx].cuda()

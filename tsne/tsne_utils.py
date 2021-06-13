@@ -20,23 +20,30 @@ def plot_tsne_figure(features,feat_dict):
     #print("Total datapoints to plot are:", data_length)
     set_near_far(feat_dict) # finds the near and far samples from the labeled target to the source and changes the tag indicator accordingly
     print(feat_dict.tag_global)
+    fig, (ax1, ax2) = plt.subplots(2, 1, sharex=True)
+    #ax1.axis("off")
+    #ax2.axis("off")
+    
+    ax1.set_yticklabels([]); ax2.set_yticklabels([]);ax1.set_yticks([]);ax2.set_yticks([])
+    ax1.set_xticklabels([]); ax2.set_yticklabels([]);ax1.set_xticks([]);ax2.set_xticks([])
+
     for idx in range(data_length):
         if feat_dict.tag_global[idx] == 's':
-            plt.scatter(x[idx],y[idx],color='blue',marker = "x")
+            ax1.scatter(x[idx],y[idx],color='blue',marker = "x")
         elif feat_dict.tag_global[idx] == 'u' and int(feat_dict.is_correct_label[idx]) == 1:
-            plt.scatter(x[idx],y[idx],color='green', marker = 'x')
+            ax2.scatter(x[idx],y[idx],color='green', marker = 'x')
             print("Correct unl:", x[idx],y[idx])
         elif feat_dict.tag_global[idx] == 'u' and int(feat_dict.is_correct_label[idx]) == 0:
-            plt.scatter(x[idx],y[idx],color='red', marker='x')  
+            ax2.scatter(x[idx],y[idx],color='red', marker='x')  
             print("Wrong unl:", x[idx],y[idx])
         elif feat_dict.tag_global[idx] == 'f':
-            plt.scatter(x[idx],y[idx], color='black', marker = 'x')
+            ax1.scatter(x[idx],y[idx], color='black', marker = 'x')
             print("Far source examples")
         elif feat_dict.tag_global[idx] == 'n':
-            plt.scatter(x[idx],y[idx], color = 'lightblue', marker='x')
+            ax1.scatter(x[idx],y[idx], color = 'lightblue', marker='x')
             print("Near source examples")
         elif feat_dict.tag_global[idx] == 'lt':
-            plt.scatter(x[idx],y[idx], color = 'yellow', marker='x')
+            ax1.scatter(x[idx],y[idx], color = 'yellow', marker='x')
             print("Labeled Target examples")
     plt.savefig('fig1.png')
     plt.show()

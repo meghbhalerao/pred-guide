@@ -39,3 +39,5 @@ tsne/*pickle
 *pth
 *pth*
 data/
+paper-logs/
+tsne/models/

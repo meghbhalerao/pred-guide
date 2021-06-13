@@ -29,10 +29,10 @@ def main():
     args.dataset = "multi"
     args.num  = 3
     args.uda = 1
-    it = 2000                                       
+    it = 7500                                       
     source_loader, target_loader, target_loader_misc, target_loader_unl, target_loader_val, target_loader_test, class_num_list_source, class_list = return_dataset_randaugment(args,txt_path = "../data/txt/",root_path="../data/",bs_alex=1,bs_resnet=1,set_shuffle=False)
     is_dict_saved = False
-    cf_saved = True
+    cf_saved = False
 
     print("Unlabeled source dataset size:", len(source_loader.dataset))
     print("Labeled target dataset size:",len(target_loader_unl.dataset))
@@ -66,19 +66,18 @@ def main():
     features_dict = edict({"feat_global":[],"tag_global":[], "is_correct_label":[],"name_list":[],"gt_labels":[]})
 
     if not cf_saved:
-        cf = test(target_loader_test,G,F1,class_list)
+        cf = test(target_loader_misc,G,F1,class_list)
         np.save("confusion_matrix_tsne_%s.npy"%(str(it)),cf)
     elif cf_saved:
         cf = np.load("confusion_matrix_tsne_%s.npy"%(str(it)))
     pc_acc = per_class_accuracy(cf)
     print("Per Class Accuracy on the unlabled target data is: ", pc_acc)
-    classes_to_plot = [2]#range(1,len(class_list))
     sys.exit()
+    classes_to_plot = [1]#range(1,len(class_list))
     if not is_dict_saved:
         with torch.no_grad():
             G.eval()
             F1.eval()
-            
             # getting the features for the source domain
             for idx, image_obj in enumerate(source_loader):
                 image = image_obj[0].cuda()
@@ -185,7 +184,7 @@ def test(loader,G,F1,class_list):
         for batch_idx, data_t in enumerate(loader):
             #im_data_t.resize_(data_t[0].size()).copy_(data_t[0])
             #gt_labels_t.resize_(data_t[1].size()).copy_(data_t[1])
-            im_data_t = data_t[0].cuda()
+            im_data_t = data_t[0][0].cuda()
             gt_labels_t = data_t[1].cuda()
             feat = G(im_data_t)
             output1 = F1(feat)
