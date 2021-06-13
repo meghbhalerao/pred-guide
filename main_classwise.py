@@ -221,8 +221,6 @@ def train():
     best_acc_val = 0
     counter = 0
     #### Some Hyperparameters #####
-
-    K = 3
     K_farthest_source = args.num_to_weigh
     if args.dataset == 'multi':
         phi = args.phi
@@ -251,7 +249,6 @@ def train():
         im_data_t = data_t[0][0].cuda()
         gt_labels_t = data_t[1].cuda()
         im_data_tu = data_t_unl[0][2].cuda()
-        gt_labels_tu = data_t_unl[1].cuda()
         
         zero_grad_all()
         data = im_data_s
