@@ -5,8 +5,6 @@ import numpy as np
 import sys
 
 from torch._C import Value
-sys.path.append("/home/megh/projects/domain-adaptation/SSAL/")
-#sys.path.append("/cbica/home/bhaleram/comp_space/random/personal/others/SSAL/")
 from loaders.data_list import Imagelists_VISDA, return_classlist
 from model.basenet import *
 from model.resnet import *
