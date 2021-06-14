@@ -304,10 +304,10 @@ def train():
                 idx = [feat_dict_source.names.index(name) for name in names_batch] 
                 weights_source = feat_dict_source.sample_weights[idx].cuda()
                 loss = torch.mean(weights_source * criterion(out1, target))
-                print("Doing Weighted source loss")
+                #print("Doing Weighted source loss")
             else:
                 loss = torch.mean(criterion(out1, target))
-                print("doing non-weighted CE loss")
+                #print("doing non-weighted CE loss")
         elif args.which_method == "FM" or args.which_method == "MME_Only":
             loss = torch.mean(criterion(out1, target))
 
