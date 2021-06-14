@@ -40,6 +40,6 @@ python main_classwise.py \ # main file to run
 --phi 0.5 \ # Parameter in the source weighing formula
 --save_check # Whether to save the model weights
 ```
-3. After running this script your model will be saved in `./save_model_ssda` folder and the accuracy will be printed out.
+3. After running this script your model checkpoints will be saved in `./save_model_ssda` folder and the accuracy will be printed out.
 ## Dependenceis
  - [`pytorch v1.7.0`](https://pytorch.org)
