@@ -201,7 +201,7 @@ def train():
     if args.which_method == 'MME_Only':
         pass
     elif args.which_method == 'SEW':
-        feat_dict_source, feat_dict_target, _ = load_bank(args, mode = 'pkl')
+        feat_dict_source, feat_dict_target, _ = load_bank(args, mode = 'random')
 
     if not args.which_method == 'MME_Only':
         num_target = len(feat_dict_target.names)
@@ -231,6 +231,8 @@ def train():
     per_cls_acc = np.array([1 for _ in range(len(class_list))]) # Just defining for sake of clarity and debugging
 
     for step in range(all_step):
+
+
         optimizer_g = inv_lr_scheduler(param_lr_g, optimizer_g, step, init_lr=args.lr)
         optimizer_f = inv_lr_scheduler(param_lr_f, optimizer_f, step, init_lr=args.lr)
 
@@ -249,7 +251,6 @@ def train():
         im_data_t = data_t[0][0].cuda()
         gt_labels_t = data_t[1].cuda()
         im_data_tu = data_t_unl[0][2].cuda()
-        
         zero_grad_all()
         data = im_data_s
         target = gt_labels_s
