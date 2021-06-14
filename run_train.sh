@@ -7,7 +7,7 @@
 
 #CUDA_VISIBLE_DEVICES=0,1 python main_match_majvot.py --method MME --dataset multi --source real --target sketch --num 3 --net resnet34 --augmentation_policy rand_augment --save_check
 
-CUDA_VISIBLE_DEVICES=1 python main_classwise.py \
+CUDA_LAUNCH_BLOCKING=1 CUDA_VISIBLE_DEVICES=1 python main_classwise.py \
 --method MME \
 --dataset multi \
 --source real \

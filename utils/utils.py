@@ -79,9 +79,10 @@ def update_features(feat_dict, data, G, momentum, source  = False):
     names_batch = list(names_batch)
     idx = [feat_dict.names.index(name) for name in names_batch]
     f_batch = G(img_batch)
-    print(f_batch)
-    print(idx)
-
+    #print(f_batch.shape)
+    #print(len(idx))
+    print(feat_dict.feat_vec.shape)
+    #print(feat_dict.feat_vec[idx])
     feat_dict.feat_vec[idx] = (momentum * feat_dict.feat_vec[idx] + (1 - momentum) * f_batch).detach()
     return f_batch, feat_dict
 
@@ -220,48 +221,46 @@ def load_bank(args,mode = 'pkl'):
         domain = ["S" for i in range(num_source)]
         feat_dict_source.domain_identifier = domain
         # Concat the corresponsing components of the 2 dictionaries
-        #print(feat_dict_source.feat_vec.shape)
-        #print(feat_dict_target.feat_vec.shape)
+        print(feat_dict_source.feat_vec.shape)
+        print(feat_dict_target.feat_vec.shape)
         feat_dict_combined = edict({})
         feat_dict_combined  = combine_dicts(feat_dict_source, feat_dict_target)
 
     elif mode == 'random':
         feat_dict_target = edict({})
         f_target = open(os.path.join("./data/txt/%s"%(args.dataset),"unlabeled_target_images_%s_%s.txt"%(args.target,str(args.num))),"r")
-        names, labels = [],[]
+        names_target, labels_target = [],[]
         for line in f_target:
             line = line.replace("\n","")
-            names.append(line.split()[0])
-            labels.append(int(line.split()[1]))
+            names_target.append(line.split()[0])
+            labels_target.append(int(line.split()[1]))
 
-        feat_dict_target.names = names
-        feat_dict_target.labels = labels
+        feat_dict_target.names = names_target
+        feat_dict_target.labels = labels_target
         feat_dim = 512 if args.net == 'resnet34' else 4096
-        feat_dict_target.feat_vec = torch.randn(len(names),feat_dim).cuda()
+        feat_dict_target.feat_vec = torch.randn(len(names_target),feat_dim).cuda()
         num_target = len(feat_dict_target.names)
         domain = ["T" for i in range(num_target)]
         feat_dict_target.domain_identifier = domain
 
         feat_dict_source = edict({})
         f_source = open(os.path.join("./data/txt/%s"%(args.dataset),"labeled_source_images_%s.txt"%(args.source)),"r")
-        feat_dict_source.feat_vec = torch.randn(len(names),feat_dim).cuda()
-        names,labels = [],[]
+        
+        names_source,labels_source = [],[]
         for line in f_source:
             line = line.replace("\n","")
-            names.append(line.split()[0])
-            labels.append(int(line.split()[1]))
-
-        feat_dict_source.names = names
-        feat_dict_source.labels = labels
+            names_source.append(line.split()[0])
+            labels_source.append(int(line.split()[1]))
+        feat_dict_source.feat_vec = torch.randn(len(names_source),feat_dim).cuda()
+        feat_dict_source.names = names_source
+        feat_dict_source.labels = labels_source
         num_source = len(feat_dict_source.names)
         domain = ["S" for i in range(num_source)]
         feat_dict_source.domain_identifier = domain
         # Concat the corresponsing components of the 2 dictionaries
-        #print(feat_dict_source.feat_vec.shape)
-        #print(feat_dict_target.feat_vec.shape)
         feat_dict_combined = edict({})
         feat_dict_combined  = combine_dicts(feat_dict_source, feat_dict_target)
-
+        
     print("Bank keys - Target: ", feat_dict_target.keys(),"Source: ", feat_dict_source.keys())
     print("Num  - Target: ", len(feat_dict_target.names), "Source: ", len(feat_dict_source.names))
 
