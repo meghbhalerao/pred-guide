@@ -81,7 +81,6 @@ def update_features(feat_dict, data, G, momentum, source  = False):
     f_batch = G(img_batch)
     #print(f_batch.shape)
     #print(len(idx))
-    print(feat_dict.feat_vec.shape)
     #print(feat_dict.feat_vec[idx])
     feat_dict.feat_vec[idx] = (momentum * feat_dict.feat_vec[idx] + (1 - momentum) * f_batch).detach()
     return f_batch, feat_dict
