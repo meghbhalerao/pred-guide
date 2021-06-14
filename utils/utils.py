@@ -79,6 +79,9 @@ def update_features(feat_dict, data, G, momentum, source  = False):
     names_batch = list(names_batch)
     idx = [feat_dict.names.index(name) for name in names_batch]
     f_batch = G(img_batch)
+    print(f_batch)
+    print(idx)
+
     feat_dict.feat_vec[idx] = (momentum * feat_dict.feat_vec[idx] + (1 - momentum) * f_batch).detach()
     return f_batch, feat_dict
 
@@ -221,12 +224,16 @@ def load_bank(args,mode = 'pkl'):
         #print(feat_dict_target.feat_vec.shape)
         feat_dict_combined = edict({})
         feat_dict_combined  = combine_dicts(feat_dict_source, feat_dict_target)
-        print(feat_dict_combined.keys())
+
     elif mode == 'random':
         feat_dict_target = edict({})
         f_target = open(os.path.join("./data/txt/%s"%(args.dataset),"unlabeled_target_images_%s_%s.txt"%(args.target,str(args.num))),"r")
-        names  = [line.split()[0] for line in f_target]
-        labels = [int(line.split()[1]) for line in f_target]
+        names, labels = [],[]
+        for line in f_target:
+            line = line.replace("\n","")
+            names.append(line.split()[0])
+            labels.append(int(line.split()[1]))
+
         feat_dict_target.names = names
         feat_dict_target.labels = labels
         feat_dim = 512 if args.net == 'resnet34' else 4096
@@ -238,8 +245,12 @@ def load_bank(args,mode = 'pkl'):
         feat_dict_source = edict({})
         f_source = open(os.path.join("./data/txt/%s"%(args.dataset),"labeled_source_images_%s.txt"%(args.source)),"r")
         feat_dict_source.feat_vec = torch.randn(len(names),feat_dim).cuda()
-        names  = [line.split()[0] for line in f_source]
-        labels = [int(line.split()[1]) for line in f_source]
+        names,labels = [],[]
+        for line in f_source:
+            line = line.replace("\n","")
+            names.append(line.split()[0])
+            labels.append(int(line.split()[1]))
+
         feat_dict_source.names = names
         feat_dict_source.labels = labels
         num_source = len(feat_dict_source.names)
