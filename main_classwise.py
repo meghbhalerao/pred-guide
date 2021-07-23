@@ -90,6 +90,7 @@ parser.add_argument('--num_to_weigh', type=int, default=5,
 
 parser.add_argument('--use_new_features', type=int, default=0, help='use features just before grad reversal for resenet')
 parser.add_argument('--weigh_using', type=str, default='target_acc', choices=['target_acc', 'pseudo_labels','constant'], help='What metric to weigh with')
+parser.add_argument('--sew_method', type=str, default='continuous', help='which sew weighting method to use')
 parser.add_argument('--which_method', type=str, default='SEW', choices=['SEW', 'FM','MME_Only'], help='use SEW or SEW+FM')
 parser.add_argument('--thresh', type=float, default=0.9, metavar='MLT', help='confidence threshold for consistency regularization')
 parser.add_argument('--phi', type=float, default=0.5, metavar='MLT', help='hyperparameter in source example weighing')
@@ -100,8 +101,7 @@ parser.add_argument('--label_target_iteration', type=int, default=8000, metavar=
 parser.add_argument('--SEW_iteration', type=int, default=2000, metavar='N',
                     help='when to being in the labled target examples')
 
-parser.add_argument('--SEW_interval', type=int, default=1000, metavar='N',
-                    help='when to being in the labled target examples')
+parser.add_argument('--SEW_interval', type=int, default=1000, metavar='N', help='when to being in the labled target examples')
 
 
                     
@@ -141,15 +141,19 @@ if "resnet" in args.net:
     F1 = Predictor_deep(num_class=len(class_list), inc=inc)
 else:
     F1 = Predictor(num_class=len(class_list), inc=inc, temp=args.T)
+
 weights_init(F1)
 
 if args.use_new_features:
     if "resnet" in args.net:
         print("Using the new feature vectors")
-        G = nn.Sequential(G,F1.fc1)
+        #G = nn.Sequential(G,F1.fc1)
+        G = nn.Sequential(G,nn.Linear(inc,50))
         weights_init(list(G.children())[1])
         F1 = Predictor_deep_new(num_class=len(class_list))
         weights_init(F1)
+        print(G)
+        print(F1)
         
 if args.pretrained_ckpt is not None:
     ckpt = torch.load(args.pretrained_ckpt)
@@ -194,7 +198,6 @@ def train():
     thresh = args.thresh# can make this variable
     root_folder = "./data/%s"%(args.dataset)
 
-    
     criterion = nn.CrossEntropyLoss(reduction='none').cuda()
     criterion_pseudo = nn.CrossEntropyLoss(reduction='none').cuda()
     criterion_lab_target = nn.CrossEntropyLoss(reduction='mean').cuda()
@@ -232,7 +235,6 @@ def train():
 
     for step in range(all_step):
 
-
         optimizer_g = inv_lr_scheduler(param_lr_g, optimizer_g, step, init_lr=args.lr)
         optimizer_f = inv_lr_scheduler(param_lr_f, optimizer_f, step, init_lr=args.lr)
 
@@ -256,7 +258,7 @@ def train():
         target = gt_labels_s
         if not args.which_method == "MME_Only":
             pseudo_labels, mask_loss = do_fixmatch(data_t_unl,F1,G,thresh,criterion_pseudo)
-            f_batch_source, feat_dict_source = update_features(feat_dict_source, data_s, G, 0.1, source = True)
+            f_batch_source, feat_dict_source = update_features(feat_dict_source, data_s, G, F1, 0.1, source = True)
             update_label_bank(label_bank, data_t_unl, pseudo_labels, mask_loss)
 
         #if step >=0 and step % 250 == 0 and step<=3500:
@@ -279,11 +281,13 @@ def train():
                     
                     # do_write_csv(target_loader_misc, feat_dict_source, G, F1, args, step, K_farthest_source)
 
-                    _ = do_source_weighting(args, step, target_loader_misc,feat_dict_source, G, F1, K_farthest_source, per_class_raw = raw_weights_to_pass, weight=1.5, aug = 2, phi = phi, only_for_poor=True, poor_class_list=poor_class_list, weighing_mode='N',weigh_using=weigh_using)
+                    #_ = do_source_weighting(args, step, target_loader_misc,feat_dict_source, G, F1, K_farthest_source, per_class_raw = raw_weights_to_pass, weight=1.5, aug = 2, phi = phi, only_for_poor=True, poor_class_list=poor_class_list, weighing_mode='N',weigh_using=weigh_using)
 
-                    _ = do_source_weighting(args, step, target_loader_misc,feat_dict_source, G, F1, K_farthest_source, per_class_raw = raw_weights_to_pass, weight=0.5, aug = 2, phi = phi, only_for_poor=True, poor_class_list=poor_class_list, weighing_mode='F', weigh_using=weigh_using)
+                    #_ = do_source_weighting(args, step, target_loader_misc,feat_dict_source, G, F1, K_farthest_source, per_class_raw = raw_weights_to_pass, weight=0.5, aug = 2, phi = phi, only_for_poor=True, poor_class_list=poor_class_list, weighing_mode='F', weigh_using=weigh_using)
+                    if args.sew_method == "continuous":
+                        generalized_sew(args, target_loader_misc ,feat_dict_source, G, F1, raw_weights_to_pass, aug = 2)
 
-                    print("Assigned Classwise weights≈ to source")
+                    print("Assigned Classwise weights to source")
                 else:
                     pass
 

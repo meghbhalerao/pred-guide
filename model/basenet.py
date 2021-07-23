@@ -54,12 +54,10 @@ class AlexNetBase(nn.Module):
     def __init__(self, pret=True):
         super(AlexNetBase, self).__init__()
         model_alexnet = models.alexnet(pretrained=pret)
-        self.features = nn.Sequential(*list(model_alexnet.
-                                            features._modules.values())[:])
+        self.features = nn.Sequential(*list(model_alexnet.features._modules.values())[:])
         self.classifier = nn.Sequential()
         for i in range(6):
-            self.classifier.add_module("classifier" + str(i),
-                                       model_alexnet.classifier[i])
+            self.classifier.add_module("classifier" + str(i), model_alexnet.classifier[i])
         self.__in_features = model_alexnet.classifier[6].in_features
 
     def forward(self, x):
@@ -76,10 +74,8 @@ class VGGBase(nn.Module):
     def __init__(self, pret=True, no_pool=False):
         super(VGGBase, self).__init__()
         vgg16 = models.vgg16(pretrained=pret)
-        self.classifier = nn.Sequential(*list(vgg16.classifier.
-                                              _modules.values())[:-1])
-        self.features = nn.Sequential(*list(vgg16.features.
-                                            _modules.values())[:])
+        self.classifier = nn.Sequential(*list(vgg16.classifier._modules.values())[:-1])
+        self.features = nn.Sequential(*list(vgg16.features._modules.values())[:])
         self.s = nn.Parameter(torch.FloatTensor([10]))
 
     def forward(self, x):
@@ -156,7 +152,7 @@ class Discriminator_classwise(nn.Module):
 class Predictor_deep_new(nn.Module):
     def __init__(self, num_class=64, temp=0.05):
         super(Predictor_deep_new, self).__init__()
-        self.fc2 = nn.Linear(512, num_class, bias=False)
+        self.fc2 = nn.Linear(50, num_class, bias=False)
         self.num_class = num_class
         self.temp = temp
 

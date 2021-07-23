@@ -93,6 +93,7 @@ def do_source_weighting(args, step, loader, feat_dict, G, F1, K_farthest,per_cla
 
         if weighing_mode == 'F':
             k, labels_k, names_k = get_k_farthest_neighbors(sim_distribution,feat_dict_label,K_farthest)
+
         elif weighing_mode == 'N':
             k_nearest, labels_k_nearest, names_k = get_kNN(sim_distribution,feat_dict_label,K_farthest)   
             class_wise_examples.names.extend(names_k[0])
@@ -115,6 +116,33 @@ def do_source_weighting(args, step, loader, feat_dict, G, F1, K_farthest,per_cla
                 else:
                     feat_dict.sample_weights[idx_to_weigh] = per_class_weights[img_label]
     
+    return class_wise_examples        
+
+def generalized_sew(args, loader ,feat_dict, G, F1, per_class_raw, phi=0.2, aug = 2):
+    G.eval()
+    per_class_weights = np.exp(per_class_raw)
+    per_class_weights = torch.tensor(per_class_weights)
+    #print("Per cls weights according to the accuracy are: ", per_class_weights)
+    class_wise_examples = edict({"names":[],"labels":[]})
+
+    per_class_weights_max  = 1 * (1 + phi/np.exp(per_class_raw))
+    per_class_weights_min = 1 * (1 - phi/np.exp(per_class_raw))
+
+    print(per_class_weights_min)
+    print(per_class_weights_max)
+
+    for idx, batch in enumerate(loader):
+        #img_vec = G(batch[0][aug])
+        print(idx)
+        img_label = batch[1]
+        idxs_label = [i for i, x in enumerate(feat_dict.labels) if x == img_label]
+        feat_dict_label = make_feat_dict_from_idx(feat_dict,idxs_label)
+        f_batch, sim_distribution = get_similarity_distribution(feat_dict_label,batch,G,i=aug)
+        print(sim_distribution.names_of_other)
+        
+
+    G.train()
+    F1.train()
     return class_wise_examples        
 
 def do_make_csv(args,step,K):

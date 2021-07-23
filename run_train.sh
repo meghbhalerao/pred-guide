@@ -7,22 +7,25 @@
 
 #CUDA_VISIBLE_DEVICES=0,1 python main_match_majvot.py --method MME --dataset multi --source real --target sketch --num 3 --net resnet34 --augmentation_policy rand_augment --save_check
 
-CUDA_LAUNCH_BLOCKING=1 CUDA_VISIBLE_DEVICES=1 python main_classwise.py \
+####CUDA_LAUNCH_BLOCKING=1
+
+CUDA_VISIBLE_DEVICES=0 python main_classwise.py \
 --method MME \
 --dataset multi \
 --source real \
 --target sketch \
 --num 3 \
+--use_new_features 0 \
 --net resnet34 \
 --which_method SEW \
 --patience 10 \
 --data_parallel 0 \
 --weigh_using target_acc \
---num_to_weigh 2 \
+--num_to_weigh 3 \
 --save_interval 500 \
 --log_interval 100 \
 --label_target_iteration 8000 \
---SEW_iteration 2000 \
+--SEW_iteration 0 \
 --SEW_interval 1000 \
 --thresh 0.9 \
 --phi 0.5 \

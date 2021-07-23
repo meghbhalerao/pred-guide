@@ -57,7 +57,7 @@ def save_model_iteration(G, F1, step, args, optimizer_g, optimizer_f):
 
 
 
-def update_features(feat_dict, data, G, momentum, source  = False):
+def update_features(feat_dict, data, G, F1, momentum, source  = False):
     '''
     Description:
     1. This function updates the feature bank using the reprsentations of the current batch
@@ -148,7 +148,8 @@ def get_similarity_distribution(feat_dict,data_batch, G, source = False, i=0, mo
         sim_distribution  = torch.mm(F.normalize(feat_dict.feat_vec, dim=1),F.normalize(torch.transpose(f_batch,0,1),dim = 0))        
     elif mode == 'euclid':
         sim_distribution = pairwise_distance(feat_dict.feat_vec, f_batch)
-    sim_distribution = edict({"cosines": sim_distribution, "names": data_batch[2], "labels": data_batch[1]})
+    
+    sim_distribution = edict({"cosines": sim_distribution, "names": data_batch[2], "labels": data_batch[1], "names_of_other": feat_dict.names})
     return f_batch, sim_distribution
 
 
@@ -220,8 +221,6 @@ def load_bank(args,mode = 'pkl'):
         domain = ["S" for i in range(num_source)]
         feat_dict_source.domain_identifier = domain
         # Concat the corresponsing components of the 2 dictionaries
-        print(feat_dict_source.feat_vec.shape)
-        print(feat_dict_target.feat_vec.shape)
         feat_dict_combined = edict({})
         feat_dict_combined  = combine_dicts(feat_dict_source, feat_dict_target)
 
@@ -259,7 +258,7 @@ def load_bank(args,mode = 'pkl'):
         # Concat the corresponsing components of the 2 dictionaries
         feat_dict_combined = edict({})
         feat_dict_combined  = combine_dicts(feat_dict_source, feat_dict_target)
-        
+
     print("Bank keys - Target: ", feat_dict_target.keys(),"Source: ", feat_dict_source.keys())
     print("Num  - Target: ", len(feat_dict_target.names), "Source: ", len(feat_dict_source.names))
 
