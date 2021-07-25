@@ -246,6 +246,7 @@ def train():
         if step % len_train_source == 0:
             data_iter_s = iter(source_loader)
 
+        
         # Extracting the batches from the iteratable dataloader
         data_t, data_t_unl, data_s  = next(data_iter_t), next(data_iter_t_unl), next(data_iter_s)
         im_data_s = data_s[0].cuda()
@@ -256,6 +257,7 @@ def train():
         zero_grad_all()
         data = im_data_s
         target = gt_labels_s
+
         if not args.which_method == "MME_Only":
             pseudo_labels, mask_loss = do_fixmatch(data_t_unl,F1,G,thresh,criterion_pseudo)
             f_batch_source, feat_dict_source = update_features(feat_dict_source, data_s, G, F1, 0.1, source = True)
