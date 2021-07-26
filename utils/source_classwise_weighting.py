@@ -139,21 +139,27 @@ def generalized_sew(args, loader ,feat_dict, G, F1, per_class_raw, phi=0.2, aug 
         for name_ in feat_dict_label.names:
             idxs_to_weigh.append(feat_dict.names.index(name_))
 
-        do_function_weighing(feat_dict,idxs_to_weigh,sim_distribution,per_class_weights_max,per_class_weights_min,img_label, mode ='linear')
+        do_function_weighing(args, feat_dict,idxs_to_weigh,sim_distribution,per_class_weights_max,per_class_weights_min,img_label, mode = 'linear')
 
     G.train()
     F1.train()
     feat_dict.sample_weights = feat_dict.sample_weights.cpu()
     return class_wise_examples   
 
-def do_function_weighing(feat_dict,idxs_to_weigh,sim_distribution,per_class_weights_max,per_class_weights_min,img_label,mode='linear'):
-    min_sim = sim_distribution.cosines.min().cpu().data.item()
-    max_sim = sim_distribution.cosines.max().cpu().data.item()
+def do_function_weighing(args, feat_dict,idxs_to_weigh,sim_distribution,per_class_weights_max,per_class_weights_min,img_label,mode='linear'):
     label = img_label.cpu().data.item()
+    average_cosines = []
+    average_cosines[label] = average_cosines(sim_distribution.cosines.cpu().detach().numpy()/args.num)
+    #min_sim = sim_distribution.cosines.min().cpu().data.item()
+    #max_sim = sim_distribution.cosines.max().cpu().data.item()
+    min_sim = average_cosines[label].min().cpu().data.item()
+    max_sim = average_cosines[label].max().cpu().data.item()
     sim_distribution.cosines = sim_distribution.cosines.cpu().detach().numpy()
+
     if mode == 'linear':
         slope = (max_sim - per_class_weights_max[label])/(min_sim - per_class_weights_min[label])
-        weights_to_assign = slope * (sim_distribution.cosines - min_sim) + per_class_weights_min[label]
+        #weights_to_assign = slope * (sim_distribution.cosines - min_sim) + per_class_weights_min[label]
+        weights_to_assign = slope * (average_cosines[label].cosines - min_sim) + per_class_weights_min[label]
         feat_dict.sample_weights[idxs_to_weigh] = torch.tensor(weights_to_assign).cuda()[:,0].double()
      
     sim_distribution.cosines = torch.tensor(sim_distribution.cosines).cuda()

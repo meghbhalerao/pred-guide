@@ -2058,3 +2058,1451 @@ tensor(378.)
 
 Labeled Target set: Average loss: 0.0927, Accuracy: 371/378 F1 (98.1481%)
 
+
+Test set: Average loss: 1.2120, Accuracy: 54164/70224 F1 (77.1303%)
+
+
+Val set: Average loss: 1.4302, Accuracy: 268/360 F1 (74.4444%)
+
+Patience Reset, Counter is: 3
+best acc test 77.130326  acc val 74.444444 acc labeled target 98.148148
+saving model...
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+S painting T real Train Ep: 8600 lr0.006278635797596355 	 Loss Classification: 0.236264 Loss T 0.053264 Method MME
+
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+S painting T real Train Ep: 8700 lr0.006253437232918371 	 Loss Classification: 0.476271 Loss T 0.047340 Method MME
+
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+S painting T real Train Ep: 8800 lr0.0062284733857924735 	 Loss Classification: 0.436474 Loss T 0.048698 Method MME
+
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+S painting T real Train Ep: 8900 lr0.006203740838748417 	 Loss Classification: 0.421328 Loss T 0.046783 Method MME
+
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Per Class Accuracy Calculated According to the Labelled Target examples is:  [1.        1.        0.6666667 1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        0.6666667
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        0.6666667 0.6666667 1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.6666667 1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        0.6666667
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 0.6666667 1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.
+ 1.        1.        1.        1.        1.        1.        1.       ]
+Top k classes which perform poorly are:  [35, 2, 105, 13, 76, 23, 24, 84, 85, 86, 87, 88, 89, 90, 91, 92, 83, 82, 0, 93, 79, 78, 77, 75, 74, 73, 72, 71, 70, 69, 68, 67, 81, 80, 96, 95, 123, 122, 121, 120, 119, 118, 117, 116, 115, 114, 113, 112, 111, 110, 109, 108, 107, 106, 104, 103, 102, 101, 100, 99, 98, 97, 66, 94, 65, 62, 63, 30, 29, 28, 27, 26, 25, 22, 21, 20, 19, 18, 17, 31, 16, 14, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 1, 15, 32, 33, 34, 124, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 64, 125]
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+Assigned Classwise weights to source
+Including the labeled target examples
+S painting T real Train Ep: 9000 lr0.006179236241810624 	 Loss Classification: 0.535688 Loss T 0.020200 Method MME
+
+24
+24
+24
+24
+24
+24
+tensor(378.)
+
+Labeled Target set: Average loss: 0.0938, Accuracy: 369/378 F1 (97.6190%)
+
+
+Test set: Average loss: 1.2055, Accuracy: 54465/70224 F1 (77.5590%)
+
+
+Val set: Average loss: 1.3326, Accuracy: 270/360 F1 (75.0000%)
+
+Patience Reset, Counter is: 0
+best acc test 77.558954  acc val 75.000000 acc labeled target 97.619048
+saving model...
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+S painting T real Train Ep: 9100 lr0.006154956310818535 	 Loss Classification: 0.373280 Loss T 0.028401 Method MME
+
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+S painting T real Train Ep: 9200 lr0.0061308978257973165 	 Loss Classification: 0.378872 Loss T 0.033038 Method MME
+
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+S painting T real Train Ep: 9300 lr0.0061070576293771285 	 Loss Classification: 0.064364 Loss T 0.026261 Method MME
+
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+S painting T real Train Ep: 9400 lr0.006083432625259276 	 Loss Classification: 0.226794 Loss T 0.036925 Method MME
+
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+S painting T real Train Ep: 9500 lr0.006060019776727621 	 Loss Classification: 0.616092 Loss T 0.040992 Method MME
+
+24
+24
+24
+24
+24
+24
+tensor(378.)
+
+Labeled Target set: Average loss: 0.0537, Accuracy: 371/378 F1 (98.1481%)
+
+
+Test set: Average loss: 1.2346, Accuracy: 54306/70224 F1 (77.3325%)
+
+
+Val set: Average loss: 1.4512, Accuracy: 265/360 F1 (73.6111%)
+
+Patience getting saturated, current counter is:  0
+best acc test 77.558954  acc val 73.611111 acc labeled target 98.148148
+saving model...
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+S painting T real Train Ep: 9600 lr0.00603681610520369 	 Loss Classification: 0.287712 Loss T 0.031395 Method MME
+
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+S painting T real Train Ep: 9700 lr0.0060138186888439825 	 Loss Classification: 0.120482 Loss T 0.032944 Method MME
+
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
+Including the labeled target examples
