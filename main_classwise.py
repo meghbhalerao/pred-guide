@@ -310,6 +310,7 @@ def train():
                 names_batch = list(data_s[2])
                 idx = [feat_dict_source.names.index(name) for name in names_batch] 
                 weights_source = feat_dict_source.sample_weights[idx].cuda()
+                #print(weights_source)
                 loss = torch.mean(weights_source * criterion(out1, target))
                 #print("Doing Weighted source loss")
             else:

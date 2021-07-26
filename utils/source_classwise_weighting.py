@@ -131,20 +131,15 @@ def generalized_sew(args, loader ,feat_dict, G, F1, per_class_raw, phi=0.2, aug 
     for idx, batch in enumerate(loader):
         #img_vec = G(batch[0][aug])
         img_label = batch[1]
+        print(idx)
         idxs_label = [i for i, x in enumerate(feat_dict.labels) if x == img_label]
         feat_dict_label = make_feat_dict_from_idx(feat_dict,idxs_label)
         f_batch, sim_distribution = get_similarity_distribution(feat_dict_label,batch,G,i=aug)
-        weights = sim_distribution.cosines
         idxs_to_weigh = []
         for name_ in feat_dict_label.names:
             idxs_to_weigh.append(feat_dict.names.index(name_))
 
         do_function_weighing(feat_dict,idxs_to_weigh,sim_distribution,per_class_weights_max,per_class_weights_min,img_label, mode ='linear')
-        feat_dict.sample_weights[idxs_to_weigh] = sim_distribution.cosines[:,0].double().cuda()
-
-
-
-        
 
     G.train()
     F1.train()
@@ -159,7 +154,8 @@ def do_function_weighing(feat_dict,idxs_to_weigh,sim_distribution,per_class_weig
     if mode == 'linear':
         slope = (max_sim - per_class_weights_max[label])/(min_sim - per_class_weights_min[label])
         weights_to_assign = slope * (sim_distribution.cosines - min_sim) + per_class_weights_min[label]
-        print(feat_dict.sample_weights[idxs_to_weigh].shape)        
+        feat_dict.sample_weights[idxs_to_weigh] = torch.tensor(weights_to_assign).cuda()[:,0].double()
+     
     sim_distribution.cosines = torch.tensor(sim_distribution.cosines).cuda()
 
 
