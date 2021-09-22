@@ -118,7 +118,7 @@ def do_source_weighting(args, step, loader, feat_dict, G, F1, K_farthest,per_cla
     
     return class_wise_examples        
 
-def generalized_sew(args, loader ,feat_dict, G, F1, per_class_raw, phi=0.2, aug = 2):
+def generalized_sew(args, loader ,feat_dict, G, F1, per_class_raw, n_class, phi=0.2, aug = 2, mode='linear'):
     G.eval()
     F1.eval()
     per_class_weights = np.exp(per_class_raw)
@@ -139,17 +139,18 @@ def generalized_sew(args, loader ,feat_dict, G, F1, per_class_raw, phi=0.2, aug 
         for name_ in feat_dict_label.names:
             idxs_to_weigh.append(feat_dict.names.index(name_))
 
-        do_function_weighing(args, feat_dict,idxs_to_weigh,sim_distribution,per_class_weights_max,per_class_weights_min,img_label, mode = 'linear')
+        do_function_weighing(args, feat_dict,idxs_to_weigh,sim_distribution,per_class_weights_max,per_class_weights_min,img_label, n_class, phi, per_class_raw, mode)
 
     G.train()
     F1.train()
     feat_dict.sample_weights = feat_dict.sample_weights.cpu()
     return class_wise_examples   
 
-def do_function_weighing(args, feat_dict,idxs_to_weigh,sim_distribution,per_class_weights_max,per_class_weights_min,img_label,mode='linear'):
+def do_function_weighing(args, feat_dict,idxs_to_weigh,sim_distribution,per_class_weights_max,per_class_weights_min,img_label, n_class, phi, per_class_raw, mode='linear', which_weighing = 'NF'):
     label = img_label.cpu().data.item()
-    average_cosines = []
-    average_cosines[label] = average_cosines(sim_distribution.cosines.cpu().detach().numpy()/args.num)
+    average_cosines = [0 for _ in range(n_class)]
+    average_cosines[label] = average_cosines[label] + (sim_distribution.cosines/args.num)
+
     #min_sim = sim_distribution.cosines.min().cpu().data.item()
     #max_sim = sim_distribution.cosines.max().cpu().data.item()
     min_sim = average_cosines[label].min().cpu().data.item()
@@ -157,16 +158,33 @@ def do_function_weighing(args, feat_dict,idxs_to_weigh,sim_distribution,per_clas
     sim_distribution.cosines = sim_distribution.cosines.cpu().detach().numpy()
 
     if mode == 'linear':
-        slope = (max_sim - per_class_weights_max[label])/(min_sim - per_class_weights_min[label])
+        #slope = (max_sim - per_class_weights_max[label])/(min_sim - per_class_weights_min[label])
+        slope = (per_class_weights_max[label] - per_class_weights_min[label])/(max_sim - min_sim)
         #weights_to_assign = slope * (sim_distribution.cosines - min_sim) + per_class_weights_min[label]
-        weights_to_assign = slope * (average_cosines[label].cosines - min_sim) + per_class_weights_min[label]
-        feat_dict.sample_weights[idxs_to_weigh] = torch.tensor(weights_to_assign).cuda()[:,0].double()
-     
+        weights_to_assign = slope * (average_cosines[label] - min_sim) + per_class_weights_min[label]
+        if which_weighing == 'N':
+            temp = []
+            for w in weights_to_assign:
+                temp.append(w if w > 1 else 1)
+            weights_to_assign = torch.tensor(temp).unsqueeze(1)
+        elif which_weighing == 'F':
+            temp = []
+            for w in weights_to_assign:
+                temp.append(w if w < 1 else 1)
+            weights_to_assign = torch.tensor(temp).unsqueeze(1)
+        elif which_weighing == 'NF':
+            pass
+        feat_dict.sample_weights[idxs_to_weigh] = weights_to_assign.clone().detach().cuda()[:,0].double()
+    elif mode == 'nonlinear':
+        avg_sim = (min_sim + max_sim)/2
+        mean_sim = torch.mean(average_cosines[label])
+        stddev_sim = torch.std(average_cosines[label])
+        delta  = torch.max(torch.abs(average_cosines[label] - mean_sim) - 2 * stddev_sim,torch.zeros_like(average_cosines[label])) 
+        sign = torch.sign(average_cosines[label] - mean_sim)
+        weights_to_assign =  1 + phi/torch.exp(torch.tensor(per_class_raw[label]).cuda().float()) * torch.tanh(sign * delta)
+        feat_dict.sample_weights[idxs_to_weigh] = weights_to_assign.clone().detach().cuda()[:,0].double()
+        print(weights_to_assign)
     sim_distribution.cosines = torch.tensor(sim_distribution.cosines).cuda()
-
-
-
-
 
 def do_make_csv(args,step,K):
     f = open("./csvs/%s_%s_%s_%s.csv"%(args.net, args.source, args.target, str(step)),"w")

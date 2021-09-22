@@ -29,8 +29,7 @@ from easydict import EasyDict as edict
 
 # Training settings
 parser = argparse.ArgumentParser(description='SSDA Classification')
-parser.add_argument('--steps', type=int, default=50000, metavar='N',
-                    help='maximum number of iterations '
+parser.add_argument('--steps', type=int, default=50000, metavar='N', help='maximum number of iterations '
                          'to train (default: 50000)')
 parser.add_argument('--method', type=str, default='MME',
                     choices=['S+T', 'ENT', 'MME'],
@@ -38,18 +37,17 @@ parser.add_argument('--method', type=str, default='MME',
                          ' S+T is training only on labeled examples')
 parser.add_argument('--lr', type=float, default=0.01, metavar='LR',
                     help='learning rate (default: 0.001)')
-parser.add_argument('--multi', type=float, default=0.1, metavar='MLT',
-                    help='learning rate multiplication')
-parser.add_argument('--T', type=float, default=0.05, metavar='T',
-                    help='temperature (default: 0.05)')
-parser.add_argument('--lamda', type=float, default=0.1, metavar='LAM',
-                    help='value of lamda')
-parser.add_argument('--save_check', action='store_true', default=False,
-                    help='save checkpoint or not')
-parser.add_argument('--checkpath', type=str, default='./save_model_ssda',
-                    help='dir to save checkpoint')
-parser.add_argument('--seed', type=int, default=1, metavar='S',
-                    help='random seed (default: 1)')
+parser.add_argument('--multi', type=float, default=0.1, metavar='MLT',help='learning rate multiplication')
+
+parser.add_argument('--T', type=float, default=0.05, metavar='T',help='temperature (default: 0.05)')
+
+parser.add_argument('--lamda', type=float, default=0.1, metavar='LAM', help='value of lamda')
+
+parser.add_argument('--save_check', action='store_true', default=False, help='save checkpoint or not')
+
+parser.add_argument('--checkpath', type=str, default='./save_model_ssda', help='dir to save checkpoint')
+
+parser.add_argument('--seed', type=int, default=1, metavar='S',help='random seed (default: 1)')
 parser.add_argument('--log_interval', type=int, default=100, metavar='N',
                     help='how many batches to wait before logging '
                          'training status')
@@ -66,27 +64,26 @@ parser.add_argument('--dataset', type=str, default='multi',
                     help='the name of dataset')
 parser.add_argument('--num', type=int, default=3,
                     help='number of labeled examples in the target')
-parser.add_argument('--patience', type=int, default=5, metavar='S',
-                    help='early stopping to wait for improvment '
-                         'before terminating. (default: 5 (5000 iterations))')
-parser.add_argument('--early', action='store_false', default=True,
-                    help='early stopping on validation or not')
-parser.add_argument('--pretrained_ckpt', type=str, default=None,
-                    help='path to pretrained weights')
+parser.add_argument('--patience', type=int, default=5, metavar='S', help='early stopping to wait for improvment before terminating. (default: 5 (5000 iterations))')
+parser.add_argument('--early', action='store_false', default=True, help='early stopping on validation or not')
+
+parser.add_argument('--pretrained_ckpt', type=str, default=None, help='path to pretrained weights')
+
 parser.add_argument('--augmentation_policy', type=str, default='rand_augment', choices=['ours', 'rand_augment','ct_augment'], help='which augmentation starategy to use - essentially, which method to follow')
+
 parser.add_argument('--LR_scheduler', type=str, default='standard', choices=['standard', 'cosine'], help='Learning Rate scheduling policy')
-parser.add_argument('--adentropy', action='store_true', default=True,
-                    help='Use entropy maximization or not')
+
+parser.add_argument('--adentropy', action='store_true', default=True, help='Use entropy maximization or not')
+
 parser.add_argument('--uda', type=int, default=1,
                     help='use uda training for model training')
 parser.add_argument('--use_bank', type=int, default=1,
                     help='use feature bank method for experiments')
 parser.add_argument('--use_cb', type=int, default=0,
                     help='use class balancing method for experiments')
-parser.add_argument('--data_parallel', type=int, default=1,
-                    help='pytorch DataParallel for training')
-parser.add_argument('--num_to_weigh', type=int, default=5,
-                    help='Number of near/far samples to be weighed')
+parser.add_argument('--data_parallel', type=int, default=1, help='pytorch DataParallel for training')
+
+parser.add_argument('--num_to_weigh', type=int, default=5, help='Number of near/far samples to be weighed')
 
 parser.add_argument('--use_new_features', type=int, default=0, help='use features just before grad reversal for resenet')
 parser.add_argument('--weigh_using', type=str, default='target_acc', choices=['target_acc', 'pseudo_labels','constant'], help='What metric to weigh with')
@@ -286,8 +283,9 @@ def train():
                     #_ = do_source_weighting(args, step, target_loader_misc,feat_dict_source, G, F1, K_farthest_source, per_class_raw = raw_weights_to_pass, weight=1.5, aug = 2, phi = phi, only_for_poor=True, poor_class_list=poor_class_list, weighing_mode='N',weigh_using=weigh_using)
 
                     #_ = do_source_weighting(args, step, target_loader_misc,feat_dict_source, G, F1, K_farthest_source, per_class_raw = raw_weights_to_pass, weight=0.5, aug = 2, phi = phi, only_for_poor=True, poor_class_list=poor_class_list, weighing_mode='F', weigh_using=weigh_using)
+                    
                     if args.sew_method == "continuous":
-                        generalized_sew(args, target_loader_misc ,feat_dict_source, G, F1, raw_weights_to_pass, aug = 2)
+                        generalized_sew(args, target_loader_misc,feat_dict_source, G, F1, raw_weights_to_pass, len(class_list), phi=0.2, aug = 2, mode = 'linear')
 
                     print("Assigned Classwise weights to source")
                 else:

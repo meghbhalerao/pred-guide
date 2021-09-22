@@ -137,7 +137,7 @@ def pairwise_distance(feat_bank, feat_batch):
             output[idx_im_bank][idx_im_batch] = eu_dist
     return output
 
-def get_similarity_distribution(feat_dict,data_batch, G, source = False, i=0, mode='cosine'):
+def get_similarity_distribution(feat_dict,data_batch, G, source = False, i=0, mode = 'cosine'):
     if source:
         img_batch  = data_batch[0].cuda()
     else:
