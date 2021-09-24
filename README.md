@@ -16,7 +16,7 @@ This repository contains the codes and instructions to run the codes for Pred&Gu
 6. The same will apply for the **1 shot setting** except that 3 would be replaced by 1. 
 7. The **Office-Home** dataset is also formatted in the same way as the **DomainNet** Dataset. 
 8. In points 3 and 4, `multi` is the name given to the `DomainNet` dataset. This is done according to the previous baselines.
-### Training Experiment
+### Experiment and Producing Results
 1. The `main_classwise.py` is the main file to train the domain adaptation model. The same script also prints out the results which we report, and hence no other script is needed to run for testing/inference.
 2. Run the following command and change the hyper-parameters according to your requirements - 
 ```
@@ -42,6 +42,7 @@ python main_classwise.py \ # main file to run
 --save_check # Whether to save the model weights
 ```
 3. After running this script your model checkpoints will be saved in `./save_model_ssda` folder and the accuracy will be printed out.
+4. Just a note, for `Office-Home` dataset you will have to reduce some of the iterations and intervals to smaller values (scale-down by a factor of **7** approximately since it is smaller then `DomainNet` approximately and on-average by a factor of 7) to get reproducible results.
 ## Dependenceis
  - [`pytorch v1.7.0`](https://pytorch.org)
 
