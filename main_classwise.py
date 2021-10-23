@@ -258,7 +258,7 @@ def train():
         if not args.which_method == "MME_Only":
             pseudo_labels, mask_loss = do_fixmatch(data_t_unl,F1,G,thresh,criterion_pseudo)
             f_batch_source, feat_dict_source = update_features(feat_dict_source, data_s, G, F1, 0.1, source = True)
-            update_label_bank(label_bank, data_t_unl, pseudo_labels, mask_loss)
+            # update_label_bank(label_bank, data_t_unl, pseudo_labels, mask_loss)
 
         #if step >=0 and step % 250 == 0 and step<=3500:
         if step>=args.SEW_iteration:
