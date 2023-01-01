@@ -27,6 +27,7 @@ misc_scipts/saved_matrices/
 paper-logs/
 misc_scripts/
 old-files/
+data/
 # Some specific patterns
 *word2vec*
 .DS_Store

@@ -256,11 +256,9 @@ def train():
         target = gt_labels_s
 
         if not args.which_method == "MME_Only":
-            pseudo_labels, mask_loss = do_fixmatch(data_t_unl,F1,G,thresh,criterion_pseudo)
+            pseudo_labels, mask_loss = do_fixmatch(data_t_unl,F1,G,thresh,criterion_pseudo, per_cls_acc)
             f_batch_source, feat_dict_source = update_features(feat_dict_source, data_s, G, F1, 0.1, source = True)
-            # update_label_bank(label_bank, data_t_unl, pseudo_labels, mask_loss)
-
-        #if step >=0 and step % 250 == 0 and step<=3500:
+            
         if step>=args.SEW_iteration:
             if step % args.SEW_interval == 0:
                 poor_class_list = list(np.argsort(per_cls_acc))[0:len(class_list)]
@@ -276,14 +274,6 @@ def train():
                     raw_weights_to_pass = None
 
                 if args.which_method == 'SEW':
-                    #do_make_csv(args, step, K_farthest_source) # making csv for near and far examples here
-                    
-                    # do_write_csv(target_loader_misc, feat_dict_source, G, F1, args, step, K_farthest_source)
-
-                    #_ = do_source_weighting(args, step, target_loader_misc,feat_dict_source, G, F1, K_farthest_source, per_class_raw = raw_weights_to_pass, weight=1.5, aug = 2, phi = phi, only_for_poor=True, poor_class_list=poor_class_list, weighing_mode='N',weigh_using=weigh_using)
-
-                    #_ = do_source_weighting(args, step, target_loader_misc,feat_dict_source, G, F1, K_farthest_source, per_class_raw = raw_weights_to_pass, weight=0.5, aug = 2, phi = phi, only_for_poor=True, poor_class_list=poor_class_list, weighing_mode='F', weigh_using=weigh_using)
-                    
                     if args.sew_method == "continuous":
                         generalized_sew(args, target_loader_misc,feat_dict_source, G, F1, raw_weights_to_pass, len(class_list), phi=0.2, aug = 2, mode = 'linear')
 
@@ -304,7 +294,7 @@ def train():
         out1 = F1(output)
 
         if args.which_method == "SEW":
-            if step>=args.SEW_iteration: # and step<=args.label_target_iteration:
+            if step>=args.SEW_iteration: 
                 names_batch = list(data_s[2])
                 idx = [feat_dict_source.names.index(name) for name in names_batch] 
                 weights_source = feat_dict_source.sample_weights[idx].cuda()
@@ -323,14 +313,10 @@ def train():
             output = G(im_data_tu)
             if args.method == 'ENT':
                 loss_t = entropy(F1, output, args.lamda)
-                loss_t.backward()#retain_graph=True)
-                #optimizer_f.step()
-                #optimizer_g.step()
+                loss_t.backward()
             elif args.method == 'MME':
                 loss_t = adentropy(F1, output, args.lamda)
-                loss_t.backward()#retain_graph=True)
-                #optimizer_f.step()
-                #optimizer_g.step()
+                loss_t.backward()
             else:
                 raise ValueError('Method cannot be recognized.')
 
